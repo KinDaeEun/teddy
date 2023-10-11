@@ -1,0 +1,33 @@
+<!DOCTYPE tiles-definitions PUBLIC
+ "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+ "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+	<definition name="tilesbase" template="/WEB-INF/views/layout.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/decorator/header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/decorator/footer.jsp" />
+	</definition>
+	
+
+	
+	<!--타일즈 적용하지 않음 -->
+	<definition name="nolay"
+		template="/WEB-INF/views/nolay/nolayout.jsp">
+		<put-attribute name="header" value="" />
+		<put-attribute name="menu" value="" />
+		<put-attribute name="footer" value="" />
+	</definition>
+
+	<!--nolay/*로 전달되면 nolay폴더 안에 {1}에 jsp이름 -->
+	<definition name="nolay/*" extends="nolay">
+		<put-attribute name="body"
+			value="/WEB-INF/views/nolay/{1}.jsp" />
+	</definition>
+	
+	<!--*/*로 전달되면 {1}폴더안에 {2}에 jsp이름 -->
+	<definition name="*/*" extends="tilesbase">
+		<put-attribute name="body"
+			value="/WEB-INF/views/{1}/{2}.jsp" />
+	</definition>
+</tiles-definitions>
