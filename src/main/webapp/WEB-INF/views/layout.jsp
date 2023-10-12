@@ -11,11 +11,10 @@
 <title>테디</title>
 </head>
 <body>
-	<div class="narrowWidth">
-		<tiles:insertAttribute name="header"></tiles:insertAttribute>
-			<tiles:insertAttribute name="body"></tiles:insertAttribute>
-		
-		<tiles:insertAttribute name="footer"></tiles:insertAttribute>
+		<div>
+		<tiles:insertAttribute name="header" />
+		<tiles:insertAttribute name="body"/>
+		<tiles:insertAttribute name="footer"/>
 	</div>
 </body>
 </html>

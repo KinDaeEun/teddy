@@ -11,9 +11,10 @@
 		<div class="banner">
 			<div class="lnb">
 				<a href="#none">로그인</a> 
-				<a href="#none">회원가입</a> 
+				<a href="${path}/member/joinForm.do">회원가입</a> 
 				<a href="#none">마이페이지</a>
 			</div>
+			 
 		</div>
 		<nav>
 			<div class="logo">
@@ -23,7 +24,7 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
-				<li><a href="#ranking">차목록</a></li>
+				<li><a href="${path }/car/Kategorie.do">차목록</a></li>
 				<li>
 					<a href="#">게시판</a>
 					<ul>
@@ -33,9 +34,9 @@
 					</ul>
 				</li>
 				<li>
-					<a href="#">게시판</a>
+					<a>게시판</a>
 					<ul>
-						<li><a href="#">FAQ</a></li>
+						<li><a href="${path}/faq/faqList.do">FAQ</a></li>
 						<li><a href="#">1:1 문의</a></li>
 						<li><a href="#">문의 내역</a></li>
 					</ul>
