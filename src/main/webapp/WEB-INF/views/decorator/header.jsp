@@ -14,6 +14,7 @@
 				<a href="#none">회원가입</a> 
 				<a href="#none">마이페이지</a>
 			</div>
+			 
 		</div>
 		<nav>
 			<div class="logo">
