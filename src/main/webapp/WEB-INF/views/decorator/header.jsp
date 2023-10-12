@@ -11,9 +11,10 @@
 		<div class="banner">
 			<div class="lnb">
 				<a href="#none">로그인</a> 
-				<a href="#none">회원가입</a> 
+				<a href="${path}/member/joinForm.do">회원가입</a> 
 				<a href="#none">마이페이지</a>
 			</div>
+			 
 		</div>
 		<nav>
 			<div class="logo">
