@@ -5,12 +5,12 @@ grand dba to teddy;
 -- 회원
 create table member (
     id varchar2(20) primary key,    -- 아이디
-    password varchar2(20),          -- 비밀번호
+    password varchar2(100),          -- 비밀번호
     name varchar2(20),              -- 이름
     email varchar2(20),             -- 이메일
     gender varchar2(20),            -- 성별
     regdate date,                   -- 가입날짜
-    prifile varchar2(20),           -- 프로필
+    fileName varchar2(20),           -- 프로필
     m_del char(1)                   -- 회원탈퇴여부
 );
 
