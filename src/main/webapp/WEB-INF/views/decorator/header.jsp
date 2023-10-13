@@ -43,7 +43,7 @@
 						<li><a href="">커뮤니티</a></li>
 						<li><a href="">칭찬 알림방</a></li>
 					</ul></li>
-				<li><a href="${path}/faq/faqList.do">고객센터</a>
+				<li><a href="${path}/help/faqList.do">고객센터</a>
 					<ul class="sub">
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">1:1 문의</a></li>

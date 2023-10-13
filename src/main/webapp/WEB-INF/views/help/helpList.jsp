@@ -7,8 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
-	location.href="main/main.do";
-</script>  
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+${id }
+여기는 헬프 리스트다
 </body>
 </html>

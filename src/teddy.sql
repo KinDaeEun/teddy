@@ -87,6 +87,7 @@ drop table reservation;
 -- 1:1 문의
 create table help (
     hno number primary key,         -- 문의 번호
+    id varchar2(20) references member(id), -- 문의한 아이디 
     h_title varchar2(20),           -- 문의 제목
     h_content varchar2(1000),       -- 문의 내용
     h_fileName varchar2(100),        -- 문의 첨부 파일
