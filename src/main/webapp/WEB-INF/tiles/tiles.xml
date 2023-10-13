@@ -10,7 +10,7 @@
 	</definition>
 	
 	<definition name="admin" template="/WEB-INF/views/layout_admin.jsp">
-		<put-attribute name="header" value="/WEB-INF/views/decorator/admin_header.jsp" />
+		<put-attribute name="admin_header" value="/WEB-INF/views/decorator/admin_header.jsp" />
 		<put-attribute name="body" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/decorator/footer.jsp" />
 	</definition>
