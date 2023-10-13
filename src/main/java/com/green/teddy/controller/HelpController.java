@@ -8,10 +8,15 @@ import com.green.teddy.service.HelpService;
 
 @Controller
 public class HelpController {
-	
+
 	private HelpService hs;
-	
+
 	@GetMapping("faq/faqList")
 	public void faqList() {
+	}
+
+	@GetMapping("help/helpForm")
+	public void helpForm() {
+
 	}
 }

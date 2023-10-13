@@ -43,7 +43,7 @@ public class MemberController {
 	public void logout(HttpSession session) {
 		session.invalidate();
 	}
-//	login
+// login
 
 // join
 	@GetMapping("member/joinForm")

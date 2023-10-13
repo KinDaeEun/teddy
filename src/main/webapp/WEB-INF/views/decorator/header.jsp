@@ -13,13 +13,14 @@
 			<c:if test="${id == null}">
 				<div class="lnb">
 					<a href="${path}/member/loginForm.do">로그인</a> <a
-						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a>
 				</div>
 			</c:if>
 			<c:if test="${id != null}">
 				<div class="lnb">
 					<a href="${path}/member/logout.do">로그아웃</a> <a
-						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/help/helpForm.do">1:1
+				문의 바로가기 ></a>
 				</div>
 			</c:if>
 

@@ -89,7 +89,7 @@ create table help (
     hno number primary key,         -- 문의 번호
     h_title varchar2(20),           -- 문의 제목
     h_content varchar2(1000),       -- 문의 내용
-    h_fileName varchar2(20),        -- 문의 첨부 파일
+    h_fileName varchar2(100),        -- 문의 첨부 파일
     h_date date,                    -- 문의 날짜
     h_del char(1)                   -- 문의 삭제 여부
 );
