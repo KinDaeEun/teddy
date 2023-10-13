@@ -47,6 +47,8 @@ public class CarController {
 		model.addAttribute("totalPage",totalPage);
 		model.addAttribute("startPage",startPage);
 		model.addAttribute("endPage",endPage);
+		model.addAttribute("PAGE_PER_BLOCK",PAGE_PER_BLOCK);
+		model.addAttribute("currentPage",currentPage);
 	}
 	
 	
