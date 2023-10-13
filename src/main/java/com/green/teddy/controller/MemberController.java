@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import com.green.teddy.dto.Member;
 import com.green.teddy.service.MemberService;
 
@@ -23,8 +22,30 @@ public class MemberController {
 	private MemberService ms;
 	@Autowired
 	private BCryptPasswordEncoder bpe;
+	
+//	login
 	@GetMapping("member/loginForm")
 	public void loginForm() {}
+	@RequestMapping("member/login")
+	public void login(Member member, Model model, HttpSession session) {
+		int result = 0;
+		Member member2 = ms.select(member.getId());
+		if (member2 == null || member2.getM_del().equals("y"))
+			result = -1; // 없는 아이디
+		// bpe.matches 두개 다 암호와 시키 상태에서 비교하는 메서드
+		else if (bpe.matches(member.getPassword(), member2.getPassword())) {
+			result = 1; // 성공 id와 암호 일치
+			session.setAttribute("id", member.getId());
+		}
+		model.addAttribute("result", result);
+	}
+	@GetMapping("member/logout")
+	public void logout(HttpSession session) {
+		session.invalidate();
+	}
+//	login
+
+// join
 	@GetMapping("member/joinForm")
 	public void joinform() {
 	}
@@ -60,4 +81,6 @@ public class MemberController {
 			msg = "이미 사용중인 아이디입니다";
 		return msg;
 	}
+// join
+	
 }

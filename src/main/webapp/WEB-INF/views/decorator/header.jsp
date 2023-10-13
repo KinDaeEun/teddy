@@ -9,38 +9,41 @@
 <body>
 	<header>
 		<div class="banner">
-			<div class="lnb">
-				<a href="#none">로그인</a> 
-				<a href="${path}/member/joinForm.do">회원가입</a> 
-				<a href="#none">마이페이지</a>
-			</div>
-			 
+			<c:if test="${id == null}">
+				<div class="lnb">
+					<a href="${path}/member/loginForm.do">로그인</a> <a
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a>
+				</div>
+			</c:if>
+			<c:if test="${id != null}">
+				<div class="lnb">
+					<a href="${path}/member/logout.do">로그아웃</a> <a
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a>
+				</div>
+			</c:if>
 		</div>
+
 		<nav>
 			<div class="logo">
 				<h1>
-					<a href="#none">Teddy</a>
+					<a href="${path}/main/main.do">Teddy</a>
 				</h1>
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
 				<li><a href="${path }/car/Kategorie.do">차목록</a></li>
-				<li>
-					<a href="#">게시판</a>
+				<li><a href="#">게시판</a>
 					<ul>
 						<li><a href="#">공지사항</a></li>
 						<li><a href="#">커뮤니티</a></li>
 						<li><a href="#">칭찬 알림방</a></li>
-					</ul>
-				</li>
-				<li>
-					<a>게시판</a>
+					</ul></li>
+				<li><a href="#">게시판</a>
 					<ul>
 						<li><a href="${path}/faq/faqList.do">FAQ</a></li>
 						<li><a href="#">1:1 문의</a></li>
 						<li><a href="#">문의 내역</a></li>
-					</ul>
-				</li>
+					</ul></li>
 				<li><a href="#blog">NEWS</a></li>
 			</ul>
 		</nav>
