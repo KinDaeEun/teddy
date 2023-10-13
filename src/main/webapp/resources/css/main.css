@@ -15,7 +15,7 @@ html {
 body {
   font-size: 15px;
   margin: 0;
-  color: #222;
+/*   color: #222; */
   line-height: 1.5em;
   font-weight: 300;
 }
@@ -86,14 +86,14 @@ nav {
   margin-top: 20px;
 }
 nav .logo > h1 a{
-  color:#fff;
+  color: #add8e6;
 }
 .gnb {
   display: flex;
 }
 .gnb li a {
   margin: 20px;
-  color: #fff;
+  color: #add8e6;
 }
 .gnb li a:last-child {
   margin-right: 0;

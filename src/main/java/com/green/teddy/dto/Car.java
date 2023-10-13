@@ -26,4 +26,12 @@ public class Car {
 	private String accel;
 	private String max_speed;
 	private String c_del;
+	
+	//검색용
+	private String keyword;
+	private String search;
+	
+	//paging용
+	private int startRow; 
+	private int endRow; 
 }

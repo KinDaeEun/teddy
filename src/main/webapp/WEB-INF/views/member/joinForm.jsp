@@ -14,9 +14,6 @@
 .top{
 	padding-top: 250px;
 }
-body {
-	background: #000;
-}
 </style>
 <script type="text/javascript">
 function idChk() {
