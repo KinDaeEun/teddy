@@ -13,19 +13,29 @@
 			<c:if test="${id == null}">
 				<div class="lnb">
 					<a href="${path}/member/loginForm.do">로그인</a> <a
-						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a>
+<<<<<<< HEAD
+						href="${path}/member/joinForm.do">회원가입</a>
+=======
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+>>>>>>> origin/master
 				</div>
 			</c:if>
-			<c:if test="${id != null}">
+			<c:if test="${id != null }">
 				<div class="lnb">
+<<<<<<< HEAD
+					<a href="${path}/member/logout.do">로그아웃</a> 
+					<a href="${path}/member/mypage.do">마이페이지</a>
+					<c:if test="${id == 'admin'}">
+						<a href="${path}/admin/adminMain.do">관리자페이지</a>
+					</c:if>
+=======
 					<a href="${path}/member/logout.do">로그아웃</a> <a
-						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/help/helpForm.do">1:1
-				문의 바로가기 ></a>
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+>>>>>>> origin/master
 				</div>
 			</c:if>
 
 		</div>
-
 		<nav>
 			<div class="logo">
 				<h1>
@@ -33,21 +43,25 @@
 				</h1>
 			</div>
 			<ul class="gnb">
-				<li><a href="#">홈</a></li>
-				<li><a href="${path }/car/Kategorie.do">차목록</a></li>
-				<li><a href="#">게시판</a>
-					<ul>
-						<li><a href="#">공지사항</a></li>
-						<li><a href="#">커뮤니티</a></li>
-						<li><a href="#">칭찬 알림방</a></li>
-					</ul></li>
-				<li><a href="#">게시판</a>
-					<ul>
-						<li><a href="${path}/faq/faqList.do">FAQ</a></li>
-						<li><a href="#">1:1 문의</a></li>
-						<li><a href="#">문의 내역</a></li>
-					</ul></li>
-				<li><a href="#blog">NEWS</a></li>
+			  <li><a href="#">홈</a></li>
+            <li><a href="">차목록</a></li>
+            <li>
+              <a href="">게시판</a>
+              <ul class="sub">
+                <li><a href="">공지사항</a></li>
+                <li><a href="">커뮤니티</a></li>
+                <li><a href="">칭찬 알림방</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="${path}/faq/faqList.do">고객센터</a>
+              <ul class="sub">
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">1:1 문의</a></li>
+                <li><a href="#">문의 내역</a></li>
+              </ul>
+            </li>
+            <li><a href="#blog">NEWS</a></li>
 			</ul>
 		</nav>
 		<div class="trigger">

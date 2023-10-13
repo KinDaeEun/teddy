@@ -14,17 +14,18 @@
 
 <link rel="stylesheet" type="text/css" href="${path}/resources/js/slick/slick.css"/>
 <link rel="stylesheet" type="text/css" href="${path}/resources/js/slick/slick-theme.css"/>
+<link rel="stylesheet" type="text/css" href="${path}/resources/js/slick/slick.min.js"/>
 <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/> -->
 <!-- <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/> -->
 <script src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 <!-- Sliding jQuery -->
-<script src="${path}/resources/js/jquery.scrollTo.min.js"></script>
+<%-- <script src="${path}/resources/js/jquery.scrollTo.min.js"></script> --%>
 <script src="${path}/resources/js/custom.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/main.css">
 <link rel="stylesheet" href="${path}/resources/css/responsive.css">
 <link rel="stylesheet" href="${path}/resources/css/member.css">
 <style>
-	.err { color:red; font-weight: bold;}
+	.err { color:#; font-weight: bold; display: inline-block; margin-top:5px;}
 	a {
 		text-decoration: none;
 	}

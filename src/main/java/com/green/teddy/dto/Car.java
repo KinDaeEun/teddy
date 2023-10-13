@@ -10,7 +10,6 @@ public class Car {
 	private String cname;
 	private int price;
 	private String brand;
-	private String model;
 	private String c_content;
 	private String c_kind;
 	private String c_img;
