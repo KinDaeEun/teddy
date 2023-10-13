@@ -13,6 +13,7 @@
 				<a href="#none">로그인</a> 
 				<a href="${path}/member/joinForm.do">회원가입</a> 
 				<a href="#none">마이페이지</a>
+				<a href="${path }/car/kategorie.do">차목록</a>
 			</div>
 			 
 		</div>
