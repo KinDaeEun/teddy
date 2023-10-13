@@ -19,7 +19,7 @@
 				<div class="lnb">
 					<a href="logout.do">로그아웃</a>
 					<c:if test="${id == 'admin'}">
-						<a href="${path}/member/adminMain.do">관리자페이지</a>
+						<a href="${path}/main/main.do">메인</a>
 					</c:if>
 				</div>
 			</c:if>

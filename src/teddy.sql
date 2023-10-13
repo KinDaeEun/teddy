@@ -7,7 +7,7 @@ create table member (
     id varchar2(20) primary key,    -- 아이디
     password varchar2(100),          -- 비밀번호
     name varchar2(20),              -- 이름
-    email varchar2(20),             -- 이메일
+    email varchar2(100),             -- 이메일
     gender varchar2(20),            -- 성별
     regdate date,                   -- 가입날짜
     fileName varchar2(100),           -- 프로필

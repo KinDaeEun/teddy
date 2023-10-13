@@ -30,7 +30,7 @@
 			<tr>
 				<th class="bg-success">사진</th>
 				<td><img alt=""
-					src="${path}/esources/upload/${member.fileName}" class="rounded img-thumbnail">
+					src="${path}/resources/upload/${member.fileName}" class="rounded img-thumbnail">
 			</tr>
 		</table>
 		<a class="btn btn-success" href="${path }main/main.do">메인</a>
