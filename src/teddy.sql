@@ -120,3 +120,4 @@ create table news (
 
 select * from news;
 drop table news;
+

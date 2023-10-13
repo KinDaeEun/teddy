@@ -9,21 +9,32 @@
 <body>
 	<header>
 		<div class="banner">
+
 			<c:if test="${id == null}">
 				<div class="lnb">
 					<a href="${path}/member/loginForm.do">로그인</a> <a
+<<<<<<< HEAD
 						href="${path}/member/joinForm.do">회원가입</a>
+=======
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+>>>>>>> origin/master
 				</div>
 			</c:if>
 			<c:if test="${id != null }">
 				<div class="lnb">
+<<<<<<< HEAD
 					<a href="${path}/member/logout.do">로그아웃</a> 
 					<a href="${path}/member/mypage.do">마이페이지</a>
 					<c:if test="${id == 'admin'}">
 						<a href="${path}/admin/adminMain.do">관리자페이지</a>
 					</c:if>
+=======
+					<a href="${path}/member/logout.do">로그아웃</a> <a
+						href="${path}/member/joinForm.do">회원가입</a> <a href="#none">마이페이지</a><a href="${path }/car/kategorie.do">차목록</a>
+>>>>>>> origin/master
 				</div>
 			</c:if>
+
 		</div>
 		<nav>
 			<div class="logo">

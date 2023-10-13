@@ -10,7 +10,6 @@ public class Car {
 	private String cname;
 	private int price;
 	private String brand;
-	private String model;
 	private String c_content;
 	private String c_kind;
 	private String c_img;
@@ -26,4 +25,12 @@ public class Car {
 	private String accel;
 	private String max_speed;
 	private String c_del;
+	
+	//검색용
+	private String keyword;
+	private String search;
+	
+	//paging용
+	private int startRow; 
+	private int endRow; 
 }
