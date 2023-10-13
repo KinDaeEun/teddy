@@ -9,11 +9,20 @@
 		<put-attribute name="footer" value="/WEB-INF/views/decorator/footer.jsp" />
 	</definition>
 	
-
+	<definition name="admin" template="/WEB-INF/views/layout_admin.jsp">
+		<put-attribute name="header" value="/WEB-INF/views/decorator/admin_header.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/decorator/footer.jsp" />
+	</definition>
+	
+	<!-- (1) admin 폴더 안에 {1}에 jsp이름 -->
+	<definition name="admin/*" extends="admin">
+		<put-attribute name="body" value="/WEB-INF/views/admin/{1}.jsp" />
+	</definition>
 	
 	<!--타일즈 적용하지 않음 -->
 	<definition name="nolay"
-		template="/WEB-INF/views/nolay/nolayout.jsp">
+		template="/WEB-INF/views/nolay/nolay.jsp">
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="footer" value="" />

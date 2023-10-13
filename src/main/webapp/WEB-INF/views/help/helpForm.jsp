@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ include file="../headerBase.jsp"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +8,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<script type="text/javascript">
 
-	location.href="main/main.do";
-</script>  
+여기는 헬프폼이다
+
 </body>
 </html>

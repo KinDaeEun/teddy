@@ -9,10 +9,14 @@
 <title>Insert title here</title>
 <style>
 .join-inner{
-	height: 1000px;
+	height: 100vh;
 }
 .top{
-	padding-top: 250px;
+	padding-top: 200px;
+	padding-bottom: 50px;
+}
+.btn-top {
+	margin-top:5px;
 }
 </style>
 <script type="text/javascript">
@@ -40,7 +44,7 @@ function chk() {
 <body>
 	<div class="container " align="center">
 		<div class="inner join-inner">
-			<h2 class="text-light top">회원가입</h2>
+			<h2 class="text-dark top">회원가입</h2>
 			<form action="${path }/member/join.do" method="post" enctype="multipart/form-data"
 				name="frm" onsubmit="return chk()">
 				<table class="table table-bordered">
@@ -48,7 +52,7 @@ function chk() {
 						<th>아이디</th>
 						<td><input type="text" name="id" required="required"
 							class="form-control" autofocus="autofocus"> <input
-							type="button" class="btn btn-dark btn-sm" onclick="idChk()"
+							type="button" class="btn btn-dark btn-sm btn-top" onclick="idChk()"
 							value="중복체크">
 							<div id="idChk1" class="err"></div></td>
 					</tr>

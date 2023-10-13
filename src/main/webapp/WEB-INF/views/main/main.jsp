@@ -9,6 +9,8 @@
 <title>Insert title here</title>
 </head>
 <body>
+
+			  
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
@@ -263,5 +265,6 @@
 			</div>
 		</div>
 	</section>
+	 <a class="gototop" href="#"><i class="fa fa-angle-up"></i></a>
 </body>
 </html>
