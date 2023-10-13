@@ -10,7 +10,7 @@
 <body>
 <script type="text/javascript">
 	alert("로그 아웃 되었습니다");
-	location.href="${path}/member/loginForm.do";
+	location.href="${path}/main/main.do";
 </script>
 </body>
 </html>
