@@ -22,6 +22,7 @@
 <script src="${path}/resources/js/custom.js"></script>
 <link rel="stylesheet" href="${path}/resources/css/main.css">
 <link rel="stylesheet" href="${path}/resources/css/responsive.css">
+<link rel="stylesheet" href="${path}/resources/css/member.css">
 <style>
 	.err { color:red; font-weight: bold;}
 	a {

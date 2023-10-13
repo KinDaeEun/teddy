@@ -38,6 +38,12 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	
+	<beans:bean id="sc" class="com.green.teddy.service.SessionChk"></beans:bean>
+		<interceptors>
+			<interceptor>
+				<mapping path="main/main.do"/>
+				<beans:ref bean="sc"/>
+			</interceptor>
+		</interceptors>
 	<context:component-scan base-package="com.green.teddy" />
 </beans:beans>
