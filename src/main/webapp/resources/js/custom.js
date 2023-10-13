@@ -1,16 +1,16 @@
 $(function(){
   
   // Trigger
-  $('.trigger').click(function(){
+/*  $('.trigger').click(function(){
     $(this).toggleClass('active')
     $('.gnb').toggleClass('active')
   })
   $('.gnb a').click(function(){
     $('.gnb, .trigger').removeClass('active')
-  })
+  })*/
   
   // Sliding jQuery
-  $('.gnb a, .gototop').click(function(e){
+  $('.gototop').click(function(e){
     $.scrollTo(this.hash || 0, 800);
     e.preventDefault();
   })
