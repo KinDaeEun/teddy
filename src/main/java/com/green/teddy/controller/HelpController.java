@@ -25,9 +25,10 @@ public class HelpController {
 
 	@GetMapping("help/helpForm")
 	public void helpForm(Model model, HttpSession session) {
-		//
+
 		String id = (String) session.getAttribute("id");
 		model.addAttribute("id", id);
+		
 	}
 
 }
