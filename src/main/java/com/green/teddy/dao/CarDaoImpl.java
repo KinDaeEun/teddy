@@ -22,4 +22,9 @@ public class CarDaoImpl implements CarDao{
 	public List<Car> carList(Car car) {
 		return sst.selectList("carns.carList",car);
 	}
+
+	@Override
+	public int insertCar(Car car) {
+		return sst.insert("carns.insertCar",car);
+	}
 }

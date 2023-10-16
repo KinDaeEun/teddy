@@ -22,7 +22,7 @@ drop table member;
 -- 차량
 	create table car (
 	    cno number(20) primary key,                     -- 차량번호
-	    c_name varchar2(20),            -- 차량명
+	    c_name varchar2(50),            -- 차량명
 	    min_price number(20),           -- 최저가격
 	    max_price number(20),           -- 최고가격
 	    brand varchar2(20),             -- 브랜드
@@ -33,12 +33,12 @@ drop table member;
 	    c_date date,                    -- 차량 출시일
 	    engine varchar2(20),            -- 엔진 형식
 	    gear varchar2(20),              -- 변속기 형식
-	    deplacement number,             -- 배기량
+	    displacement number,             -- 배기량
 	    drive_type varchar2(20),        -- 구동방식
 	    max_output varchar2(20),        -- 최고출력
-	    suspention varchar2(20),        -- 서스펜션
-	    torque varchar2(20),            -- 최대토크
-	    brake varchar2(20),             -- 브레이크
+	    suspention varchar2(60),        -- 서스펜션
+	    torque varchar2(100),            -- 최대토크
+	    brake varchar2(100),             -- 브레이크
 	    accel varchar2(20),             -- 가속도
 	    max_speed varchar2(20),         -- 최고속도
 	    c_del char(1)                   -- 삭제여부
@@ -47,7 +47,7 @@ select * from member;
 
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
- 
+drop sequence car_seq;
 
 select * from car;
 drop table car;

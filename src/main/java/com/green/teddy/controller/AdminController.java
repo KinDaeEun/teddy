@@ -1,6 +1,13 @@
 package com.green.teddy.controller;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -61,6 +68,31 @@ public class AdminController {
 	
 	@RequestMapping("admin/insertCarForm")
 	public void insertCarForm() {
+		
+	}
+	
+	@RequestMapping("admin/insertCar")
+	public void insertCar(Model model, Car car, HttpSession session) throws IOException {
+		String real = session.getServletContext().getRealPath("/resources/upload");
+		//표지 사진
+		String c_cover_img1 = car.getC_cover_img_file().getOriginalFilename();
+		UUID uuid = UUID.randomUUID();
+		String c_cover_img = uuid+c_cover_img1.substring(c_cover_img1.lastIndexOf("."));
+		car.setC_cover_img(c_cover_img);
+		FileOutputStream fos = new FileOutputStream(new File(real+"/"+c_cover_img));
+		fos.write(car.getC_cover_img_file().getBytes());
+		fos.close();
+		//사진
+		String c_img1 = car.getC_img_file().getOriginalFilename();
+		UUID uuid2 = UUID.randomUUID();
+		String c_img = uuid2+c_img1.substring(c_img1.lastIndexOf("."));
+		car.setC_img(c_img);
+		FileOutputStream fos2 = new FileOutputStream(new File(real+"/"+c_img));
+		fos2.write(car.getC_img_file().getBytes());
+		fos2.close();
+		int result = cs.insertCar(car);
+		model.addAttribute("result",result);
+	
 		
 	}
 	

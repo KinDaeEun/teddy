@@ -22,4 +22,9 @@ public class CarServiceImpl implements CarService {
 	public List<Car> carList(Car car) {
 		return cd.carList(car);
 	}
+
+	@Override
+	public int insertCar(Car car) {
+		return cd.insertCar(car);
+	}
 }

@@ -31,8 +31,9 @@ public class Car {
 	private String c_del;
 	
 	//upload용
-	private MultipartFile c_img_file;
 	private MultipartFile c_cover_img_file;
+	private MultipartFile c_img_file;
+	
 	
 	//paging용
 	private int startRow; 

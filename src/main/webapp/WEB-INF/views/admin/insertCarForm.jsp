@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	<%@ include file="../headerBase.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,8 +8,8 @@
 <title>Insert title here</title>
 </head>
 <style>
-.join-inner {
-	height: 100vh;
+.mb {
+	margin-bottom: 100px;
 }
 
 .top {
@@ -22,10 +23,10 @@
 </style>
 <body>
 	<div class="container " align="center">
-		<div class="inner join-inner">
+		<div class="inner join-inner mb">
 			<h2 class="text-dark top">차량추가</h2>
-			<form action="${path }/member/join.do" method="post"
-				enctype="multipart/form-data" name="frm" onsubmit="return chk()">
+			<form action="${path }/admin/insertCar.do" method="post"
+				enctype="multipart/form-data">
 				<table class="table table-bordered">
 					<tr>
 						<th>이름</th>
@@ -76,8 +77,8 @@
 					</tr>
 					<tr>
 						<th>배기량</th>
-						<td><input type="number" name="deplacement" required="required"
-							class="form-control"></td>
+						<td><input type="number" name="deplacement"
+							required="required" class="form-control"></td>
 					</tr>
 					<tr>
 						<th>구동방식</th>
@@ -114,24 +115,27 @@
 						<td><input type="text" name="max_speed" required="required"
 							class="form-control"></td>
 					</tr>
-
 					<tr>
 						<th>표지사진</th>
+						<td><input type="file" name="c_cover_img_file"
+							class="form-control" required="required"></td>
+					</tr>
+					<tr>
+						<th>사진</th>
 						<td><input type="file" name="c_img_file" class="form-control"
 							required="required"></td>
 					</tr>
 					<tr>
-						<th>사진</th>
-						<td><input type="file" name="c_cover_img_file" class="form-control"
-							required="required"></td>
+						<td colspan="2"><textarea name="c_content"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
-							value="회원가입" class="btn btn-dark"></td>
+							value="추가" class="btn btn-dark"></td>
 					</tr>
+
 				</table>
 			</form>
-			<a href="${path }/member/loginForm.do" class="btn btn-dark">로그인</a>
+
 		</div>
 	</div>
 </body>

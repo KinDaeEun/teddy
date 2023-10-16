@@ -4,15 +4,23 @@
 
 <mapper namespace="carns">
 	<select id="getTotal" parameterType="car" resultType="integer">
-		select count(*) from car
+		select
+		count(*) from car
 	</select>
 	<select id="carList" parameterType="car" resultType="car">
-		select * from(select rowNum rn, a.* from (
+		select *
+		from(select rowNum rn, a.* from (
 		select * from car
 
-		 )a)
+		)a)
 		where rn
 		between #{startRow} and #{endRow}
 	</select>
+
+	<insert id="insertCar" parameterType="car">
+		insert into car
+		values(car_seq.nextval,#{c_name},#{min_price},#{max_price},#{brand},#{c_cover_img},#{c_img},
+		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n')
+	</insert>
 
 </mapper>
