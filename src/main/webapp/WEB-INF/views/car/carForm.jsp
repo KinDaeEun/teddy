@@ -54,9 +54,9 @@ $(function(){
 				<h3 class="blind">차량</h3>
 				<div class="cont_sub">
 					<ul class="list" id="list">
-					<c:forEach begin="0" end="21">
+					<c:forEach var="car" items="${carList }" >
 						<li><a class="link_car" href="#"> 
-								<strong class="tit_car">현대그랜저</strong>
+								<strong class="tit_car">${car.c_name }</strong>
 								<span class="detail_point"> 
 									<em class="tit_point">장점</em>
 									<span class="txt_point">아아.. 이것이 '현대'다</span>
@@ -67,10 +67,10 @@ $(function(){
 								</span> 
 								<span class="detail_rating"> 
 									<em class="blind">평점</em> 
-									<span class="img rating_g"></span>
+									<span class="img rating_g">*****</span>
 								</span> 
 								<span class="detail_thumb"> 
-									<img src="${path}/resources/images/main/best-city-01.jpg"
+									<img src="${path}/resources/upload/${car.c_cover_img}"
 									class="thumb_g">
 							</span>
 						</a></li>

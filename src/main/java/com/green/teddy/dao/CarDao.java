@@ -10,4 +10,6 @@ public interface CarDao {
 
 	List<Car> carList(Car car);
 
+	int insertCar(Car car);
+
 }

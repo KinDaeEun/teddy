@@ -10,4 +10,6 @@ public interface CarService {
 
 	List<Car> carList(Car car);
 
+	int insertCar(Car car);
+
 }
