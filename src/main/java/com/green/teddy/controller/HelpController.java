@@ -26,8 +26,6 @@ public class HelpController {
 	@Autowired
 	private HelpService hs;
 
-
-
 	@GetMapping("help/faqList") // FAQ 리스트 창으로 이동
 	public void faqList() {
 	}
@@ -42,10 +40,10 @@ public class HelpController {
 
 	@PostMapping("help/helpInsertResult") // 1:1 문의 사항 입력
 	public void helpInsertResult(Model model, HttpSession session, Help help) throws IOException {
-		
+
 		int result = 0;
 		String id = (String) session.getAttribute("id");
-	
+
 		String fileName = help.getFile().getOriginalFilename();
 		if (fileName != null && !fileName.equals("")) {
 			UUID uuid = UUID.randomUUID();
@@ -66,5 +64,6 @@ public class HelpController {
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
 	}
+
 
 }

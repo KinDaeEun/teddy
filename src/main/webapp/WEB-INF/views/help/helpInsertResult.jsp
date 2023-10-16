@@ -11,7 +11,7 @@
 <c:if test="${result > 0 }">
 	<script type="text/javascript">
 		alert("1:1문의 동록 하였습니다")
-		location.href="${path}/help/faqList.do";
+		location.href="${path}/help/helpList.do";
 	</script>
 </c:if>
 <c:if test="${result == 0 }">

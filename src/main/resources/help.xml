@@ -5,6 +5,6 @@
 <mapper namespace="helpns">
 	<insert id="insert" parameterType="help">
 		insert into help values
-		(help_seq,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n')
+		(help_seq.nextval,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n')
 	</insert>
 </mapper>
