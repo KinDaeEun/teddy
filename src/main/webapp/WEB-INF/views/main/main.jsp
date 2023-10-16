@@ -2,14 +2,34 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
  <%@ include file="../headerBase.jsp"%> 
+ 
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/carForm.css">
+<script type="text/javascript">
+/* 맨 위로 */
+$(function(){
+	  $('#top').on('click',function(e){
+	      e.preventDefault();
+	      $('body').animate({scrollTop:0},600);
+	  });
+	  
+	  $(window).scroll(function() {
+	    if ($(document).scrollTop() > 100) {
+	      $('#top').addClass('show');
+	    } else {
+	      $('#top').removeClass('show');
+	    }
+	  });
+	});
+</script>
+
 </head>
 <body>
-
+	<a id="top"></a>
 			  
 	<main class="intro">
 		<div class="inner">

@@ -45,7 +45,6 @@ h3 {
 					name="h_fileName">
 			</div>
 		</div>
-
 		<script>
 			$('.summernote')
 					.summernote(
@@ -69,7 +68,6 @@ h3 {
 														'help' ] ] ]
 							});
 		</script>
-
 		<div align="center" style="margin-top: 50px">
 			<input type="submit" class="btn btn-outline-secondary" value="보내기">
 		</div>
