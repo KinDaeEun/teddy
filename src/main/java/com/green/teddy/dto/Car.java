@@ -2,13 +2,16 @@ package com.green.teddy.dto;
 
 import java.sql.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
 public class Car {
 	private int cno;
-	private String cname;
-	private int price;
+	private String c_name;
+	private int min_price;
+	private int max_price;
 	private String brand;
 	private String c_cover_img;
 	private String c_img;
@@ -27,9 +30,9 @@ public class Car {
 	private String max_speed;
 	private String c_del;
 	
-	//검색용
-	private String keyword;
-	private String search;
+	//upload용
+	private MultipartFile c_img_file;
+	private MultipartFile c_cover_img_file;
 	
 	//paging용
 	private int startRow; 

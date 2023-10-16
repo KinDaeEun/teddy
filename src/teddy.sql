@@ -23,9 +23,10 @@ drop table member;
 	create table car (
 	    cno number(20) primary key,                     -- 차량번호
 	    c_name varchar2(20),            -- 차량명
-	    c_price number(20),                 -- 가격
+	    min_price number(20),           -- 최저가격
+	    max_price number(20),           -- 최고가격
 	    brand varchar2(20),             -- 브랜드
-	    c_cover_img varchar2(100),       -- 표지사진
+	    c_cover_img varchar2(100),      -- 표지사진
 	    c_img varchar2(100),            -- 이미지
 	    c_content varchar2(2000),       -- 차량 소개
 	    c_kind varchar2(20),            -- 차량 종류
@@ -42,7 +43,7 @@ drop table member;
 	    max_speed varchar2(20),         -- 최고속도
 	    c_del char(1)                   -- 삭제여부
 	);
-
+select * from member;
 
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
@@ -131,7 +132,6 @@ create table news (
 select * from news;
 drop table news;
 
-insert into car values(car_seq,'현대 그랜저 (GN7)',42330000,'현대','그랜저 타는 교사는 차 팔라 그래!” 1994년 우리나라 교육청이 내린 지침입니다. 놀랍지 않나요? 이유는 교사가 타기에 너무 사치스러운 차이기 때문이랍니다. 본디 그랜저는 이토록 화려한 자동차였습니다. 1986년 출시한 1세대(L)와 1992년 등장한 2세대(LX)는 대한민국 최고가 세단으로 군림했죠. 오늘날 제네시스 G90과 위상이 비슷한 셈입니다. 이후 3세대(XG)부터는 한층 합리적인 준대형 세단으로 자리매김해 지금까지 이어져 왔는데, 7세대(GN7)에 이르러 다시금 현대자동차 최고의 기함 다운 모습으로 돌아왔습니다.',
-'대형차',)
+
 
 

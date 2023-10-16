@@ -37,6 +37,9 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
+<<<<<<< HEAD
+				<li><a href="${path}/car/carForm.do">차목록</a></li>
+=======
 
 				<li><a href="${path}/car/carForm.do">차목록</a>
 					<ul class="sub">
@@ -44,6 +47,7 @@
 					</ul>
 				</li>
 						
+>>>>>>> 1167e53ec414969626ada715f7ce42d06724509f
 				<li><a href="">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
