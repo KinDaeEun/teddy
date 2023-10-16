@@ -265,6 +265,5 @@
 			</div>
 		</div>
 	</section>
-	 <a class="gototop" href="#"><i class="fa fa-angle-up"></i></a>
 </body>
 </html>

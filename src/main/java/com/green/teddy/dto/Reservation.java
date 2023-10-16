@@ -10,7 +10,6 @@ public class Reservation {
 	private String id;
 	private int cno;
 	private String email;
-	private String r_addr;
 	private String r_model;
 	private String r_country;
 	private String r_center;

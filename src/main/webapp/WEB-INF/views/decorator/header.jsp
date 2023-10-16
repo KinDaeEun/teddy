@@ -37,20 +37,31 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
+<<<<<<< HEAD
 				<li><a href="${path}/car/carForm.do">차목록</a></li>
+=======
+
+				<li><a href="${path}/car/carForm.do">차목록</a>
+					<ul class="sub">
+					<li><a href="${path}/car/reservationForm.do">시승 예약</a></li>
+					</ul>
+				</li>
+						
+>>>>>>> 1167e53ec414969626ada715f7ce42d06724509f
 				<li><a href="">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
 						<li><a href="">칭찬 알림방</a></li>
 					</ul></li>
+					
 				<li><a href="${path}/help/faqList.do">고객센터</a>
 					<ul class="sub">
 						<li><a href="#">FAQ</a></li>
 						<li><a href="#">1:1 문의</a></li>
 						<li><a href="#">문의 내역</a></li>
 					</ul></li>
-				<li><a href="#blog">NEWS</a></li>
+				<li><a href="${path}/news/newsList.do">NEWS</a></li>
 			</ul>
 		</nav>
 		<div class="trigger">
