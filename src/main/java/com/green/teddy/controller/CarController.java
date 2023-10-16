@@ -14,7 +14,6 @@ import com.green.teddy.service.CarService;
 public class CarController {
 	@Autowired
 	private CarService cs;
-	
 	@RequestMapping("car/kategorie")
 	public void kategorie(Car car,String pageNum, Model model) {
 		

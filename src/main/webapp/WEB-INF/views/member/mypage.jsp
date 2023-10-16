@@ -8,32 +8,69 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<div class="container text-center">
-		<h2 class="text-primary">회원 정보 상세</h2>
-		<table class="table table-striped">
-			<tr>
-				<th class="bg-info">아이디</th>
-				<td>${member.id}</td>
-			</tr>
-			<tr>
-				<th class="bg-default">이름</th>
-				<td>${member.name}</td>
-			</tr>
-			<tr>
-				<th class="bg-success">이메일</th>
-				<td>${member.email}</td>
-			</tr>
-			<tr>
-				<th class="bg-success">등록일</th>
-				<td>${member.regdate}</td>
-			</tr>
-			<tr>
-				<th class="bg-success">사진</th>
-				<td><img alt=""
-					src="${path}/resources/upload/${member.fileName}" class="rounded img-thumbnail">
-			</tr>
-		</table>
-		<a class="btn btn-success" href="${path }main/main.do">메인</a>
-	</div>
+
+	<section class="mypage-form">
+		<div class="container text-center ">
+			<div>
+				<h3 class="mb">마이 페이지</h3>
+			</div>
+			<table class="table">
+				<tr>
+					<th class="bg-light">프로필</th>
+					<th class="bg-light">아이디</th>
+					<th class="bg-light">이름</th>
+					<th class="bg-light">이메일</th>
+					<th class="bg-light">등록일</th>
+				</tr>
+				<tr>
+					<td><img alt=""
+						src="${path}/resources/upload/${member.fileName}" class="wd"></td>
+					<td>${member.id}</td>
+					<td>${member.name}</td>
+					<td>${member.email}</td>
+					<td>${member.regdate}</td>
+				</tr>
+			</table>
+			<div class="myinfo-wrap">
+				<div class="quart-box">
+					<div class="quart-description">
+						<span>내 정보 수정</span>
+					</div>
+					<div class="more-btn">
+						<a href="" target="_blank" class="win_point">바로가기 &gt;</a>
+					</div>
+				</div>
+				<div class="quart-box">
+					<div class="quart-description">
+						<span>시승 예약</span>
+					</div>
+					<div class="more-btn">
+						<a href="https://heyone.kr/bbs/point.php" target="_blank"
+							class="win_point">바로가기&gt;</a>
+					</div>
+				</div>
+				<div class="quart-box">
+					<div class="quart-description">
+						<span>리뷰</span>
+					</div>
+					<div class="more-btn">
+						<a href="" target="_blank" class="win_point">바로가기 &gt;</a>
+					</div>
+				</div>
+				<div class="quart-box">
+					<div class="quart-description">
+						<span>문의 내역</span>
+					</div>
+					<div class="more-btn">
+						<a href="">바로가기 &gt;</a>
+					</div>
+				</div>
+			</div>
+
+
+
+			<a class="btn btn-dark" href="${path}/main/main.do">메인</a>
+		</div>
+	</section>
 </body>
 </html>
