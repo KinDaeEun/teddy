@@ -32,8 +32,7 @@ h3 {
 	<form action="${path}/help/helpInsertResult.do" method="post"
 		enctype="multipart/form-data">
 		<br> <br> <br> <br> <br> <br> <br>
-		<br> <br> <br> <br> <br> <input type="text"
-			name="id" value="${id }">
+		<br> <br> <br> <br> <br>
 		<h3>${id }님의&nbsp;1:1문의</h3>
 		<div class="container">
 			<input class="form-control" list="datalistOptions"

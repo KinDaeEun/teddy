@@ -23,6 +23,7 @@
 						<a href="${path}/member/mypage.do">마이페이지</a>
 					</c:if>
 					<c:if test="${id == 'admin'}">
+						<a href="${path}/member/mypage.do">마이페이지</a>
 						<a href="${path}/admin/adminMain.do">관리자페이지</a>
 					</c:if>
 				</div>
@@ -37,7 +38,6 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
-				<li><a href="${path}/car/carForm.do">차목록</a></li>
 				<li><a href="${path}/car/carForm.do">차목록</a>
 					<ul class="sub">
 						<li><a href="${path}/car/reservationForm.do">시승 예약</a></li>
