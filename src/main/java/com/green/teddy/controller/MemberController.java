@@ -93,5 +93,41 @@ public class MemberController {
 		Member member2 = ms.select(id);
 		model.addAttribute("member", member2);
 	}
+	// update 
+	@GetMapping("member/updateForm")
+	public void updateForm(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		Member member = ms.select(id);
+		model.addAttribute("member", member);
+	}
+	@PostMapping("member/update")
+	public void update(Member member, Model model, HttpSession session) throws IOException {
+		String fileName1 = member.getFile().getOriginalFilename();
+		if (fileName1 != null && !fileName1.equals("")) {
+			UUID uuid = UUID.randomUUID();
+			String fileName = uuid + fileName1.substring(fileName1.lastIndexOf("."));
+			member.setFileName(fileName);
+			String real = session.getServletContext().getRealPath("/resources/upload");
+			FileOutputStream fos = new FileOutputStream(new File(real + "/" + fileName));
+			fos.write(member.getFile().getBytes());
+			fos.close();
+		}
+		// 암호화
+		String encPass = bpe.encode(member.getPassword());
+		member.setPassword(encPass);
+		// 입력/수정/삭제는 성공한 갯수
+		int result = ms.update(member);
+		model.addAttribute("result", result);
+	}
 	
+	// 회원 탈퇴
+	@RequestMapping("member/delete")
+	public void delete(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		int result = ms.delete(id);
+		if (result > 0)
+			session.invalidate();
+		model.addAttribute("result", result);
+	}
 }
+

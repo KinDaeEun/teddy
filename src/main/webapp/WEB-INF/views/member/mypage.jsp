@@ -37,7 +37,7 @@
 						<span>내 정보 수정</span>
 					</div>
 					<div class="more-btn">
-						<a href="" target="_blank" class="win_point">바로가기 &gt;</a>
+						<a href="${path}/member/updateForm.do" class="win_point">바로가기 &gt;</a>
 					</div>
 				</div>
 				<div class="quart-box">
@@ -45,7 +45,7 @@
 						<span>시승 예약</span>
 					</div>
 					<div class="more-btn">
-						<a href="https://heyone.kr/bbs/point.php" target="_blank"
+						<a href="https://heyone.kr/bbs/point.php"
 							class="win_point">바로가기&gt;</a>
 					</div>
 				</div>
@@ -54,7 +54,7 @@
 						<span>리뷰</span>
 					</div>
 					<div class="more-btn">
-						<a href="" target="_blank" class="win_point">바로가기 &gt;</a>
+						<a href="" class="win_point">바로가기 &gt;</a>
 					</div>
 				</div>
 				<div class="quart-box">
