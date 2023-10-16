@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.teddy.dto.Car;
@@ -14,6 +15,12 @@ import com.green.teddy.service.CarService;
 public class CarController {
 	@Autowired
 	private CarService cs;
+	
+	@GetMapping("car/carForm")
+	public void carForm() {
+		
+	}
+	
 	@RequestMapping("car/kategorie")
 	public void kategorie(Car car,String pageNum, Model model) {
 		

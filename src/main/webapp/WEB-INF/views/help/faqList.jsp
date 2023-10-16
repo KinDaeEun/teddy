@@ -6,12 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript">
-	function ssChk() {
-		alert("로그인 후 이용해 주세요");
-		
-	}
-</script>
+
 <style type="text/css">
 /* 타이틀 */
 .c_title {
@@ -163,8 +158,8 @@
 
 	<div class="qna_help">
 		<div>
-			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a href="#"
-				onclick="return ssChk()">1:1 문의 바로가기</a>
+			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a href="${path }/help/helpForm.do"
+				>1:1 문의 바로가기</a>
 		</div>
 	</div>
 	<br>

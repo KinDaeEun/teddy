@@ -12,8 +12,8 @@ public class Reservation {
 	private String email;
 	private String r_addr;
 	private String r_model;
-	private String country;
-	private String center;
+	private String r_country;
+	private String r_center;
 	private Date r_date;
 	private String r_name;
 	private String r_tel;

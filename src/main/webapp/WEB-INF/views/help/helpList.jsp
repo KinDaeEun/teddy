@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@include file="../headerBase.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,6 +7,21 @@
 <title>Insert title here</title>
 </head>
 <body>
-a
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+${id }
+여기는 헬프 리스트다
 </body>
 </html>
