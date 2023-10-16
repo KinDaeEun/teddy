@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>시승 예약</title>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/slick/slick.js"></script>
 <!-- time / date picker -->
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
