@@ -158,7 +158,7 @@
 
 	<div class="qna_help">
 		<div>
-			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a href="${path }/help/helpForm.do"
+			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a href="${path }/help/helpInsertForm.do"
 				>1:1 문의 바로가기</a>
 		</div>
 	</div>
