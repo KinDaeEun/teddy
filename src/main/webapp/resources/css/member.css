@@ -1,4 +1,21 @@
 @charset "UTF-8";
+/* all */
+.mypage-form {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+}
+.mb {
+	margin-bottom: 50px;
+}
+.wd  {
+	width:100px;
+}
+.wd2 {
+	width: 300px;
+}
 /*loginform*/
 .login-form {
 	position: relative;
@@ -49,26 +66,40 @@
 	animation-iteration-count: 3;
 }
 
-@keyframes warning {
-	0% {
-		transform: translateX(-8px);
-	}
-
-	20% {
-		transform: translateX(8px);
-	}
-
-	50% {
-		transform: translateX(-8px);
-	}
-
-	75% {
-		transform: translateX(-8px);
-	}
+@
+keyframes warning { 0% {
+	transform: translateX(-8px);
 }
 
-.int-area input:focus+label,
-.int-area input:valid+label {
+20
+%
+{
+transform
+:
+translateX(
+8px
+);
+}
+50
+%
+{
+transform
+:
+translateX(
+-8px
+);
+}
+75
+%
+{
+transform
+:
+translateX(
+-8px
+);
+}
+}
+.int-area input:focus+label, .int-area input:valid+label {
 	top: -2px;
 	font-size: 13px;
 	color: #000;
@@ -105,3 +136,42 @@
 }
 
 /*loginform*/
+
+/* myPage */
+.myinfo-wrap {
+	width: 100%;
+	padding: 16px;
+	border: 1px solid #ddd;
+	overflow: hidden;
+	margin: 0 0 120px;
+}
+
+.myinfo-wrap .quart-box {
+	width: 25%;
+	float: left;
+	border-right: 1px solid #ddd;
+	padding: 15px 30px;
+}
+
+.myinfo-wrap .quart-box:last-of-type {
+	border-right: 0;
+}
+
+.myinfo-wrap .quart-box .quart-title {
+	font-size: 1rem;
+	font-weight: 500;
+	color: #111;
+	margin: 0 0 1.6rem;
+}
+
+.myinfo-wrap .quart-box .quart-description {
+	font-size: 1.6rem;
+	font-weight: 700;
+	margin-bottom: 10px;
+}
+
+.myinfo-wrap .quart-box .more-btn a {
+	font-size: 13px;
+	color: #666;
+	font-weight: 400;
+}

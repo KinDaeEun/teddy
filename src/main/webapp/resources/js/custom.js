@@ -1,22 +1,18 @@
 $(function(){
   
   // Trigger
-/*  $('.trigger').click(function(){
+  $('.trigger').click(function(){
     $(this).toggleClass('active')
     $('.gnb').toggleClass('active')
   })
   $('.gnb a').click(function(){
     $('.gnb, .trigger').removeClass('active')
-  })*/
-  
-  // Sliding jQuery
-  $('.gototop').click(function(e){
-    $.scrollTo(this.hash || 0, 800);
-    e.preventDefault();
   })
   
+
+  
   // Header Scroll Change
-  $(window).scroll(function(){
+ $(window).scroll(function(){
     if($(window).scrollTop() > 50) {
       $('header, .gototop').addClass('active')
     }
@@ -26,7 +22,7 @@ $(function(){
   })
   
   // Slick.js
-  $('.myslider').slick({
+  $('.myslider').not('.slick-initialized').slick({
     dots: true,
     infinite: false,
     speed: 300,
