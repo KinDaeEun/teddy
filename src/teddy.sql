@@ -7,7 +7,7 @@ create table member (
     id varchar2(20) primary key,    -- 아이디
     password varchar2(100),          -- 비밀번호
     name varchar2(20),              -- 이름
-    email varchar2(20),             -- 이메일
+    email varchar2(100),             -- 이메일
     gender varchar2(20),            -- 성별
     regdate date,                   -- 가입날짜
     fileName varchar2(100),           -- 프로필
@@ -15,6 +15,7 @@ create table member (
 );
 
 select * from member;
+
 drop table member;
 
 -- 차량 사진
@@ -33,7 +34,7 @@ create table car (
     c_price number,                 -- 가격
     c_model varchar2(20),           -- 브랜드
     c_img varchar2(20),             -- 모델
-    c_content varchar2(1000),       -- 차량 소개
+    c_content varchar2(2000),       -- 차량 소개
     c_kind varchar2(20),            -- 차량 종류
     c_date date,                    -- 차량 출시일
     engine varchar2(20),            -- 엔진 형식
@@ -48,6 +49,11 @@ create table car (
     max_speed varchar2(20),         -- 최고속도
     c_del char(1)                   -- 삭제여부
 );
+
+
+
+create sequence car_seq start with 1 increment by 1 maxvalue 999999;
+ 
 
 select * from car;
 drop table car;
@@ -87,6 +93,7 @@ drop table reservation;
 -- 1:1 문의
 create table help (
     hno number primary key,         -- 문의 번호
+    id varchar2(20) references member(id), -- 문의한 아이디 
     h_title varchar2(20),           -- 문의 제목
     h_content varchar2(1000),       -- 문의 내용
     h_fileName varchar2(100),        -- 문의 첨부 파일
@@ -120,4 +127,7 @@ create table news (
 
 select * from news;
 drop table news;
+
+insert into car values(car_seq,)
+
 
