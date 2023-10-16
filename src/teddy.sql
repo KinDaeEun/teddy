@@ -79,7 +79,6 @@ create table reservation (
     r_name varchar2(20),            -- 예약자 이름
     r_tel varchar2(20),             -- 예약자 연락처
     r_email varchar2(20),           -- 예약자 이메일
-    r_addr varchar2(20),            -- 예약자 주소
     r_model varchar2(20),           -- 예약 모델
     r_country varchar2(20),         -- 예약 지역
     r_center varchar2(20),          -- 예약 매장
