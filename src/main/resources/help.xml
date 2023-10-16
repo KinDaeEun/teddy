@@ -3,8 +3,28 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="helpns">
-	<insert id="insert" parameterType="help">
+	<!-- 1:1문의 입력 -->
+	<insert id="insert" parameterType="help"> /
 		insert into help values
 		(help_seq.nextval,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n')
 	</insert>
+
+	<select id="getTotal" resultType="integer" parameterType="help">
+		select count(*) from help
+		<where>
+			<!-- keyword에 값이 있으면 검색 그 경우에만 where가 필요하다 -->
+			<!-- #은 값 $는 변수 #은 작은 따옴표 예) keyword에 값이 writer일때 #이면 'writer'이고 $면 writer -->
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					subject like '%' || #{keyword} || '%' or
+					content like '%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</select>
 </mapper>
