@@ -29,20 +29,23 @@ h3 {
 
 </head>
 <body>
-	<form action="${path}/help/helpList.do" method="post">
+	<form action="${path}/help/helpInsertResult.do" method="post"
+		enctype="multipart/form-data">
 		<br> <br> <br> <br> <br> <br> <br>
-		<br> <br> <br> <br> <br>
+		<br> <br> <br> <br> <br> <input type="hidden"name="id"
+			value="${id }">
 		<h3>${id }님의&nbsp;1:1문의</h3>
 		<div class="container">
 			<input class="form-control" list="datalistOptions"
-				id="exampleDataList" name="h_title" placeholder="제목을 입력하세요">
+				id="exampleDataList" name="h_title" placeholder="제목을 입력하세요"
+				required="required">
 			<datalist id="datalistOptions">
 			</datalist>
 			<textarea class="summernote" name="h_content"></textarea>
 			<div class="input-group">
 				<input type="file" class="form-control" id="inputGroupFile04"
 					aria-describedby="inputGroupFileAddon04" aria-label="Upload"
-					name="h_fileName">
+					name="file" required="required">
 			</div>
 		</div>
 

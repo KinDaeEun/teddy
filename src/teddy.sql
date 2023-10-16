@@ -2,6 +2,10 @@
 create user teddy identified by 1234;
 grand dba to teddy;
 
+insert into help values
+		(help_seq,'2','안녕','하세요','a.jpg',sysdate,'n');
+
+
 -- 회원
 create table member (
     id varchar2(20) primary key,    -- 아이디
@@ -87,7 +91,7 @@ create table reservation (
 
 select * from reservation;
 drop table reservation;
-
+select * from help;
 -- 1:1 문의
 create table help (
     hno number primary key,         -- 문의 번호
@@ -99,10 +103,10 @@ create table help (
     h_del char(1) ,                  -- 문의 삭제 여부
     foreign key(id) references member(id)
 );
-
+create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
-
+drop sequence help_seq;
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호

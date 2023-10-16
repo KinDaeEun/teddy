@@ -1,5 +1,11 @@
 package com.green.teddy.service;
 
+import com.green.teddy.dto.Help;
+
 public interface HelpService {
+
+	int insert(Help help); //1:1 문의 사항 입력
+
+	
 
 }
