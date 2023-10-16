@@ -17,13 +17,7 @@ public class CarController {
 	private CarService cs;
 	
 	@GetMapping("car/carForm")
-	public void carForm() {
-		
-	}
-	
-	@RequestMapping("car/kategorie")
-	public void kategorie(Car car,String pageNum, Model model) {
-		
+	public void carForm(Car car,String pageNum, Model model) {
 		final int ROW_PER_PAGE = 6;//한페이지의 차량 갯수
 		final int PAGE_PER_BLOCK = 5;//한 블록의 페이지 갯수
 		if (pageNum == null || pageNum.equals(""))
@@ -56,6 +50,8 @@ public class CarController {
 		model.addAttribute("PAGE_PER_BLOCK",PAGE_PER_BLOCK);
 		model.addAttribute("currentPage",currentPage);
 	}
+	
+
 	
 	
 	

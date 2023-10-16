@@ -5,20 +5,11 @@
 <mapper namespace="carns">
 	<select id="getTotal" parameterType="car" resultType="integer">
 		select count(*) from car
-			<where>
-				<if test="keyword!=null and keyword!=''">
-					${search} like '%'||#{keyword}||'%'
-				</if>
-			</where>
 	</select>
 	<select id="carList" parameterType="car" resultType="car">
 		select * from(select rowNum rn, a.* from (
 		select * from car
-		<where>
-			<if test="keyword!=null and keyword!=''">
-				${search} like '%'||#{keyword}||'%'
-			</if>
-		</where>
+
 		 )a)
 		where rn
 		between #{startRow} and #{endRow}
