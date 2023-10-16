@@ -8,6 +8,11 @@
 <title>Insert title here</title>
 </head>
 <body>
-a
+<br>
+<br>
+<br>
+<br>
+<br>
+	<a href="${path}/admin/insertCarForm.do">차량 추가</a>
 </body>
 </html>

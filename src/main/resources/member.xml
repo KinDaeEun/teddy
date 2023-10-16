@@ -9,4 +9,15 @@
 		insert into member values(#{id},
 			#{password},#{name},#{email},#{gender},sysdate,#{fileName},'n')
 	</insert>
+		<update id="update" parameterType="member">
+		update member set 
+			password=#{password},name=#{name},email=#{email},gender=#{gender}
+		<if test="fileName != null and fileName != ''">
+			,fileName=#{fileName}
+		</if>
+		where id=#{id}
+	</update>
+	<update id="delete" parameterType="string">
+		update member set del='y' where id =#{id}
+	</update>
 </mapper>

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.teddy.dto.Car;
@@ -15,9 +16,8 @@ public class CarController {
 	@Autowired
 	private CarService cs;
 	
-	@RequestMapping("car/kategorie")
-	public void kategorie(Car car,String pageNum, Model model) {
-		
+	@GetMapping("car/carForm")
+	public void carForm(Car car,String pageNum, Model model) {
 		final int ROW_PER_PAGE = 6;//한페이지의 차량 갯수
 		final int PAGE_PER_BLOCK = 5;//한 블록의 페이지 갯수
 		if (pageNum == null || pageNum.equals(""))
@@ -50,6 +50,8 @@ public class CarController {
 		model.addAttribute("PAGE_PER_BLOCK",PAGE_PER_BLOCK);
 		model.addAttribute("currentPage",currentPage);
 	}
+	
+
 	
 	
 	
