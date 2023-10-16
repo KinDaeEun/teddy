@@ -65,5 +65,11 @@ public class HelpController {
 		model.addAttribute("result", result);
 	}
 
+	@GetMapping("help/helpList") // 1:1문의 목록
+	public void helpList(Model model, HttpSession session, String pageNum,Help help) {
+	String id = (String) session.getAttribute("id");
+	
+	model.addAttribute("id", id); 
+	}
 
 }
