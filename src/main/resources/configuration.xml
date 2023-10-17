@@ -13,6 +13,7 @@
 		<typeAlias alias="news" type="com.green.teddy.dto.News"/>
 		<typeAlias alias="reservation" type="com.green.teddy.dto.Reservation"/>
 		<typeAlias alias="review" type="com.green.teddy.dto.Review"/>
+		<typeAlias alias="car_list" type="com.green.teddy.dto.Car_list"/>
 	</typeAliases>
 	
 	<mappers>
@@ -24,6 +25,7 @@
 		<mapper resource="news.xml"/>
 		<mapper resource="reservation.xml"/>
 		<mapper resource="review.xml"/>
+		<mapper resource="car_list.xml"/>
 	</mappers>
 	
 </configuration>
