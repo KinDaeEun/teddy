@@ -66,7 +66,7 @@ h2 {
 			<table class="table">
 				<tr>
 					<th>모델</th>
-					<td><select class="form-select">
+					<td><select class="form-select" required>
 							<option>1
 							<option>2
 							<option>3
@@ -79,8 +79,8 @@ h2 {
 				</tr>
 				<tr>
 					<th>이메일&nbsp;*</th>
-					<td><input type="email" name="r_email" class="form-control"
-						required></td>
+					<td><input type="email" name="r_email" class="form-control" required>
+					</td>
 				</tr>
 				<tr></tr>
 				<tr>

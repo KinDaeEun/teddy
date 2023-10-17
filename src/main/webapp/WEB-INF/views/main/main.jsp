@@ -46,8 +46,8 @@ $(function(){
 		<div class="inner">
 			<div class="ranking-content">
 				<h2>Best Car</h2>
-				<div class="items">
-					<div class="item">
+				<div class="items_car">
+					<div class="item_car">
 						<div class="up-image">
 							<img src="${path}/resources/images/main/best-city-01.jpg">
 						</div>
@@ -61,7 +61,7 @@ $(function(){
 								src="${path}/resources/images/main/icon-arrow.png"></a>
 						</div>
 					</div>
-					<div class="item">
+					<div class="item_car">
 						<div class="up-image">
 							<img src="${path}/resources/images/main/best-city-02.jpg">
 						</div>
@@ -75,7 +75,7 @@ $(function(){
 								src="${path}/resources/images/main/icon-arrow.png"></a>
 						</div>
 					</div>
-					<div class="item">
+					<div class="item_car">
 						<div class="up-image">
 							<img src="${path}/resources/images/main/best-city-03.jpg">
 						</div>

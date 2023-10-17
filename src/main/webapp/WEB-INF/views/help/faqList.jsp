@@ -6,27 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<style type="text/css">
-/* 타이틀 */
-.c_title {
-	text-align: center;
-}
-
-.qna_help {
-	width: 500px;
-	height: 100px;
-	border: 1px solid #EAEAEA;
-	border-radius: 5px;
-	text-align: center;
-	margin: 0 auto;
-}
-
-.faq-image {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/faqList.css">
 </head>
+
 <body>
 	<br>
 	<br>
@@ -156,9 +138,9 @@
 	<br>
 
 	<div class="qna_help">
-		<div>
-			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a href="${path }/help/helpInsertForm.do"
-				>1:1 문의 바로가기</a>
+		<div class="go_help">
+			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a
+				href="${path }/help/helpInsertForm.do" class="btn btn-outline-secondary btn-sm">1:1 문의 바로가기</a>
 		</div>
 	</div>
 	<br>
