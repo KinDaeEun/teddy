@@ -4,27 +4,54 @@
 
 <mapper namespace="helpns">
 	<!-- 1:1문의 입력 -->
-	<insert id="insert" parameterType="help"> /
+	<insert id="insert" parameterType="help">
 		insert into help values
 		(help_seq.nextval,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n')
 	</insert>
 
+	<!-- 회원별 문의 총 갯수 -->
 	<select id="getTotal" resultType="integer" parameterType="help">
-		select count(*) from help
+		select count(*) from help 
+		<where> 
+		    id=#{id}
+			<if test=" keyword != null and keyword !=''">
+				and
+				<if test="search=='subcon'">
+				   ( h_title like '%' || #{keyword} || '%' or
+					h_content
+					like '%'
+					||
+					#{keyword} || '%')
+				</if>
+
+				<if test="search!='subcon'">
+				    ${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+		
+	</select>
+
+	<!-- 회원별 문의 리스트 -->
+	<select id="list" parameterType="help" resultType="help">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from help 	  
 		<where>
-			<!-- keyword에 값이 있으면 검색 그 경우에만 where가 필요하다 -->
-			<!-- #은 값 $는 변수 #은 작은 따옴표 예) keyword에 값이 writer일때 #이면 'writer'이고 $면 writer -->
 			<if test=" keyword != null and keyword !=''">
 				<if test="search=='subcon'">
-					subject like '%' || #{keyword} || '%' or
-					content like '%'
+					h_title like '%' || #{keyword} || '%' or
+					h_content like '%'
 					|| #{keyword} || '%'
 				</if>
 
 				<if test="search!='subcon'">
-					${search} like '%' || #{keyword} || '%'
+					hno like '%' || #{keyword} || '%'
 				</if>
 			</if>
 		</where>
+	    order by hno desc )a)
+		where rn
+		between #{startRow} and #{endRow} and id=#{id}
 	</select>
 </mapper>

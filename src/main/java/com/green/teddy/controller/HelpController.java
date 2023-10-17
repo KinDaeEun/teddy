@@ -70,22 +70,33 @@ public class HelpController {
 	@GetMapping("help/helpList") // 1:1문의 목록
 	public void helpList(Model model, HttpSession session, String pageNum, Help help) {
 		String id = (String) session.getAttribute("id");
-		int rowPerPage = 5;
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";
 		int currentPage = Integer.parseInt(pageNum);
-		int total = hs.getTotal(help);
+		int rowPerPage = 5;
+		help.setId(id);
+		int total = hs.getTotal(help);// 회원별 문의 총 갯수
 		int startRow = (currentPage - 1) * rowPerPage + 1;
 		int endRow = startRow + rowPerPage - 1;
-
 		help.setStartRow(startRow);
 		help.setEndRow(endRow);
 
-		List<Help> list = hs.list(help);
+		List<Help> list = hs.list(help);// 회원별 문의 리스트
 		PageBean pb = new PageBean(currentPage, rowPerPage, total);
 		int num = total - startRow + 1;
 		String[] title = { "제목", "내용", "제목+내용" };
 		model.addAttribute("id", id);
+		model.addAttribute("title", title);
+		model.addAttribute("list", list);
+		model.addAttribute("pb", pb);
+		model.addAttribute("num", num);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("help", help);
+	}
+
+	@GetMapping("help/helpView")
+	public void helpView() {
+ 
 	}
 
 }

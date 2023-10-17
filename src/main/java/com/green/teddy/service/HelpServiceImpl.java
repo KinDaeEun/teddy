@@ -19,13 +19,13 @@ public class HelpServiceImpl implements HelpService {
 	}
 
 	@Override
-	public int getTotal(Help help) {
+	public int getTotal(Help help) {// 회원별 문의 총 갯수
 
 		return hd.getTotal(help);
 	}
 
 	@Override
-	public List<Help> list(Help help) {
+	public List<Help> list(Help help) {// 회원별 문의 리스트
 
 		return hd.list(help);
 	}

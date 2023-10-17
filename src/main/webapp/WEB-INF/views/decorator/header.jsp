@@ -55,9 +55,9 @@
 
 				<li><a href="${path}/help/faqList.do">고객센터</a>
 					<ul class="sub">
-						<li><a href="#">FAQ</a></li>
-						<li><a href="#">1:1 문의</a></li>
-						<li><a href="#">문의 내역</a></li>
+						<li><a href="${path}/help/faqList.do">FAQ</a></li>
+						<li><a href="${path}/help/helpInsertForm.do">1:1 문의</a></li>
+						<li><a href="${path}/help/helpList.do?id">문의 내역</a></li>
 					</ul></li>
 				<li><a href="${path}/news/newsList.do">NEWS</a></li>
 			</ul>
