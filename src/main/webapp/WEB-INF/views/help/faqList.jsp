@@ -40,7 +40,6 @@
 	<br>
 	<br>
 	<br>
-
 	<h3 class="c_title">FAQ</h3>
 	<br>
 	<section class="accordion" id="accordionExample">

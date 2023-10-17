@@ -22,14 +22,16 @@ public class HelpDaoImpl implements HelpDao {
 	}
 
 	@Override
-	public int getTotal(Help help) {
-
+	public int getTotal(Help help) {//회원별 문의 총 갯수
+		System.out.println("id = "+help.getId());
+		System.out.println("keyword = "+help.getKeyword());
+		System.out.println("search = "+help.getSearch());
 		return sst.selectOne("helpns.getTotal", help);
 	}
 
 	@Override
-	public List<Help> list(Help help) {
-		Map<String, Integer> map = new HashMap<String, Integer>();
+	public List<Help> list(Help help) {//회원별 문의 리스트
+
 		return sst.selectList("helpns.list", help);
-	}//여기까지함
+	}
 }

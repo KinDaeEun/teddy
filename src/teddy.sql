@@ -25,7 +25,7 @@ drop table member;
 
 -- 차량
 	create table car (
-	    cno number(20) primary key,                     -- 차량번호
+	    cno number(20) primary key,     -- 차량번호
 	    c_name varchar2(50),            -- 차량명
 	    min_price number(20),           -- 최저가격
 	    max_price number(20),           -- 최고가격
@@ -107,6 +107,7 @@ create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
 drop sequence help_seq;
+select * from help where h_del='n'
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호
