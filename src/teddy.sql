@@ -47,8 +47,6 @@ drop table member;
 	    max_speed varchar2(20),         -- 최고속도
 	    c_del char(1)                   -- 삭제여부
 	);
-select * from member;
-
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence car_seq;

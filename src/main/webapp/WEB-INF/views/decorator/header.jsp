@@ -38,14 +38,11 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="#">홈</a></li>
-
-
 				<li><a href="${path}/car/carForm.do">차목록</a>
 					<ul class="sub">
 						<li><a href="${path}/car/reservationForm.do">시승 예약</a></li>
+						<li><a href="${path}/car/findCenter.do">전시장 찾기</a></li>
 					</ul></li>
-
-
 				<li><a href="">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
