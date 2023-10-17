@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ include file="../headerBase.jsp"%>
 <!DOCTYPE html>
 <html>
@@ -37,7 +36,7 @@
 				</h1>
 			</div>
 			<ul class="gnb">
-				<li><a href="#">홈</a></li>
+				<li><a href="${path}/main/main.do">홈</a></li>
 
 
 				<li><a href="${path}/car/carForm.do">차목록</a>

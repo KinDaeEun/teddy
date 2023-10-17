@@ -8,21 +8,22 @@
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/carForm.css">
 <script>
+	/* 맨 위로 */
+	$(function() {
+		$('#top').on('click', function(e) {
+			e.preventDefault();
+			$('body').animate({
+				scrollTop : 0
+			}, 600);
+		});
 
-/* 맨 위로 */
-$(function(){
-	  $('#top').on('click',function(e){
-	      e.preventDefault();
-	      $('body').animate({scrollTop:0},600);
-	  });
-	  
-	  $(window).scroll(function() {
-	    if ($(document).scrollTop() > 100) {
-	      $('#top').addClass('show');
-	    } else {
-	      $('#top').removeClass('show');
-	    }
-	  });
+		$(window).scroll(function() {
+			if ($(document).scrollTop() > 100) {
+				$('#top').addClass('show');
+			} else {
+				$('#top').removeClass('show');
+			}
+		});
 	});
 </script>
 </head>
@@ -40,7 +41,7 @@ $(function(){
 
 	<div class="container body" id="bodydiv">
 		<div id="main" class="contents">
-		<a id="top"></a>
+			<a id="top"></a>
 			<!-- @@@ 검색 보류 @@@ -->
 			<div class="finder finder_on">
 				<details class="bundle_finder">
@@ -54,27 +55,22 @@ $(function(){
 				<h3 class="blind">차량</h3>
 				<div class="cont_sub">
 					<ul class="list" id="list">
-					<c:forEach var="car" items="${carList }" >
-						<li><a class="link_car" href="#"> 
-								<strong class="tit_car">${car.c_name }</strong>
-								<span class="detail_point"> 
-									<em class="tit_point">장점</em>
-									<span class="txt_point">아아.. 이것이 '현대'다</span>
-								</span> 
-								<span class="detail_point"> 
-									<em class="tit_point tit_cons">단점</em> 
-									<span class="txt_point">결함수준은 '뭔데'</span>
-								</span> 
-								<span class="detail_rating"> 
-									<em class="blind">평점</em> 
-									<span class="img rating_g">*****</span>
-								</span> 
-								<span class="detail_thumb"> 
-									<img src="${path}/resources/upload/${car.c_cover_img}"
-									class="thumb_g">
-							</span>
-						</a></li>
-					</c:forEach>
+						<c:forEach var="car" items="${carList }">
+							<li><a class="link_car" href="#"> <strong
+									class="tit_car">${car.c_name }</strong> <span
+									class="detail_point"> <em class="tit_point">장점</em> <span
+										class="txt_point">아아.. 이것이 '현대'다</span>
+								</span> <span class="detail_point"> <em
+										class="tit_point tit_cons">단점</em> <span class="txt_point">결함수준은
+											'뭔데'</span>
+								</span> <span class="detail_rating"> <em class="blind">평점</em> <span
+										class="img rating_g">*****</span>
+								</span> <span class="detail_thumb"> <img
+										src="${path}/resources/upload/${car.c_cover_img}"
+										class="thumb_g">
+								</span>
+							</a></li>
+						</c:forEach>
 					</ul>
 				</div>
 			</div>
