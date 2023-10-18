@@ -27,4 +27,9 @@ public class CarDaoImpl implements CarDao{
 	public int insertCar(Car car) {
 		return sst.insert("carns.insertCar",car);
 	}
+
+	@Override
+	public Car selectCar(int cno) {
+		return sst.selectOne("carns.selectCar",cno);
+	}
 }
