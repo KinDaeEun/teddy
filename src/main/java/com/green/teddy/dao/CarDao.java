@@ -12,4 +12,6 @@ public interface CarDao {
 
 	int insertCar(Car car);
 
+	Car selectCar(int cno);
+
 }

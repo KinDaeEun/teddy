@@ -27,4 +27,9 @@ public class CarServiceImpl implements CarService {
 	public int insertCar(Car car) {
 		return cd.insertCar(car);
 	}
+
+	@Override
+	public Car selectCar(int cno) {
+		return cd.selectCar(cno);
+	}
 }

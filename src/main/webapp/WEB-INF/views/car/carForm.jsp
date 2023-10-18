@@ -109,7 +109,7 @@
 				<div class="cont_sub">
 					<ul class="list" id="list">
 						<c:forEach var="car" items="${carList }">
-							<li><a class="link_car" href="#"> <strong
+							<li><a class="link_car" href="${path }/car/carView.do?cno=${car.cno}"> <strong
 									class="tit_car">${car.c_name }</strong> <span
 									class="detail_point"> <em class="tit_point">장점</em> <span
 										class="txt_point">아아.. 이것이 '현대'다</span>
