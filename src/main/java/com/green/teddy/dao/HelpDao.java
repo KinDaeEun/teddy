@@ -12,4 +12,8 @@ public interface HelpDao {
 
 	List<Help> list(Help help);//회원별 문의 리스트
 
+	Help select(int hno);
+
+	int update(Help help);
+
 }

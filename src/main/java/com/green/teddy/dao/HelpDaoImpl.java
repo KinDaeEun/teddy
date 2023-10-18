@@ -1,8 +1,6 @@
 package com.green.teddy.dao;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +31,17 @@ public class HelpDaoImpl implements HelpDao {
 	public List<Help> list(Help help) {//회원별 문의 리스트
 
 		return sst.selectList("helpns.list", help);
+	}
+
+	@Override
+	public Help select(int hno) {
+		
+		return sst.selectOne("helpns.select",hno);
+	}
+
+	@Override
+	public int update(Help help) {
+		
+		return sst.update("helpns.update",help);
 	}
 }
