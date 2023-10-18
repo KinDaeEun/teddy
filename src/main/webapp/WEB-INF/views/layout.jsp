@@ -10,6 +10,7 @@
 <title>테디</title>
 </head>
 <body>
+<<<<<<< HEAD
 
 		<div class="header">
 			<tiles:insertAttribute name="header" />
@@ -20,5 +21,12 @@
 		<div class="footer">
 			<tiles:insertAttribute name="footer" />
 		</div>
+=======
+		<div>
+		<tiles:insertAttribute name="header" />
+		<tiles:insertAttribute name="body"/>
+		<tiles:insertAttribute name="footer"/>
+	</div>
+>>>>>>> origin/master
 </body>
 </html>
