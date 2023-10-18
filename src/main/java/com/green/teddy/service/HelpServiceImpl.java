@@ -29,4 +29,16 @@ public class HelpServiceImpl implements HelpService {
 
 		return hd.list(help);
 	}
+
+	
+	public Help select(int hno) {
+		
+		return hd.select(hno);
+	}
+
+	@Override
+	public int update(Help help) {
+		
+		return hd.update(help);
+	}
 }

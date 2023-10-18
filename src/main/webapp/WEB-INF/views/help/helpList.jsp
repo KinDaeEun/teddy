@@ -11,6 +11,13 @@
 .title {
 	text-align: center;
 }
+.list_fx{
+display: flex;
+justify-content: space-between;
+}
+.listAc{
+  color: #333;
+}
 </style>
 </head>
 <body>
@@ -30,6 +37,28 @@
 	<br>
 	<h3 class="title">${id }님의문의내역</h3>
 	<div class="inner">
+		<div class="list_fx">
+			<!-- 검색 -->
+			<form action="${path }/help/helpList.do">
+			<select name="search">
+					<c:forTokens var="sh" items="h_title,h_content,subcon" delims=","
+						varStatus="i">
+						<c:if test="${sh == help.search }">
+							<option value="${sh }" selected>${title[i.index] }</option>
+						</c:if>
+						<c:if test="${sh != help.search }">
+							<option value="${sh }">${title[i.index] }</option>
+						</c:if>
+					</c:forTokens>
+				</select> <input type="text" name="keyword" value="${help.keyword }"
+					class="form-text"> <input type="submit" name="검색"
+					class="btn btn-outline-secondary btn-sm" value="검색">
+			</form>
+
+			<a href="${path }/help/helpInsertForm.do"
+				class=" btn-sm listAc">1:1 문의 등록하기</a>
+		</div>
+
 		<table class="table">
 			<tr>
 
@@ -50,7 +79,7 @@
 						</c:if>
 						<c:if test="${help.h_del != 'y' }">
 							<td class="text-center btn-sm"><a
-								href="${path }/help/helpView.do?id=${help.id}&pageNum=${pd.cucurrentPage}"
+								href="${path }/help/helpView.do?hno=${help.hno}&pageNum=${pb.currentPage}"
 								class="menuTitle">${help.h_title }</a></td>
 							<td class="text-center">${help.h_date }</td>
 
@@ -59,11 +88,11 @@
 				</c:forEach>
 			</c:if>
 		</table>
-<!-- paging -->
+		<!-- paging -->
 		<div>
 			<ul class="pagination pagination-sm justify-content-center">
-<%-- 				<li>${pb}</li> --%>
-<%-- 				<li>${pageNum }</li> --%>
+<%-- 		<li>${pb}</li>  --%>
+				<%-- 				<li>${pageNum }</li> --%>
 				<c:if test="${pb.startPage > pb.pagePerBlock}">
 					<li class="page-item"><a class="page-link"
 						href="helpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}">
@@ -87,7 +116,7 @@
 				<c:if test="${pb.endPage < pb.totalPage}">
 					<li class="page-item"><a class="page-link"
 						href="helpList.do?pageNum=${pb.endPage+1}&search=${help.search}&keyword=${help.keyword}">
-							 <i>뒤로</i>
+							<i>뒤로</i>
 					</a></li>
 					<li class="page-item"><a class="page-link"
 						href="helpList.do?pageNum=${pb.totalPage}&search=${help.search}&keyword=${help.keyword}">
@@ -97,45 +126,7 @@
 			</ul>
 		</div>
 
- 		<!-- paging --> 
-<!-- 		<div align="center"> -->
-
-<!-- 			<ul class="pagination justify-content-center"> -->
-
-<%-- 				<li>${pb}</li> --%>
-<%-- 				<li>${pageNum }</li> --%>
-<%-- 				<c:if test="${pb.startPage > pb.pagePerBlock}"> --%>
-<!-- 					<li class="page-item"><a class="page-link" -->
-<%-- 						href="helpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}"><i --%>
-<!-- 							class="icofont-duotone icofont-arrow-first icofont-2x"></i></a></li> -->
-<!-- 					<li class="page-item"><a class="page-link" -->
-<%-- 						href="helpList.do?pageNum=${pb.startPage-1}&search=${help.search }&keyword=${help.keyword}"><i --%>
-<!-- 							class="bi bi-arrow-left-circle icofont-2x"></i></a></li> -->
-<%-- 				</c:if> --%>
-<%-- 				<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage }"> --%>
-<%-- 					<c:if test="${pb.currentPage == i }"> --%>
-<!-- 						<li class="page-item active"><a -->
-<%-- 							href="helpList.do?pageNum=${i}&search=${help.search }&keyword=${help.keyword}" --%>
-<%-- 							class="page-link">${i}</a> --%>
-<%-- 					</c:if> --%>
-<%-- 					<c:if test="${pb.currentPage != i }"> --%>
-<!-- 						<li class="page-item"><a -->
-<%-- 							href="helpList.do?pageNum=${i}&search=${help.search }&keyword=${help.keyword}" --%>
-<%-- 							class="page-link">${i}</a> --%>
-<%-- 					</c:if> --%>
-<%-- 				</c:forEach> --%>
-<%-- 				<c:if test="${pb.endPage < pb.totalPage }"> --%>
-<!-- 					<li class="page-item"><a -->
-<%-- 						href="helpList.do?pageNum=${pb.endPage+1 }&search=${help.search }&keyword=${help.keyword}" --%>
-<!-- 						class="page-link"><i -->
-<!-- 							class="bi bi-arrow-right-square icofont-2x"></i></a></li> -->
-<!-- 					<li class="page-item"><a -->
-<%-- 						href="helpList.do?pageNum=${pb.totalPage }&search=${help.search }&keyword=${help.keyword}" --%>
-<!-- 						class="page-link"><i -->
-<!-- 							class="bi bi-arrow-right-circle-fill icofont-2x"></i></a></li> -->
-<%-- 				</c:if> --%>
-<!-- 			</ul> -->
-<!-- 		</div> -->
+	
 	</div>
 </body>
 </html>

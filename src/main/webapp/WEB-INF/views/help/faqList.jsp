@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <link rel="stylesheet" href="${path}/resources/css/faqList.css">
 </head>
 
@@ -79,7 +80,8 @@
 							최고의 서비스를 직접 만나실 수 있습니다. 시승 신청은 테디 홈페이지(<a href="#">www.teddy.com</a>)
 							회원가입 및 로그인 후 신청하실 수 있으며, 예약 취소 시 재신청은 1주일 후부터 가능합니다.
 						</p>
-						<a href="#">시승신청 바로가기</a>
+						<a href="${path}/car/reservationForm.do" class="rrac">시승신청
+							바로가기</a>
 						<div class="faq-image">
 							<img src="${path}/resources/images/faq/teddyfaq.jpg">
 						</div>
@@ -140,7 +142,8 @@
 	<div class="qna_help">
 		<div class="go_help">
 			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a
-				href="${path }/help/helpInsertForm.do" class="btn btn-outline-secondary btn-sm">1:1 문의 바로가기</a>
+				href="${path }/help/helpInsertForm.do"
+				class="btn btn-outline-secondary btn-sm">1:1 문의 바로가기</a>
 		</div>
 	</div>
 	<br>
