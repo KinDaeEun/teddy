@@ -16,6 +16,11 @@ public class CarController {
 	@Autowired
 	private CarService cs;
 	
+	@GetMapping("car/findCenter")
+	public void findCenter() {
+		
+	}
+	
 	@GetMapping("car/carForm")
 	public void carForm(Car car,String pageNum, Model model) {
 		final int ROW_PER_PAGE = 6;//한페이지의 차량 갯수

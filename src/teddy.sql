@@ -25,7 +25,7 @@ drop table member;
 
 -- 차량
 	create table car (
-	    cno number(20) primary key,                     -- 차량번호
+	    cno number(20) primary key,     -- 차량번호
 	    c_name varchar2(50),            -- 차량명
 	    min_price number(20),           -- 최저가격
 	    max_price number(20),           -- 최고가격
@@ -47,8 +47,6 @@ drop table member;
 	    max_speed varchar2(20),         -- 최고속도
 	    c_del char(1)                   -- 삭제여부
 	);
-select * from member;
-
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence car_seq;
@@ -107,6 +105,7 @@ create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
 drop sequence help_seq;
+select * from help where h_del='n'
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호
@@ -136,6 +135,88 @@ create table news (
 select * from news;
 drop table news;
 
+create table center (
+	find_city varchar2(20), -- 서울
+	find_gu varchar2(20), -- 구
+	find_center varchar2(50) -- 서울 종로 1전시장.. 어쩌구.. x5
+)
+create sequence center_seq start with 1 increment by 1 maxvalue 999999;
+
+drop table center;
+
+-- 기아
+insert into center values ('서울', '강남', '기아 압구정 지점');
+insert into center values ('서울', '강남', '기아 우리들대리점');
+insert into center values ('서울', '강남', '기아 대치지점');
+insert into center values ('서울', '강남', '기아 학동대리점');
+insert into center values ('서울', '강남', '기아 강남지점');
+
+insert into center values ('서울', '강서', '기아 강서플래그십스토어');
+insert into center values ('서울', '강서', '기아 마곡센트럴지점');
+insert into center values ('서울', '강서', '기아 발산대리점');
+insert into center values ('서울', '강서', '기아 양서대리점');
+insert into center values ('서울', '강서', '기아 신화대리점');
+
+insert into center values ('서울', '강북', '기아 강북지점');
+insert into center values ('서울', '강북', '기아 수유대리점');
+insert into center values ('서울', '강북', '기아 우이대리점');
+insert into center values ('서울', '강북', '기아 창동역대리점');
+insert into center values ('서울', '강북', '기아 쌍문대리점');
+
+insert into center values ('서울', '강동', '기아 강동지점');
+insert into center values ('서울', '강동', '기아 길동지점');
+insert into center values ('서울', '강동', '기아 명일대리점');
+insert into center values ('서울', '강동', '기아 영파대리점');
+insert into center values ('서울', '강동', '기아 고덕대리점');
+
+-- 현대
+insert into center values ('서울', '강남', '현대자동차 대치지점');
+insert into center values ('서울', '강남', '현대자동차 강남청담지점');
+insert into center values ('서울', '강남', '현대자동차 도산대로지점');
+insert into center values ('서울', '강남', '현대자동차 강남대로지점');
+insert into center values ('서울', '강남', '현대자동차 구정대리점');
+
+insert into center values ('서울', '강서', '현대자동차 블루핸즈 등촌현대서비');
+insert into center values ('서울', '강서', '현대자동차 강서지점');
+insert into center values ('서울', '강서', '현대자동차 가양대리점');
+insert into center values ('서울', '강서', '현대자동차 마곡센트럴지점');
+insert into center values ('서울', '강서', '현대자동차 강서중부지점');
+
+insert into center values ('서울', '강북', '현대자동차 북부지점');
+insert into center values ('서울', '강북', '현대자동차 강북대리점');
+insert into center values ('서울', '강북', '현대자동차 강북중앙지점');
+insert into center values ('서울', '강북', '현대자동차 북서울숲대리점');
+insert into center values ('서울', '강북', '현대자동차 우이대리점');
+
+insert center values ('서울', '강동', '현대자동차 올림픽지점');
+insert center values ('서울', '강동', '현대자동차 성내지점');
+insert center values ('서울', '강동', '현대자동차 길동대리점');
+insert center values ('서울', '강동', '현대자동차 천호대리점');
+insert center values ('서울', '강동', '현대자동차 고덕대리점');
+
+--
+
+--
+
+create sequence car_list_seq;
+
+create table car_list(
+	num number(10) primary key,
+	car_company varchar2(20),
+	car_brand varchar2(20),
+	find_gu varchar2(20),
+	find_center varchar2(50)
+)
+
+insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토1', '강동', '현대자동차 올림픽지점');
+insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토2', '강동', '현대자동차 길동대리점');
+insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토3', '강동', '현대자동차 길동대리점');
+
+insert into car_list values (car_list_seq.nextval, '현대', '소나타1', '강동', '현대자동차 길동대리점');
+insert into car_list values (car_list_seq.nextval, '현대', '소나타2', '강동', '현대자동차 길동대리점');
+insert into car_list values (car_list_seq.nextval, '현대', '소나타3', '강동', '현대자동차 길동대리점');
+
+drop table car_list;
 
 
 
