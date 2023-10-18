@@ -22,11 +22,13 @@
 	
 	<!--타일즈 적용하지 않음 -->
 	<definition name="nolay"
-		template="/WEB-INF/views/nolay/nolay.jsp">
+		template="/WEB-INF/views/nolay.jsp">
 		<put-attribute name="header" value="" />
 		<put-attribute name="menu" value="" />
 		<put-attribute name="footer" value="" />
 	</definition>
+	
+
 
 	<!--nolay/*로 전달되면 nolay폴더 안에 {1}에 jsp이름 -->
 	<definition name="nolay/*" extends="nolay">

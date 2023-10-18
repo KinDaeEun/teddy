@@ -56,6 +56,12 @@ public class CarController {
 		model.addAttribute("currentPage",currentPage);
 	}
 	
+	@RequestMapping("car/carView")
+	public void carview(Model model, int cno) {
+		Car car = cs.selectCar(cno);
+		model.addAttribute("car",car);
+	}
+	
 
 	
 	

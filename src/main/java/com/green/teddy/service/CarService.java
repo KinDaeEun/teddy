@@ -12,4 +12,6 @@ public interface CarService {
 
 	int insertCar(Car car);
 
+	Car selectCar(int cno);
+
 }
