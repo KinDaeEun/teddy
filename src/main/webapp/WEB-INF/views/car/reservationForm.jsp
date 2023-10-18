@@ -80,11 +80,11 @@ h2 {
 	<br>
 	<div class="container">
 		<h2 align="left">차량 선택</h2>
-		<form action="reservationResult.do" method="post" name="frm"
+		<form action="${path }/car/reservationResult.do" method="post" name="frm"
 			autocomplete="off">
 			<table class="table">
 				<tr>
-					<th>차량 회사&nbsp;*</th>
+					<th>차량 브랜드&nbsp;*</th>
 					<td><select class="form-select" onchange="carBox()" required
 						name="brand">
 							<optgroup label="회사를 선택해주세요">
@@ -98,7 +98,7 @@ h2 {
 				<tr>
 					<th>차량 모델&nbsp;*</th>
 					<td>
-						<div id="car_cname"></div>
+						<div id="car_cname" class="r_model"></div>
 					</td>
 				</tr>
 			</table>
@@ -148,8 +148,6 @@ h2 {
 			</table>
 			<details>
 				<summary style="font-weight: bold">예약 날짜 선택</summary>
-				<br>
-				<br>
 				<br>
 				<!-- picker 시작 -->
 				<div class="row justify-content-center mx-0">
@@ -245,7 +243,7 @@ h2 {
 			<!-- picker 끝 -->
 			<div style="align-content: center">
 				<div align="center">
-					<input type="submit" value="예약하기" class="btn btn-outline-dark">
+					<input type="submit" value="예약하기" class="btn btn-outline-dark" style="margin-top: 30px;">
 				</div>
 			</div>
 		</form>

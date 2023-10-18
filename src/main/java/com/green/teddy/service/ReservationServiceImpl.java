@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.green.teddy.dao.ReservationDao;
 import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Center;
+import com.green.teddy.dto.Reservation;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -27,6 +28,11 @@ public class ReservationServiceImpl implements ReservationService {
 	@Override
 	public List<Car> brandlist(Car car) {
 		return rd.brandlist(car);
+	}
+
+	@Override
+	public int insert(Reservation reservation) {
+		return rd.insert(reservation);
 	}
 
 }

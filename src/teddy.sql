@@ -49,6 +49,7 @@ drop table member;
 	);
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
+
 drop sequence car_seq;
 
 select * from car;
@@ -76,20 +77,26 @@ create table reservation (
     id varchar2(20),                -- 예약자 아이디
     cno number(20),                 -- 차량번호
     r_name varchar2(20),            -- 예약자 이름
+    email varchar2(100),          -- 예약자 이메일
     r_tel varchar2(20),             -- 예약자 연락처
-    r_email varchar2(100),           -- 예약자 이메일
-    r_model varchar2(20),           -- 예약 모델
-    r_country varchar2(20),         -- 예약 지역
-    r_center varchar2(20),          -- 예약 매장
     r_date date,                    -- 예약일
-    r_del char(1),                   -- 예약 취소여부
+    r_del char(1),                   -- 예약 취소여부    
+    brand varchar2(20),				-- 예약 브랜드    
+    r_model varchar2(50),           -- 예약 모델
+    find_gu varchar2(20), 	        -- 예약 구
+    find_city varchar2(20),         -- 예약 지역
+    find_center varchar2(50),       -- 예약 매장
+
     foreign key(id) references member(id),
     foreign key(cno) references car(cno)
 );
 
+create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
+
 select * from reservation;
+
 drop table reservation;
-select * from help;
+
 -- 1:1 문의
 create table help (
     hno number primary key,         -- 문의 번호
@@ -102,10 +109,12 @@ create table help (
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
+
 select * from help;
 drop table help;
 drop sequence help_seq;
 select * from help where h_del='n'
+
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호

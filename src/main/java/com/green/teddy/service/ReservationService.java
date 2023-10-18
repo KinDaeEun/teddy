@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Center;
+import com.green.teddy.dto.Reservation;
 
 public interface ReservationService {
 
@@ -12,6 +13,8 @@ public interface ReservationService {
 	List<Car> getCarName(Car car);
 
 	List<Car> brandlist(Car car);
+
+	int insert(Reservation reservation);
 	
 
 }

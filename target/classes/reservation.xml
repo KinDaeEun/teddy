@@ -3,5 +3,12 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="reservationns">
-	
+
+	<insert id="insert" parameterType="reservation">
+		insert into reservation
+		values( #{rno}, #{id}, #{cno}, #{r_name}, #{email}, #{r_tel},
+		#{r_date}, 'n' , #{brand}, #{r_model}, #{find_city},
+		#{find_gu}, #{find_center} )
+	</insert>
+
 </mapper>
