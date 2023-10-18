@@ -10,10 +10,15 @@
 <title>테디</title>
 </head>
 <body>
-		<div>
-		<tiles:insertAttribute name="header" />
-		<tiles:insertAttribute name="body"/>
-		<tiles:insertAttribute name="footer"/>
-	</div>
+
+		<div class="header">
+			<tiles:insertAttribute name="header" />
+		</div>
+		<div class="content">
+			<tiles:insertAttribute name="body" />
+		</div>
+		<div class="footer">
+			<tiles:insertAttribute name="footer" />
+		</div>
 </body>
 </html>

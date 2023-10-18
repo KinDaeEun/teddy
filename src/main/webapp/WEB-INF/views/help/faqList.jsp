@@ -79,7 +79,7 @@
 							최고의 서비스를 직접 만나실 수 있습니다. 시승 신청은 테디 홈페이지(<a href="#">www.teddy.com</a>)
 							회원가입 및 로그인 후 신청하실 수 있으며, 예약 취소 시 재신청은 1주일 후부터 가능합니다.
 						</p>
-						<a href="#">시승신청 바로가기</a>
+						<a href="${path }/car/reservationForm.do" class="btn btn-outline-secondary">시승예약 바로가기</a>
 						<div class="faq-image">
 							<img src="${path}/resources/images/faq/teddyfaq.jpg">
 						</div>
