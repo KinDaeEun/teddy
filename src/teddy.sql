@@ -141,7 +141,7 @@ create table center (
 	brand varchar2(20),
 	find_gu varchar2(20),
 	find_center varchar2(50) 
-)
+);
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
 
 drop sequence center_seq;
