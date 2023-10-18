@@ -10,6 +10,7 @@
 <title>테디</title>
 </head>
 <body>
+
 	<table>
 		<tr><td>
 			<tiles:insertAttribute name="header" />
@@ -19,5 +20,6 @@
 			<tiles:insertAttribute name="footer"/>
 		</td></tr>
 	</table>
+
 </body>
 </html>

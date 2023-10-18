@@ -8,14 +8,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-	
-		<select class="form-select" id="car_brand">
-			<optgroup label="차량 모델을 선택해주세요">
-			<c:forEach var="car" items="${list }">
-				<option>${car.car_brand }</option>
-					</c:forEach>
-			</optgroup>
-		</select>
+
+	<select  class="form-select" name="c_name">
+		<c:forEach var="car" items="${getCarName }">
+			<option>${car.c_name }</option>
+		</c:forEach>
+	</select>
 
 </body>
 </html>
