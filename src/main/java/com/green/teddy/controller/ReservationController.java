@@ -24,9 +24,15 @@ public class ReservationController {
 	// 시승예약 폼
 	@GetMapping("car/reservationForm")
 	public void reservationForm(Model model, Car car, Center center) {
-		List<Car> brandlist = rs.brandlist(car); // 브랜드 select
+		System.out.println(car.getBrand());
+		System.out.println(car.getC_name());
+		if (car.getBrand()==null && car.getC_name() == null) {
+			List<Car> brandlist = rs.brandlist(); // 브랜드 select
+			model.addAttribute("brandlist", brandlist);
+		} else {
+			model.addAttribute("car", car);
+		}
 
-		model.addAttribute("brandlist", brandlist);
 	}
 
 	// brand.do
@@ -58,6 +64,5 @@ public class ReservationController {
 		model.addAttribute("result", result);
 
 	}
-	
 
 }

@@ -26,8 +26,8 @@ public class ReservationServiceImpl implements ReservationService {
 	}
 
 	@Override
-	public List<Car> brandlist(Car car) {
-		return rd.brandlist(car);
+	public List<Car> brandlist() {
+		return rd.brandlist();
 	}
 
 	@Override

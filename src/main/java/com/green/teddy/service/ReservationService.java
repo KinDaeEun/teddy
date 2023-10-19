@@ -12,7 +12,7 @@ public interface ReservationService {
 
 	List<Car> getCarName(Car car);
 
-	List<Car> brandlist(Car car);
+	List<Car> brandlist();
 
 	int insert(Reservation reservation);
 	
