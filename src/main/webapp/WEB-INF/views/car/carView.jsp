@@ -108,28 +108,66 @@
 										</tr>
 									</tbody>
 								</table>
+								<!-- 성능 / 제원 END -->
 							</div>
 						</div>
-						<!-- 성능 / 제원 END -->
-						<!-- 댓글 START -->
-<!-- 						<div class="box_comment">
-							<div>
-								<h4>댓글 1개</h4>
-								<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
-									평점 이미지 자리 <span class="raging_g">★★★★★</span> 5.0
-								</span>
-							</div>
-							평점 END
-							<div class="cmt_write">
-								<div class="opt_g">
-									<em class="blind">평점 선택</em>
-								</div>
-							</div>
-						</div> -->
-
-						<!-- 댓글 END -->
 					</div>
 				</div>
+				<!-- 댓글 START -->
+				<div class="box_comment">
+					<div class="cmt_total">
+						<h4 class="tit_cmt">댓글 1개</h4>
+						<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
+							<!-- 평점 이미지 자리 --> <span class="raging_g">★★★★★</span> 평점평균자리
+						</span>
+					</div>
+					<!-- 평점 END -->
+					<div class="cmt_write">
+						<div class="opt_g">
+							<em class="blind">평점 선택</em>
+							<fieldset class="rate">
+								<input type="radio" id="rating5" name="rating" value="5">
+								<label class="rating5" for="rating5" title="5점"></label> <input
+									type="radio" id="rating4" name="rating" value="4"> <label
+									for="rating4" title="4점"></label> <input type="radio"
+									id="rating3" name="rating" value="3"> <label
+									class="rating3" for="rating3" title="3점"></label> <input
+									type="radio" id="rating2" name="rating" value="2"> <label
+									for="rating2" title="2점"></label> <input type="radio"
+									id="rating1" name="rating" value="1"> <label
+									class="rating1" for="rating1" title="1점"></label>
+							</fieldset>
+						</div>
+						<div class="user_cmt_off">
+							<strong class="blind">댓글 입력</strong>
+							<!-- 로그인 했을 경우 -->
+							<span class="txt_cmt">고객님의 평가를 남겨주세요</span>
+							<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
+								title="고객님의 평가를 남겨주세요"></textarea>
+							<!-- 로그인 안했을 경우 -->
+							<span class="txt_num">
+								<strong>0</strong> / 300
+							</span>
+							<button type="button" class="btn_cmt">등록</button>
+						</div>
+						<!-- 댓글목록 START -->
+						<!-- 댓글이 있을 경우 -->
+						<ul class="list_comment">
+							<li>
+								<span class="detail_rating type_rating">
+									<span class="img rating_g">
+										<span class="img">★★★★★</span>
+									</span>
+									<span class="txt_user"> 닉네임 님 </span>
+								</span>
+								<p class="desc_cmt">댓글 내용</p>
+								<span class="txt_date">댓글 작성 날짜 오후 06:22</span>
+							</li>
+						</ul>
+						<!-- 댓글이 없을 경우 -->
+					</div>
+				</div>
+				<!-- 댓글 END -->
 			</div>
 		</div>
 	</section>
