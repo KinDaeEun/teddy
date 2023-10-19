@@ -44,4 +44,40 @@ public class HelpDaoImpl implements HelpDao {
 		
 		return sst.update("helpns.update",help);
 	}
+
+	@Override
+	public int delete(int hno) {
+		
+		return sst.delete("helpns.delete",hno);
+	}
+
+	@Override
+	public int adminGetTotal(Help help) {
+		
+		return sst.selectOne("helpns.adminGetTotal", help);
+	}
+
+	@Override
+	public List<Help> adminList(Help help) {
+		
+		return sst.selectList("helpns.adminList", help);
+	}
+
+	@Override
+	public Help selectHelp(int hno) {
+		
+		return sst.selectOne("helpns.selectHelp",hno);
+	}
+
+	@Override
+	public int updateHelp(Help help) {
+		
+		return sst.update("helpns.updateHelp", help);
+	}
+
+	@Override
+	public int deleteHelp(int hno) {
+		
+		return sst.delete("helpns.deleteHelp",hno);
+	}
 }

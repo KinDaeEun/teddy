@@ -6,7 +6,7 @@
 	<!-- 1:1문의 입력 -->
 	<insert id="insert" parameterType="help">
 		insert into help values
-		(help_seq.nextval,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n')
+		(help_seq.nextval,#{id},#{h_title},#{h_content},#{h_fileName},sysdate,'n','답변대기','n')
 	</insert>
 
 	<!-- 회원별 문의 총 갯수 -->
@@ -19,7 +19,32 @@
 				<if test="search=='subcon'">
 					( h_title like '%' || #{keyword} || '%' or
 					h_content
-					like '%'
+					like
+					'%'
+					||
+					#{keyword} || '%')
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+
+	</select>
+
+	<!-- 괸리자 전체 회원 문의 총 갯수 -->
+	<select id="adminGetTotal" resultType="integer"
+		parameterType="help">
+		select count(*) from help
+		<where>
+			<if test=" keyword != null and keyword !=''">
+
+				<if test="search=='subcon'">
+					( h_title like '%' || #{keyword} || '%' or
+					h_content
+					like
+					'%'
 					||
 					#{keyword} || '%')
 				</if>
@@ -56,12 +81,71 @@
 		between #{startRow} and #{endRow} and
 		id=#{id}
 	</select>
-	
-	<select id="select" parameterType="integer" resultType="help">
-	   select * from help where hno=#{hno}
+
+	<!--관리자 회원 전체 문의 리스트 -->
+	<select id="adminList" parameterType="help" resultType="help">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from help
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					h_title like '%' || #{keyword} || '%' or
+					h_content like
+					'%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+		order by hno desc )a)
+		where rn
+		between #{startRow} and #{endRow}
 	</select>
-	
+
+
+	<!-- 회원 문의 상세목록 -->
+	<select id="select" parameterType="integer" resultType="help">
+		select *
+		from help where hno=#{hno}
+	</select>
+
+	<select id="selectHelp" parameterType="integer"
+		resultType="help">
+		select *
+		from help where hno=#{hno}
+	</select>
+	<!-- 회원 1:1 목록 업데이트 -->
 	<update id="update" parameterType="help">
-	update help set h_title=#{h_title}, h_content=#{h_content}, h_fileName=#{h_fileName} where hno=#{hno}
+		update help set
+		h_title=#{h_title}, h_content=#{h_content},
+		h_fileName=#{h_fileName}
+		<if test="h_fileName != null and h_fileName != ''">
+			,h_fileName=#{h_fileName}
+		</if>
+		where hno=#{hno}
+	</update>
+
+	<!-- 관리자 회원 1:1 목록 업데이트 -->
+	<update id="updateHelp" parameterType="help">
+		update help set
+		h_ref='답변등록',r_content=#{r_content}
+<!-- 		<if test="h_fileName != null and h_fileName != ''"> -->
+<!-- 			,h_fileName=#{h_fileName} -->
+<!-- 		</if> -->
+		where hno=#{hno}
+	</update>
+
+	<update id="delete" parameterType="help">
+		update help set h_del='y'
+		where hno=#{hno}
+	</update>
+
+	<update id="deleteHelp" parameterType="help">
+		update help set h_del='y'
+		where hno=#{hno}
 	</update>
 </mapper>

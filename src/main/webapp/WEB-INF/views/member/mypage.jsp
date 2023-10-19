@@ -23,8 +23,7 @@
 					<th class="bg-light">등록일</th>
 				</tr>
 				<tr>
-					<td><img alt=""
-						src="${path}/resources/upload/${member.fileName}" class="wd"></td>
+					<td><img alt="" src="${path}/resources/upload/${member.fileName}" class="wd"></td>
 					<td>${member.id}</td>
 					<td>${member.name}</td>
 					<td>${member.email}</td>

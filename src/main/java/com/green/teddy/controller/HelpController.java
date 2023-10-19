@@ -62,12 +62,14 @@ public class HelpController {
 			fos.write(help.getFile().getBytes());
 			fos.close();
 			result = hs.insert(help);
+		} else {
+			result = hs.insert(help);
 		}
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
 	}
 
-	@PostMapping("help/helpUpdateResult") //1:1문의 사항업데이트
+	@PostMapping("help/helpUpdateResult") // 1:1문의 사항업데이트
 	public void helpUpdateResult(Help help, Model model, String pageNum, HttpSession session) throws IOException {
 		int result = 0;
 		String id = (String) session.getAttribute("id");
@@ -120,7 +122,7 @@ public class HelpController {
 		model.addAttribute("help", help);
 	}
 
-	@GetMapping("help/helpView") //1:1 문의 사항 상세페이지
+	@GetMapping("help/helpView") // 1:1 문의 사항 상세페이지
 	public void helpView(int hno, String pageNum, Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Help help = hs.select(hno);
@@ -130,10 +132,19 @@ public class HelpController {
 		model.addAttribute("pageNum", pageNum);
 	}
 
-	@GetMapping("help/helpUpdateForm") //1:1 문의사항 업데이트 폼
+	@GetMapping("help/helpUpdateForm") // 1:1 문의사항 업데이트 폼
 	public void helpUpdateForm(Model model, int hno, String pageNum) {
 		Help help = hs.select(hno);
 		model.addAttribute("help", help);
+		model.addAttribute("pageNum", pageNum);
+	}
+
+	@GetMapping("help/helpDelete")
+	public void helpDelet(Model model, HttpSession session, int hno, String pageNum) {
+		String id = (String) session.getAttribute("id");
+		int result = hs.delete(hno);
+		model.addAttribute("id", id);
+		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 	}
 
