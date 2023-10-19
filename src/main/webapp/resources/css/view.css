@@ -1,0 +1,269 @@
+@charset "UTF-8";
+
+.body, section, h3, h4, th, td, input, select, textarea, button {
+    font-size: 13px;
+    color: #333;
+}
+
+h4 {
+	font-family: Pretendard, Dotum,'\B3CB\C6C0',Helvetica,AppleSDGothicNeo,sans-serif;
+}
+
+#sc_car {
+    background-color: #f1f1f1;
+}
+
+div.body div.contents {
+    min-height: 620px;
+    padding-bottom: 10px;
+    vertical-align: top;
+}
+
+.cont {
+    width: 980px;
+    margin: 0 auto;
+}
+
+div {
+    text-align: left;
+}
+
+
+.tit {
+    position: relative;
+    width: 100%;
+    padding-bottom: 30px;
+    text-align: center;
+    padding-top: 9px;
+    font-size: 27px;
+    text-align: center;
+    white-space: nowrap;
+}
+
+.page_other a {
+    float: left;
+    margin-left: 14px;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+.page_other {
+    overflow: hidden;
+    position: absolute;
+    top: -16px;
+    right: 0;
+}
+
+/* 본문 */
+
+.box_total .tit_subject {
+    top: 313px;
+}
+
+.box_g .tit_subject {
+    position: absolute;
+    top: 327px;
+    left: 39px;
+    font-weight: normal;
+    font-size: 15px;
+    color: #000;
+}
+
+.cont .box_total .area_detail {
+    padding-top: 20px;
+}
+
+.box_g .area_detail {
+    float: left;
+    width: 510px;
+}
+
+.box_total .tit_summary {
+    margin-bottom: 18px;
+    font-size: 21px;
+}
+
+.box_g .tit_summary {
+    display: block;
+    overflow: hidden;
+    font-weight: normal;
+    font-size: 16px;
+    color: #000;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.cont .box_total:hover {
+    border-color: #e8e8e8;
+    -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.03);
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.03);
+}
+
+.cont .box_total {
+    overflow: hidden;
+    height: auto;
+    margin-top: 0;
+    padding-top: 20px;
+    padding-bottom: 35px;
+}
+
+.contents_l02 .box_g {
+    width: 980px;
+    height: auto;
+    margin-top: 19px;
+    padding: 35px 38px 0 119px;
+}
+
+.box_g {
+    position: relative;
+    width: 938px;
+    height: auto;
+    padding: 20px 20px 40px;
+    border: 1px solid #e8e8e8;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 5px 2px rgba(0,0,0,0.03);
+    box-shadow: 0 0 5px 2px rgba(0,0,0,0.03);
+    clear: both;
+}
+
+.box_total .area_thumb {
+    float: left;
+    margin: 0 0 4px -101px;
+}
+
+.box_g .area_thumb {
+    overflow: hidden;
+    position: relative;
+    width: 940px;
+    height: 266px;
+}
+
+.area_thumb .thumb_g {
+    position: absolute;
+    top: -60%;
+    left: 0;
+}
+
+.thumb_g {
+    display: block;
+    width: 100%;
+}
+
+.box_total .area_review {
+    padding: 50px 0 0;
+}
+
+.box_g .area_review {
+    float: right;
+    width: 280px;
+    padding: 57px 0 30px;
+    font-size: 12px;
+}
+
+.box_total .area_review .tit_total {
+    float: left;
+    margin-left: 80px;
+    margin-top: 2px;
+    font-size: 28px;
+    color: #da072c;
+    letter-spacing: -1px;
+}
+
+.blind {
+    display: block !important;
+    overflow: hidden !important;
+    position: absolute !important;
+    left: 0 !important;
+    top: -10000px !important;
+    width: 0 !important;
+    height: 0 !important;
+}
+
+.box_total .area_review .rating_review {
+    float: right;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.box_total .detail_rating {
+    margin: 0;
+}
+
+.detail_rating {
+    display: block;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: #da072c;
+}
+
+.detail_rating .tit_rating {
+    margin-right: 3px;
+}
+
+em {
+	font-style: normal;
+}
+
+.box_total .area_review .ico_bar {
+    margin: 0 6px 0 0;
+}
+
+.ico_bar {
+    display: inline-block;
+    width: 1px;
+    height: 11px;
+    margin: 0 4px;
+    background-color: #ccc;
+    vertical-align: -1px;
+}
+
+.link_cmt {
+    color: #333;
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+/* 제원 */
+
+.area_data {
+    float: left;
+    position: relative;
+    width: 100%;
+    padding-top: 25px;
+    border-top: 1px dashed #dadada;
+}
+
+.tit_g {
+	position: relative;
+    left: -70px;
+    display: block;
+    margin: 25px 0 13px;
+    font-size: 15px;
+    color: #000;
+}
+
+.tbl {
+	width: 100%;
+    border-top: 1px solid #aeaeae;
+    border-bottom: 1px solid #aeaeae;
+}
+
+.tbl tr:first-child th, .tbl tr:first-child td {
+    border-top: 0 none;
+}
+
+.tbl tbody th {
+    font-weight: normal;
+    background-color: #f7f7f7;
+    text-align: left;
+}
+
+.tbl th, .tbl td {
+    padding: 16px;
+    border-top: 1px solid #d9d9d9;
+    font-size: 12px;
+    vertical-align: top;
+    word-wrap: break-word;
+}

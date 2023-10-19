@@ -73,7 +73,7 @@ public class AdminController {
 	
 	@RequestMapping("admin/insertCar")
 	public void insertCar(Model model, Car car, HttpSession session) throws IOException {
-		String real = session.getServletContext().getRealPath("/resources/upload");
+		String real = session.getServletContext().getRealPath("/resources/upload/");
 		//표지 사진
 		String c_cover_img1 = car.getC_cover_img_file().getOriginalFilename();
 		UUID uuid = UUID.randomUUID();
