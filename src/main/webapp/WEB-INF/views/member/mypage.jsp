@@ -45,7 +45,7 @@
 						<span>시승 예약</span>
 					</div>
 					<div class="more-btn">
-						<a href="https://heyone.kr/bbs/point.php"
+						<a href="${path }/car/reservationList.do"
 							class="win_point">바로가기&gt;</a>
 					</div>
 				</div>

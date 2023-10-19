@@ -16,4 +16,6 @@ public interface ReservationDao {
 
 	int insert(Reservation reservation);
 
+	List<Reservation> list(String id);
+
 }

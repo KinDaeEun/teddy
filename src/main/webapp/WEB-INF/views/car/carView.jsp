@@ -16,17 +16,7 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 	<section id="sc_car">
 		<div class="container">
 			<div class="cont">
@@ -185,17 +175,7 @@
 			</div>
 		</div>
 	</section>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+
 	<br>
 	<br>
 	<br>
