@@ -16,4 +16,16 @@ public interface HelpDao {
 
 	int update(Help help);
 
+	int delete(int hno);
+
+	int adminGetTotal(Help help);
+
+	List<Help> adminList(Help help);
+
+	Help selectHelp(int hno);
+
+	int updateHelp(Help help);
+
+	int deleteHelp(int hno);
+
 }

@@ -49,7 +49,7 @@ h3 {
 			<div class="input-group">
 				<input type="file" class="form-control" id="inputGroupFile04"
 					aria-describedby="inputGroupFileAddon04" aria-label="Upload"
-					name="file" required="required">
+					name="file">
 			</div>
 		</div>
 

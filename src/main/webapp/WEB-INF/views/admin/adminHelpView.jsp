@@ -21,7 +21,6 @@ h3 {
 
 .table {
 	border: 1px solid black;
-	
 }
 
 .join-inner {
@@ -56,22 +55,34 @@ h3 {
 	margin-right: 30px;
 	color: gray;
 }
+
+.h_title_y {
+	text-align: center;
+}
 </style>
 
 </head>
 
 <body>
 	<div class="container top" align="center">
+
 		<div class="inner join-inner table">
+			<c:if test="${help.h_del == 'y' }">
+				<h3 class="h_title_y">${help.id }님의문의사항</h3>
+			</c:if>
 			<div class="veiw_fx mg">
 				<div></div>
-				<h3 class="h_title">${id }님의문의사항</h3>
-				<a
-					href="${path }/help/helpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }"
-					class="mr">수정하기</a> <a
-					href="${path }/help/helpDelete.do?hno=${help.hno}&pageNum=${pageNum }"
-					class="mr">삭제하기</a>
+				<c:if test="${help.h_del == 'n' }">
+					<h3 class="h_title">${help.id }님의문의사항</h3>
+					<a
+						href="${path }/admin/adminHelpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }"
+						class="mr">답변하기</a>
+					<a
+						href="${path }/admin/adminHelpDelete.do?hno=${help.hno}&pageNum=${pageNum }"
+						class="mr">삭제하기</a>
+				</c:if>
 			</div>
+
 			<div class="mb-3 row">
 				<label for="staticEmail" class="col-sm-2 col-form-label">제목</label>
 				<div class="col-sm-10">
@@ -86,7 +97,6 @@ h3 {
 						value="${help.h_content }">
 				</div>
 			</div>
-
 			<c:if test="${help.h_fileName != null }">
 				<div class="mb-3 row">
 					<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
@@ -102,18 +112,16 @@ h3 {
 					<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
 				</div>
 			</c:if>
+
 		</div>
 		<div>
-			<h3>답변</h3>
-			<c:if test="${help.r_content == 'n' }">아직 답변이 없습니다</c:if>
+		     <h3>답변</h3>
+			<c:if test="${help.r_content == 'n' }"></c:if>
 			<c:if test="${help.r_content != 'n' }">${help.r_content }</c:if>
 		</div>
-
-
 		<div class="mg" align="center">
-			<a href="helpList.do?pageNum=${pageNum}" class="btn btn-primary">문의내역</a>
+			<a href="adminHelpList.do?pageNum=${pageNum}" class="btn btn-primary">문의내역</a>
 		</div>
-
 	</div>
 </body>
 </html>

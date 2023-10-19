@@ -11,12 +11,14 @@
 .title {
 	text-align: center;
 }
-.list_fx{
-display: flex;
-justify-content: space-between;
+
+.list_fx {
+	display: flex;
+	justify-content: space-between;
 }
-.listAc{
-  color: #333;
+
+.listAc {
+	color: #333;
 }
 </style>
 </head>
@@ -35,12 +37,12 @@ justify-content: space-between;
 	<br>
 	<br>
 	<br>
-	<h3 class="title">${id }님의문의내역</h3>
+	<h3 class="title">문의내역</h3>
 	<div class="inner">
 		<div class="list_fx">
 			<!-- 검색 -->
-			<form action="${path }/help/helpList.do">
-			<select name="search">
+			<form action="${path }/admin/adminHelpList.do">
+				<select name="search">
 					<c:forTokens var="sh" items="h_title,h_content,subcon" delims=","
 						varStatus="i">
 						<c:if test="${sh == help.search }">
@@ -55,37 +57,36 @@ justify-content: space-between;
 					class="btn btn-outline-secondary btn-sm" value="검색">
 			</form>
 
-			<a href="${path }/help/helpInsertForm.do"
-				class=" btn-sm listAc">1:1 문의 등록하기</a>
+
 		</div>
 
 		<table class="table">
 			<tr>
 
+				<th class="text-center">아이디</th>
 				<th class="text-center">제목</th>
-				<th class="text-center">답변여부</th>
+				<th class="text-center">삭제여부</th>
 				<th class="text-center">작성일</th>
 			</tr>
 			<c:if test="${empty list}">
 				<tr>
-					<td colspan="3" class="text-center">문의내역이 존재하지 않습니다</td>
+					<td colspan="2" class="text-center">문의내역이 존재하지 않습니다</td>
 				</tr>
 			</c:if>
 			<c:if test="${not empty list }">
 				<c:forEach var="help" items="${list }">
 					<tr>
 
-						<c:if test="${help.h_del == 'y' }">
-							<th colspan="3" class="text-center">삭제된 게시글입니다</th>
-						</c:if>
-						<c:if test="${help.h_del != 'y' }">
-							<td class="text-center btn-sm"><a
-								href="${path }/help/helpView.do?hno=${help.hno}&pageNum=${pb.currentPage}"
-								class="menuTitle">${help.h_title }</a></td>
-							<td class="text-center">${help.h_ref }</td>
-							<td class="text-center">${help.h_date }</td>
 
-						</c:if>
+
+						<td>${help.id }</td>
+						<td class="text-center btn-sm"><a
+							href="${path }/admin/adminHelpView.do?hno=${help.hno}&pageNum=${pb.currentPage}"
+							class="menuTitle">${help.h_title }</a></td>
+						<td class="text-center">${help.h_del }</td>
+						<td class="text-center">${help.h_date }</td>
+
+
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -93,42 +94,42 @@ justify-content: space-between;
 		<!-- paging -->
 		<div>
 			<ul class="pagination pagination-sm justify-content-center">
-<%-- 		<li>${pb}</li>  --%>
-				<%-- 				<li>${pageNum }</li> --%>
+				<li>${pb}</li>
+				<li>${pageNum }</li>
 				<c:if test="${pb.startPage > pb.pagePerBlock}">
 					<li class="page-item"><a class="page-link"
-						href="helpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}">
+						href="adminHelpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}">
 							<i>맨 앞으로</i>
 					</a></li>
 					<li class="page-item"><a class="page-link"
-						href="helpList.do?pageNum=${pb.startPage-1}&search=${help.search}&keyword=${help.keyword}">
+						href="adminHelpList.do?pageNum=${pb.startPage-1}&search=${help.search}&keyword=${help.keyword}">
 							<i>앞으로</i>
 					</a></li>
 				</c:if>
 				<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 					<c:if test="${pb.currentPage == i }">
 						<li class="page-item active"><a class="page-link"
-							href="helpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
+							href="adminHelpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
 					</c:if>
 					<c:if test="${pb.currentPage != i }">
 						<li class="page-item"><a class="page-link"
-							href="helpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
+							href="adminHelpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
 					</c:if>
 				</c:forEach>
 				<c:if test="${pb.endPage < pb.totalPage}">
 					<li class="page-item"><a class="page-link"
-						href="helpList.do?pageNum=${pb.endPage+1}&search=${help.search}&keyword=${help.keyword}">
+						href="adminHelpList.do?pageNum=${pb.endPage+1}&search=${help.search}&keyword=${help.keyword}">
 							<i>뒤로</i>
 					</a></li>
 					<li class="page-item"><a class="page-link"
-						href="helpList.do?pageNum=${pb.totalPage}&search=${help.search}&keyword=${help.keyword}">
+						href="adminHelpList.do?pageNum=${pb.totalPage}&search=${help.search}&keyword=${help.keyword}">
 							<i>맨뒤로</i>
 					</a></li>
 				</c:if>
 			</ul>
 		</div>
 
-	
+
 	</div>
 </body>
 </html>
