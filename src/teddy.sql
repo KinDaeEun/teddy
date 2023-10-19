@@ -210,3 +210,6 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 
 
 
+--차량 추가
+insert into car values(car)
+
