@@ -41,4 +41,40 @@ public class HelpServiceImpl implements HelpService {
 		
 		return hd.update(help);
 	}
+
+	@Override
+	public int delete(int hno) {
+		
+		return hd.delete(hno);
+	}
+
+	@Override
+	public int adminGetTotal(Help help) {
+		
+		return hd.adminGetTotal(help);
+	}
+
+	@Override
+	public List<Help> adminList(Help help) {
+		
+		return hd.adminList(help);
+	}
+
+	@Override
+	public Help selectHelp(int hno) {
+		
+		return hd.selectHelp(hno);
+	}
+
+	@Override
+	public int updateHelp(Help help) {
+		
+		return hd.updateHelp(help);
+	}
+
+	@Override
+	public int deleteHelp(int hno) {
+		
+		return hd.deleteHelp(hno);
+	}
 }

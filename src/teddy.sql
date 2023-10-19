@@ -98,7 +98,9 @@ create table help (
     h_content varchar2(1000),       -- 문의 내용
     h_fileName varchar2(100),        -- 문의 첨부 파일
     h_date date,                    -- 문의 날짜
-    h_del char(1) ,                  -- 문의 삭제 여부
+    h_del char(1),                  -- 문의 삭제 여부
+    h_ref varchar2(50),              -- 답변여부
+    r_content varchar2(1000),
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
@@ -106,6 +108,16 @@ select * from help;
 drop table help;
 drop sequence help_seq;
 select * from help where h_del='n'
+
+--1:1문의 답변
+create table helpreply(
+	rno number primary key, --답변번호
+	hno number,              -- 문의 번호
+	r_content varchar2(1000), --답변내용
+	r_date date,              -- 답변 날짜
+	r_del char(1),          --답변 삭제 여부
+	foreign key(hno) references help(hno)
+);
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호

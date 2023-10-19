@@ -15,6 +15,8 @@ public class Help {
 	private String h_fileName;
 	private Date h_date;
 	private String h_del;
+	private String h_ref;
+	private String r_content;
 	// upload용
 	private MultipartFile file;
 	//paging용
