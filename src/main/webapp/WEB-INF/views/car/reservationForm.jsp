@@ -80,26 +80,37 @@ h2 {
 	<br>
 	<div class="container">
 		<h2 align="left">차량 선택</h2>
-		<form action="reservationResult.do" method="post" name="frm"
-			autocomplete="off">
+		<form action="${path }/car/reservationResult.do" method="post"
+			name="frm" autocomplete="off">
 			<table class="table">
 				<tr>
-					<th>차량 회사&nbsp;*</th>
-					<td><select class="form-select" onchange="carBox()" required
-						name="brand">
-							<optgroup label="회사를 선택해주세요">
-								<option>회사를 선택해주세요</option>
-								<c:forEach var="car" items="${brandlist }">
-									<option>${car.brand }</option>
-								</c:forEach>
-							</optgroup>
-					</select></td>
+					<th>차량 브랜드&nbsp;*</th>
+					<c:if test="${not empty brandlist}">
+						<td><select class="form-select" onchange="carBox()" required
+							name="brand">
+								<optgroup label="회사를 선택해주세요">
+									<option>회사를 선택해주세요</option>
+									<c:forEach var="car" items="${brandlist }">
+										<option>${car.brand }</option>
+									</c:forEach>
+								</optgroup>
+								
+						</select></td>
+					</c:if>
+					
+					<c:if test="${empty brandlist}">
+						<td><input type="text" name="brand" value="${car.brand }" readonly="readonly"></td>
+					</c:if>
 				</tr>
 				<tr>
 					<th>차량 모델&nbsp;*</th>
-					<td>
-						<div id="car_cname"></div>
-					</td>
+					<td><c:if test="${not empty brandlist}">
+							<div id="car_cname" class="r_model"></div>
+						</c:if> <c:if test="${empty brandlist}">
+							<div id="car_cname" class="r_model">
+								<input type="text" name="c_name" value="${car.c_name }" readonly="readonly">
+							</div>
+						</c:if></td>
 				</tr>
 			</table>
 
@@ -131,7 +142,8 @@ h2 {
 				</tr>
 				<tr>
 					<th>구 선택</th>
-					<td><select id="find_gu" class="form-select" onchange="centerBox()" name="find_gu">
+					<td><select id="find_gu" class="form-select"
+						onchange="centerBox()" name="find_gu">
 							<option value="a">구를 선택해주세요
 							<option value="강북">강북
 							<option value="강서">강서
@@ -148,8 +160,6 @@ h2 {
 			</table>
 			<details>
 				<summary style="font-weight: bold">예약 날짜 선택</summary>
-				<br>
-				<br>
 				<br>
 				<!-- picker 시작 -->
 				<div class="row justify-content-center mx-0">
@@ -245,7 +255,8 @@ h2 {
 			<!-- picker 끝 -->
 			<div style="align-content: center">
 				<div align="center">
-					<input type="submit" value="예약하기" class="btn btn-outline-dark">
+					<input type="submit" value="예약하기" class="btn btn-outline-dark"
+						style="margin-top: 30px;">
 				</div>
 			</div>
 		</form>

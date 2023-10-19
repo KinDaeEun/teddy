@@ -126,11 +126,13 @@
 							required="required"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><textarea name="c_content"></textarea></td>
+						<td colspan="2"><textarea name="c_content" class="form-control"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
-							value="추가" class="btn btn-dark"></td>
+							value="추가" class="btn btn-dark">
+							<a href="${path }/admin/adminCar.do" class="btn btn-outline-dark">취소</a>
+							</td>
 					</tr>
 
 				</table>
