@@ -25,8 +25,8 @@ public class ReservationDaoImpl implements ReservationDao {
 		return sst.selectList("centerns.centerlist",center);
 	}
 
-	public List<Car> brandlist(Car car) {
-		return sst.selectList("carns.brandlist", car);
+	public List<Car> brandlist() {
+		return sst.selectList("carns.brandlist");
 	}
 
 	public int insert(Reservation reservation) {

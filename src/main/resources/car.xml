@@ -25,13 +25,9 @@
 	
 
 	<!-- 예약폼 브랜드 select -->
-	<select id="brandlist" parameterType="car" resultType="car">
+	<select id="brandlist" resultType="car">
 		select DISTINCT brand from car 
-		<where>
-		 <if test="cno != null and cno != ''">
-		 	cno = #{cno}
-		 </if>
-		</where>
+
 	</select>
 	
 	<!-- 모델 select -->

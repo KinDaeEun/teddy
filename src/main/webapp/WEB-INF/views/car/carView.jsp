@@ -67,7 +67,7 @@
 							<strong class="tit_total"> <span class="blind">총
 									평점</span> <span class="txt_total">5.0</span>
 							</strong>
-							<a href="${path}/car/reservationForm.do?cno=${car.cno}">시승 예약</a>
+							<a href="${path}/car/reservationForm.do?brand=${car.brand}&c_name=${car.c_name}">시승 예약</a>
 							<div class="rating_review">
 								<a href="#none" class="link_cmt" data-tab="comment">댓글 1</a>
 
