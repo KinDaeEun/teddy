@@ -18,7 +18,6 @@ create table member (
 );
 
 select * from member;
-
 drop table member;
 
 
@@ -58,15 +57,6 @@ select * from car;
 drop table car;
 
 
---차량 추가
-insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현대','Hyundai Sonata (DN8)cover.jpg','Hyundai Sonata (DN8).jpg','한국 대표 중형차 쏘나타. 코드명 DN8의 신형은 LF 후계차입니다. LF 디자인이 지나치게 보수적이라는 의견을 반영, 이번에는 한층 젊어진 게 특징이지요. 앞모습이 그 어떤 차에서도 본 적 없는 듯하고 뒤쪽 역시 새롭습니다(시빅을 좀 닮았지만). 아울러 새로운 3세대 플랫폼을 타고 나온 것도 신형의 강점입니다.
-이번 DN8 쏘나타에 대한 반응을 보면 디자인과 성능에 대한 얘기가 많은 듯합니다. 우선 디자인은 호불호가 좀 갈리는 양상인데요. 이를테면 젊고 새로운 감각이라 마음에 든다는 쪽과 괴상하게 생겼다며 깎아내리는 의견으로 양분되는 듯합니다. 성능 면에서는 2.0L 자연흡기 엔진(160마력)과 6단 AT 조합이 너무 구닥다리 아니냐는 말이 있어요. 부정론이죠. 하지만 이는 1.6T(8단 AT)나 하이브리드를 선택하면 문제될 게 없습니다. 사실 SM6 프라임이나 말리부 1.35T도 잘만 굴러다니는 걸요 뭐. 오히려 2.0 자연흡기 엔진과 6단 AT는 높은 신뢰성으로 고전적인 국내 중형차 소비자들의 입맛에 적절할 것입니다. 그래서 주력 파워트레인인 거고요. 그게 싫으면 터보 버전 사면 되는 겁니다.
-사실 쏘나타는 멋스러운 디자인이나 성능으로 타는 차가 아니죠. 무난함, 그리고 값 대비 풍요로운 공간으로써 제품력을 주도합니다. 이번 DN8 쏘나타 역시 그 가치를 잘 채우고 있습니다. 가령 편의장비가 그랜저를 추월할 정도로 풍성합니다. 능동 안전 기술이 전 등급에 기본이고 옵션으로 고속도로 주행 보조(HDA)까지 넣을 수 있어요. 전 등급에 에어백 9개가 기본인 것도 놀랍습니다. 특히 LPI 깡통(스마트) 버전은 운전대 열선과 운전석 전동 시트, 하이패스 같은 것들이 전부 기본이기도 합니다.','중형차',
-TO_DATE('2019-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전륜','160 / 6,500','맥퍼슨 스트럿 ,멀티 링크',
-'20 / 4,800','4개 / 벤틸레이티드 디스크 2개','9','241','n',1860,1445,2840,4900,'Hyundai Sonata (DN8)front.jpg','Hyundai Sonata (DN8)side.jpg');
-
-
-
 
 create table design_img(
 	dno number(20) primary key,
@@ -74,9 +64,11 @@ create table design_img(
 	cno number(20),
 	foreign key(cno) references car(cno)
 );
+
 create sequence design_img_seq start with 1 increment by 1 maxvalue 999999;
 select * from DESIGN_IMG;
 drop table design_img;
+
 
 create FUNCTION get_seq
 RETURN NUMBER 
@@ -85,6 +77,8 @@ BEGIN
  RETURN design_img_seq.nextval;
 END;
 /
+
+
 -- 게시판
 create table board (
     bno number primary key,         -- 게시판 번호
@@ -120,10 +114,10 @@ create table reservation (
 );
 
 create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
-
 select * from reservation;
-
 drop table reservation;
+
+
 
 -- 1:1 문의
 create table help (
@@ -137,7 +131,6 @@ create table help (
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
-
 select * from help;
 drop table help;
 
@@ -157,6 +150,7 @@ create table review (
 select * from review;
 drop table review;
 
+
 -- 뉴스
 create table news (
     nno number primary key,         -- 뉴스 번호
@@ -168,12 +162,11 @@ create table news (
     n_date date,                    -- 뉴스 작성일
     n_del char(1)                   -- 뉴스 삭제 여부
 );
-
 create sequence news_seq start with 1 increment by 1 maxvalue 999999;
-
 select * from news;
-
 drop table news;
+
+
 
 -- 예약 전시장
 create table center (
@@ -183,10 +176,9 @@ create table center (
 	find_center varchar2(50) 
 );
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
-
 drop sequence center_seq;
-
 drop table center;
+
 
 -- 기아
 insert into center values (center_seq.nextval, '기아', '강남', '기아 압구정 지점');
@@ -254,7 +246,7 @@ insert into news values(
 	'테디',
 	sysdate,
 	'n'
-	)
+	);
 insert into news values( 
 	news_seq.nextval,
 	'n1.jpg',
@@ -266,7 +258,7 @@ insert into news values(
 	'테디',
 	sysdate,
 	'n'
-	)
+	);
 insert into news values( 
 	news_seq.nextval,
 	'n3.jpg',
@@ -285,7 +277,7 @@ insert into news values(
 	'테디',
 	sysdate,
 	'n'
-	)
+	);
 
 --차량추가
 insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현대','Hyundai Sonata (DN8)cover.jpg','Hyundai Sonata (DN8).jpg','한국 대표 중형차 쏘나타. 코드명 DN8의 신형은 LF 후계차입니다. LF 디자인이 지나치게 보수적이라는 의견을 반영, 이번에는 한층 젊어진 게 특징이지요. 앞모습이 그 어떤 차에서도 본 적 없는 듯하고 뒤쪽 역시 새롭습니다(시빅을 좀 닮았지만). 아울러 새로운 3세대 플랫폼을 타고 나온 것도 신형의 강점입니다.
