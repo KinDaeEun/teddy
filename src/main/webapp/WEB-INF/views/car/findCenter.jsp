@@ -18,6 +18,7 @@
 	<br>
 	<br>
 	<br>
+	<h2 class="text text-secondary">전시장 찾기</h2>
 	<br>
 	<hr>
 
@@ -29,7 +30,7 @@
 			<div class="option">
 				<div>
 					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="포드" id="keyword" size="15">
+						키워드 : <input type="text" value="강남 현대자동차" id="keyword" size="15">
 						<button type="submit">검색하기</button>
 					</form>
 				</div>
@@ -43,6 +44,14 @@
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c8fa635c726227215ac04b166705a44&libraries=services"></script>
 	<script>
+		function setCenter() {
+			// 이동할 위도 경도 위치를 생성합니다 
+			var moveLatLon = new kakao.maps.LatLng(37.5522, 126.9917);
+
+			// 지도 중심을 이동 시킵니다
+			map.setCenter(moveLatLon);
+		}
+
 		// 마커를 담을 배열입니다
 		var markers = [];
 

@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="${path}/resources/css/main.css">
 <link rel="stylesheet" href="${path}/resources/css/responsive.css">
 <link rel="stylesheet" href="${path}/resources/css/member.css">
-
+<link rel="stylesheet" href="${path}/resources/css/faqList.css">
 <style>
 	.err { color:#; font-weight: bold; display: inline-block; margin-top:5px;}
 	a {

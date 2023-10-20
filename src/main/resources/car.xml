@@ -23,8 +23,21 @@
 		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n')
 	</insert>
 	
+
+	<!-- 예약폼 브랜드 select -->
+	<select id="brandlist" resultType="car">
+		select DISTINCT brand from car 
+
+	</select>
+	
+	<!-- 모델 select -->
+	<select id="getCarName" parameterType="car" resultType="car">
+		select * from car where brand = #{brand}
+	</select>
+
 	<select id="selectCar" parameterType="integer" resultType="car">
 		select * from car where cno=#{cno}
 	</select>
+
 
 </mapper>

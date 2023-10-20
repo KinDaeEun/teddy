@@ -49,6 +49,7 @@ drop table member;
 	);
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
+
 drop sequence car_seq;
 
 select * from car;
@@ -74,27 +75,31 @@ drop table board;
 create table reservation (
     rno number primary key,         -- 예약번호
     id varchar2(20),                -- 예약자 아이디
-    cno number(20),                 -- 차량번호
     r_name varchar2(20),            -- 예약자 이름
+    email varchar2(100),          -- 예약자 이메일
     r_tel varchar2(20),             -- 예약자 연락처
-    r_email varchar2(100),           -- 예약자 이메일
-    r_model varchar2(20),           -- 예약 모델
-    r_country varchar2(20),         -- 예약 지역
-    r_center varchar2(20),          -- 예약 매장
     r_date date,                    -- 예약일
-    r_del char(1),                   -- 예약 취소여부
-    foreign key(id) references member(id),
-    foreign key(cno) references car(cno)
+    r_del char(1),                   -- 예약 취소여부    
+    brand varchar2(20),				-- 예약 브랜드    
+    c_name varchar2(50),           -- 예약 모델
+    find_city varchar2(20),         -- 예약 지역
+    find_gu varchar2(20), 	        -- 예약 구
+    find_center varchar2(50),       -- 예약 매장
+
+    foreign key(id) references member(id)
 );
 
+create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
+
 select * from reservation;
+
 drop table reservation;
-select * from help;
+
 -- 1:1 문의
 create table help (
     hno number primary key,         -- 문의 번호
     id varchar2(20),                -- 아이디
-    h_title varchar2(20),           -- 문의 제목
+    h_title varchar2(100),           -- 문의 제목
     h_content varchar2(1000),       -- 문의 내용
     h_fileName varchar2(100),        -- 문의 첨부 파일
     h_date date,                    -- 문의 날짜
@@ -102,10 +107,12 @@ create table help (
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
+
 select * from help;
 drop table help;
 drop sequence help_seq;
 select * from help where h_del='n'
+
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호
@@ -135,88 +142,69 @@ create table news (
 select * from news;
 drop table news;
 
+-- 예약 전시장
 create table center (
-	find_city varchar2(20), -- 서울
-	find_gu varchar2(20), -- 구
-	find_center varchar2(50) -- 서울 종로 1전시장.. 어쩌구.. x5
-)
+	num number(10),
+	brand varchar2(20),
+	find_gu varchar2(20),
+	find_center varchar2(50) 
+);
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
+
+drop sequence center_seq;
 
 drop table center;
 
 -- 기아
-insert into center values ('서울', '강남', '기아 압구정 지점');
-insert into center values ('서울', '강남', '기아 우리들대리점');
-insert into center values ('서울', '강남', '기아 대치지점');
-insert into center values ('서울', '강남', '기아 학동대리점');
-insert into center values ('서울', '강남', '기아 강남지점');
+insert into center values (center_seq.nextval, '기아', '강남', '기아 압구정 지점');
+insert into center values (center_seq.nextval, '기아', '강남', '기아 우리들대리점');
+insert into center values (center_seq.nextval, '기아', '강남', '기아 대치지점');
+insert into center values (center_seq.nextval, '기아', '강남', '기아 학동대리점');
+insert into center values (center_seq.nextval, '기아', '강남', '기아 강남지점');
 
-insert into center values ('서울', '강서', '기아 강서플래그십스토어');
-insert into center values ('서울', '강서', '기아 마곡센트럴지점');
-insert into center values ('서울', '강서', '기아 발산대리점');
-insert into center values ('서울', '강서', '기아 양서대리점');
-insert into center values ('서울', '강서', '기아 신화대리점');
+insert into center values (center_seq.nextval, '기아', '강서', '기아 강서플래그십스토어');
+insert into center values (center_seq.nextval, '기아', '강서', '기아 마곡센트럴지점');
+insert into center values (center_seq.nextval, '기아', '강서', '기아 발산대리점');
+insert into center values (center_seq.nextval, '기아', '강서', '기아 양서대리점');
+insert into center values (center_seq.nextval, '기아', '강서', '기아 신화대리점');
 
-insert into center values ('서울', '강북', '기아 강북지점');
-insert into center values ('서울', '강북', '기아 수유대리점');
-insert into center values ('서울', '강북', '기아 우이대리점');
-insert into center values ('서울', '강북', '기아 창동역대리점');
-insert into center values ('서울', '강북', '기아 쌍문대리점');
+insert into center values (center_seq.nextval, '기아', '강북', '기아 강북지점');
+insert into center values (center_seq.nextval, '기아', '강북', '기아 수유대리점');
+insert into center values (center_seq.nextval, '기아', '강북', '기아 우이대리점');
 
-insert into center values ('서울', '강동', '기아 강동지점');
-insert into center values ('서울', '강동', '기아 길동지점');
-insert into center values ('서울', '강동', '기아 명일대리점');
-insert into center values ('서울', '강동', '기아 영파대리점');
-insert into center values ('서울', '강동', '기아 고덕대리점');
+insert into center values (center_seq.nextval, '기아', '강북', '기아 창동역대리점');
+insert into center values (center_seq.nextval, '기아', '강북', '기아 쌍문대리점');
+
+insert into center values (center_seq.nextval, '기아', '강동', '기아 강동지점');
+insert into center values (center_seq.nextval, '기아', '강동', '기아 길동지점');
+insert into center values (center_seq.nextval, '기아', '강동', '기아 명일대리점');
+insert into center values (center_seq.nextval, '기아', '강동', '기아 영파대리점');
+insert into center values (center_seq.nextval, '기아', '강동', '기아 고덕대리점');
 
 -- 현대
-insert into center values ('서울', '강남', '현대자동차 대치지점');
-insert into center values ('서울', '강남', '현대자동차 강남청담지점');
-insert into center values ('서울', '강남', '현대자동차 도산대로지점');
-insert into center values ('서울', '강남', '현대자동차 강남대로지점');
-insert into center values ('서울', '강남', '현대자동차 구정대리점');
+insert into center values (center_seq.nextval, '현대', '강남', '현대자동차 대치지점');
+insert into center values (center_seq.nextval, '현대', '강남', '현대자동차 강남청담지점');
+insert into center values (center_seq.nextval, '현대', '강남', '현대자동차 도산대로지점');
+insert into center values (center_seq.nextval, '현대', '강남', '현대자동차 강남대로지점');
+insert into center values (center_seq.nextval, '현대', '강남', '현대자동차 구정대리점');
 
-insert into center values ('서울', '강서', '현대자동차 블루핸즈 등촌현대서비');
-insert into center values ('서울', '강서', '현대자동차 강서지점');
-insert into center values ('서울', '강서', '현대자동차 가양대리점');
-insert into center values ('서울', '강서', '현대자동차 마곡센트럴지점');
-insert into center values ('서울', '강서', '현대자동차 강서중부지점');
+insert into center values (center_seq.nextval, '현대', '강서', '현대자동차 블루핸즈 등촌현대서비');
+insert into center values (center_seq.nextval, '현대', '강서', '현대자동차 강서지점');
+insert into center values (center_seq.nextval, '현대', '강서', '현대자동차 가양대리점');
+insert into center values (center_seq.nextval, '현대', '강서', '현대자동차 마곡센트럴지점');
+insert into center values (center_seq.nextval, '현대', '강서', '현대자동차 강서중부지점');
 
-insert into center values ('서울', '강북', '현대자동차 북부지점');
-insert into center values ('서울', '강북', '현대자동차 강북대리점');
-insert into center values ('서울', '강북', '현대자동차 강북중앙지점');
-insert into center values ('서울', '강북', '현대자동차 북서울숲대리점');
-insert into center values ('서울', '강북', '현대자동차 우이대리점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 북부지점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북대리점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북중앙지점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 북서울숲대리점');
+insert into center values (center_seq.nextval,'현대', '강북', '현대자동차 우이대리점');
 
-insert center values ('서울', '강동', '현대자동차 올림픽지점');
-insert center values ('서울', '강동', '현대자동차 성내지점');
-insert center values ('서울', '강동', '현대자동차 길동대리점');
-insert center values ('서울', '강동', '현대자동차 천호대리점');
-insert center values ('서울', '강동', '현대자동차 고덕대리점');
-
---
-
---
-
-create sequence car_list_seq;
-
-create table car_list(
-	num number(10) primary key,
-	car_company varchar2(20),
-	car_brand varchar2(20),
-	find_gu varchar2(20),
-	find_center varchar2(50)
-)
-
-insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토1', '강동', '현대자동차 올림픽지점');
-insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토2', '강동', '현대자동차 길동대리점');
-insert into car_list values (car_list_seq.nextval, '기아', '쏘렌토3', '강동', '현대자동차 길동대리점');
-
-insert into car_list values (car_list_seq.nextval, '현대', '소나타1', '강동', '현대자동차 길동대리점');
-insert into car_list values (car_list_seq.nextval, '현대', '소나타2', '강동', '현대자동차 길동대리점');
-insert into car_list values (car_list_seq.nextval, '현대', '소나타3', '강동', '현대자동차 길동대리점');
-
-drop table car_list;
+insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 올림픽지점');
+insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 성내지점');
+insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 길동대리점');
+insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
+insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
 
 
 

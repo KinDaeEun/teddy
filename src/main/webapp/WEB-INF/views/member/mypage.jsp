@@ -23,8 +23,7 @@
 					<th class="bg-light">등록일</th>
 				</tr>
 				<tr>
-					<td><img alt=""
-						src="${path}/resources/upload/${member.fileName}" class="wd"></td>
+					<td><img alt="" src="${path}/resources/upload/${member.fileName}" class="wd"></td>
 					<td>${member.id}</td>
 					<td>${member.name}</td>
 					<td>${member.email}</td>
@@ -45,7 +44,7 @@
 						<span>시승 예약</span>
 					</div>
 					<div class="more-btn">
-						<a href="https://heyone.kr/bbs/point.php"
+						<a href="${path }/car/reservationList.do"
 							class="win_point">바로가기&gt;</a>
 					</div>
 				</div>

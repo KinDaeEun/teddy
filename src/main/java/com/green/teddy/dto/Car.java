@@ -38,4 +38,5 @@ public class Car {
 	//paging용
 	private int startRow; 
 	private int endRow; 
+
 }
