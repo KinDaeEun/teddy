@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<section class="mypage-form">
+	<section>
 		<div class="container text-center ">
 			<div>
 				<h3 class="mb">마이 페이지</h3>
@@ -44,7 +44,7 @@
 						<span>시승 예약</span>
 					</div>
 					<div class="more-btn">
-						<a href="https://heyone.kr/bbs/point.php"
+						<a href="${path }/car/reservationList.do"
 							class="win_point">바로가기&gt;</a>
 					</div>
 				</div>

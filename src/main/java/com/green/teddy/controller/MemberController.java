@@ -25,10 +25,29 @@ public class MemberController {
 	private MemberService ms;
 	@Autowired
 	private BCryptPasswordEncoder bpe;
-	
+
+//my page
+	@GetMapping("myPage/test")
+	public void test() {
+	}
+
+	@GetMapping("myPage/myPage_memu")
+	public void myPage_memu() {
+	}
+
+	// profile
+	@RequestMapping("myPage/mypage")
+	public void mypage(Member member, Model model, HttpSession session) throws IOException {
+		String id = (String) session.getAttribute("id");
+		Member member2 = ms.select(id);
+		model.addAttribute("member", member2);
+	}
+
 //	login
 	@GetMapping("member/loginForm")
-	public void loginForm() {}
+	public void loginForm() {
+	}
+
 	@RequestMapping("member/login")
 	public void login(Member member, Model model, HttpSession session) {
 		int result = 0;
@@ -42,6 +61,7 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 	}
+
 	@GetMapping("member/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
@@ -52,6 +72,7 @@ public class MemberController {
 	@GetMapping("member/joinForm")
 	public void joinform() {
 	}
+
 	@PostMapping("member/join")
 	public void join(Member member, Model model, HttpSession session) throws IOException {
 		int result = 0;
@@ -73,6 +94,7 @@ public class MemberController {
 			result = -1; // 이미 있는 데이터야
 		model.addAttribute("result", result);
 	}
+
 	@RequestMapping(value = "/member/idChk", produces = "text/html;charset=utf-8")
 	@ResponseBody // jsp로 가지말고 바로 본문을 전달
 	public String idChk(String id, Model model) {
@@ -85,21 +107,15 @@ public class MemberController {
 		return msg;
 	}
 // join
-	
-//profile
-	@RequestMapping("member/mypage")
-	public void mypage(Member member, Model model, HttpSession session) throws IOException {
-		String id = (String) session.getAttribute("id");
-		Member member2 = ms.select(id);
-		model.addAttribute("member", member2);
-	}
-	// update 
-	@GetMapping("member/updateForm")
+
+	// update
+	@GetMapping("myPage/updateForm")
 	public void updateForm(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
 	}
+
 	@PostMapping("member/update")
 	public void update(Member member, Model model, HttpSession session) throws IOException {
 		String fileName1 = member.getFile().getOriginalFilename();
@@ -119,7 +135,7 @@ public class MemberController {
 		int result = ms.update(member);
 		model.addAttribute("result", result);
 	}
-	
+
 	// 회원 탈퇴
 	@RequestMapping("member/delete")
 	public void delete(Model model, HttpSession session) {
@@ -130,4 +146,3 @@ public class MemberController {
 		model.addAttribute("result", result);
 	}
 }
-

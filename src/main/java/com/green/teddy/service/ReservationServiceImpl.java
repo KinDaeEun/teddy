@@ -15,24 +15,24 @@ public class ReservationServiceImpl implements ReservationService {
 	@Autowired
 	private ReservationDao rd;
 
-	@Override
 	public List<Car> getCarName(Car car) {
 		return rd.getCarName(car);
 	}
 
-	@Override
 	public List<Center> centerlist(Center center) {
 		return rd.centerlist(center);
 	}
 
-	@Override
 	public List<Car> brandlist() {
 		return rd.brandlist();
 	}
 
-	@Override
 	public int insert(Reservation reservation) {
 		return rd.insert(reservation);
+	}
+
+	public List<Reservation> list(String id) {
+		return rd.list(id);
 	}
 
 }

@@ -14,10 +14,29 @@
 
 	<div class="header">
 		<tiles:insertAttribute name="header" />
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	</div>
 	<div class="article">
 		<tiles:insertAttribute name="body" />
 	</div>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<div class="footer">
 		<tiles:insertAttribute name="footer" />
 	</div>

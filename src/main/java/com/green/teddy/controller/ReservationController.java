@@ -24,8 +24,6 @@ public class ReservationController {
 	// 시승예약 폼
 	@GetMapping("car/reservationForm")
 	public void reservationForm(Model model, Car car, Center center) {
-		System.out.println(car.getBrand());
-		System.out.println(car.getC_name());
 		if (car.getBrand()==null && car.getC_name() == null) {
 			List<Car> brandlist = rs.brandlist(); // 브랜드 select
 			model.addAttribute("brandlist", brandlist);
@@ -47,22 +45,34 @@ public class ReservationController {
 	// center.do
 	@RequestMapping(value = "nolay/center")
 	public void center(Model model, Center center) {
-
-		System.out.println("control brand = " + center.getBrand());
-		System.out.println("control gu = " + center.getFind_gu());
-
 		List<Center> centerlist = rs.centerlist(center);
 
 		model.addAttribute("centerlist", centerlist);
 	}
 
 	// 시승예약 결과
-	@PostMapping("car/reservationResult")
+	@RequestMapping("car/reservationResult")
 	public void reservationInsert(Reservation reservation, Model model, HttpSession session) {
+		
+		String id = (String) session.getAttribute("id");
+		reservation.setId(id);
+		System.out.println(reservation);
 		int result = rs.insert(reservation);
 
 		model.addAttribute("result", result);
 
+	}
+	
+	@RequestMapping("myPage/reservationList")
+	public void reservationList(Model model, HttpSession session) {
+		
+		String id = (String) session.getAttribute("id");
+		Reservation reservation = new Reservation();
+		reservation.setId(id);
+		
+		List<Reservation> reservationlist = rs.list(id);
+		
+		model.addAttribute("reservationlist", reservationlist);
 	}
 
 }
