@@ -1,5 +1,5 @@
 package com.green.teddy.dao;
 
-public interface CarPhotoDao {
+public interface Design_imgDao {
 
 }

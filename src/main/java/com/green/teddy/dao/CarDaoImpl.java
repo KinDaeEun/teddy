@@ -32,4 +32,9 @@ public class CarDaoImpl implements CarDao{
 	public Car selectCar(int cno) {
 		return sst.selectOne("carns.selectCar",cno);
 	}
+
+	@Override
+	public int getMaxCno() {
+		return sst.selectOne("carns.getMaxCno");
+	}
 }
