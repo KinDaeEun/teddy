@@ -46,7 +46,7 @@
 					</ul></li>
 
 
-				<li><a href="">게시판</a>
+				<li><a href="${path}/board/notice.do">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
