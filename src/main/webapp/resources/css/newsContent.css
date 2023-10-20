@@ -1,0 +1,264 @@
+@charset "UTF-8";
+
+body, h3, h4, th, td {
+    font-family: Pretendard, Dotum,'\B3CB\C6C0',Helvetica,AppleSDGothicNeo,sans-serif;
+    font-size: 12px;
+    line-height: 1.5;
+    color: #333;
+}
+
+body {
+    background-color: #fff;
+    text-align: center;
+    *word-break: break-all;
+    -ms-word-break: break-all;
+}
+
+div {
+	text-align: left;
+}
+
+div.body {
+    overflow: hidden;
+    width: 1150px;
+    display: inline-block;
+    margin: 0 0 100px 0;
+}
+
+div.body div.contents {
+    min-height: 620px;
+    padding-bottom: 10px;
+    vertical-align: top;
+}
+
+body.mg_view .contents {
+    float: left;
+    width: 800px;
+    padding-bottom: 100px !important;
+}
+
+body.mg .contents {
+    padding: 0 !important;
+}
+
+body.mg_view .contents .mgz_inner {
+    position: relative;
+}
+
+div {
+    margin: 0;
+    padding: 0;
+}
+
+body.mg .enc_cnt {
+    overflow: hidden;
+}
+
+body.mg .enc_cnt .title_icon {
+    overflow: hidden;
+}
+
+body.mg .enc_cnt .title_icon span:first-child {
+    margin-left: 0;
+    *zoom: 1;
+    *display: inline;
+}
+
+body.mg .enc_cnt .title_icon span {
+    display: inline-block !important;
+    float: left;
+    padding: 0 10px;
+    margin-left: 6px;
+    text-align: center;
+    height: 22px;
+    line-height: 25px;
+    color: #fff;
+    background: #cdc9c9;
+    *zoom: 1;
+    *display: inline;
+}
+
+/* content */
+
+body.mg .view_cnt h4 {
+    width: 645px;
+    margin: 15px 0 0 0 !important;
+    padding: 0 !important;
+    background: none !important;
+    font-size: 32px !important;
+    font-weight: normal !important;
+    color: #333 !important;
+    letter-spacing: -1px;
+    line-height: 40px !important;
+    height: auto !important;
+}
+
+body.mg .view_cnt .txt_view_info {
+    margin-top: 15px;
+    color: #a4a4a4;
+}
+
+body.mg .view_cnt .txt_view_info .info_date {
+    padding-top: 7px;
+}
+
+body.mg .view_cnt .txt_view_info {
+    margin-top: 15px;
+    color: #a4a4a4;
+}
+
+body.mg .view_cnt .article_cnt {
+    margin-top: 10px;
+}
+
+body.mg .view_cnt .article_cnt p {
+    margin-bottom: 24px;
+    line-height: 24px;
+    color: #747474;
+    font-size: 13px;
+}
+
+body.mg .view_cnt .article_cnt img.alignnone {
+    display: block;
+}
+
+body.mg .view_cnt .article_cnt img {
+    max-width: 100%;
+    height: auto;
+    width: 100%;
+}
+
+img {
+    border: 0 none;
+}
+
+
+.news_icon {
+	width: 100%;
+}
+
+/* url */
+
+body.mg .rept_share {
+    margin-top: 20px;
+}
+
+body.mg .rept_share ul {
+    overflow: hidden;
+    width: 118px;
+    margin: 30px auto 0 auto;
+}
+
+body.mg .rept_share ul li a {
+    display: block;
+    width: 100px;
+    height: 32px;
+    margin: 5px;
+}
+
+/* side */
+
+body.mg .cnt_side {
+    float: right;
+    width: 310px;
+}
+
+body.mg .thmnil_cnt {
+    position: relative;
+    margin-top: 100px;
+    z-index: -1;
+}
+
+body.mg h3.title_idx_news {
+    width: 300px;
+    font-size: 15px;
+    background-position: -342px -925px;
+}
+
+.line {
+    border-top: 1px solid #bdbdbd;
+    margin-top: 10px;
+}
+}
+
+body.mg h3 {
+    overflow: hidden;
+    height: 30px;
+    font-size: 20px;
+}
+
+body.mg .thmnil_cnt .thmnil_area {
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+body.mg .cnt_side .thmnil_cnt .thmnil_area .thmnil_list {
+    width: 310px;
+}
+
+body.mg .thmnil_cnt .thmnil_area .thmnil_list {
+    width: 645px;
+    padding: 0;
+}
+
+body.mg .cnt_side .thmnil_cnt .thmnil_area .thmnil_list li:first-child {
+    margin-top: 0;
+}
+
+body.mg .cnt_side .thmnil_cnt .thmnil_area .thmnil_list li a {
+    display: block;
+    color: #9b9b9b;
+}
+
+body.mg .thmnil_cnt .thmnil_area .thmnil_list li .img_article {
+    float: left;
+    overflow: hidden;
+    width: 154px;
+    height: 104px;
+}
+
+body.mg .thmnil_cnt .thmnil_area .thmnil_list li .img_article img {
+    width: 154px;
+    height: 104px;
+    transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -ms-transition: transform 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body.mg .cnt_side .thmnil_cnt .thmnil_area .thmnil_list li .smry {
+    float: left;
+    width: 130px;
+    margin: 6px 0 0 15px;
+}
+
+body.mg .cnt_side .thmnil_cnt .thmnil_area .thmnil_list li .smry .tit_smry {
+    width: 130px;
+    max-height: 55px;
+    font-size: 12px;
+    white-space: normal;
+    display: -webkit-box;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}
+
+body.mg .thmnil_cnt .thmnil_area .thmnil_list li .smry .cnt_smry {
+    overflow: hidden;
+    display: block;
+    width: 350px;
+    height: 40px;
+    margin-top: 5px;
+    font-size: 13px;
+    text-align: justify;
+}
+
+body.mg .thmnil_cnt .thmnil_area li .smry .cat {
+    display: inline-block;
+    width: 130px;
+    padding-top: 5px;
+    font-size: 11px;
+}
+
+textarea {
+	display: none;
+}

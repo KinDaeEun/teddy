@@ -15,6 +15,7 @@ h2 {
 </style>
 
 <script>
+	/* 브랜드 모델 select */
 	function carBox() {
 		$.post('${path}/nolay/brand.do', "brand=" + frm.brand.value, function(
 				data) {
@@ -23,7 +24,7 @@ h2 {
 			$('#find_gu').val('a');
 		})
 	}
-
+	/* 구 select */
 	function centerBox() {
 		$.post('${path}/nolay/center.do', "brand=" + frm.brand.value
 				+ "&find_gu=" + frm.find_gu.value, function(data) {
@@ -50,16 +51,17 @@ h2 {
 	<br>
 	<br>
 	<div class="container">
-		<h2 align="left">차량 선택</h2>
-		<form action="${path}/car/reservationResult.do" method="post" name="frm">
-			<table class="table">
+		<h2 align="left" class="text-secondary">차량 선택</h2>
+		<form action="${path}/car/reservationResult.do" method="post"
+			name="frm">
+			<table class="table table-bordered">
 				<tr>
 					<th>차량 브랜드&nbsp;*</th>
 					<c:if test="${not empty brandlist}">
 						<td><select class="form-select" onchange="carBox()" required
 							name="brand">
 								<optgroup label="회사를 선택해주세요">
-									<option>회사를 선택해주세요</option>
+									<option>회사를 먼저 선택해주세요</option>
 									<c:forEach var="car" items="${brandlist }">
 										<option>${car.brand }</option>
 									</c:forEach>
@@ -86,8 +88,8 @@ h2 {
 				</tr>
 			</table>
 
-			<h2 align="left" style="margin-top: 50px;">시승 예약</h2>
-			<table class="table">
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">시승 예약</h2>
+			<table class="table table-bordered">
 				<tr>
 					<th>성명&nbsp;*</th>
 					<td><input type="text" name="r_name" class="form-control"
@@ -130,25 +132,28 @@ h2 {
 					</td>
 				</tr>
 			</table>
-			<h2 align="left" style="margin-top: 50px;">예약 날짜 선택</h2>
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">예약 날짜 선택</h2>
 			<details open>
 				<summary style="font-weight: bold">예약 날짜 선택</summary>
 				<br>
 				<!-- picker 시작 -->
-				<input type="text" name="r_date" id="datetimePicker" placeholder="날짜 및 시간 선택" class="form-control" style="text-align: center">
-				 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+				<input type="text" name="r_date" id="datetimePicker"
+					placeholder="날짜 및 시간 선택" class="form-control"
+					style="text-align: center">
+				<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 				<script>
 					flatpickr("#datetimePicker", {
 						enableTime : true, // 시간 선택 활성화
 						dateFormat : "Y-m-d H:i", // 날짜 및 시간 형식
 						minDate : "today", // 오늘 이전 날짜를 선택할 수 없게 함
 					});
-				</script> 
+				</script>
 			</details>
 			<!-- picker 끝 -->
 			<div style="align-content: center">
 				<div align="center">
-					<input type="submit" value="예약하기" class="btn btn-outline-dark" style="margin-top: 30px;">
+					<input type="submit" value="예약하기" class="btn btn-outline-dark"
+						style="margin-top: 30px;">
 				</div>
 			</div>
 		</form>

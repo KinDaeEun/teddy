@@ -35,6 +35,15 @@ div {
 	white-space: nowrap;
 }
 
+.box_g .tit_all {
+    position: absolute;
+    top: 327px;
+    left: 39px;
+    font-weight: normal;
+    font-size: 15px;
+    color: #000;
+}
+
 .page_other a {
 	float: left;
 	margin-left: 14px;
@@ -56,7 +65,7 @@ div {
 
 .box_g .tit_subject {
 	position: absolute;
-	top: 327px;
+	/* top: 327px; */
 	left: 39px;
 	font-weight: normal;
 	font-size: 15px;
@@ -453,4 +462,62 @@ em {
     margin-top: 3px;
     font-size: 11px;
     color: #959595;
+}
+
+/* 디자인 구역 */
+
+.area_summary {
+    float: left;
+    width: 510px;
+    border-bottom: 1px solid #fff;
+}
+
+.area_detail {
+    float: left;
+    width: 510px;
+}
+
+.list_detail {
+    overflow: hidden;
+    width: 100%;
+    margin-left: -10px;
+}
+
+.list_detail li {
+    float: left;
+    position: relative;
+    width: 160px;
+    margin: 0 0 10px 10px;
+}
+
+.list_detail .link_thumb {
+    display: block;
+    overflow: hidden;
+    height: 100px;
+    border: 1px solid #dbdee0;
+}
+
+.link_thumb {
+	color: #333;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.list_detail .link_thumb .frame_g {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 108px;
+    background-color: #d02931;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+
+thumb_g {
+	width: 158px;
+	height: 106px;
 }

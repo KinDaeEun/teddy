@@ -30,7 +30,7 @@
 							class="thumb_g" alt="포르쉐 911 (992) 가솔린" />
 					</div>
 					<div class="inner_fx">
-						<h4 class="tit_subject">종합평가</h4>
+						<h4 class="tit_all">종합평가</h4>
 						<div class="area_detail">
 							<strong class="tit_summary">"911 경쟁 상대는 911뿐. 자신의 벽을
 								뛰어넘는다"</strong>
@@ -69,7 +69,7 @@
 							</div>
 						</div>
 						<!-- 성능 / 제원 START -->
-						<div class="box-g box_perform on">
+						<div class="box_perform on">
 							<div class="area_data">
 								<strong class="tit_g">제원</strong>
 								<table class="table tbl">
@@ -117,6 +117,58 @@
 						</div>
 					</div>
 				</div>
+				<!-- 디자인 START -->
+				<div class="box_design box_g">
+					<h4 class="tit_subject">디자인</h4>
+					<div class="area_summary">
+						<strong class="tit_summary">"준중형 SUV 넘보는 소형 SUV"</strong>
+						<p></p>
+					</div>
+					<ul class="list_detail">
+						<li data-thumb="0"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+						<li data-thumb="1"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+						<li data-thumb="2"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+					</ul>
+					<p class="desc_detail"></p>
+				</div>
+				<!-- 크기 START -->
+				<div class="box_design box_g">
+					<h4 class="tit_subject">크기·공간</h4>
+					<div class="area_summary">
+						<strong class="tit_summary">"소형 SUV라 부르지 마"</strong>
+						<p></p>
+					</div>
+					<ul class="list_detail">
+						<li data-thumb="0"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+						<li data-thumb="1"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+						<li data-thumb="2"><a href="#none"
+							onclick="window.open(this.src)" class="link_thumb"> <img
+								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								<span class="frame_g"></span>
+						</a></li>
+					</ul>
+					<p class="desc_detail"></p>
+				</div>
 				<!-- 댓글 START -->
 				<div class="box_comment">
 					<div class="cmt_total">
@@ -149,24 +201,19 @@
 							<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
 								title="고객님의 평가를 남겨주세요"></textarea>
 							<!-- 로그인 안했을 경우 -->
-							<span class="txt_num">
-								<strong>0</strong> / 300
+							<span class="txt_num"> <strong>0</strong> / 300
 							</span>
 							<button type="button" class="btn_cmt">등록</button>
 						</div>
 						<!-- 댓글목록 START -->
 						<!-- 댓글이 있을 경우 -->
 						<ul class="list_comment">
-							<li>
-								<span class="detail_rating type_rating">
-									<span class="img rating_g">
-										<span class="img">★★★★★</span>
-									</span>
-									<span class="txt_user"> 닉네임 님 </span>
-								</span>
-								<p class="desc_cmt">댓글 내용</p>
-								<span class="txt_date">댓글 작성 날짜 오후 06:22</span>
-							</li>
+							<li><span class="detail_rating type_rating"> <span
+									class="img rating_g"> <span class="img">★★★★★</span>
+								</span> <span class="txt_user"> 닉네임 님 </span>
+							</span>
+								<p class="desc_cmt">댓글 내용</p> <span class="txt_date">댓글
+									작성 날짜 오후 06:22</span></li>
 						</ul>
 						<!-- 댓글이 없을 경우 -->
 					</div>
