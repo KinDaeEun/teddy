@@ -50,7 +50,7 @@
 			<div class="caption">
 				<a href="${path}/member/joinForm.do">회원가입</a>
 				<br>
-				<a href="">아이디 찾기</a> 
+				<a href="${path}/member/findIdView.do">아이디 찾기</a> 
 				<br>
 				<a href="">비밀번호 찾기</a>
 			</div>

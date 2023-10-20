@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
+
 import javax.servlet.http.HttpSession;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,17 +14,19 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.teddy.dto.Member;
 import com.green.teddy.service.MemberService;
+import org.slf4j.Logger;
 
 @Controller
 public class MemberController {
 	@Autowired
-	private MemberService ms;
+	private final MemberService ms;
 	@Autowired
 	private BCryptPasswordEncoder bpe;
 
@@ -145,4 +149,29 @@ public class MemberController {
 			session.invalidate();
 		model.addAttribute("result", result);
 	}
+
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
+	public MemberController(MemberService ms) {
+        this.ms = ms;
+    }
+
+	// 아이디 찾기
+	@RequestMapping(value = "member/findIdView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String findIdView() throws Exception {
+		return "/member/findIdView";
+	}
+
+	@RequestMapping(value = "member/findId", method = {RequestMethod.GET, RequestMethod.POST} )
+    public String findId(Member member, Model model) {
+        logger.info("email: " + member.getEmail());
+        
+        if (ms.findIdCheck(member.getEmail()) == 0) {
+            model.addAttribute("msg", "이메일을 확인해주세요");
+            return "/member/findIdView";
+        } else {
+            model.addAttribute("member", ms.findId(member.getEmail()));
+            return "/member/findId";
+        }
+    }
 }

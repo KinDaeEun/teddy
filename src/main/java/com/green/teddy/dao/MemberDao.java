@@ -1,5 +1,7 @@
 package com.green.teddy.dao;
 
+import java.util.List;
+
 import com.green.teddy.dto.Member;
 
 public interface MemberDao {
@@ -7,4 +9,6 @@ public interface MemberDao {
 	int insert(Member member);
 	int update(Member member);
 	int delete(String id);
+	List<Member> findId(String email);
+	int findIdCheck(String email);
 }

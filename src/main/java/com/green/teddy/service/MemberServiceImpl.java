@@ -1,5 +1,7 @@
 package com.green.teddy.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,4 +27,13 @@ public class MemberServiceImpl implements MemberService {
 	public int delete(String id) {
 		return md.delete(id);
 	}
+	@Override
+	public List<Member> findId(String email){
+		return md.findId(email);
+	}
+	@Override
+	public int findIdCheck(String email){
+		return md.findIdCheck(email);
+	}
+	
 }
