@@ -9,7 +9,7 @@
 </head>
 <body>
 
-	<section class="mypage-form">
+	<section>
 		<div class="container text-center ">
 			<div>
 				<h3 class="mb">마이 페이지</h3>

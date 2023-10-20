@@ -63,7 +63,7 @@ public class ReservationController {
 
 	}
 	
-	@RequestMapping("car/reservationList")
+	@RequestMapping("myPage/reservationList")
 	public void reservationList(Model model, HttpSession session) {
 		
 		String id = (String) session.getAttribute("id");

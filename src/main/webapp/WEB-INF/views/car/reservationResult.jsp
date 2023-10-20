@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script>
 			alert("시승 예약이 완료되었습니다")
-			location.href = "${path}/car/reservationList.do";
+			location.href = "${path}/myPage/reservationList.do";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">

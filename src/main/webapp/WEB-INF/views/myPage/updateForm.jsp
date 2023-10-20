@@ -12,7 +12,6 @@
 	height: 100vh;
 }
 .top{
-	padding-top: 200px;
 	padding-bottom: 50px;
 }
 .btn-top {
@@ -33,7 +32,7 @@ function chk() {
 </head>
 <body>
 	<div class="container " align="center">
-		<div class="inner join-inner">
+		<div class="join-inner">
 			<h2 class="text-dark top">회원정보 수정</h2>
 			<form action="${path }/member/update.do" method="post" enctype="multipart/form-data"
 				name="frm" onsubmit="return chk()">

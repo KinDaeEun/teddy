@@ -19,10 +19,10 @@
 				<div class="lnb">
 					<a href="${path}/member/logout.do">로그아웃</a>
 					<c:if test="${id != 'admin'}">
-						<a href="${path}/member/mypage.do">마이페이지</a>
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
 					</c:if>
 					<c:if test="${id == 'admin'}">
-						<a href="${path}/member/mypage.do">마이페이지</a>
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
 						<a href="${path}/admin/adminMain.do">관리자페이지</a>
 					</c:if>
 				</div>

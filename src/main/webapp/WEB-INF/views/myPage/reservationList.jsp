@@ -6,23 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+</style>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="container">
 		<h2 align="left">예약 내역</h2>
 		<table class="table table-bordered">
@@ -71,21 +58,5 @@
 			</div>
 		</div>
 	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>
