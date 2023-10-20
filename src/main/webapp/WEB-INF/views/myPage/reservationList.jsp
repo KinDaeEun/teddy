@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="container">
-		<h2 align="left">예약 내역</h2>
+		<h3 align="center">예약 내역</h3>
 		<table class="table table-bordered">
 			<c:forEach var="reservation" items="${reservationlist }">
 				<tr>
@@ -52,7 +52,7 @@
 
 		<div style="align-content: center">
 			<div align="center">
-				<a href="${path }/member/mypage.do"
+				<a href="${path }/main/main.do"
 					class="btn btn-outline-secondary btn-sm">돌아가기</a>
 				<button onclick="delete()" class="btn btn-secondary btn-sm">예약취소</button>
 			</div>
