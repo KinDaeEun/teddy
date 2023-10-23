@@ -8,7 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/carForm.css">
 <script type="text/javascript">
 /* 맨 위로 */
 $(function(){
