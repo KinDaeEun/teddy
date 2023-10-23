@@ -5,6 +5,11 @@
 	color: #333;
 }
 
+.pd_top {
+	padding-top: 150px;
+	height:200vh;
+}
+
 #sc_car {
 	background-color: #f1f1f1;
 }
@@ -359,7 +364,7 @@ em {
     overflow-x: hidden;
     width: 737px;
     height: 39px;
-    padding: 4px 90px 0 5px;
+    padding: 4px 0px 0 5px;
     border: 0 none;
     background-color: #fff;
     resize: none;
@@ -466,6 +471,9 @@ em {
 
 /* 디자인 구역 */
 
+
+
+}
 .area_summary {
     float: left;
     width: 510px;
@@ -521,3 +529,4 @@ thumb_g {
 	width: 158px;
 	height: 106px;
 }
+

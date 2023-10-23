@@ -75,7 +75,7 @@ h3 {
 				<c:if test="${help.h_del == 'n' }">
 					<h3 class="h_title">${help.id }님의문의사항</h3>
 					<a
-						href="${path }/admin/adminHelpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }"
+						href="${path }/admin/adminHelpInsertForm.do?hno=${help.hno}&pageNum=${pageNum }"
 						class="mr">답변하기</a>
 					<a
 						href="${path }/admin/adminHelpDelete.do?hno=${help.hno}&pageNum=${pageNum }"

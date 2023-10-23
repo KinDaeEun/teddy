@@ -12,10 +12,15 @@
 h2 {
 	margin-bottom: 50px;
 }
+
+.pd_top {
+	padding-top: 200px;
+	height: 130vh;
+}
 </style>
 
 <script>
-	/* 브랜드 모델 select */
+	// 브랜드 모델 select
 	function carBox() {
 		$.post('${path}/nolay/brand.do', "brand=" + frm.brand.value, function(
 				data) {
@@ -24,7 +29,7 @@ h2 {
 			$('#find_gu').val('a');
 		})
 	}
-	/* 구 select */
+	// 구 select
 	function centerBox() {
 		$.post('${path}/nolay/center.do', "brand=" + frm.brand.value
 				+ "&find_gu=" + frm.find_gu.value, function(data) {
@@ -35,22 +40,7 @@ h2 {
 
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="container">
+	<div class="container pd_top">
 		<h2 align="left" class="text-secondary">차량 선택</h2>
 		<form action="${path}/car/reservationResult.do" method="post"
 			name="frm">
@@ -69,10 +59,10 @@ h2 {
 
 						</select></td>
 					</c:if>
-
+					<!-- 차량 목록에서 넘어온 input -->
 					<c:if test="${empty brandlist}">
 						<td><input type="text" name="brand" value="${car.brand }"
-							readonly="readonly"></td>
+							class="form-control" readonly="readonly"></td>
 					</c:if>
 				</tr>
 				<tr>
@@ -82,13 +72,14 @@ h2 {
 						</c:if> <c:if test="${empty brandlist}">
 							<div id="car_cname" class="r_model">
 								<input type="text" name="c_name" value="${car.c_name }"
-									readonly="readonly">
+									class="form-control" readonly="readonly">
 							</div>
 						</c:if></td>
 				</tr>
 			</table>
 
-			<h2 align="left" style="margin-top: 50px;" class="text-secondary">시승 예약</h2>
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">시승
+				예약</h2>
 			<table class="table table-bordered">
 				<tr>
 					<th>성명&nbsp;*</th>
@@ -132,7 +123,8 @@ h2 {
 					</td>
 				</tr>
 			</table>
-			<h2 align="left" style="margin-top: 50px;" class="text-secondary">예약 날짜 선택</h2>
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">예약
+				날짜 선택</h2>
 			<details open>
 				<summary style="font-weight: bold">예약 날짜 선택</summary>
 				<br>
@@ -158,21 +150,5 @@ h2 {
 			</div>
 		</form>
 	</div>
-
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>

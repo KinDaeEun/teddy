@@ -9,41 +9,25 @@
 <link rel="stylesheet" href="${path}/resources/css/newsList.css">
 </head>
 <body class="n">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<div class="container">
-		<div class="body" id="bodydiv">
-			<!-- carousel start 언젠가 수정 예정 -->
-			<div id="carouselExample" class="carousel slide">
+	<div class="container pd_top">
+		<div class="body" id="bodydiv" style="height: 100vh;" >
+			<!-- carousel start -->
+			<div id="carouselExampleInterval" class="carousel slide carousel-fade"
+				data-bs-ride="carousel">
 				<div class="carousel-inner">
-					<div class="carousel-item active">
-						<img src="${path }/resources/images/intro.jpg"
-							class="d-block w-100" alt="...">
+				<c:forEach var="pic" items="${newslist }">
+					<div class="carousel-item active cover_pic" data-bs-interval="2000" style="height: 400px;">
+						<img src="${path }/resources/images/news/${pic.n_cover_img}" class="d-block" alt="..." style="width:100%; height:100%">
 					</div>
-					<div class="carousel-item">
-						<img src="${path }/resources/images/intro.jpg"
-							class="d-block w-100" alt="...">
-					</div>
-					<div class="carousel-item">
-						<img src="${path }/resources/images/intro.jpg"
-							class="d-block w-100" alt="...">
-					</div>
+				</c:forEach>
 				</div>
 				<button class="carousel-control-prev" type="button"
-					data-bs-target="#carouselExample" data-bs-slide="prev">
+					data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
 					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Previous</span>
 				</button>
 				<button class="carousel-control-next" type="button"
-					data-bs-target="#carouselExample" data-bs-slide="next">
+					data-bs-target="#carouselExampleInterval" data-bs-slide="next">
 					<span class="carousel-control-next-icon" aria-hidden="true"></span>
 					<span class="visually-hidden">Next</span>
 				</button>
@@ -55,7 +39,8 @@
 					<c:forEach var="news" items="${newslist }">
 						<ul class="news_list">
 							<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
-									<span class="news_img"> <img src="${path }/resources/images/news/${news.n_cover_img }">
+									<span class="news_img"> <img
+										src="${path }/resources/images/news/${news.n_cover_img }">										
 								</span> <span class="smry"> <strong class="n_title">${news.n_title }</strong>
 										<span class="n_cont"> <strong class="contents"></strong>
 									</span> <span class="n_date">${news.n_writer }</span> <span
@@ -78,15 +63,5 @@
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>

@@ -33,10 +33,8 @@ $(function(){
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
-				<h1>The World’s Best Car</h1>
-				<p>It’s not just about good weather or great food and nightlife.
-					Unlike other best-of lists, Resonance’s annual ranking also
-					considers a city’s diversity.</p>
+				<h1>Teddy</h1>
+				<p></p>
 			</div>
 		</div>
 	</main>

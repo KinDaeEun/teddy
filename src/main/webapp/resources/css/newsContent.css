@@ -7,6 +7,10 @@ body, h3, h4, th, td {
     color: #333;
 }
 
+.pd_top {
+	padding-top: 150px;
+}
+
 body {
     background-color: #fff;
     text-align: center;
@@ -166,7 +170,6 @@ body.mg .cnt_side {
 body.mg .thmnil_cnt {
     position: relative;
     margin-top: 100px;
-    z-index: -1;
 }
 
 body.mg h3.title_idx_news {
