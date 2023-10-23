@@ -7,7 +7,7 @@
 
 .pd_top {
 	padding-top: 150px;
-	height:200vh;
+	height:230vh;
 }
 
 #sc_car {
@@ -307,7 +307,7 @@ em {
 
 .rating_g {
 	display: inline-block;
-	width: 64px;
+	width: px;
 	height: 12px;
 	margin: 1px 6px 0 0;
 	background-position: 0 -20px;
@@ -525,8 +525,14 @@ em {
     transition: opacity .5s;
 }
 
-thumb_g {
-	width: 158px;
-	height: 106px;
+.star {
+	color: #f73c32;
+    font-size: 12px;
 }
 
+.delete {
+	float:right;
+	border: none;
+	background: none;
+	cursor: pointer;
+}

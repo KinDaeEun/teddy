@@ -3,6 +3,7 @@ package com.green.teddy.dao;
 import java.util.List;
 
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Review;
 
 public interface CarDao {
 
