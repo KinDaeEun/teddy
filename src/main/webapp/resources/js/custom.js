@@ -1,4 +1,21 @@
+
 $(function(){
+    $("#gnb > li").mouseover(function(){
+        $(this).find(".sub").stop().slideDown(300)
+    })
+
+    $("#gnb > li").mouseout(function(){
+        $(this).find(".sub").stop().slideUp(300)
+    })
+  
+    $(".gnb > .gnb-li").mouseover(function(){
+        $(this).stop().css("height","250px")
+    })
+
+    $(".gnb > .gnb-li").mouseout(function(){
+        $(this).stop().css("height","50px")
+    })
+  
   
   // Trigger
   $('.trigger').click(function(){

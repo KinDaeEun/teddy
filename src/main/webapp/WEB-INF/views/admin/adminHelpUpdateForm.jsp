@@ -41,7 +41,7 @@ h3 {
 			name="id" value="${id }"> <input type="hidden" name="hno"
 			value="${help.hno }"> <input type="hidden" name="pageNum"
 			value="${pageNum }">
-		<h3>${help.id }님의&nbsp;1:1문의수정</h3>
+		<h3>${help.id }님의&nbsp;1:1문의</h3>
 
 		<div class="mb-3 inner" >
 			<textarea class="form-control" name="r_content" id="exampleFormControlTextarea1"
