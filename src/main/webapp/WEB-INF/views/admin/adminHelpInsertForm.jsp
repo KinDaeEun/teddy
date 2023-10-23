@@ -33,7 +33,7 @@ h3 {
 
 </head>
 <body>
-	<form action="${path}/admin/adminHelpUpdateResult.do" method="post"
+	<form action="${path}/admin/adminHelpInsertResult.do" method="post"
 		enctype="multipart/form-data">
 
 		<br> <br> <br> <br> <br> <br> <br>
