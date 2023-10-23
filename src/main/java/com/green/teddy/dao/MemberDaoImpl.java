@@ -1,6 +1,8 @@
 package com.green.teddy.dao;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,4 +37,17 @@ public class MemberDaoImpl implements MemberDao{
 	public int findIdCheck(String email){
 		return sst.selectOne("memberns.findIdCheck", email);
 	}
+	@Override
+	public int findPwCheck(Member member){
+	return sst.selectOne("memberns.findPwCheck", member);	
+	}
+	@Override
+	public int findPw(String email, String id, String password) {
+		Map<String,Object> map = new HashMap<String, Object>();
+		map.put("email", email);
+		map.put("id", id);
+		map.put("password", password);
+		return sst.update("memberns.findPw", map);
+	}
+
 }

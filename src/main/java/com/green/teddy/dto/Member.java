@@ -18,4 +18,6 @@ public class Member {
 	private String m_del;
 	// upload용
 	private MultipartFile file;
+	// 비밀번호 찾기
+	private int member_auth;
 }

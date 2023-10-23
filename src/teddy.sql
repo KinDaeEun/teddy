@@ -16,9 +16,12 @@ create table member (
     fileName varchar2(100),           -- 프로필
     m_del char(1)                   -- 회원탈퇴여부
 );
-
+alter table member add member_auth number default 0;
 select * from member;
 drop table member;
+
+create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
+commit;
 
 
 -- 차량

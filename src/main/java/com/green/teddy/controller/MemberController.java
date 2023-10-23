@@ -5,9 +5,11 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -174,4 +176,28 @@ public class MemberController {
             return "/member/findId";
         }
     }
+	
+	// 비밀번호 찾기
+	@RequestMapping(value="member/findPwView" , method=RequestMethod.GET)
+	public String findPwView() throws Exception{
+		return"/member/findPwView";
+	}
+	
+	@RequestMapping(value="member/findPw", method=RequestMethod.POST)
+	public String findPw(Member member,Model model) throws Exception{
+		logger.info("password"+member.getId());
+		
+		if(ms.findPwCheck(member)==0) {
+			logger.info("memberPWCheck");
+			model.addAttribute("msg", "아이디와 이메일를 확인해주세요");
+			
+			return "/member/findPwView";
+		}else {
+	
+		ms.findPw(member.getEmail(),member.getId());
+		model.addAttribute("member", member.getEmail());
+		
+		return"/member/findPw";
+		}
+	}
 }
