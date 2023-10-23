@@ -171,7 +171,7 @@ public class AdminController {
 		model.addAttribute("help", help);
 
 	}
-
+    // 회원 문의 내용
 	@RequestMapping("admin/adminHelpView")
 	public void adminHelpView(int hno, String pageNum, Model model) {
 		Help help = hs.selectHelp(hno);
@@ -179,15 +179,15 @@ public class AdminController {
 		model.addAttribute("help", help);
 		model.addAttribute("pageNum", pageNum);
 	}
-
-	@RequestMapping("admin/adminHelpUpdateForm")
+    //문의 내용 답변 폼
+	@RequestMapping("admin/adminHelpInsertForm")
 	public void adminHelpUpdateForm(Model model, int hno, String pageNum) {
 		Help help = hs.selectHelp(hno);
 		model.addAttribute("help", help);
 		model.addAttribute("pageNum", pageNum);
 	}
-
-	@RequestMapping("admin/adminHelpUpdateResult")
+    //문의 내용 답변 처리
+	@RequestMapping("admin/adminHelpInsertResult")
 	public void adminHelpUpdateResult(Help help, Model model, String pageNum, HttpSession session) {
 		int result = 0;
 		String id = (String) session.getAttribute("id");
@@ -196,7 +196,7 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 	}
-
+    //문의 내용 삭제
 	@RequestMapping("admin/adminHelpDelete")
 	public void adminHelpDelete(Model model, HttpSession session, int hno, String pageNum) {
 		String id = (String) session.getAttribute("id");
