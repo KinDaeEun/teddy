@@ -120,7 +120,7 @@ nav {
 	font-size: 16px;
 	font-weight: bold;
 }
-#w-nav li:hover {
+#w-nav li:hover{
 	background-color: #add8e6;
 }
 #w-nav .sub li a{
@@ -145,7 +145,7 @@ nav .logo>h1 a {
 }
 
 #gnb li a {
-	margin: 20px;
+/* 	margin: 20px; */
 	color: #333;
 }
 
@@ -156,7 +156,9 @@ nav .logo>h1 a {
 .trigger {
 	display: none;
 }
-
+.trigger {
+	cursor: pointer;
+}
 /* Header with active class */
 header.active {
 	background-color: #add8e6;

@@ -471,6 +471,9 @@ em {
 
 /* 디자인 구역 */
 
+
+
+}
 .area_summary {
     float: left;
     width: 510px;
@@ -526,3 +529,4 @@ thumb_g {
 	width: 158px;
 	height: 106px;
 }
+

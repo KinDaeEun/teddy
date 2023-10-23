@@ -131,7 +131,7 @@ create table help (
     h_date date,                    -- 문의 날짜
     h_del char(1),                  -- 문의 삭제 여부
     h_ref varchar2(50),              -- 답변여부
-    r_content varchar2(1000),
+    r_content varchar2(1000),       -- 답변 내용
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
