@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.green.teddy.dao.CarDao;
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Review;
 
 @Service
 public class CarServiceImpl implements CarService {
