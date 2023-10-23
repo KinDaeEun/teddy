@@ -28,8 +28,7 @@
 </script>
 </head>
 <body>
-
-	<div class="container body v_h"  id="bodydiv">
+	<div class="container body pd_top" id="bodydiv">
 		<div id="main" class="contents">
 			<a id="top"></a>
 			<!-- @@@ 검색 보류 @@@ -->
@@ -108,7 +107,7 @@
 										class="tit_point tit_cons">단점</em> <span class="txt_point">결함수준은
 											'뭔데'</span>
 								</span> <span class="detail_rating"> <em class="blind">평점</em> <span
-										class="img rating_g">*****</span>
+										class="img rating_g"></span>
 								</span> <span class="detail_thumb"> <img
 										src="${path}/resources/upload/${car.c_cover_img}"
 										class="thumb_g">
@@ -120,6 +119,5 @@
 			</div>
 		</div>
 	</div>
-
 </body>
 </html>

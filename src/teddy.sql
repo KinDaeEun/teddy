@@ -56,8 +56,10 @@ create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
 
+DROP TABLE car CASCADE CONSTRAINTS;
 
 
+-- 차량 이미지
 create table design_img(
 	dno number(20) primary key,
 	img_name varchar2(100),

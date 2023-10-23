@@ -23,18 +23,8 @@
 </script>
 </head>
 <body class="mg mg_view">
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	<div class="container" id="containerDIV">
-		<div class="body" id="bodyDIV">
+		<div class="body pd_top" id="bodyDIV">
 			<div class="contents" id="depth_main">
 				<!-- inner start -->
 				<div class="mgz_inner">
@@ -64,8 +54,8 @@
 								<ul>
 									<li><a href="#" class="btn btn-outline-secondary btn-sm"
 										onclick="clip(); return false;">공유하기 </a> <a
-										href="${path }/car/carForm.do"
-										class="btn btn-outline-secondary btn-sm">차량목록</a></li>
+										href="${path }/news/newsList.do"
+										class="btn btn-outline-secondary btn-sm">돌아가기</a></li>
 								</ul>
 							</div>
 						</div>
@@ -82,35 +72,23 @@
 					<div class="line"></div>
 					<div class="thmnil_area">
 						<ul class="thmnil_list">
-						<c:forEach var="news" items="${newslist }">
-							<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
-							<span class="img_article"> 
-							<img src="${path }/resources/images/news/${news.n_cover_img }">
-								</span> 
-								<span class="smry">
-								 	<strong class="tit_smry">${news.n_title }</strong> 
-								 	<span class="cnt_smry"></span> 
-								 	<span class="cat">${news.n_date }</span>
-								</span>
-							</a></li>
-						</c:forEach>
+							<c:forEach var="news" items="${newslist }">
+								<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
+										<span class="img_article"> <img
+											src="${path }/resources/images/news/${news.n_cover_img }">
+									</span> <span class="smry"> <strong class="tit_smry">${news.n_title }</strong>
+											<span class="cnt_smry"></span> <span class="cat">${news.n_date }</span>
+									</span>
+								</a></li>
+							</c:forEach>				
 						</ul>
-					</div>
+					</div>	
 				</div>
-				<!-- side end -->
+				<!-- side end -->	
 			</div>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+	
 	<textarea></textarea>
 </body>
 </html>
