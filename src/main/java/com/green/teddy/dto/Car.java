@@ -46,5 +46,8 @@ public class Car {
 	//paging용
 	private int startRow; 
 	private int endRow; 
+	
+	//순서 조회용
+	private String order;
 
 }

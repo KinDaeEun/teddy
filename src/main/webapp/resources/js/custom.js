@@ -9,7 +9,7 @@ $(function(){
     })
   
     $(".gnb > .gnb-li").mouseover(function(){
-        $(this).stop().css("height","250px")
+        $(this).stop().css("height","230px")
     })
 
     $(".gnb > .gnb-li").mouseout(function(){

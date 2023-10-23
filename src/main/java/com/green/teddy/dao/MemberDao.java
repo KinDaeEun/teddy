@@ -11,7 +11,11 @@ public interface MemberDao {
 	int delete(String id);
 	List<Member> findId(String email);
 	int findIdCheck(String email);
-	int adminMbTotal(Member member);
+
+	int findPwCheck(Member member);
+	int findPw(String email, String id, String password);
+
+            int adminMbTotal(Member member);
 	List<Member> mbList(Member member);
 	int deleteAdmin(String id);
 }

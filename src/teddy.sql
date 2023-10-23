@@ -16,9 +16,12 @@ create table member (
     fileName varchar2(100),           -- 프로필
     m_del char(1)                   -- 회원탈퇴여부
 );
-
+alter table member add member_auth number default 0;
 select * from member;
 drop table member;
+
+create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
+commit;
 
 
 -- 차량
@@ -56,8 +59,10 @@ create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
 
+DROP TABLE car CASCADE CONSTRAINTS;
 
 
+-- 차량 이미지
 create table design_img(
 	dno number(20) primary key,
 	img_name varchar2(100),

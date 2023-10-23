@@ -23,9 +23,9 @@
 </style>
 </head>
 <body>
-
-	<h3 class="title">${id }님의문의내역</h3>
-	<div class="inner">
+	<div class="container pg_top v_h">
+		<h3 class="title">${id }님의문의내역</h3>
+		<div class="inner">
 			<div class="list_fx">
 				<!-- 검색 -->
 				<form action="${path }/help/helpList.do">
@@ -49,13 +49,12 @@
 			</div>
 
 			<table class="table">
-
 				<tr>
+
 					<th class="text-center">제목</th>
 					<th class="text-center">답변여부</th>
 					<th class="text-center">작성일</th>
 				</tr>
-
 				<c:if test="${empty list}">
 					<tr>
 						<td colspan="3" class="text-center">문의내역이 존재하지 않습니다</td>
@@ -117,8 +116,7 @@
 					</c:if>
 				</ul>
 			</div>
-
 		</div>
-
+	</div>
 </body>
 </html>

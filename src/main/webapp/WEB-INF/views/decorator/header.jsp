@@ -91,8 +91,6 @@
 				<li><a href="${path}/news/newsList.do">NEWS</a></li>
 			</ul>
 		</nav>
-
-
 		<div class="trigger">
 			<span></span> <span></span> <span></span>
 		</div>

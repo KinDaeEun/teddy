@@ -5,6 +5,10 @@
 	position: relative;
 }
 
+.pd_top {
+	padding-top: 200px;
+}
+
 .news_area {
 	margin-top: 10px;
 	float: left;
