@@ -12,10 +12,6 @@
 </style>
 </head>
 <body class="contents_l02">
-	<br>
-	<br>
-	<br>
-	<br>
 
 	<section id="sc_car">
 		<div class="container">
@@ -26,8 +22,8 @@
 				<div class="box_g box_total" data-content="total">
 					<div class="area_thumb">
 						<img
-							src="http://dzqerse1lankl.cloudfront.net/carsdata/idb/SU/20231004/47dc2da7-4ac3-40e5-a90a-2679ddb1ae6f.png"
-							class="thumb_g" alt="포르쉐 911 (992) 가솔린" />
+							src="${path }/resources/upload/${car.c_img}"
+							class="thumb_g" />
 					</div>
 					<div class="inner_fx">
 						<h4 class="tit_all">종합평가</h4>
@@ -68,33 +64,33 @@
 									<tbody>
 										<tr>
 											<th>엔진 형식</th>
-											<td>-</td>
+											<td>${car.engine}</td>
 											<th>변속기 형식</th>
-											<td>수동 8단</td>
+											<td>${car.gear }</td>
 										</tr>
 										<tr>
 											<th>배기량</th>
-											<td>2,981</td>
+											<td>${car.displacement }</td>
 											<th>구동방식</th>
-											<td>후륜</td>
+											<td>${car.drive_type }</td>
 										</tr>
 										<tr>
 											<th>최고출력(ps/rpm)</th>
-											<td>450 / 6,500</td>
+											<td>${car.max_output }</td>
 											<th>서스펜션 (전/후)</th>
-											<td>맥퍼슨 스트럿, 멀티 링크</td>
+											<td>${car.suspention }</td>
 										</tr>
 										<tr>
 											<th>최대토크(kg . m/rpm)</th>
-											<td>54.1 / 2,300</td>
+											<td>${car.torque}</td>
 											<th>브레이크 (전/후)</th>
-											<td>4개 / 벤틸레이티드 디스크4개</td>
+											<td>${car.brake }</td>
 										</tr>
 										<tr>
 											<th>0→100km/h 가속(초)</th>
-											<td>3.7</td>
+											<td>${car.accel }</td>
 											<th>최고속도(km/h)</th>
-											<td>308</td>
+											<td>${car.max_speed}</td>
 										</tr>
 									</tbody>
 								</table>
@@ -139,19 +135,15 @@
 					<ul class="list_detail">
 						<li data-thumb="0"><a href="#none"
 							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								alt="" src="${path }/resources/upload/${car.formt_img}" class="thumb_g">
 								<span class="frame_g"></span>
 						</a></li>
 						<li data-thumb="1"><a href="#none"
 							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
+								alt="" src="${path }/resources/upload/${car.side_img}" class="thumb_g">
 								<span class="frame_g"></span>
 						</a></li>
-						<li data-thumb="2"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
+	
 					</ul>
 					<p class="desc_detail"></p>
 				</div>
@@ -209,9 +201,5 @@
 		</div>
 	</section>
 
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>

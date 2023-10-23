@@ -6,12 +6,36 @@
 	<select id="getTotal" parameterType="car" resultType="integer">
 		select
 		count(*) from car
+		<if test="brand!=null and c_kind!=null">
+			where brand=#{brand} and c_kind=#{c_kind}
+		</if>
+		<if test="brand!=null and c_kind=null">
+			where brand=#{brand}
+		</if>
+		<if test="c_kind!=null and brand=null">
+			where c_kind=#{c_kind}
+		</if>
+		<if test="order!=null">
+			order by #{order} desc
+		</if>
 	</select>
 	<select id="carList" parameterType="car" resultType="car">
 		select *
 		from(select rowNum rn, a.* from (
-		select * from car
-
+		select * from car 
+		 <if test="brand!=null and c_kind!=null">
+			where brand=#{brand} and c_kind=#{c_kind}
+		</if>
+		
+		<if test="brand!=null and c_kind==null">
+			where brand=#{brand}
+		</if>
+		<if test="c_kind!=null and brand==null">
+			where c_kind=#{c_kind}
+		</if>
+		<if test="order!=null">
+			order by #{order} desc
+		</if>
 		)a)
 		where rn
 		between #{startRow} and #{endRow}

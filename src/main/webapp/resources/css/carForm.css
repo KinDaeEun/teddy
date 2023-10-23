@@ -5,6 +5,10 @@
 	display: none;
 }
 
+.v_h{
+	height: 60vh;
+}
+
 .test_obj input[type="radio"]+span {
 	display: inline-block;
 	padding: 10px 10px;

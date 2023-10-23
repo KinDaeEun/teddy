@@ -28,22 +28,12 @@
 </script>
 </head>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
 
-	<div class="container body" id="bodydiv">
+	<div class="container body v_h"  id="bodydiv">
 		<div id="main" class="contents">
 			<a id="top"></a>
 			<!-- @@@ 검색 보류 @@@ -->
-			<form id="finder" class="form_finder">
+			<form id="finder" class="form_finder" action="${path }/car/carForm.do">
 				<fieldset>
 					<legend class="blind">조회</legend>
 					<div class="finder finder_on">
@@ -55,15 +45,15 @@
 									<strong class="tit_finder">차종</strong>
 									<div class="list_finder">
 										<label class="test_obj"> <input type="radio"
-											name="c_kind" value=""> <span>경차 / 소형차</span>
+											name="c_kind" value="경차/소형차"> <span>경차/소형차</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="c_kind" value=""> <span>준중형차</span>
+											name="c_kind" value="준중형차"> <span>준중형차</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="c_kind" value=""> <span>중형차</span>
+											name="c_kind" value="중형차"> <span>중형차</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="c_kind" value=""> <span>대형차</span>
+											name="c_kind" value="대형차"> <span>대형차</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="c_kind" value=""> <span>SUV</span>
+											name="c_kind" value="SUV"> <span>SUV</span>
 										</label>
 									</div>
 								</div>
@@ -72,15 +62,15 @@
 									<strong class="tit_finder">브랜드</strong>
 									<div class="list_finder">
 										<label class="test_obj"> <input type="radio"
-											name="brand"> <span>현대</span>
+											name="brand" value="현대"> <span>현대</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand"> <span>폭스바겐</span>
+											name="brand" value="쉐보레"> <span>쉐보레</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand"> <span>기아</span>
+											name="brand" value="기아"> <span>기아</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand"> <span>벤츠</span>
+											name="brand" value="벤츠"> <span>벤츠</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand"> <span>BMW</span>
+											name="brand" value="BMW"> <span>BMW</span>
 										</label>
 									</div>
 								</div>
@@ -89,14 +79,15 @@
 									<strong class="tit_finder">정렬 순서</strong>
 									<div class="list_finder">
 										<label class="test_obj"> <input type="radio"
-											name="brand"> <span>전체 차종</span>
+											name="order"> <span>전체 차종</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand"> <span>업데이트순</span>
+											name="order" value="cno"> <span>업데이트순</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="brand" value="apple"> <span>종합 평가 순</span>
+											name="order" value="apple"> <span>종합 평가 순</span>
 										</label>
 									</div>
 								</div>
+								<input type="submit" value="조회">
 							</div>
 						</details>
 					</div>
@@ -130,15 +121,5 @@
 		</div>
 	</div>
 
-	<br>
-	<br>
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>
