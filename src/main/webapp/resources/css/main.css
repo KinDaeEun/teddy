@@ -55,6 +55,13 @@ ul {
 	margin: auto;
 }
 
+.pg_top {
+	padding-top: 180px;
+	
+}
+.v_h {
+	height: 100vh;
+}
 /* Header */
 header {
 	position: fixed;
