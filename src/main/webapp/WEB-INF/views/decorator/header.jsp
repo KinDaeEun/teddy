@@ -19,10 +19,10 @@
 				<div class="lnb">
 					<a href="${path}/member/logout.do">로그아웃</a>
 					<c:if test="${id != 'admin'}">
-						<a href="${path}/member/mypage.do">마이페이지</a>
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
 					</c:if>
 					<c:if test="${id == 'admin'}">
-						<a href="${path}/member/mypage.do">마이페이지</a>
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
 						<a href="${path}/admin/adminMain.do">관리자페이지</a>
 					</c:if>
 				</div>
@@ -46,7 +46,7 @@
 					</ul></li>
 
 
-				<li><a href="">게시판</a>
+				<li><a href="${path}/board/notice.do">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>

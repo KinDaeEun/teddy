@@ -1,5 +1,7 @@
 package com.green.teddy.dao;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,5 +25,14 @@ public class MemberDaoImpl implements MemberDao{
 	@Override
 	public int delete(String id) {
 		return sst.delete("memberns.update", id);
+	}
+	@Override
+	public List<Member> findId(String email){
+		return sst.selectList("memberns.findId", email);
+	}
+	
+	@Override
+	public int findIdCheck(String email){
+		return sst.selectOne("memberns.findIdCheck", email);
 	}
 }

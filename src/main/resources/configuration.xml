@@ -12,8 +12,6 @@
 	<typeAliases>
 		<typeAlias alias="board" type="com.green.teddy.dto.Board" />
 		<typeAlias alias="car" type="com.green.teddy.dto.Car" />
-		<typeAlias alias="carphoto"
-			type="com.green.teddy.dto.CarPhoto" />
 		<typeAlias alias="help" type="com.green.teddy.dto.Help" />
 		<typeAlias alias="member" type="com.green.teddy.dto.Member" />
 		<typeAlias alias="news" type="com.green.teddy.dto.News" />
@@ -21,18 +19,18 @@
 			type="com.green.teddy.dto.Reservation" />
 		<typeAlias alias="review" type="com.green.teddy.dto.Review" />
 		<typeAlias alias="center" type="com.green.teddy.dto.Center" />
+		<typeAlias alias="design_img" type="com.green.teddy.dto.Design_img"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="member.xml" />
 		<mapper resource="car.xml" />
-		<mapper resource="carphoto.xml" />
 		<mapper resource="help.xml" />
-		<mapper resource="member.xml" />
 		<mapper resource="news.xml" />
 		<mapper resource="reservation.xml" />
 		<mapper resource="review.xml" />
 		<mapper resource="center.xml" />
+		<mapper resource="design_img.xml" />
 	</mappers>
 
 </configuration>

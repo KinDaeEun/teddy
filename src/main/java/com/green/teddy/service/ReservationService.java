@@ -15,6 +15,8 @@ public interface ReservationService {
 	List<Car> brandlist();
 
 	int insert(Reservation reservation);
+
+	List<Reservation> list(String id);
 	
 
 }

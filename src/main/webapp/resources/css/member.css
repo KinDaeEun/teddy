@@ -1,12 +1,5 @@
 @charset "UTF-8";
 /* all */
-.mypage-form {
-	position: relative;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 100vh;
-}
 .mb {
 	margin-bottom: 50px;
 }

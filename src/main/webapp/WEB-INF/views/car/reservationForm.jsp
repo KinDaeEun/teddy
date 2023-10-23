@@ -6,22 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>시승 예약</title>
-<script type="text/javascript"
-	src="${pageContext.request.contextPath}/resources/slick/slick.js"></script>
-<!-- time / date picker -->
 <link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.css">
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.css">
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.js"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/js/bootstrap.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/datepicker.css">
+	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 <style>
 h2 {
 	margin-bottom: 50px;
@@ -29,21 +15,7 @@ h2 {
 </style>
 
 <script>
-	$(document).ready(function() {
-
-		$('.datepicker').datepicker({
-			format : 'yyyy-mm-dd',
-			autoclose : true,
-			startDate : '0d'
-		});
-
-		$('.cell').click(function() {
-			$('.cell').removeClass('select');
-			$(this).addClass('select');
-		});
-
-	});
-
+	/* 브랜드 모델 select */
 	function carBox() {
 		$.post('${path}/nolay/brand.do', "brand=" + frm.brand.value, function(
 				data) {
@@ -52,7 +24,7 @@ h2 {
 			$('#find_gu').val('a');
 		})
 	}
-
+	/* 구 select */
 	function centerBox() {
 		$.post('${path}/nolay/center.do', "brand=" + frm.brand.value
 				+ "&find_gu=" + frm.find_gu.value, function(data) {
@@ -79,27 +51,28 @@ h2 {
 	<br>
 	<br>
 	<div class="container">
-		<h2 align="left">차량 선택</h2>
-		<form action="${path }/car/reservationResult.do" method="post"
-			name="frm" autocomplete="off">
-			<table class="table">
+		<h2 align="left" class="text-secondary">차량 선택</h2>
+		<form action="${path}/car/reservationResult.do" method="post"
+			name="frm">
+			<table class="table table-bordered">
 				<tr>
 					<th>차량 브랜드&nbsp;*</th>
 					<c:if test="${not empty brandlist}">
 						<td><select class="form-select" onchange="carBox()" required
 							name="brand">
 								<optgroup label="회사를 선택해주세요">
-									<option>회사를 선택해주세요</option>
+									<option>회사를 먼저 선택해주세요</option>
 									<c:forEach var="car" items="${brandlist }">
 										<option>${car.brand }</option>
 									</c:forEach>
 								</optgroup>
-								
+
 						</select></td>
 					</c:if>
-					
+
 					<c:if test="${empty brandlist}">
-						<td><input type="text" name="brand" value="${car.brand }" readonly="readonly"></td>
+						<td><input type="text" name="brand" value="${car.brand }"
+							readonly="readonly"></td>
 					</c:if>
 				</tr>
 				<tr>
@@ -108,14 +81,15 @@ h2 {
 							<div id="car_cname" class="r_model"></div>
 						</c:if> <c:if test="${empty brandlist}">
 							<div id="car_cname" class="r_model">
-								<input type="text" name="c_name" value="${car.c_name }" readonly="readonly">
+								<input type="text" name="c_name" value="${car.c_name }"
+									readonly="readonly">
 							</div>
 						</c:if></td>
 				</tr>
 			</table>
 
-			<h2 align="left" style="margin-top: 50px;">시승 예약</h2>
-			<table class="table">
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">시승 예약</h2>
+			<table class="table table-bordered">
 				<tr>
 					<th>성명&nbsp;*</th>
 					<td><input type="text" name="r_name" class="form-control"
@@ -123,7 +97,7 @@ h2 {
 				</tr>
 				<tr>
 					<th>이메일&nbsp;*</th>
-					<td><input type="email" name="r_email" class="form-control"
+					<td><input type="email" name="email" class="form-control"
 						required></td>
 				</tr>
 				<tr></tr>
@@ -158,99 +132,22 @@ h2 {
 					</td>
 				</tr>
 			</table>
-			<details>
+			<h2 align="left" style="margin-top: 50px;" class="text-secondary">예약 날짜 선택</h2>
+			<details open>
 				<summary style="font-weight: bold">예약 날짜 선택</summary>
 				<br>
 				<!-- picker 시작 -->
-				<div class="row justify-content-center mx-0">
-					<div class="col-lg-10">
-						<div class="card border-0">
-							<div class="card-header bg-dark">
-								<div
-									class="mx-0 mb-0 row justify-content-sm-center justify-content-start px-1">
-									<input type="text" id="dp1" class="datepicker"
-										placeholder="날짜 선택하기" name="r_date" readonly required>
-								</div>
-							</div>
-							<div class="card-body p-3 p-sm-5">
-								<div class="row text-center mx-0">
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">9:00AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">9:30AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">9:45AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">10:00AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">10:30AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">10:45AM</div>
-									</div>
-								</div>
-								<div class="row text-center mx-0">
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">11:00AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">11:30AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">11:45AM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">12:00PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">12:30PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">12:45PM</div>
-									</div>
-								</div>
-								<div class="row text-center mx-0">
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">1:00PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">1:30PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">1:45PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">2:00PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">2:30PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">2:45PM</div>
-									</div>
-								</div>
-								<div class="row text-center mx-0">
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">3:00PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">3:30PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">4:15PM</div>
-									</div>
-									<div class="col-md-2 col-4 my-1 px-2">
-										<div class="cell py-1">5:00PM</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+				<input type="text" name="r_date" id="datetimePicker"
+					placeholder="날짜 및 시간 선택" class="form-control"
+					style="text-align: center">
+				<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+				<script>
+					flatpickr("#datetimePicker", {
+						enableTime : true, // 시간 선택 활성화
+						dateFormat : "Y-m-d H:i", // 날짜 및 시간 형식
+						minDate : "today", // 오늘 이전 날짜를 선택할 수 없게 함
+					});
+				</script>
 			</details>
 			<!-- picker 끝 -->
 			<div style="align-content: center">

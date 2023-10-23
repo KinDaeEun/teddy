@@ -52,34 +52,27 @@
 			<div class="news">
 				<div class="news_area">
 					<h3 class="title">뉴스</h3>
-					<c:forEach begin="0" end="2">
-					<ul class="news_list">
-						<li>
-							<a href="#">
-								<span class="news_img">
-									<img src="${path }/resources/images/news/n1.jpg">
+					<c:forEach var="news" items="${newslist }">
+						<ul class="news_list">
+							<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
+									<span class="news_img"> <img src="${path }/resources/images/news/${news.n_cover_img }">
+								</span> <span class="smry"> <strong class="n_title">${news.n_title }</strong>
+										<span class="n_cont"> <strong class="contents"></strong>
+									</span> <span class="n_date">${news.n_writer }</span> <span
+										class="n_date">${news.n_date }</span>
 								</span>
-								<span class="smry">
-									<strong class="n_title">뉴스타이틀</strong>
-									<span class="n_cont">
-										<strong class="contents"></strong>
-									</span>
-									<span class="n_date">23.10.16</span>
-								</span>
-							</a>
-						</li>
-					</ul>
+							</a></li>
+						</ul>
 					</c:forEach>
 				</div>
 			</div>
 			<!-- 뭐넣을지 모름 -->
 			<div>
 				<div class="ummmm">
-				<h3 class="umm">뭐넣지</h3>
-					<a href="#">
-						<span>
-							<img src="${path }/resources/images/intro.jpg">
-						</span>
+					<h3 class="umm">뭐넣지</h3>
+					<a href="#"> <span> <img
+							src="${path }/resources/images/intro.jpg">
+					</span>
 					</a>
 				</div>
 			</div>

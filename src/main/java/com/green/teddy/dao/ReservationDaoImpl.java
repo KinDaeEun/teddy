@@ -33,5 +33,9 @@ public class ReservationDaoImpl implements ReservationDao {
 		return sst.insert("reservationns.insert", reservation);
 	}
 
+	public List<Reservation> list(String id) {
+		return sst.selectList("reservationns.list", id);
+	}
+
 
 }

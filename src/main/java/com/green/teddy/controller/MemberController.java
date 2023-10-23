@@ -4,7 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.UUID;
+
 import javax.servlet.http.HttpSession;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -12,23 +14,44 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.green.teddy.dto.Member;
 import com.green.teddy.service.MemberService;
+import org.slf4j.Logger;
 
 @Controller
 public class MemberController {
 	@Autowired
-	private MemberService ms;
+	private final MemberService ms;
 	@Autowired
 	private BCryptPasswordEncoder bpe;
-	
+
+//my page
+	@GetMapping("myPage/test")
+	public void test() {
+	}
+
+	@GetMapping("myPage/myPage_memu")
+	public void myPage_memu() {
+	}
+
+	// profile
+	@RequestMapping("myPage/mypage")
+	public void mypage(Member member, Model model, HttpSession session) throws IOException {
+		String id = (String) session.getAttribute("id");
+		Member member2 = ms.select(id);
+		model.addAttribute("member", member2);
+	}
+
 //	login
 	@GetMapping("member/loginForm")
-	public void loginForm() {}
+	public void loginForm() {
+	}
+
 	@RequestMapping("member/login")
 	public void login(Member member, Model model, HttpSession session) {
 		int result = 0;
@@ -42,6 +65,7 @@ public class MemberController {
 		}
 		model.addAttribute("result", result);
 	}
+
 	@GetMapping("member/logout")
 	public void logout(HttpSession session) {
 		session.invalidate();
@@ -52,6 +76,7 @@ public class MemberController {
 	@GetMapping("member/joinForm")
 	public void joinform() {
 	}
+
 	@PostMapping("member/join")
 	public void join(Member member, Model model, HttpSession session) throws IOException {
 		int result = 0;
@@ -73,6 +98,7 @@ public class MemberController {
 			result = -1; // 이미 있는 데이터야
 		model.addAttribute("result", result);
 	}
+
 	@RequestMapping(value = "/member/idChk", produces = "text/html;charset=utf-8")
 	@ResponseBody // jsp로 가지말고 바로 본문을 전달
 	public String idChk(String id, Model model) {
@@ -85,21 +111,15 @@ public class MemberController {
 		return msg;
 	}
 // join
-	
-//profile
-	@RequestMapping("member/mypage")
-	public void mypage(Member member, Model model, HttpSession session) throws IOException {
-		String id = (String) session.getAttribute("id");
-		Member member2 = ms.select(id);
-		model.addAttribute("member", member2);
-	}
-	// update 
-	@GetMapping("member/updateForm")
+
+	// update
+	@GetMapping("myPage/updateForm")
 	public void updateForm(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
 	}
+
 	@PostMapping("member/update")
 	public void update(Member member, Model model, HttpSession session) throws IOException {
 		String fileName1 = member.getFile().getOriginalFilename();
@@ -119,7 +139,7 @@ public class MemberController {
 		int result = ms.update(member);
 		model.addAttribute("result", result);
 	}
-	
+
 	// 회원 탈퇴
 	@RequestMapping("member/delete")
 	public void delete(Model model, HttpSession session) {
@@ -129,5 +149,29 @@ public class MemberController {
 			session.invalidate();
 		model.addAttribute("result", result);
 	}
-}
 
+	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
+
+	public MemberController(MemberService ms) {
+        this.ms = ms;
+    }
+
+	// 아이디 찾기
+	@RequestMapping(value = "member/findIdView", method = {RequestMethod.GET, RequestMethod.POST})
+	public String findIdView() throws Exception {
+		return "/member/findIdView";
+	}
+
+	@RequestMapping(value = "member/findId", method = {RequestMethod.GET, RequestMethod.POST} )
+    public String findId(Member member, Model model) {
+        logger.info("email: " + member.getEmail());
+        
+        if (ms.findIdCheck(member.getEmail()) == 0) {
+            model.addAttribute("msg", "이메일을 확인해주세요");
+            return "/member/findIdView";
+        } else {
+            model.addAttribute("member", ms.findId(member.getEmail()));
+            return "/member/findId";
+        }
+    }
+}

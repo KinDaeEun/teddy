@@ -116,6 +116,26 @@
 							class="form-control"></td>
 					</tr>
 					<tr>
+						<th>너비</th>
+						<td><input type="number" name="width" required="required"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<th>높이</th>
+						<td><input type="number" name="height" required="required"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<th>휠베이스</th>
+						<td><input type="number" name="wheelbase" required="required"
+							class="form-control"></td>
+					</tr>
+					<tr>
+						<th>길이</th>
+						<td><input type="number" name="length" required="required"
+							class="form-control"></td>
+					</tr>
+					<tr>
 						<th>표지사진</th>
 						<td><input type="file" name="c_cover_img_file"
 							class="form-control" required="required"></td>
@@ -124,6 +144,21 @@
 						<th>사진</th>
 						<td><input type="file" name="c_img_file" class="form-control"
 							required="required"></td>
+					</tr>
+					<tr>
+						<th>정면사진</th>
+						<td><input type="file" name="formt_img_file" class="form-control"
+							required="required"></td>
+					</tr>
+					<tr>
+						<th>옆면사진</th>
+						<td><input type="file" name="side_img_file" class="form-control"
+							required="required"></td>
+					</tr>
+					<tr>
+						<th>디자인 사진(여러장)</th>
+						<td><input type="file" name="img_file" class="form-control"
+							required="required" multiple="multiple"></td>
 					</tr>
 					<tr>
 						<td colspan="2"><textarea name="c_content" class="form-control"></textarea></td>

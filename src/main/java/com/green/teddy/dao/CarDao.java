@@ -14,4 +14,6 @@ public interface CarDao {
 
 	Car selectCar(int cno);
 
+	int getMaxCno();
+
 }

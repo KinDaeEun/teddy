@@ -32,4 +32,9 @@ public class CarServiceImpl implements CarService {
 	public Car selectCar(int cno) {
 		return cd.selectCar(cno);
 	}
+
+	@Override
+	public int getMaxCno() {
+		return cd.getMaxCno();
+	}
 }

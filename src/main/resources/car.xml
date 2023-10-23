@@ -20,7 +20,8 @@
 	<insert id="insertCar" parameterType="car">
 		insert into car
 		values(car_seq.nextval,#{c_name},#{min_price},#{max_price},#{brand},#{c_cover_img},#{c_img},
-		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n')
+		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},
+		#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n',#{width},#{height},#{wheelbase},#{length},#{formt_img},#{side_img})
 	</insert>
 	
 
@@ -37,6 +38,10 @@
 
 	<select id="selectCar" parameterType="integer" resultType="car">
 		select * from car where cno=#{cno}
+	</select>
+	
+	<select id="getMaxCno" resultType="integer">
+		select max(cno) from car 
 	</select>
 
 

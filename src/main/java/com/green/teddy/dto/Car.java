@@ -29,10 +29,18 @@ public class Car {
 	private String accel;
 	private String max_speed;
 	private String c_del;
+	private int width;
+	private int height;
+	private int wheelbase;
+	private int length;
+	private String formt_img;
+	private String side_img;
 	
 	//upload용
 	private MultipartFile c_cover_img_file;
 	private MultipartFile c_img_file;
+	private MultipartFile formt_img_file;
+	private MultipartFile side_img_file;
 	
 	
 	//paging용

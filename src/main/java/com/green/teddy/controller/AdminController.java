@@ -3,6 +3,7 @@ package com.green.teddy.controller;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -12,10 +13,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+
 
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.service.CarService;
+import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
 import com.green.teddy.service.PageBean;
 
@@ -26,6 +32,9 @@ public class AdminController {
 
 	@Autowired
 	private CarService cs;
+	
+	@Autowired
+	private Design_imgService ds;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
@@ -71,31 +80,72 @@ public class AdminController {
 	public void insertCarForm() {
 
 	}
-
+	//차량 정보및 디자인 이미지 입력
 	@RequestMapping("admin/insertCar")
-	public void insertCar(Model model, Car car, HttpSession session) throws IOException {
+	public void insertCar(Model model, Car car, HttpSession session, MultipartHttpServletRequest mhr)
+			throws IOException {
 		String real = session.getServletContext().getRealPath("/resources/upload");
-		// 표지 사진
-		String c_cover_img1 = car.getC_cover_img_file().getOriginalFilename();
-		UUID uuid = UUID.randomUUID();
-		String c_cover_img = uuid + c_cover_img1.substring(c_cover_img1.lastIndexOf("."));
-		car.setC_cover_img(c_cover_img);
-		FileOutputStream fos = new FileOutputStream(new File(real + "/" + c_cover_img));
-		fos.write(car.getC_cover_img_file().getBytes());
-		fos.close();
-		// 사진
-		String c_img1 = car.getC_img_file().getOriginalFilename();
-		UUID uuid2 = UUID.randomUUID();
-		String c_img = uuid2 + c_img1.substring(c_img1.lastIndexOf("."));
-		car.setC_img(c_img);
-		FileOutputStream fos2 = new FileOutputStream(new File(real + "/" + c_img));
-		fos2.write(car.getC_img_file().getBytes());
-		fos2.close();
-		int result = cs.insertCar(car);
-		model.addAttribute("result", result);
 
+		MultipartFile[] files = new MultipartFile[] { car.getC_cover_img_file(), car.getC_cover_img_file(),
+				car.getFormt_img_file(), car.getSide_img_file() };
+		for (int i = 0; i < files.length; i++) {
+			MultipartFile file = files[i];
+
+			if (!file.isEmpty()) {
+				String originalFileName = file.getOriginalFilename();
+				String uniqueFileName = generateUniqueFileName(originalFileName);
+				FileOutputStream fos = new FileOutputStream(new File(real + "/" + uniqueFileName));
+				fos.write(file.getBytes());
+				fos.close();
+
+				if (i == 0) {
+					car.setC_cover_img(uniqueFileName);
+				} else if (i == 1) {
+					car.setC_img(uniqueFileName);
+				} else if (i == 2) {
+					car.setFormt_img(uniqueFileName);
+				} else if (i == 3) {
+					car.setSide_img(uniqueFileName);
+				}
+			}
+		}
+
+	
+		List<MultipartFile> imgs = mhr.getFiles("img_file");
+		List<Design_img> design_img = new ArrayList<Design_img>();
+		
+		//방금 입력한 차량 번호를 조회
+		int cno = cs.getMaxCno();
+				
+		for (MultipartFile mf : imgs) {
+			Design_img di = new Design_img();
+			String originalFileName = mf.getOriginalFilename();
+			String uniqueFileName = generateUniqueFileName(originalFileName);
+			di.setImg_name(uniqueFileName);
+			di.setCno(cno);
+			design_img.add(di); 
+			// 사진 저장
+			FileOutputStream fos = new FileOutputStream(new File(real + "/" + uniqueFileName));
+			fos.write(mf.getBytes());
+			fos.close();
+		}
+		
+		int carResult = cs.insertCar(car);
+		int designResult = ds.insertImg(design_img);
+		int result = 0;
+		if(carResult!=0 &&designResult!=0){
+			result=1;
+		}
+		model.addAttribute("result", result);
+	}
+	// UUID생성
+	private String generateUniqueFileName(String originalFileName) {
+		UUID uuid = UUID.randomUUID();
+		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
 
+	
+	
 //	영세
 	@RequestMapping("admin/adminHelpList")
 	public void adminHelpList(Model model, HttpSession session, String pageNum, Help help) {
@@ -138,7 +188,7 @@ public class AdminController {
 	}
 
 	@RequestMapping("admin/adminHelpUpdateResult")
-	public void adminHelpUpdateResult(Help help, Model model, String pageNum, HttpSession session){
+	public void adminHelpUpdateResult(Help help, Model model, String pageNum, HttpSession session) {
 		int result = 0;
 		String id = (String) session.getAttribute("id");
 		result = hs.updateHelp(help);
