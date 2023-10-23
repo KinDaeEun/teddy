@@ -9,12 +9,17 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Design_img;
 import com.green.teddy.service.CarService;
+import com.green.teddy.service.Design_imgService;
 
 @Controller
 public class CarController {
 	@Autowired
 	private CarService cs;
+	
+	@Autowired
+	private Design_imgService ds;
 	
 	@GetMapping("car/findCenter")
 	public void findCenter() {
@@ -59,7 +64,7 @@ public class CarController {
 	@RequestMapping("car/carView")
 	public void carview(Model model, int cno) {
 		Car car = cs.selectCar(cno);
-		
+		List<Design_img> imgList = ds.imgList(cno);
 		model.addAttribute("car",car);
 	}
 	
