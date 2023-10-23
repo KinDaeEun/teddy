@@ -16,13 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-
 import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
+import com.green.teddy.dto.Member;
 import com.green.teddy.service.CarService;
 import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
+import com.green.teddy.service.MemberService;
 import com.green.teddy.service.PageBean;
 
 @Controller
@@ -32,9 +33,11 @@ public class AdminController {
 
 	@Autowired
 	private CarService cs;
-	
+
 	@Autowired
 	private Design_imgService ds;
+	@Autowired
+	private MemberService ms;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
@@ -80,7 +83,8 @@ public class AdminController {
 	public void insertCarForm() {
 
 	}
-	//차량 정보및 디자인 이미지 입력
+
+	// 차량 정보및 디자인 이미지 입력
 	@RequestMapping("admin/insertCar")
 	public void insertCar(Model model, Car car, HttpSession session, MultipartHttpServletRequest mhr)
 			throws IOException {
@@ -110,42 +114,40 @@ public class AdminController {
 			}
 		}
 
-	
 		List<MultipartFile> imgs = mhr.getFiles("img_file");
 		List<Design_img> design_img = new ArrayList<Design_img>();
-		
-		//방금 입력한 차량 번호를 조회
+
+		// 방금 입력한 차량 번호를 조회
 		int cno = cs.getMaxCno();
-				
+
 		for (MultipartFile mf : imgs) {
 			Design_img di = new Design_img();
 			String originalFileName = mf.getOriginalFilename();
 			String uniqueFileName = generateUniqueFileName(originalFileName);
 			di.setImg_name(uniqueFileName);
 			di.setCno(cno);
-			design_img.add(di); 
+			design_img.add(di);
 			// 사진 저장
 			FileOutputStream fos = new FileOutputStream(new File(real + "/" + uniqueFileName));
 			fos.write(mf.getBytes());
 			fos.close();
 		}
-		
+
 		int carResult = cs.insertCar(car);
 		int designResult = ds.insertImg(design_img);
 		int result = 0;
-		if(carResult!=0 &&designResult!=0){
-			result=1;
+		if (carResult != 0 && designResult != 0) {
+			result = 1;
 		}
 		model.addAttribute("result", result);
 	}
+
 	// UUID생성
 	private String generateUniqueFileName(String originalFileName) {
 		UUID uuid = UUID.randomUUID();
 		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
 
-	
-	
 //	영세
 	@RequestMapping("admin/adminHelpList")
 	public void adminHelpList(Model model, HttpSession session, String pageNum, Help help) {
@@ -171,7 +173,8 @@ public class AdminController {
 		model.addAttribute("help", help);
 
 	}
-    // 회원 문의 내용
+
+	// 회원 문의 내용
 	@RequestMapping("admin/adminHelpView")
 	public void adminHelpView(int hno, String pageNum, Model model) {
 		Help help = hs.selectHelp(hno);
@@ -179,14 +182,16 @@ public class AdminController {
 		model.addAttribute("help", help);
 		model.addAttribute("pageNum", pageNum);
 	}
-    //문의 내용 답변 폼
+
+	// 문의 내용 답변 폼
 	@RequestMapping("admin/adminHelpInsertForm")
 	public void adminHelpUpdateForm(Model model, int hno, String pageNum) {
 		Help help = hs.selectHelp(hno);
 		model.addAttribute("help", help);
 		model.addAttribute("pageNum", pageNum);
 	}
-    //문의 내용 답변 처리
+
+	// 문의 내용 답변 처리
 	@RequestMapping("admin/adminHelpInsertResult")
 	public void adminHelpUpdateResult(Help help, Model model, String pageNum, HttpSession session) {
 		int result = 0;
@@ -196,7 +201,8 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 	}
-    //문의 내용 삭제
+
+	// 문의 내용 삭제
 	@RequestMapping("admin/adminHelpDelete")
 	public void adminHelpDelete(Model model, HttpSession session, int hno, String pageNum) {
 		String id = (String) session.getAttribute("id");
@@ -204,5 +210,45 @@ public class AdminController {
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
+	}
+
+	// 관리자 회원 리스트
+	@RequestMapping("admin/adminMemberList")
+	public void adminMemberList(Model model, String pageNum, Member member) {
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = ms.adminMbTotal(member);// 전체 회원 수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		member.setStartRow(startRow);
+		member.setEndRow(endRow);
+		List<Member> mbList = ms.mbList(member);// 회원목록
+		// int num = total - startRow + 1;
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "아이디", "이름", "성별", "삭제여부" };
+		model.addAttribute("total", total);
+		model.addAttribute("title", title);
+		// model.addAttribute("num", num);
+		model.addAttribute("mbList", mbList);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+	}
+  // 관리자 회원 상세정보보기
+	@RequestMapping("admin/adminMemberView")
+	public void adminMemberView(String id, int pageNum, Model model) {
+		Member member = ms.select(id);
+		model.addAttribute("member", member);
+		model.addAttribute("pageNum", pageNum);
+	}
+  // 관리자 회원 삭제
+	@RequestMapping("admin/adminMemberDelete")
+	public void adminMemberDelete(String id, String pageNum, Model model) {
+		Member member = ms.select(id);
+		int result = ms.deleteAdmin(member.getId());
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+
 	}
 }

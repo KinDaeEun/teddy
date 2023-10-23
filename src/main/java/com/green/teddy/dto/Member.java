@@ -18,4 +18,10 @@ public class Member {
 	private String m_del;
 	// upload용
 	private MultipartFile file;
+	// paging용
+	private int startRow;
+	private int endRow;
+	// 검색용
+	private String search;
+	private String keyword;
 }

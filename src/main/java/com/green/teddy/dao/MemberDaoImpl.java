@@ -35,4 +35,19 @@ public class MemberDaoImpl implements MemberDao{
 	public int findIdCheck(String email){
 		return sst.selectOne("memberns.findIdCheck", email);
 	}
+	@Override
+	public int adminMbTotal(Member member) {
+	
+		return sst.selectOne("memberns.adminMbTotal", member);
+	}
+	@Override
+	public List<Member> mbList(Member member) {
+		
+		return sst.selectList("memberns.mbList", member);
+	}
+	@Override
+	public int deleteAdmin(String id) {
+		
+		return sst.delete("memberns.deleteAdmin", id);
+	}
 }

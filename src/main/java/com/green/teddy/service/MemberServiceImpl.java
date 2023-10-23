@@ -35,5 +35,19 @@ public class MemberServiceImpl implements MemberService {
 	public int findIdCheck(String email){
 		return md.findIdCheck(email);
 	}
+	@Override
+	public int adminMbTotal(Member member) {
+		return md.adminMbTotal(member);
+	}
+	@Override
+	public List<Member> mbList(Member member) {
+		
+		return md.mbList(member);
+	}
+	@Override
+	public int deleteAdmin(String id) {
+		
+		return md.deleteAdmin(id);
+	}
 	
 }
