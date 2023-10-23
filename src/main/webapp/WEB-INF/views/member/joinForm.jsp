@@ -42,7 +42,7 @@ function chk() {
 </script>
 </head>
 <body>
-	<div class="container " align="center">
+	<div class="container" align="center">
 		<div class="inner join-inner">
 			<h2 class="text-dark top">회원가입</h2>
 			<form action="${path }/member/join.do" method="post" enctype="multipart/form-data"

@@ -8,16 +8,22 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/view.css">
-<style>
-</style>
+<script>
+	// 글자 수 세기 , 제한
+	$(document).ready(function() {
+		$('#tf_cmt').on('keyup', function() {
+			$('#txt_num').html( $(this).val().length + " / 200");
+
+			if ($(this).val().length > 200) {
+				$(this).val($(this).val().substring(0, 200));
+				$('#txt_num').html("200 / 200");
+			}
+		});
+	});
+</script>
 </head>
 <body class="contents_l02">
-	<br>
-	<br>
-	<br>
-	<br>
-
-	<section id="sc_car">
+	<section id="sc_car pd_top" class="pd_top">
 		<div class="container">
 			<div class="cont">
 				<div id="dept_main">
@@ -35,8 +41,7 @@
 							<!-- <strong class="tit_summary">"911 경쟁 상대는 911뿐. 자신의 벽을
 								뛰어넘는다"</strong> -->
 							<p class="desc_detail">
-							<br>
-								${car.c_content }
+								<br> ${car.c_content }
 							</p>
 						</div>
 						<div class="area_review">
@@ -185,12 +190,12 @@
 							<!-- 로그인 했을 경우 -->
 							<span class="txt_cmt">고객님의 평가를 남겨주세요</span>
 							<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
-								title="고객님의 평가를 남겨주세요"></textarea>
+								id="tf_cmt" placeholder="고객님의 평가를 남겨주세요"></textarea>
 							<!-- 로그인 안했을 경우 -->
-							<span class="txt_num"> <strong>0</strong> / 300
-							</span>
+							<span class="txt_num" id="txt_num">0 / 200 </span>
 							<button type="button" class="btn_cmt">등록</button>
 						</div>
+
 						<!-- 댓글목록 START -->
 						<!-- 댓글이 있을 경우 -->
 						<ul class="list_comment">
@@ -208,10 +213,5 @@
 			</div>
 		</div>
 	</section>
-
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 </html>

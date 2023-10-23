@@ -8,39 +8,34 @@
 <title>전시장 찾기</title>
 <link rel="stylesheet" href="${path}/resources/css/findCenter.css">
 </head>
-
+<style>
+	.pd_top {
+		padding-top: 20vh;
+		margin-bottom: 100px;
+	}
+</style>
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h2 class="text text-secondary">전시장 찾기</h2>
-	<br>
-	<hr>
+	<div class="container pd_top">
+		<h2 class="text text-secondary">전시장 찾기</h2>
+		<div class="map_wrap">
+			<div id="map"
+				style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
 
-	<div class="map_wrap">
-		<div id="map"
-			style="width: 100%; height: 100%; position: relative; overflow: hidden;"></div>
-
-		<div id="menu_wrap" class="bg_white">
-			<div class="option">
-				<div>
-					<form onsubmit="searchPlaces(); return false;">
-						키워드 : <input type="text" value="강남 현대자동차" id="keyword" size="15">
-						<button type="submit">검색하기</button>
-					</form>
+			<div id="menu_wrap" class="bg_white">
+				<div class="option">
+					<div>
+						<form onsubmit="searchPlaces(); return false;">
+							키워드 : <input type="text" value="강남 현대자동차" id="keyword" size="15">
+							<button type="submit">검색하기</button>
+						</form>
+					</div>
 				</div>
+				<hr>
+				<ul id="placesList"></ul>
+				<div id="pagination"></div>
 			</div>
-			<hr>
-			<ul id="placesList"></ul>
-			<div id="pagination"></div>
 		</div>
 	</div>
-
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=1c8fa635c726227215ac04b166705a44&libraries=services"></script>
 	<script>
@@ -274,17 +269,6 @@
 			}
 		}
 	</script>
-
-	<hr>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 </body>
 
 </html>
