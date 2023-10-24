@@ -172,6 +172,7 @@ div {
 .box_total .area_review .tit_total {
 	float: left;
 	margin-left: 80px;
+	margin-left: 60px;
 	margin-top: 2px;
 	font-size: 28px;
 	color: #da072c;

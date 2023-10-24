@@ -116,7 +116,6 @@ public class CarController {
 		model.addAttribute("rateAvg", rateAvg);
 
 		List<Design_img> imgList = ds.imgList(cno);
-		List<Review> reviewList = res.reviewList(cno);
 		for(Design_img img:imgList) {
 			System.out.println(img);
 		}
