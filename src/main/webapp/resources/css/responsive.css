@@ -208,7 +208,26 @@
 		margin: 0;
 		margin-bottom: 10px;
 	}
-
+	/* news */
+	
+	.v_hb {
+		height: 180vh;
+	}
+	
+	.news_img{
+		overflow: hidden;
+		width: 100%;
+		margin: auto;
+	}
+	.news_img img {
+		width:100%;
+	}
+	.ummmm {
+		width: 410px;
+		margin-top: 30px;
+		float: left;
+		margin: auto;
+	}
 	/* Footer */
 	.footer-content {
 		flex-direction: column;

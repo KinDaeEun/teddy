@@ -37,7 +37,7 @@ a {
 	cursor: pointer;
 }
 
-body.n .news .news_area .news_list li .news_img {
+body.n .news .news_area .news_list li .news_img{
     float: left;
     overflow: hidden;
     width: 154px;

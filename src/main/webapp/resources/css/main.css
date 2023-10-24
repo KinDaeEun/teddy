@@ -62,7 +62,9 @@ ul {
 .v_h {
 	height: 100vh;
 }
-
+.v_hb {
+	height: 130vh;
+}
 .six-wd {
 	width: 480px;
 }
