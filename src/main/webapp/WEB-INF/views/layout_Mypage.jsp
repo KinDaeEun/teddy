@@ -25,10 +25,10 @@
 	<div class="header">
 		<tiles:insertAttribute name="header" />
 	</div>
-	<div class="container pd">
-		<table class="table">
-			<tr class="mg" height="1000">
-				<td width="25%"><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
+	<div class="container pg_top ">
+		<table class="table fx">
+			<tr height="1000">
+				<td><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
 				<td><tiles:insertAttribute name="body"></tiles:insertAttribute></td>
 			</tr>
 		</table>

@@ -30,7 +30,7 @@
 </style>
 </head>
 <body>
-	<div class="pt v_h">
+	<div class="pg_top v_h">
 		<h3 class="title">문의내역</h3>
 		<div class="inner">
 			<div class="list_fx">

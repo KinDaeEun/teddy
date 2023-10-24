@@ -10,21 +10,9 @@
 </head>
 
 <body>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
-	<h3 class="c_title">FAQ</h3>
-	<br>
-	<section class="accordion" id="accordionExample">
+<div class="pg_top pg-b">
+	<h3 class="c_title pg-b">FAQ</h3>
+	<section class="accordion" id="accordionExample v_h">
 		<div class="inner">
 			<div class="accordion-item">
 				<h2 class="accordion-header" id="headingOne">
@@ -137,14 +125,12 @@
 	<br>
 	<br>
 
-	<div class="qna_help">
+	<div class="qna_help ">
 		<div class="go_help">
 			1:1 문의 <br>더 궁금하신 내용이 있으시면 1:1 문의를 이용해 주세요.<br> <a
 				href="${path }/help/helpInsertForm.do" class="btn btn-outline-secondary btn-sm">1:1 문의 바로가기</a>
 		</div>
 	</div>
-	<br>
-	<br>
-	<br>
+</div>
 </body>
 </html>

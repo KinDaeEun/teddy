@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 찾기</title>
 </head>
 <body>
 	<script type="text/javascript">
@@ -15,8 +15,8 @@
 			alert(msg);
 		}
 	</script>
-	<div class="container">
-		<div class="text-center">
+	<div class="container pg_top six-wd">
+		<div class="text-center ">
 			<h1 class="h4 text-gray-900 mb-2">아이디 찾기</h1>
 			<p class="mb-4">이메일을 입력해주세요!</p>
 		</div>
@@ -26,16 +26,18 @@
 					id="email" aria-describedby="emailHelp" name="email"
 					placeholder="Enter Email Address...">
 			</div>
-			<input type="submit" class="btn btn-primary btn-user btn-block"
-				value="아이디 찾기">
+			<br>
+			<div align="center">
+				<input type="submit" class="btn btn-dark btn-user btn-block"
+					value="아이디 찾기">
+			</div>
 		</form>
 		<hr>
 		<div align="center">
-			<a href="${path}/member/login.do" class="btn btn-sm btn-dark"> 로그인
-			</a>
-			<hr>
+			<a href="${path}/member/login.do" class="btn btn-google btn-user btn-block">
+				로그인 </a>
 			<div class="text-center">
-				<a class="small" href="${path}/main/main.do">메인페이지</a>
+				<a class="btn btn-google btn-user btn-block" href="${path}/main/main.do">메인페이지</a>
 			</div>
 		</div>
 	</div>

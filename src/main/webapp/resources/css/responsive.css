@@ -2,7 +2,6 @@
 	/* Header */
 	.header {
 		height: 100px;
-		
 	}
 	.banner {
 		display: none;
@@ -25,6 +24,15 @@
 	}
 	#m-nav {
 		display: block;
+	}
+	.pg_top {
+		padding: 150px 0;
+	}
+	.fxc {
+		display: flex;
+	}
+	.v_h {
+		height: 90vh;
 	}
 	.gnb {
 		flex-direction: column;
@@ -113,7 +121,7 @@
 	/* Common CSS */
 	.inner {
 		width: 100%;
-		padding: 15px;
+/* 		padding: 15px; */
 		box-sizing: border-box;
 	}
 

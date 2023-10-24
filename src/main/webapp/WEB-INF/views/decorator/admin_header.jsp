@@ -32,7 +32,7 @@
 			<ul id="gnb">
 				<li><a href="${path}/admin/adminCar.do">차량관리</a></li>
 				<li><a href="${path}/admin/adminMemberList.do">회원관리</a></li>
-				<li><a href="">시승예약관리</a>
+				<li><a href="${path}/admin/adminMemberList.do">시승예약관리</a>
 				<li><a href="">게시판관리</a>
 				<li><a href="${path}/admin/adminHelpList.do">1:1문의관리</a></li>
 			</ul>
@@ -45,7 +45,7 @@
 			</div>
 			<ul class="gnb">
 				<li><a href="${path}/admin/adminCar.do">차량관리</a></li>
-				<li><a href="">회원관리</a></li>
+				<li><a href="${path}/admin/adminMemberList.do">회원관리</a></li>
 				<li><a href="">시승예약관리</a>
 				<li><a href="">게시판관리</a>
 				<li><a href="${path}/admin/adminHelpList.do">1:1문의관리</a></li>

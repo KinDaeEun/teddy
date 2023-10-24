@@ -12,7 +12,7 @@
 	<section>
 		<div class="container text-center ">
 			<div>
-				<h3 class="mb">마이 페이지</h3>
+				<h3 class="">마이 페이지</h3>
 			</div>
 
 			<div class="myinfo-wrap">
