@@ -19,7 +19,7 @@
 				</c:forEach>
 			</ul>
 			<h2>입니다</h2>
-			<a href="${path}/member/findId.do" class="btn btn-primary">로그인페이지</a>
+			<a href="${path}/member/loginForm.do" class="btn btn-primary">로그인페이지</a>
 			<a href="${path}/main/main.do" class="btn btn-primary">메인페이지</a>
 		</div>
 	</div>
