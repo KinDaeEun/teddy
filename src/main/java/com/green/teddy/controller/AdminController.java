@@ -148,7 +148,7 @@ public class AdminController {
 		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
 
-//	영세
+	// 1:1문의 리스트
 	@RequestMapping("admin/adminHelpList")
 	public void adminHelpList(Model model, HttpSession session, String pageNum, Help help) {
 		if (pageNum == null || pageNum.equals(""))
@@ -235,14 +235,16 @@ public class AdminController {
 		model.addAttribute("pb", pb);
 		model.addAttribute("pageNum", pageNum);
 	}
-  // 관리자 회원 상세정보보기
+
+	// 관리자 회원 상세정보보기
 	@RequestMapping("admin/adminMemberView")
 	public void adminMemberView(String id, int pageNum, Model model) {
 		Member member = ms.select(id);
 		model.addAttribute("member", member);
 		model.addAttribute("pageNum", pageNum);
 	}
-  // 관리자 회원 삭제
+
+	// 관리자 회원 삭제
 	@RequestMapping("admin/adminMemberDelete")
 	public void adminMemberDelete(String id, String pageNum, Model model) {
 		Member member = ms.select(id);

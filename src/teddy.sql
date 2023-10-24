@@ -63,7 +63,7 @@ DROP TABLE car CASCADE CONSTRAINTS;
 
 
 -- 차량 이미지
-create table design_img(
+create table design_img( 
 	dno number(20) primary key,
 	img_name varchar2(100),
 	cno number(20),
@@ -83,7 +83,17 @@ BEGIN
 END;
 /
 
-
+-- 칭찬 알림방
+create table compliment(
+	cpno number(20) primary key, --칭찬번호
+	cp_content varchar2(1000),  --칭찬내용
+	cp_date date,  --칭찬 등록일
+	cp_del char(1), --삭제여부
+	id varchar2(20) references member(id) --등록한 id
+);
+drop table compliment;
+select * from compliment;
+create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 -- 게시판
 create table board (
     bno number primary key,         -- 게시판 번호
