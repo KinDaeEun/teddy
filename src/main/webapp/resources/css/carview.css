@@ -20,6 +20,7 @@ div.body div.contents {
 	vertical-align: top;
 }
 
+
 .cont {
 	width: 980px;
 	margin: 0 auto;
@@ -170,7 +171,7 @@ div {
 
 .box_total .area_review .tit_total {
 	float: left;
-	margin-left: 60px;
+	margin-left: 80px;
 	margin-top: 2px;
 	font-size: 28px;
 	color: #da072c;
