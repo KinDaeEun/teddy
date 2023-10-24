@@ -54,6 +54,7 @@ commit;
 	    formt_img varchar2(100),          --정면 이미지
 	    side_img varchar2(100)            --옆면 이미지
 	);
+	
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
@@ -239,6 +240,8 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 길동대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
+
+
 
 
 -- 뉴스 데이터
