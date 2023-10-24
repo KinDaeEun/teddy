@@ -19,11 +19,6 @@ h3 {
 	text-align: center;
 }
 
-.table {
-	border: 1px solid black;
-	
-}
-
 .join-inner {
 	height: 100vh;
 }
@@ -48,13 +43,31 @@ h3 {
 	text-align: right;
 }
 
-.mg {
-	margin: 100px 0;
+
+
+.h_t {
+	height: auto;
+	overflow: hidden;
+	background-color: #FFFFF0;
+	border-radius: 50px 50px 0px 0px;
 }
 
 .mr {
 	margin-right: 30px;
 	color: gray;
+}
+
+.h_view {
+	width: 800px;
+	height: auto;
+	border-radius: 50px;
+}
+
+.boxx {
+	background-color: #E0FFFF;
+	height: auto;
+	overflow: hidden;
+	border-radius: 0px 0px 50px 50px;
 }
 </style>
 
@@ -62,46 +75,47 @@ h3 {
 
 <body>
 	<div class="container top" align="center">
-		<div class="inner join-inner table">
-			<div class="veiw_fx mg">
+		<div class="inner join-inner h_view">
+			<div class="veiw_fx mg h_t">
 				<div></div>
 				<h3 class="h_title">${id }님의문의사항</h3>
+				<%-- 				<a href="${path }/help/helpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }" class="mr">수정하기</a>  --%>
 				<a
-					href="${path }/help/helpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }"
-					class="mr">수정하기</a> <a
 					href="${path }/help/helpDelete.do?hno=${help.hno}&pageNum=${pageNum }"
 					class="mr">삭제하기</a>
 			</div>
-			<div class="mb-3 row">
-				<label for="staticEmail" class="col-sm-2 col-form-label">제목</label>
-				<div class="col-sm-10">
-					<input type="text" readonly class="form-control-plaintext"
-						value="${help.h_title }">
-				</div>
-			</div>
-			<div class="mb-3 row">
-				<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
-				<div class="col-sm-10">
-					<input type="text" readonly class="form-control-plaintext"
-						value="${help.h_content }">
-				</div>
-			</div>
-
-			<c:if test="${help.h_fileName != null }">
+			<div class="boxx">
 				<div class="mb-3 row">
-					<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
+					<label for="staticEmail" class="col-sm-2 col-form-label">제목</label>
 					<div class="col-sm-10">
-						<img src="${path}/resources/upload/${help.h_fileName}"
-							class="h_img" alt="...">
+						<input type="text" readonly class="form-control-plaintext"
+							value="${help.h_title }">
 					</div>
 				</div>
-			</c:if>
-
-			<c:if test="${help.h_fileName == null }">
 				<div class="mb-3 row">
-					<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
+					<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
+					<div class="col-sm-10">
+						<input type="text" readonly class="form-control-plaintext"
+							value="${help.h_content }">
+					</div>
 				</div>
-			</c:if>
+
+				<c:if test="${help.h_fileName != null }">
+					<div class="mb-3 row">
+						<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
+						<div class="col-sm-10">
+							<img src="${path}/resources/upload/${help.h_fileName}"
+								class="h_img" alt="...">
+						</div>
+					</div>
+				</c:if>
+
+				<c:if test="${help.h_fileName == null }">
+					<div class="mb-3 row">
+						<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
+					</div>
+				</c:if>
+			</div>
 		</div>
 		<div>
 			<h3>답변</h3>

@@ -14,7 +14,14 @@ public interface MemberService {
 	int delete(String id);
 	int findIdCheck(String email);
 	List<Member> findId(String email);
+
+	int adminMbTotal(Member member);
+	List<Member> mbList(Member member);
+	int deleteAdmin(String id);
+	
+
 	int findPwCheck(Member member);
 	void findPw(String email, String id) throws MessagingException, UnsupportedEncodingException;
+
 
 }

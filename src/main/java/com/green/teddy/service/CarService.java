@@ -3,6 +3,7 @@ package com.green.teddy.service;
 import java.util.List;
 
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Review;
 
 public interface CarService {
 
@@ -15,5 +16,4 @@ public interface CarService {
 	Car selectCar(int cno);
 
 	int getMaxCno();
-
 }

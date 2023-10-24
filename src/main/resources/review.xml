@@ -4,5 +4,12 @@
 
 <mapper namespace="reviewns">
 
-		
+	<insert id="reviewInsert" parameterType="review">
+		insert into review values( review_seq.nextval, #{id}, #{cno}, #{rating},
+		#{re_content}, sysdate, 'n' )
+	</insert>
+	
+	<select id="reviewList" parameterType="integer" resultType="review">
+		select * from review where cno = #{cno}
+	</select>
 </mapper>

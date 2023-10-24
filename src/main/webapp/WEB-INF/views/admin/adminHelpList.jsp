@@ -85,8 +85,6 @@
 							class="menuTitle">${help.h_title }</a></td>
 						<td class="text-center">${help.h_del }</td>
 						<td class="text-center">${help.h_date }</td>
-
-
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -94,8 +92,8 @@
 		<!-- paging -->
 		<div>
 			<ul class="pagination pagination-sm justify-content-center">
-				<li>${pb}</li>
-				<li>${pageNum }</li>
+<%-- 				<li>${pb}</li> --%>
+<%-- 				<li>${pageNum }</li> --%>
 				<c:if test="${pb.startPage > pb.pagePerBlock}">
 					<li class="page-item"><a class="page-link"
 						href="adminHelpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}">

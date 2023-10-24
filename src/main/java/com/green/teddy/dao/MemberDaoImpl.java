@@ -38,6 +38,22 @@ public class MemberDaoImpl implements MemberDao{
 		return sst.selectOne("memberns.findIdCheck", email);
 	}
 	@Override
+
+	public int adminMbTotal(Member member) {
+	
+		return sst.selectOne("memberns.adminMbTotal", member);
+	}
+	@Override
+	public List<Member> mbList(Member member) {
+		
+		return sst.selectList("memberns.mbList", member);
+	}
+	@Override
+	public int deleteAdmin(String id) {
+		
+		return sst.delete("memberns.deleteAdmin", id);
+	}
+
 	public int findPwCheck(Member member){
 	return sst.selectOne("memberns.findPwCheck", member);	
 	}
@@ -49,5 +65,6 @@ public class MemberDaoImpl implements MemberDao{
 		map.put("password", password);
 		return sst.update("memberns.findPw", map);
 	}
+
 
 }

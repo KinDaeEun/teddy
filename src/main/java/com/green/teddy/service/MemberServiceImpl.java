@@ -50,6 +50,23 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
+	public int adminMbTotal(Member member) {
+		return md.adminMbTotal(member);
+	}
+	@Override
+	public List<Member> mbList(Member member) {
+		
+		return md.mbList(member);
+	}
+	@Override
+	public int deleteAdmin(String id) {
+		
+		return md.deleteAdmin(id);
+	}
+	
+
+
+	@Override
 	public int findPwCheck(Member member) {
 		return md.findPwCheck(member);
 	}
@@ -72,5 +89,6 @@ public class MemberServiceImpl implements MemberService {
 			sendMail.setTo(email);
 			sendMail.send();
 	}
+
 
 }
