@@ -5,22 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>아이디 조회</title>
 </head>
 <body>
-	<div class="container">
-		<div class="jumbotron">
-			<h2>아이디는 :</h2>
-			<br />
-			<ul>
-				<c:forEach items="${member}" var="member">
-					<li>${member.id}</li>
-					<br />
-				</c:forEach>
-			</ul>
-			<h2>입니다</h2>
-			<a href="${path}/member/findId.do" class="btn btn-primary">로그인페이지</a>
-			<a href="${path}/main/main.do" class="btn btn-primary">메인페이지</a>
+	<div class="container pg_top fx ">
+		<div class="jumbotron six-wd bd pg-tb">
+			<div align="center">
+				<h2>아이디 목록</h2>
+				<br />
+				<ul>
+					<c:forEach items="${member}" var="member">
+						<li>${member.id}</li>
+						<br />
+					</c:forEach>
+				</ul>
+				<a href="${path}/member/loginForm.do" class="btn btn-dark">로그인페이지</a>
+				<a href="${path}/main/main.do" class="btn btn-dark">메인페이지</a>
+			</div>
 		</div>
 	</div>
 </body>

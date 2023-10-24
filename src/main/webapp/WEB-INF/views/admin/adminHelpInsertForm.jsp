@@ -33,23 +33,22 @@ h3 {
 
 </head>
 <body>
+<div class="pg_top">
 	<form action="${path}/admin/adminHelpInsertResult.do" method="post"
 		enctype="multipart/form-data">
-
-		<br> <br> <br> <br> <br> <br> <br>
-		<br> <br> <br> <br> <br> <input type="hidden"
-			name="id" value="${id }"> <input type="hidden" name="hno"
-			value="${help.hno }"> <input type="hidden" name="pageNum"
-			value="${pageNum }">
+		<input type="hidden" name="id" value="${id }"> <input
+			type="hidden" name="hno" value="${help.hno }"> <input
+			type="hidden" name="pageNum" value="${pageNum }">
 		<h3>${help.id }님의&nbsp;1:1문의</h3>
 
-		<div class="mb-3 inner" >
-			<textarea class="form-control" name="r_content" id="exampleFormControlTextarea1"
-				rows="3"></textarea>
+		<div class="mb-3 inner">
+			<textarea class="form-control" name="r_content"
+				id="exampleFormControlTextarea1" rows="3"></textarea>
 		</div>
 		<div align="center" style="margin-top: 50px">
 			<input type="submit" class="btn btn-outline-secondary" value="답변하기">
 		</div>
 	</form>
+	</div>
 </body>
 </html>

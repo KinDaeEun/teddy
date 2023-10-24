@@ -23,6 +23,8 @@
 </script>
 </head>
 <body class="contents_l02">
+
+
 	<section id="sc_car pd_top" class="pd_top">
 		<div class="container">
 			<div class="cont">
@@ -108,6 +110,8 @@
 						</div>
 					</div>
 				</div>
+
+
 				<!-- 디자인 START -->
 				<div class="box_design box_g">
 					<h4 class="tit_subject">디자인</h4>
@@ -116,21 +120,14 @@
 						<p></p>
 					</div>
 					<ul class="list_detail">
-						<li data-thumb="0"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
-						<li data-thumb="1"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
-						<li data-thumb="2"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
+						<c:forEach var="img" items="${ imgList}">
+							<li data-thumb="1"><a href="#none"
+								onclick="window.open(this.src)" class="link_thumb"> <img
+									alt="" src="${path}/resources/upload/${img.img_name}"
+									class="thumb_g"> <span class="frame_g"></span>
+							</a></li>
+						</c:forEach>
+
 					</ul>
 					<p class="desc_detail"></p>
 				</div>
@@ -163,11 +160,13 @@
 						<div class="cmt_total">
 							<h4 class="tit_cmt">댓글 ${total }개</h4>
 							<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
+
 								<!-- 평점 이미지 자리 --> <span class="raging_g"> <fmt:formatNumber
 										pattern="#.#">${rateAvg }</fmt:formatNumber> <c:forEach
 										begin="1" end="${rateAvg }">★
 								</c:forEach>
 							</span>
+
 							</span>
 						</div>
 						<!-- 평점 END -->
@@ -213,10 +212,12 @@
 												</c:forEach>
 										</span> <span class="txt_user">${review.id }</span>
 									</span>
+
 										<p class="desc_cmt">${review.re_content }</p> <a
 										class="delete"
 										href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
 										<span class="txt_date">${review.re_date }</span></li>
+
 								</c:forEach>
 							</ul>
 						</div>
@@ -249,5 +250,6 @@
 			<!-- 댓글 END -->
 		</div>
 	</section>
+
 </body>
 </html>

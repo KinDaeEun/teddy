@@ -16,4 +16,9 @@ public class Design_imgDaoImpl implements Design_imgDao {
 	public int insertImg(List<Design_img> design_img) {
 		return sst.insert("design_imgns.insertImg",design_img);
 	}
+
+	@Override
+	public List<Design_img> imgList(int cno) {
+		return sst.selectList("design_imgns.imgList",cno);
+	}
 }

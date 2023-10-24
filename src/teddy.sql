@@ -20,7 +20,9 @@ alter table member add member_auth number default 0;
 select * from member;
 drop table member;
 
-commit;
+create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
+select * from car;
+
 
 
 -- 차량
@@ -53,6 +55,7 @@ commit;
 	    formt_img varchar2(100),          --정면 이미지
 	    side_img varchar2(100)            --옆면 이미지
 	);
+	
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
@@ -238,6 +241,8 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 길동대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
+
+
 
 
 -- 뉴스 데이터

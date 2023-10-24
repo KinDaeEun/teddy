@@ -11,15 +11,23 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.green.teddy.dto.Car;
-import com.green.teddy.dto.Review;
+
+import com.green.teddy.dto.Design_img;
 import com.green.teddy.service.CarService;
 import com.green.teddy.service.PageBean;
+import com.green.teddy.service.Design_imgService;
+
+import com.green.teddy.dto.Review;
 import com.green.teddy.service.ReviewService;
 
 @Controller
 public class CarController {
 	@Autowired
 	private CarService cs;
+
+	@Autowired
+	private Design_imgService ds;
+
 	@Autowired
 	private ReviewService res;
 
@@ -67,6 +75,7 @@ public class CarController {
 	@RequestMapping("car/carView")
 	public void carview(Model model, int cno, String pageNum, HttpSession session) {
 		Car car = cs.selectCar(cno);
+
 		String id = (String) session.getAttribute("id");
 		
 		// paging
@@ -105,6 +114,17 @@ public class CarController {
 		model.addAttribute("car", car);
 		model.addAttribute("total", total);
 		model.addAttribute("rateAvg", rateAvg);
+
+		List<Design_img> imgList = ds.imgList(cno);
+		List<Review> reviewList = res.reviewList(cno);
+		for(Design_img img:imgList) {
+			System.out.println(img);
+		}
+		model.addAttribute("car", car);
+		model.addAttribute("imgList", imgList);
+		model.addAttribute("reviewList", reviewList);
+
+
 	}
 
 }
