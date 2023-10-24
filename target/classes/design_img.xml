@@ -10,6 +10,10 @@
 		</foreach>
 		select * from dual
 	</insert>
+	
+	<select id="imgList" parameterType="integer" resultType="desige_img">
+		select * from desige_img where cno = #{cno}
+	</select>
 </mapper>
 
 		

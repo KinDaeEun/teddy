@@ -15,7 +15,6 @@ import com.green.teddy.service.CarService;
 import com.green.teddy.service.Design_imgService;
 
 import com.green.teddy.dto.Review;
-import com.green.teddy.service.CarService;
 import com.green.teddy.service.ReviewService;
 
 
@@ -76,12 +75,13 @@ public class CarController {
 	@RequestMapping("car/carView")
 	public void carview(Model model, int cno) {
 		Car car = cs.selectCar(cno);
-
 		List<Design_img> imgList = ds.imgList(cno);
 		List<Review> reviewList = res.reviewList(cno);
+		
 		model.addAttribute("car",car);
+		model.addAttribute("imgList",imgList);
 		model.addAttribute("reviewList", reviewList);
-		model.addAttribute("car", car);
+
 	}
 
 }
