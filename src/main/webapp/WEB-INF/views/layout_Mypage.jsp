@@ -28,7 +28,7 @@
 	<div class="container pg_top ">
 		<table class="table fx">
 			<tr height="1000">
-				<td><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
+				<td class="fxc"><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
 				<td><tiles:insertAttribute name="body"></tiles:insertAttribute></td>
 			</tr>
 		</table>
