@@ -13,10 +13,10 @@ h2 {
 	margin-bottom: 50px;
 }
 
-.pd_top {
-	padding-top: 200px;
-	height: 130vh;
-}
+/* .pd_top { */
+/* 	padding-top: 200px; */
+/* 	height: 130vh; */
+/* } */
 </style>
 
 <script>
@@ -40,11 +40,11 @@ h2 {
 
 </head>
 <body>
-	<div class="container pd_top">
+	<div class="container pg_top pg-b">
 		<h2 align="left" class="text-secondary">차량 선택</h2>
 		<form action="${path}/car/reservationResult.do" method="post"
 			name="frm">
-			<table class="table table-bordered">
+			<table class="table">
 				<tr>
 					<th>차량 브랜드&nbsp;*</th>
 					<c:if test="${not empty brandlist}">
@@ -80,7 +80,7 @@ h2 {
 
 			<h2 align="left" style="margin-top: 50px;" class="text-secondary">시승
 				예약</h2>
-			<table class="table table-bordered">
+			<table class="table">
 				<tr>
 					<th>성명&nbsp;*</th>
 					<td><input type="text" name="r_name" class="form-control"

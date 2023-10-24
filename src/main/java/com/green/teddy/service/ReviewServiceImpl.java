@@ -18,8 +18,19 @@ public class ReviewServiceImpl implements ReviewService {
 		return red.reviewInsert(review);
 	}
 
-	@Override
-	public List<Review> reviewList(int cno) {
-		return red.reviewList(cno);
+	public List<Review> reviewList(Review review) {
+		return red.reviewList(review);
+	}
+
+	public int getTotal(int cno) {
+		return red.getTotal(cno);
+	}
+
+	public float rateAvg(int cno) {
+		return red.rateAvg(cno);
+	}
+
+	public int reviewDelete(int re_no) {
+		return red.reviewDelete(re_no);
 	}
 }

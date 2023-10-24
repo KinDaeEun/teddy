@@ -22,7 +22,7 @@
 					</c:if>
 					<c:if test="${id == 'admin'}">
 						<a href="${path}/myPage/mypage.do">마이페이지</a>
-						<a href="${path}/admin/adminMain.do">관리자페이지</a>
+						<a href="${path}/admin/adminCar.do">관리자페이지</a>
 					</c:if>
 				</div>
 			</c:if>
@@ -103,7 +103,7 @@
 					</c:if>
 					<c:if test="${id == 'admin'}">
 						<a href="${path}/myPage/mypage.do">마이페이지</a>
-						<a href="${path}/admin/adminMain.do">관리자페이지</a>
+						<a href="${path}/admin/adminCar.do">관리자페이지</a>
 					</c:if>
 				</div>
 			</c:if>

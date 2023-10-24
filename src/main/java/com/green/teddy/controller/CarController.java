@@ -2,6 +2,8 @@ package com.green.teddy.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,6 +14,7 @@ import com.green.teddy.dto.Car;
 
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.service.CarService;
+import com.green.teddy.service.PageBean;
 import com.green.teddy.service.Design_imgService;
 
 import com.green.teddy.dto.Review;
@@ -57,11 +60,9 @@ public class CarController {
 		// endPage는 총페이지 보다 크면 안된다
 		if (endPage > totalPage)
 			endPage = totalPage;
-
+		
 		List<Car> carList = cs.carList(car);
-		for(Car cl:carList) {
-			System.out.println(cl);
-		}
+
 		model.addAttribute("carList", carList);
 		model.addAttribute("car", car);
 		model.addAttribute("totalPage", totalPage);
@@ -69,16 +70,60 @@ public class CarController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		model.addAttribute("currentPage", currentPage);
+
 	}
 
 	@RequestMapping("car/carView")
-	public void carview(Model model, int cno) {
+	public void carview(Model model, int cno, String pageNum, HttpSession session) {
 		Car car = cs.selectCar(cno);
+
+		String id = (String) session.getAttribute("id");
+		
+		// paging
+		Review review = new Review();
+		if ( pageNum == null || pageNum.equals("") )
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 3;
+		int pagePerBlock = 5;
+		review.setId(id);
+		review.setCno(cno);
+		int startRow = ( currentPage - 1 ) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		review.setStartRow(startRow);
+		review.setEndRow(endRow);
+		
+		int total = res.getTotal(cno);
+		int totalPage = (int) Math.ceil((double) total / rowPerPage); // 총 페이지 수
+		int startPage = currentPage - (currentPage - 1) % rowPerPage;// 한 블록의 사작 페이지
+		int endPage = startPage + pagePerBlock - 1;
+		
+		if (endPage > totalPage)
+			endPage = totalPage;
+		
+		
+		List<Review> reviewList = res.reviewList(review);
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		int num = total - startRow + 1;
+		
+		float rateAvg = res.rateAvg(cno);
+		
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("num", num);
+		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("car", car);
+		model.addAttribute("total", total);
+		model.addAttribute("rateAvg", rateAvg);
+
 		List<Design_img> imgList = ds.imgList(cno);
+
 		List<Review> reviewList = res.reviewList(cno);
+
 		model.addAttribute("car", car);
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("reviewList", reviewList);
+
 
 	}
 

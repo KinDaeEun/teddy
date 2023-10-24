@@ -25,13 +25,13 @@
 			<td class="bc"><a class="text-dark" href="${path }/myPage/mypage.do">홈</a></td>
 		</tr>
 		<tr class="text-center">
-			<td class="bc"><a class="text-dark" href="${path }/myPage/updateForm.do">내 정보 수정</a></td>
+			<td class="bc"><a class="text-dark" href="${path }/myPage/updateForm.do">정보 수정</a></td>
 		</tr>
 		<tr class="text-center">
-			<td class="bc"><a class="text-dark" href="${path }/myPage/reservationList.do">시승예약확인</a></td>
+			<td class="bc"><a class="text-dark" href="${path }/myPage/reservationList.do">예약 확인</a></td>
 		</tr>
 		<tr class="text-center">
-			<td class="bc"><a class="text-dark" href="${path }/help/helpList.do">1:1 문의내역</a></td>
+			<td class="bc"><a class="text-dark" href="${path }/help/helpList.do">문의 내역</a></td>
 		</tr>
 	</table>
 </body>

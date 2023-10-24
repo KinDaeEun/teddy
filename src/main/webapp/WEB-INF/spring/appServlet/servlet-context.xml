@@ -46,6 +46,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="main/main.do" />
+			<mapping path="car/carView.do" />
 			<beans:ref bean="sc" />
 		</interceptor>
 	</interceptors>

@@ -1,35 +1,37 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
- <%@ include file="../headerBase.jsp"%> 
- 
+<%@ include file="../headerBase.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-/* 맨 위로 */
-$(function(){
-	  $('#top').on('click',function(e){
-	      e.preventDefault();
-	      $('body').animate({scrollTop:0},600);
-	  });
-	  
-	  $(window).scroll(function() {
-	    if ($(document).scrollTop() > 100) {
-	      $('#top').addClass('show');
-	    } else {
-	      $('#top').removeClass('show');
-	    }
-	  });
+	/* 맨 위로 */
+	$(function() {
+		$('#top').on('click', function(e) {
+			e.preventDefault();
+			$('body').animate({
+				scrollTop : 0
+			}, 600);
+		});
+
+		$(window).scroll(function() {
+			if ($(document).scrollTop() > 100) {
+				$('#top').addClass('show');
+			} else {
+				$('#top').removeClass('show');
+			}
+		});
 	});
 </script>
 
 </head>
 <body>
 	<a id="top"></a>
-			  
+
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
@@ -44,51 +46,51 @@ $(function(){
 			<div class="ranking-content">
 				<h2>Best Car</h2>
 				<div class="items_car">
-					<div class="item_car">
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-01.jpg">
+						<div class="item_car">
+							<div class="up-image">
+								<img src="${path}/resources/images/main/best-city-01.jpg">
+							</div>
+							<div class="down-desc">
+								<span class="badge good">Good to go</span>
+								<h3>The Kia, Ray EV</h3>
+								<p>London’s main sights might date back millennia, but the
+									capital’s shops, bars, hotels, and restaurants emerge and
+									evolve on an almost weekly basis.</p>
+								<a class="btn-explore" href="#none">Explore <img
+									src="${path}/resources/images/main/icon-arrow.png"></a>
+							</div>
 						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>The Kia, Ray EV</h3>
-							<p>London’s main sights might date back millennia, but the
-								capital’s shops, bars, hotels, and restaurants emerge and evolve
-								on an almost weekly basis.</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
+						<div class="item_car">
+							<div class="up-image">
+								<img src="${path}/resources/images/main/best-city-02.jpg">
+							</div>
+							<div class="down-desc">
+								<span class="badge good">Good to go</span>
+								<h3>Volkswagen, The Arteon</h3>
+								<p>New York’s performing arts scene—both on Broadway and
+									off—is beloved by visitors and locals alike, so it’s no
+									surprise that the Big Apple took the number one spot.</p>
+								<a class="btn-explore" href="#none">Explore <img
+									src="${path}/resources/images/main/icon-arrow.png"></a>
+							</div>
 						</div>
-					</div>
-					<div class="item_car">
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-02.jpg">
-						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>Volkswagen, The Arteon</h3>
-							<p>New York’s performing arts scene—both on Broadway and
-								off—is beloved by visitors and locals alike, so it’s no surprise
-								that the Big Apple took the number one spot.</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
-						</div>
-					</div>
-					<div class="item_car">
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-03.jpg">
-						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>London, England</h3>
-							<p>Paris, France The Notre Dame fire was a devastating
-								reminder of how well-loved Paris is by travelers worldwide, and
-								as the capital gears up for the 2024 Olympics</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
+						<div class="item_car">
+							<div class="up-image">
+								<img src="${path}/resources/images/main/best-city-03.jpg">
+							</div>
+							<div class="down-desc">
+								<span class="badge good">Good to go</span>
+								<h3>London, England</h3>
+								<p>Paris, France The Notre Dame fire was a devastating
+									reminder of how well-loved Paris is by travelers worldwide, and
+									as the capital gears up for the 2024 Olympics</p>
+								<a class="btn-explore" href="#none">Explore <img
+									src="${path}/resources/images/main/icon-arrow.png"></a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 	</section>
 
 	<section class="testimonial" id="testimonial">

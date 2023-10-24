@@ -4,12 +4,39 @@
 
 <mapper namespace="reviewns">
 
+	<!-- 리뷰 입력 -->
 	<insert id="reviewInsert" parameterType="review">
-		insert into review values( review_seq.nextval, #{id}, #{cno}, #{rating},
-		#{re_content}, sysdate, 'n' )
+		insert into review
+		values( review_seq.nextval, #{id}, #{cno}, #{rating},
+		#{re_content},
+		sysdate, 'n' )
 	</insert>
 	
-	<select id="reviewList" parameterType="integer" resultType="review">
-		select * from review where cno = #{cno}
+	<!-- 리뷰 총 갯수 -->
+	<select id="getTotal" parameterType="review"
+		resultType="integer">
+		select count(*) from review where cno = #{cno} and re_del = 'n'
 	</select>
+	
+	<!-- 리뷰 목록(paging) -->
+	<select id="reviewList" parameterType="review"
+		resultType="review">
+		select * from ( select a.*, rowNum rn from (
+		select * from
+		review where cno = #{cno} and re_del = 'n' ) a )
+		where rn between #{startRow} and
+		#{endRow}
+	</select>
+	
+	<!-- 리뷰 평균 -->
+	<select id="rateAvg" parameterType="integer" resultType="float">
+		select nvl(avg(rating),0) from review where cno = #{cno} and
+		re_del= 'n'
+	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<update id="reviewDelete" parameterType="review">
+		update review set re_del = 'y' where re_no = #{re_no}
+	</update>
+	
 </mapper>

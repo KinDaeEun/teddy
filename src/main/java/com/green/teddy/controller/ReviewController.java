@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.ReviewService;
 
@@ -27,4 +28,11 @@ public class ReviewController {
 		model.addAttribute("result", result);
 	}
 	
+	@GetMapping("car/reviewDelete")
+	public void reviewDelete(Model model, Review review) {
+		int result = res.reviewDelete(review.getRe_no());
+		
+		model.addAttribute("cno", review.getCno());
+		model.addAttribute("result", result);
+	}
 }

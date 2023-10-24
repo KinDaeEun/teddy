@@ -14,28 +14,24 @@ public class CarServiceImpl implements CarService {
 	@Autowired
 	private CarDao cd;
 
-	@Override
 	public int getTotal(Car car) {
 		return cd.getTotal(car);
 	}
 
-	@Override
 	public List<Car> carList(Car car) {
 		return cd.carList(car);
 	}
 
-	@Override
 	public int insertCar(Car car) {
 		return cd.insertCar(car);
 	}
 
-	@Override
 	public Car selectCar(int cno) {
 		return cd.selectCar(cno);
 	}
 
-	@Override
 	public int getMaxCno() {
 		return cd.getMaxCno();
 	}
+
 }

@@ -17,7 +17,19 @@ public class ReviewDaoImpl implements ReviewDao {
 		return sst.insert("reviewns.reviewInsert", review);
 	}
 
-	public List<Review> reviewList(int cno) {
-		return sst.selectList("reviewns.reviewList", cno);
+	public List<Review> reviewList(Review review) {
+		return sst.selectList("reviewns.reviewList", review);
+	}
+
+	public int getTotal(int cno) {
+		return sst.selectOne("reviewns.getTotal", cno);
+	}
+
+	public float rateAvg(int cno) {
+		return sst.selectOne("reviewns.rateAvg", cno);
+	}
+
+	public int reviewDelete(int re_no) {
+		return sst.update("reviewns.reviewDelete", re_no);
 	}
 }

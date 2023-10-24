@@ -38,7 +38,7 @@
 					<legend class="blind">조회</legend>
 					<div class="finder finder_on">
 						<details class="bundle_finder">
-							<summary class="link_finder">접기 / 펼치기</summary>
+							<summary class="link_finder">차종 검색하기</summary>
 							<!-- 차종 -->
 							<div>
 								<div class="find">
@@ -87,7 +87,7 @@
 										</label>
 									</div>
 								</div>
-								<input type="submit" value="조회">
+								<input type="submit" value="조회" class="find_c">
 							</div>
 						</details>
 					</div>

@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/view.css">
+<link rel="stylesheet" href="${path}/resources/css/carView.css">
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -46,12 +46,14 @@
 						</div>
 						<div class="area_review">
 							<strong class="tit_total"> <span class="blind">총
-									평점</span> <span class="txt_total">5.0</span>
+									평점</span> <span class="txt_total"><fmt:formatNumber
+										pattern="0.0">${rateAvg }</fmt:formatNumber> </span>
 							</strong>
 							<div class="rating_review">
 								<span class="detail_rating"> <em class="tit_rating">평점</em>
-									<span>★★★★★</span> <span class="ico_bar"></span> <a
-									href="#none" class="link_cmt" data-tab="comment">댓글 1</a>
+									<span><c:forEach begin="1" end="${rateAvg }">★
+								</c:forEach></span> <span class="ico_bar"></span> <a href="#none" class="link_cmt"
+									data-tab="comment">댓글 ${total }&nbsp;개</a>
 								</span> <span> <a
 									href="${path}/car/reservationForm.do?brand=${car.brand}&c_name=${car.c_name}"
 									class="btn btn-outline-secondary" style="margin-top: 10px">시승
@@ -156,49 +158,51 @@
 					action="${path }/car/reviewInsert.do?cno=${car.cno}">
 					<div class="box_comment">
 						<div class="cmt_total">
-							<h4 class="tit_cmt">댓글 ${review.re_no }개</h4>
+							<h4 class="tit_cmt">댓글 ${total }개</h4>
 							<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
-								<!-- 평점 이미지 자리 --> <span class="raging_g"> <c:forEach
-										begin="0" end="4">
-								★
+
+								<!-- 평점 이미지 자리 --> <span class="raging_g"> <fmt:formatNumber
+										pattern="#.#">${rateAvg }</fmt:formatNumber> <c:forEach
+										begin="1" end="${rateAvg }">★
 								</c:forEach>
-							</span> 평점평균자리
+							</span>
+
 							</span>
 						</div>
 						<!-- 평점 END -->
+						<c:if test="${empty id }"></c:if>
+						<c:if test="${not empty id }">
+							<div class="cmt_write">
+								<div class="opt_g">
+									<em class="blind">평점 선택</em>
+									<fieldset class="rate">
+										<input type="radio" id="rating5" name="rating" value="5">
+										<label class="rating5" for="rating5" title="5점"></label> <input
+											type="radio" id="rating4" name="rating" value="4"> <label
+											for="rating4" title="4점"></label> <input type="radio"
+											id="rating3" name="rating" value="3"> <label
+											class="rating3" for="rating3" title="3점"></label> <input
+											type="radio" id="rating2" name="rating" value="2"> <label
+											for="rating2" title="2점"></label> <input type="radio"
+											id="rating1" name="rating" value="1"> <label
+											class="rating1" for="rating1" title="1점"></label>
+									</fieldset>
+								</div>
 
-						<div class="cmt_write">
-							<div class="opt_g">
-								<em class="blind">평점 선택</em>
-								<fieldset class="rate">
-									<input type="radio" id="rating5" name="rating" value="5">
-									<label class="rating5" for="rating5" title="5점"></label> <input
-										type="radio" id="rating4" name="rating" value="4"> <label
-										for="rating4" title="4점"></label> <input type="radio"
-										id="rating3" name="rating" value="3"> <label
-										class="rating3" for="rating3" title="3점"></label> <input
-										type="radio" id="rating2" name="rating" value="2"> <label
-										for="rating2" title="2점"></label> <input type="radio"
-										id="rating1" name="rating" value="1"> <label
-										class="rating1" for="rating1" title="1점"></label>
-								</fieldset>
-							</div>
 
-							<div class="user_cmt_off">
-								<strong class="blind">댓글 입력</strong>
-								<!-- 로그인 했을 경우 -->
-								<span class="txt_cmt">고객님의 평가를 남겨주세요</span>
-								<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
-									name="re_content" id="tf_cmt" placeholder="고객님의 평가를 남겨주세요"
-									required></textarea>
-								<!-- 로그인 안했을 경우 -->
-								<span class="txt_num" id="txt_num">0 / 200 </span> <input
-									type="submit" class="btn_cmt" value="등록"
-									style="cursor: pointer">
-							</div>
-
-							<!-- 댓글목록 START -->
-							<!-- 댓글이 있을 경우 -->
+								<div class="user_cmt_off">
+									<strong class="blind">댓글 입력</strong> <span class="txt_cmt">고객님의
+										평가를 남겨주세요</span>
+									<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
+										name="re_content" id="tf_cmt" placeholder="고객님의 평가를 남겨주세요"
+										required></textarea>
+									<span class="txt_num" id="txt_num">0 / 200 </span> <input
+										type="submit" class="btn_cmt" value="등록"
+										style="cursor: pointer">
+								</div>
+						</c:if>
+						<!-- 댓글목록 START -->
+						<div>
 							<ul class="list_comment">
 								<c:forEach var="review" items="${reviewList }">
 									<li><span class="detail_rating type_rating"> <span
@@ -208,19 +212,43 @@
 												</c:forEach>
 										</span> <span class="txt_user">${review.id }</span>
 									</span>
-										<p class="desc_cmt">${review.re_content }</p>
-										<button class="delete" onclick="delete()">삭제</button> <span
-										class="txt_date">${review.re_date }</span></li>
+
+										<p class="desc_cmt">${review.re_content }</p> <a
+										class="delete"
+										href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
+										<span class="txt_date">${review.re_date }</span></li>
+
 								</c:forEach>
 							</ul>
-							<!-- 댓글이 없을 경우 -->
 						</div>
+						<!-- 댓글목록 END -->
+						<!-- paging -->
+						<div class="paging">
+							<ul class="pagination justify-content-center"
+								style="padding-top: 3vh">
+								<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
+
+									<c:if test="${pb.currentPage == i }">
+										<li><a class="page-link"
+											href="carView.do?pageNum=${i}&cno=${car.cno }"
+											style="text-decoration: none"> ${i } </a></li>
+									</c:if>
+									<c:if test="${pb.currentPage != i }">
+										<li><a class="page-link"
+											href="carView.do?pageNum=${i}&cno=${car.cno }"
+											style="text-decoration: none"> ${i } </a></li>
+									</c:if>
+
+								</c:forEach>
+							</ul>
+						</div>
+						<!-- paging end -->
 					</div>
 				</form>
-				<!-- 댓글 END -->
 			</div>
-		</div>
 
+			<!-- 댓글 END -->
+		</div>
 	</section>
 
 </body>
