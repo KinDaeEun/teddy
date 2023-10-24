@@ -10,7 +10,7 @@ import com.green.teddy.dao.Design_imgDaoImpl;
 import com.green.teddy.dto.Design_img;
 
 @Service
-public class Design_imgServiceImpl implements Design_imgService{
+public class Design_imgServiceImpl implements Design_imgService {
 	@Autowired
 	private Design_imgDao dd;
 

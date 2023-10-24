@@ -6,10 +6,16 @@
 	<insert id="insertImg" parameterType="list">
 		insert all
 		<foreach collection="list" item="item">
-			into design_img values(get_seq, #{item.img_name},#{item.cno})
+			into design_img
+			values(get_seq, #{item.img_name},#{item.cno})
 		</foreach>
 		select * from dual
 	</insert>
+
+	 <select id="imgList" parameterType="integer"
+		resultType="design_img">
+		select * from design_img where cno = #{cno}
+	</select> 
 </mapper>
 
 		
