@@ -6,15 +6,23 @@
 	<select id="getTotal" parameterType="car" resultType="integer">
 		select
 		count(*) from car
-		<if test="brand!=null and c_kind!=null">
-			where brand=#{brand} and c_kind=#{c_kind}
+		<if
+			test="brand!=null and brand!='' and c_kind!=null and c_kind!=''">
+			where brand=#{brand} and c_kind=#{c_kind} and c_del='n'
 		</if>
-		<if test="brand!=null and c_kind=null">
-			where brand=#{brand}
+
+		<if
+			test="(brand==null or brand=='') or (c_kind==null or c_kind=='')">
+
+			<if test="brand!=null and brand!='' ">
+				where brand=#{brand} and c_del='n'
+			</if>
+
+			<if test="c_kind!=null and c_kind!='' ">
+				where c_kind=#{c_kind} and c_del='n'
+			</if>
 		</if>
-		<if test="c_kind!=null and brand=null">
-			where c_kind=#{c_kind}
-		</if>
+
 		<if test="order!=null">
 			order by #{order} desc
 		</if>
@@ -22,17 +30,26 @@
 	<select id="carList" parameterType="car" resultType="car">
 		select *
 		from(select rowNum rn, a.* from (
-		select * from car 
-		 <if test="brand!=null and c_kind!=null">
-			where brand=#{brand} and c_kind=#{c_kind}
+		select
+		c.cno,c.c_name,c.c_cover_img, AVG(r.rating) avg_rating
+		FROM car c, review r where c.cno = r.cno(+)
+		<if
+			test="brand!=null and brand!='' and c_kind!=null and c_kind!='' ">
+			and brand=#{brand} and c_kind=#{c_kind} and c_del='n'
 		</if>
-		
-		<if test="brand!=null and c_kind==null">
-			where brand=#{brand}
+
+		<if
+			test="(brand==null or brand=='') or (c_kind==null or c_kind =='')">
+
+			<if test="c_kind!=null and c_kind!=''">
+				and c_kind=#{c_kind} and c_del='n'
+			</if>
+
+			<if test="brand!=null and brand!=''">
+				and brand=#{brand} and c_del='n'
+			</if>
 		</if>
-		<if test="c_kind!=null and brand==null">
-			where c_kind=#{c_kind}
-		</if>
+		GROUP BY c.cno, c.c_name,c.c_cover_img
 		<if test="order!=null">
 			order by #{order} desc
 		</if>
@@ -47,25 +64,26 @@
 		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},
 		#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n',#{width},#{height},#{wheelbase},#{length},#{formt_img},#{side_img})
 	</insert>
-	
+
 
 	<!-- 예약폼 브랜드 select -->
 	<select id="brandlist" resultType="car">
-		select DISTINCT brand from car 
+		select DISTINCT brand from car
 
 	</select>
-	
+
 	<!-- 모델 select -->
 	<select id="getCarName" parameterType="car" resultType="car">
-		select * from car where brand = #{brand}
+		select *
+		from car where brand = #{brand}
 	</select>
 
 	<select id="selectCar" parameterType="integer" resultType="car">
 		select * from car where cno=#{cno}
 	</select>
-	
+
 	<select id="getMaxCno" resultType="integer">
-		select max(cno) from car 
+		select max(cno) from car
 	</select>
 
 

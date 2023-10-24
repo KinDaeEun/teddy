@@ -41,12 +41,12 @@
 					<tr>
 						<th>차종</th>
 						<td><input type="radio" name="c_kind" id="경형/소형"
-							value="경형/소형" checked="checked"> <label for="경형/소형">경형/소형</label>
+							value="경차/소형차" checked="checked"> <label for="경형/소형">경형/소형</label>
 
 							<input type="radio" name="c_kind" id="준중형" value="준중형"> <label
-							for="준중형">준중형</label> <input type="radio" name="c_kind" id="중형"
-							value="중형"> <label for="중형">중형</label> <input
-							type="radio" name="c_kind" id="대형" value="대형"> <label
+							for="준중형차">준중형</label> <input type="radio" name="c_kind" id="중형"
+							value="중형차"> <label for="중형">중형</label> <input
+							type="radio" name="c_kind" id="대형" value="대형차"> <label
 							for="대형">대형</label> <input type="radio" name="c_kind" id="SUV"
 							value="SUV"> <label for="SUV">SUV</label></td>
 					</tr>
