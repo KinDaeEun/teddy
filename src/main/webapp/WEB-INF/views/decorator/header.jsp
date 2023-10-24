@@ -89,8 +89,28 @@
 						<li><a href="${path}/help/helpList.do?id">문의 내역</a></li>
 					</ul></li>
 				<li><a href="${path}/news/newsList.do">NEWS</a></li>
+						<c:if test="${id == null}">
+				<div class="lnb">
+					<a href="${path}/member/loginForm.do">로그인</a> <a
+						href="${path}/member/joinForm.do">회원가입</a>
+				</div>
+			</c:if>
+			<c:if test="${id != null }">
+				<div class="lnb">
+					<a href="${path}/member/logout.do">로그아웃</a>
+					<c:if test="${id != 'admin'}">
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
+					</c:if>
+					<c:if test="${id == 'admin'}">
+						<a href="${path}/myPage/mypage.do">마이페이지</a>
+						<a href="${path}/admin/adminMain.do">관리자페이지</a>
+					</c:if>
+				</div>
+			</c:if>
 			</ul>
+	
 		</nav>
+
 		<div class="trigger">
 			<span></span> <span></span> <span></span>
 		</div>
