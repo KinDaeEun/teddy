@@ -17,20 +17,16 @@ import com.green.teddy.service.Design_imgService;
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.ReviewService;
 
-
 @Controller
 public class CarController {
 	@Autowired
 	private CarService cs;
 
-	
 	@Autowired
 	private Design_imgService ds;
-	
 
 	@Autowired
 	private ReviewService res;
-
 
 	@GetMapping("car/findCenter")
 	public void findCenter() {
@@ -77,9 +73,11 @@ public class CarController {
 		Car car = cs.selectCar(cno);
 		List<Design_img> imgList = ds.imgList(cno);
 		List<Review> reviewList = res.reviewList(cno);
-		
-		model.addAttribute("car",car);
-		model.addAttribute("imgList",imgList);
+		for(Design_img img:imgList) {
+			System.out.println(img);
+		}
+		model.addAttribute("car", car);
+		model.addAttribute("imgList", imgList);
 		model.addAttribute("reviewList", reviewList);
 
 	}

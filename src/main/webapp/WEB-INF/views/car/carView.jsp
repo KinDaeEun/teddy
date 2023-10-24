@@ -23,6 +23,8 @@
 </script>
 </head>
 <body class="contents_l02">
+
+
 	<section id="sc_car pd_top" class="pd_top">
 		<div class="container">
 			<div class="cont">
@@ -106,6 +108,8 @@
 						</div>
 					</div>
 				</div>
+
+
 				<!-- 디자인 START -->
 				<div class="box_design box_g">
 					<h4 class="tit_subject">디자인</h4>
@@ -114,21 +118,14 @@
 						<p></p>
 					</div>
 					<ul class="list_detail">
-						<li data-thumb="0"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
-						<li data-thumb="1"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
-						<li data-thumb="2"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
-								alt="" src="${path }/resources/images/intro.jpg" class="thumb_g">
-								<span class="frame_g"></span>
-						</a></li>
+						<c:forEach var="img" items="${ imgList}">
+							<li data-thumb="1"><a href="#none"
+								onclick="window.open(this.src)" class="link_thumb"> <img
+									alt="" src="${path}/resources/upload/${img.img_name}"
+									class="thumb_g"> <span class="frame_g"></span>
+							</a></li>
+						</c:forEach>
+
 					</ul>
 					<p class="desc_detail"></p>
 				</div>
@@ -161,11 +158,11 @@
 						<div class="cmt_total">
 							<h4 class="tit_cmt">댓글 ${review.re_no }개</h4>
 							<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
-								<!-- 평점 이미지 자리 --> <span class="raging_g">
-								<c:forEach begin="0" end="4">
+								<!-- 평점 이미지 자리 --> <span class="raging_g"> <c:forEach
+										begin="0" end="4">
 								★
 								</c:forEach>
-								</span> 평점평균자리
+							</span> 평점평균자리
 							</span>
 						</div>
 						<!-- 평점 END -->
@@ -204,20 +201,16 @@
 							<!-- 댓글이 있을 경우 -->
 							<ul class="list_comment">
 								<c:forEach var="review" items="${reviewList }">
-									<li>
-										<span class="detail_rating type_rating"> 
-											<span class="img rating_g"> 
-											<c:forEach begin="1" end="${review.rating }">
-												<span class="star">★</span>
-											</c:forEach>
-											</span> 
-											<span class="txt_user">${review.id }</span>
-										</span>
-											<p class="desc_cmt">${review.re_content }</p> 
-											<button class="delete" onclick="delete()">삭제</button>
-											<span class="txt_date">${review.re_date }</span>
-											
-									</li>
+									<li><span class="detail_rating type_rating"> <span
+											class="img rating_g"> <c:forEach begin="1"
+													end="${review.rating }">
+													<span class="star">★</span>
+												</c:forEach>
+										</span> <span class="txt_user">${review.id }</span>
+									</span>
+										<p class="desc_cmt">${review.re_content }</p>
+										<button class="delete" onclick="delete()">삭제</button> <span
+										class="txt_date">${review.re_date }</span></li>
 								</c:forEach>
 							</ul>
 							<!-- 댓글이 없을 경우 -->
@@ -229,5 +222,6 @@
 		</div>
 
 	</section>
+
 </body>
 </html>

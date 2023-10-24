@@ -21,8 +21,8 @@ select * from member;
 drop table member;
 
 create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-commit;
-
+select * from car;
+select * from design_img where cno = 5;
 
 -- 차량
 	create table car (
