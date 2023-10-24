@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Review;
 
 @Repository
 public class CarDaoImpl implements CarDao{

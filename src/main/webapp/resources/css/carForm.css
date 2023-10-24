@@ -5,7 +5,6 @@
 	display: none;
 }
 
-
 .pd_top {
 	padding-top: 150px;
 	height:150vh;
@@ -86,7 +85,6 @@ div {
 }
 
 .finder .list_finder {
-	float: right;
 	width: 884px;
 }
 
@@ -123,6 +121,15 @@ div {
 	height: 13px;
 	margin: 0;
 	*left: -9999px;
+}
+
+.find_c {
+    margin-left: 500px;
+    background: #fefefe;
+    color: #666;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid #dfdfdf;
 }
 
 .Input.d-radio label.check_radio {
@@ -331,4 +338,9 @@ span .txt_point {
 #top.show {
 	opacity: 1;
 	visibility: visible;
+}
+
+.star_img{
+	width:15px;
+	height:15px;
 }

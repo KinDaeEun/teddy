@@ -154,7 +154,7 @@ public class AdminController {
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";
 		int currentPage = Integer.parseInt(pageNum);
-		int rowPerPage = 5;
+		int rowPerPage = 10;
 		int total = hs.adminGetTotal(help);// 전체 회원 문의 총 갯수
 		int startRow = (currentPage - 1) * rowPerPage + 1;
 		int endRow = startRow + rowPerPage - 1;

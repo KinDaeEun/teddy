@@ -21,7 +21,8 @@ select * from member;
 drop table member;
 
 create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-commit;
+select * from car;
+
 
 
 -- 차량
@@ -54,6 +55,7 @@ commit;
 	    formt_img varchar2(100),          --정면 이미지
 	    side_img varchar2(100)            --옆면 이미지
 	);
+	
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
@@ -157,12 +159,14 @@ create table review (
     re_no number primary key,       -- 평점 번호
     id varchar2(20),                -- 작성자 아이디
     cno number(20),                 -- 차량번호
+    rating number(20),				-- 별점
     re_content varchar2(500),       -- 평점 내용
     re_date date,                   -- 평점 날짜
     re_del char(1),                  -- 평점 삭제 여부
     foreign key(id) references member(id),
     foreign key(cno) references car(cno)
 );
+create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 
 select * from review;
 drop table review;
@@ -247,6 +251,8 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 길동대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
+
+
 
 
 -- 뉴스 데이터

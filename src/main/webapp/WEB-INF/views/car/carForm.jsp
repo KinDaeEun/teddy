@@ -32,12 +32,13 @@
 		<div id="main" class="contents">
 			<a id="top"></a>
 			<!-- @@@ 검색 보류 @@@ -->
-			<form id="finder" class="form_finder" action="${path }/car/carForm.do">
+			<form id="finder" class="form_finder"
+				action="${path }/car/carForm.do">
 				<fieldset>
 					<legend class="blind">조회</legend>
 					<div class="finder finder_on">
 						<details class="bundle_finder">
-							<summary class="link_finder">접기 / 펼치기</summary>
+							<summary class="link_finder">차종 검색하기</summary>
 							<!-- 차종 -->
 							<div>
 								<div class="find">
@@ -86,7 +87,7 @@
 										</label>
 									</div>
 								</div>
-								<input type="submit" value="조회">
+								<input type="submit" value="조회" class="find_c">
 							</div>
 						</details>
 					</div>
@@ -94,18 +95,36 @@
 			</form>
 			<!-- 검색 끝 -->
 
+
+			
+
+
 			<div class="cont">
 				<h3 class="blind">차량</h3>
 				<div class="cont_sub">
 					<ul class="list" id="list">
 						<c:forEach var="car" items="${carList }">
-							<li><a class="link_car" href="${path }/car/carView.do?cno=${car.cno}"> <strong
+							<li><a class="link_car"
+								href="${path }/car/carView.do?cno=${car.cno}"> <strong
 									class="tit_car">${car.c_name }</strong> <span
-									class="detail_point"> <em class="tit_point">장점</em> <span
-										class="txt_point">아아.. 이것이 '현대'다</span>
-								</span> <span class="detail_point"> <em
-										class="tit_point tit_cons">단점</em> <span class="txt_point">결함수준은
-											'뭔데'</span>
+									class="detail_point"> <em class="tit_point">별점</em> <span
+										class="txt_point">
+										
+										<c:if test="${car.avg_rating>0 }">
+										${car.avg_rating }
+											<c:forEach var="i" begin="1" end="${car.avg_rating-(car.avg_rating%1)}">
+       						   					  <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
+     								  		 </c:forEach>
+     								    	<c:if test="${car.avg_rating != car.avg_rating-(car.avg_rating%1)}">
+              									 <img alt="" src="${path }/resources/images/car/half_star.png" class="star_img">
+          									</c:if>
+          								</c:if>
+          								<c:if test="${car.avg_rating<=0 }">
+          									평점 없습니다
+          								</c:if>
+          								
+
+									</span>
 								</span> <span class="detail_rating"> <em class="blind">평점</em> <span
 										class="img rating_g"></span>
 								</span> <span class="detail_thumb"> <img
@@ -116,6 +135,40 @@
 						</c:forEach>
 					</ul>
 				</div>
+			</div>
+			<div>
+				<ul class="pagination justify-content-center">
+					<c:if test="${startPage > PAGE_PER_BLOCK}">
+						<li class="page-item"><a class="page-link"
+							href="carForm.do?pageNum=1&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
+								<i class="icofont-duotone icofont-arrow-first icofont-2x"></i>
+						</a></li>
+						<li class="page-item"><a class="page-link"
+							href="carForm.do?pageNum=${startPage-1}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
+								<i class="bi bi-arrow-left-circle icofont-2x"></i>
+						</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${startPage}" end="${endPage}">
+						<c:if test="${currentPage == i }">
+							<li class="page-item active"><a class="page-link"
+								href="carForm.do?pageNum=${i}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">${i }</a></li>
+						</c:if>
+						<c:if test="${currentPage != i }">
+							<li class="page-item"><a class="page-link"
+								href="carForm.do?pageNum=${i}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">${i }</a></li>
+						</c:if>
+					</c:forEach>
+					<c:if test="${endPage < totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="carForm.do?pageNum=${endPage+1}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
+								<i class="bi bi-arrow-right-square icofont-2x"></i>
+						</a></li>
+						<li class="page-item"><a class="page-link"
+							href="carForm.do?pageNum=${totalPage}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
+								<i class="bi bi-arrow-right-circle-fill icofont-2x"></i>
+						</a></li>
+					</c:if>
+				</ul>
 			</div>
 		</div>
 	</div>
