@@ -13,7 +13,7 @@ a {
 </style>
 </head>
 <body>
-	<div class="inner pg_top v_h">
+	<div class="pg_top v_h">
 		<h4 style="margin-bottom: 10px">차량목록</h4>
 		<table class="table table-bordered">
 			<tr class="table-secondary">

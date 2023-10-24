@@ -9,8 +9,8 @@
 <link rel="stylesheet" href="${path}/resources/css/newsList.css">
 </head>
 <body class="n">
-	<div class="container pd_top">
-		<div class="body" id="bodydiv" style="height: 100vh;" >
+	<div class="container pg_top v_hb">
+		<div class="body" id="bodydiv">
 			<!-- carousel start -->
 			<div id="carouselExampleInterval" class="carousel slide carousel-fade"
 				data-bs-ride="carousel">
