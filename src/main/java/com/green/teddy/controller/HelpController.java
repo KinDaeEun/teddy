@@ -13,14 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.green.teddy.dto.Help;
-import com.green.teddy.dto.Member;
 import com.green.teddy.service.HelpService;
-import com.green.teddy.service.MemberService;
 import com.green.teddy.service.PageBean;
 
 @Controller
