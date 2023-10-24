@@ -8,6 +8,12 @@ public interface ReviewService {
 
 	int reviewInsert(Review review);
 
-	List<Review> reviewList(int cno);
+	List<Review> reviewList(Review review);
+
+	int getTotal(int cno);
+
+	float rateAvg(int cno);
+
+	int reviewDelete(int re_no);
 
 }

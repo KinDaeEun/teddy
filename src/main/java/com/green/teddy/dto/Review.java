@@ -13,4 +13,8 @@ public class Review {
 	private String re_content;
 	private Date re_date;
 	private String re_del;
+	
+	// paging
+	private int startRow;
+	private int endRow;
 }

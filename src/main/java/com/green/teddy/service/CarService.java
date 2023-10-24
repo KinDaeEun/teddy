@@ -16,4 +16,5 @@ public interface CarService {
 	Car selectCar(int cno);
 
 	int getMaxCno();
+
 }
