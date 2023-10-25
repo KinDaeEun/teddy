@@ -20,6 +20,7 @@
 		<typeAlias alias="review" type="com.green.teddy.dto.Review" />
 		<typeAlias alias="center" type="com.green.teddy.dto.Center" />
 		<typeAlias alias="design_img" type="com.green.teddy.dto.Design_img"/>
+		<typeAlias alias="compliment" type="com.green.teddy.dto.Compliment"/>
 	</typeAliases>
 
 	<mappers>
@@ -31,6 +32,7 @@
 		<mapper resource="review.xml" />
 		<mapper resource="center.xml" />
 		<mapper resource="design_img.xml" />
+		<mapper resource="board.xml" />
 	</mappers>
 
 </configuration>
