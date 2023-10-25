@@ -28,7 +28,7 @@ function del(cno,c_del) {
 <body>
 	<div class="container pg_top v_h">
 		<h4 style="margin-bottom: 10px">차량목록</h4>
-		<form action="${path }/admin/adminCar.do">
+		<form action="${path }/admin/adminCarList.do">
 				<select name="search">
 					<c:forTokens var="sh" items="cno,c_name,brand,c_kind" delims=","
 						varStatus="i">
@@ -56,6 +56,7 @@ function del(cno,c_del) {
 				<th>삭제/전시</th>
 				<th>상세내용</th>
 				<th>차량리뷰</th>
+				<th>디자인 이미지</th>
 			</tr>
 			<c:if test="${empty carList }">
 				<tr>
@@ -75,7 +76,8 @@ function del(cno,c_del) {
 						<td>${car.c_del }</td>
 						<th><a onclick="del(${car.cno},'${car.c_del}')">변경</a></th>
 						<th><a href="${path }/admin/adminCarUpdateForm.do?cno=${car.cno}">수정</a></th>
-						<th><a href="#">리뷰</a></th>
+						<th><a href="${path }/admin/adminReviewList.do?cno=${car.cno}">리뷰</a></th>
+						<th><a href="#">수정</a></th>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -88,23 +90,23 @@ function del(cno,c_del) {
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<li class="page-item"><a class="page-link"
-							href="adminCar.do?pageNum=${startPage-1}&search=${car.search}&keyword=${car.keyword}">
+							href="adminCarList.do?pageNum=${startPage-1}&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-left-circle icofont-2x"></i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<c:if test="${currentPage == i }">
 							<li class="page-item active"><a class="page-link"
-								href="adminCar.do?pageNum=${i }&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
+								href="adminCarList.do?pageNum=${i }&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${currentPage != i }">
 							<li class="page-item"><a class="page-link"
-								href="adminCar.do?pageNum=${i}&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
+								href="adminCarList.do?pageNum=${i}&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${endPage < totalPage}">
 						<li class="page-item"><a class="page-link"
-							href="adminCar.do?pageNum=${endPage+1 }&search=${car.search}&keyword=${car.keyword}">
+							href="adminCarList.do?pageNum=${endPage+1 }&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-right-square icofont-2x"></i>
 						</a></li>
 					</c:if>
