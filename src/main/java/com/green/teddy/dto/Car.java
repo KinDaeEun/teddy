@@ -35,6 +35,7 @@ public class Car {
 	private int length;
 	private String formt_img;
 	private String side_img;
+	private float avg_rating;
 	
 	//upload용
 	private MultipartFile c_cover_img_file;

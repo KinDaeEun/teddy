@@ -5,6 +5,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta name="viewport" content="width=device-width, initialscale=1">
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <script src="${path}/resources/js/jquery.js"></script>

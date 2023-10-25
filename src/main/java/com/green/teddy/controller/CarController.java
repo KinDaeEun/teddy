@@ -38,6 +38,7 @@ public class CarController {
 
 	@GetMapping("car/carForm")
 	public void carForm(Car car, String pageNum, Model model) {
+
 		final int ROW_PER_PAGE = 6;// 한페이지의 차량 갯수
 		final int PAGE_PER_BLOCK = 5;// 한 블록의 페이지 갯수
 		if (pageNum == null || pageNum.equals(""))
@@ -61,7 +62,7 @@ public class CarController {
 			endPage = totalPage;
 		
 		List<Car> carList = cs.carList(car);
-		
+
 		model.addAttribute("carList", carList);
 		model.addAttribute("car", car);
 		model.addAttribute("totalPage", totalPage);
@@ -116,9 +117,8 @@ public class CarController {
 		model.addAttribute("rateAvg", rateAvg);
 
 		List<Design_img> imgList = ds.imgList(cno);
-		for(Design_img img:imgList) {
-			System.out.println(img);
-		}
+
+
 		model.addAttribute("car", car);
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("reviewList", reviewList);
