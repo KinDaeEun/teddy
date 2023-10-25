@@ -78,12 +78,11 @@
 								<div class="find">
 									<strong class="tit_finder">정렬 순서</strong>
 									<div class="list_finder">
+										
 										<label class="test_obj"> <input type="radio"
-											name="order"> <span>전체 차종</span>
-										</label> <label class="test_obj"> <input type="radio"
 											name="order" value="cno"> <span>업데이트순</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="order" value="apple"> <span>종합 평가 순</span>
+											name="order" value="avg_rating"> <span>종합 평가 순</span>
 										</label>
 									</div>
 								</div>
