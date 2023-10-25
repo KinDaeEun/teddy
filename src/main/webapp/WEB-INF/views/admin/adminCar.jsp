@@ -26,7 +26,7 @@ function del(cno,c_del) {
 </script>
 </head>
 <body>
-	<div class="pg_top v_h">
+	<div class="container pg_top v_h">
 		<h4 style="margin-bottom: 10px">차량목록</h4>
 		<form action="${path }/admin/adminCar.do">
 				<select name="search">
