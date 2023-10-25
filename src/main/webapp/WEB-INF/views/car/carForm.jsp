@@ -107,10 +107,10 @@
 								href="${path }/car/carView.do?cno=${car.cno}"> <strong
 									class="tit_car">${car.c_name }</strong> <span
 									class="detail_point"> <em class="tit_point">별점</em> <span
-										class="txt_point">
+										class="txt_point tit_font">
 										
 										<c:if test="${car.avg_rating>0 }">
-										${car.avg_rating }
+										<fmt:formatNumber value="${car.avg_rating }" pattern="0.0"></fmt:formatNumber> 
 											<c:forEach var="i" begin="1" end="${car.avg_rating-(car.avg_rating%1)}">
        						   					  <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
      								  		 </c:forEach>
@@ -119,7 +119,7 @@
           									</c:if>
           								</c:if>
           								<c:if test="${car.avg_rating<=0 }">
-          									평점 없습니다
+          									<div class="no_tit">평점이 없습니다</div>
           								</c:if>
           								
 
@@ -135,7 +135,7 @@
 					</ul>
 				</div>
 			</div>
-			<div>
+			<div class="paging" style="margin-top: 15px">
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<li class="page-item"><a class="page-link"
