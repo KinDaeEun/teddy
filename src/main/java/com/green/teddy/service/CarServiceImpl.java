@@ -34,4 +34,24 @@ public class CarServiceImpl implements CarService {
 		return cd.getMaxCno();
 	}
 
+	@Override
+	public List<Car> adminCarList(Car car) {
+		return cd.adminCarList(car);
+	}
+
+	@Override
+	public int updateCar(Car car) {
+		return cd.updateCar(car);
+	}
+
+	@Override
+	public int deleteCar(Car car) {
+		return cd.deleteCar(car);
+	}
+
+	@Override
+	public int adminGetTotal(Car car) {
+		return cd.adminGetTotal(car);
+	}
+
 }

@@ -46,8 +46,8 @@ public class AdminController {
 	// 차량 관리
 	@RequestMapping("admin/adminCar")
 	public void adminCar(Car car, String pageNum, Model model) {
-		final int ROW_PER_PAGE = 10;// 한페이지의 차량 갯수
-		final int PAGE_PER_BLOCK = 10;// 한 블록의 페이지 갯수
+		final int ROW_PER_PAGE = 5;// 한페이지의 차량 갯수
+		final int PAGE_PER_BLOCK = 5;// 한 블록의 페이지 갯수
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";
 		int currentPage = Integer.parseInt(pageNum);// 페이지 번호
@@ -58,7 +58,7 @@ public class AdminController {
 		int endRow = startRow + ROW_PER_PAGE - 1;
 		car.setStartRow(startRow);
 		car.setEndRow(endRow);
-		int total = cs.getTotal(car); // 총 댓글 수
+		int total = cs.adminGetTotal(car); // 총 댓글 수
 		int totalPage = (int) Math.ceil((double) total / ROW_PER_PAGE); // 총 페이지 수
 		// 현재페이지 - (현재페이지 - 1)%10
 		int startPage = currentPage - (currentPage - 1) % PAGE_PER_BLOCK;// 한 블록의 사작 페이지
@@ -68,7 +68,8 @@ public class AdminController {
 		if (endPage > totalPage)
 			endPage = totalPage;
 
-		List<Car> carList = cs.carList(car);
+		List<Car> carList = cs.adminCarList(car);
+		String[] title = {"차량번호","이름","브랜드","차종"};
 
 		model.addAttribute("carList", carList);
 		model.addAttribute("car", car);
@@ -77,15 +78,14 @@ public class AdminController {
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		model.addAttribute("currentPage", currentPage);
+		model.addAttribute("title", title);
 	}
 
-	@RequestMapping("admin/insertCarForm")
-	public void insertCarForm() {
-
-	}
+	@RequestMapping("admin/adminCarInsertForm")
+	public void insertCarForm() {}
 
 	// 차량 정보및 디자인 이미지 입력
-	@RequestMapping("admin/insertCar")
+	@RequestMapping("admin/adminCarInsertResult")
 	public void insertCar(Model model, Car car, HttpSession session, MultipartHttpServletRequest mhr)
 			throws IOException {
 		String real = session.getServletContext().getRealPath("/resources/upload");
@@ -147,6 +147,34 @@ public class AdminController {
 		UUID uuid = UUID.randomUUID();
 		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
+	
+	@RequestMapping("admin/adminCarUpdateForm")
+	public void adminCarUpdateForm(Model model, int cno) {
+		Car car = cs.selectCar(cno);
+		model.addAttribute("car",car);
+	}
+	
+	@RequestMapping("admin/adminCarUpdateResult")
+	public void adminCarUpdateResult(Model model, Car car) {
+		int result = cs.updateCar(car);
+		model.addAttribute("cno",car.getCno());
+		model.addAttribute("result",result);
+	}
+	
+	@RequestMapping("admin/adminCarDelete")
+	public void adminCarDelete(Model model, Car car) {
+		String c_del = "";
+		if(car.getC_del().equals("y")) {
+			c_del="n";
+		}
+		if(car.getC_del().equals("n")) {
+			c_del="y";
+		}
+		car.setC_del(c_del);
+		int result = cs.deleteCar(car);
+		model.addAttribute("result",result);
+	}
+	
 
 	// 1:1문의 리스트
 	@RequestMapping("admin/adminHelpList")
