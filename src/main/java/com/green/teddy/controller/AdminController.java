@@ -253,4 +253,5 @@ public class AdminController {
 		model.addAttribute("pageNum", pageNum);
 
 	}
+	// 게시판 관리
 }
