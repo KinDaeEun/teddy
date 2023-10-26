@@ -29,4 +29,10 @@ public class ComplimentDaoImpl implements ComplimentDao {
 		return sst.insert("boardns.coinsert", compliment);
 	}
 
+	@Override
+	public int delete(int cpno) {
+
+		return sst.delete("boardns.delete", cpno);
+	}
+
 }

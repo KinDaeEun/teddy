@@ -32,11 +32,16 @@
 	cursor: pointer;
 }
 </style>
-<script type="text/javascript">
-	$(function() {
-		$('#compil').load('${path}/board/complimentList.do');
-	});
-</script>
+<!-- <script type="text/javascript"> -->
+<!-- 	$(function() { -->
+<!-- 		$('#rInsert').click(function() { -->
+<!-- 			let sendData = $('#frm1').serialize(); -->
+<%-- 			$.post('${path}/board/rInsert.do', sendData, function(data) { --%>
+<!-- 				$('#rbdListDisp').html(data); -->
+<!-- 			}); -->
+<!-- 		}); -->
+<!-- 	}); -->
+<!-- </script> -->
 
 </head>
 <body>
@@ -51,45 +56,97 @@
 					있습니다.</li>
 			</ul>
 		</div>
-
+		<!-- <div id="rbdListDisp"> -->
 		<div>
-			<form action="${path }/board/complimentResult.do" method="post">
+			<form action="${path}/board/rInsert.do" name="frm1" id="frm1"
+				method="post">
 				<input type="hidden" name="id" value="${member.id }">
 				<table>
 					<tr>
-						<th>이름</th>
-						<td>${member.name }</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>${member.email }</td>
+						<th>아이디</th>
+						<td>${member.id }</td>
 					</tr>
 				</table>
 				<div>
 					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요.">
-					<input type="submit" value="칭찬등록">
+					<input type="submit" id="rInsert" value="칭찬등록">
 				</div>
 			</form>
 		</div>
-		<!-- 		<div> -->
-		<!-- 		<table> -->
-		<%-- 		<c:if test="${empty list}"> --%>
-		<!-- 				<tr> -->
-		<!-- 					<td colspan="2" class="text-center">칭찬내역이 존재하지 않습니다</td> -->
-		<!-- 				</tr> -->
-		<%-- 			</c:if> --%>
-		<%-- 		<c:if test="${not empty list }"> --%>
-		<%-- 				<c:forEach var="compliment" items="${list }"> --%>
-		<!-- 					<tr> -->
-		<%-- 					<td class="text-center">${member.fileName}</td> --%>
-		<%-- 						<td class="text-center">${compliment.content}</td> --%>
-		<%-- 						<td class="text-center">${help.cp_date }</td> --%>
-		<!-- 					</tr> -->
-		<%-- 				</c:forEach> --%>
-		<%-- 			</c:if> --%>
-		<!---->
-		<!-- 		</div> -->
-		<div id="compil"></div>
+		<div>
+			<table class="table">
+				<tr>
+					<td class="text-center">아이디</td>
+					<td class="text-center">칭찬내용</td>
+					<td class="text-center">등록일</td>
+					<td class="text-center">삭제</td>
+				</tr>
+				<c:if test="${empty list}">
+					<tr>
+						<td colspan="3" class="text-center">칭찬내역이 존재하지 않습니다</td>
+					</tr>
+				</c:if>
+				<c:if test="${not empty list }">
+					<c:forEach var="compliment" items="${list }">
+						<tr>
+							<c:if test="${compliment.cp_del == 'y' }">
+								<th colspan="4" class="text-center">삭제된 칭찬내용입니다</th>
+							</c:if>
+							<c:if test="${compliment.cp_del != 'y' }">
+								<td class="text-center">${compliment.id }</td>
+								<td class="text-center">${compliment.cp_content }</td>
+								<td class="text-center">${compliment.cp_date }</td>
+								<c:if test="${compliment.id == id }">
+									<td><a class="btn btn-sm btn-dark"
+										href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a></td>
+								</c:if>
+								<c:if test="${compliment.id != id }">
+									<td></td>
+								</c:if>
+							</c:if>
+						</tr>
+					</c:forEach>
+				</c:if>
+			</table>
+			<!-- paging -->
+			<div>
+				<ul class="pagination pagination-sm justify-content-center">
+					<%-- 								<li>${pb}</li>  --%>
+					<%-- 				<li>${pageNum }</li> --%>
+					<c:if test="${pb.startPage > pb.pagePerBlock}">
+						<li class="page-item"><a class="page-link"
+							href="${path }/board/complimentMain.do?pageNum=1"> <i>맨
+									앞으로</i>
+						</a></li>
+						<li class="page-item"><a class="page-link"
+							href="${path }/board/complimentMain.do?pageNum=${pb.startPage-1}">
+								<i>앞으로</i>
+						</a></li>
+					</c:if>
+					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
+						<c:if test="${pb.currentPage == i }">
+							<li class="page-item active"><a class="page-link"
+								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
+						</c:if>
+						<c:if test="${pb.currentPage != i }">
+							<li class="page-item"><a class="page-link"
+								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
+						</c:if>
+					</c:forEach>
+					<c:if test="${pb.endPage < pb.totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="${path }/board/complimentMain.do?pageNum=${pb.endPage+1}">
+								<i>뒤로</i>
+						</a></li>
+						<li class="page-item"><a class="page-link"
+							href="${path }/board/complimentMain.do?pageNum=${pb.totalPage}">
+								<i>맨뒤로</i>
+						</a></li>
+					</c:if>
+				</ul>
+			</div>
+		</div>
 	</div>
+	<!-- 	</div> -->
 </body>
 </html>

@@ -12,4 +12,6 @@ public interface ComplimentService {
 
 	int coinsert(Compliment compliment);
 
+	int delete(int cpno);
+
 }

@@ -4,7 +4,8 @@
 
 <mapper namespace="boardns">
 	<insert id="coinsert" parameterType="compliment">
-		insert into compliment values(compliment_seq.nextval, #{cp_content},
+		insert into compliment
+		values(compliment_seq.nextval, #{cp_content},
 		sysdate, 'n', #{id})
 	</insert>
 
@@ -25,4 +26,8 @@
 		between #{startRow} and
 		#{endRow}
 	</select>
+	<update id="delete" parameterType="compliment">
+		update compliment set cp_del='y'
+		where cpno=#{cpno}
+	</update>
 </mapper>
