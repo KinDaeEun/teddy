@@ -32,7 +32,7 @@
 			<ul id="gnb">
 				<li><a href="${path}/admin/adminCarList.do">차량관리</a></li>
 				<li><a href="${path}/admin/adminMemberList.do">회원관리</a></li>
-				<li><a href="">게시판관리</a>
+				<li><a href="${path}/adminBoard/adminNotice.do">게시판관리</a>
 				<li><a href="${path}/admin/adminHelpList.do">1:1문의관리</a></li>
 			</ul>
 		</nav>

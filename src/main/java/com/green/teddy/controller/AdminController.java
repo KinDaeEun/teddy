@@ -7,11 +7,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -20,7 +23,9 @@ import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
+import com.green.teddy.dto.Notice;
 import com.green.teddy.dto.Review;
+import com.green.teddy.service.BoardService;
 import com.green.teddy.service.CarService;
 import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
@@ -45,6 +50,8 @@ public class AdminController {
 	@Autowired
 	private ReviewService res;
 
+
+	
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
 	}
@@ -168,7 +175,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin/adminCarDelete")
-	public void adminCarDelete(Model model, Car car) {
+	public void adminCarDelete(Model model, Car car, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
 		String c_del = "";
 		if(car.getC_del().equals("y")) {
 			c_del="n";
@@ -178,7 +186,9 @@ public class AdminController {
 		}
 		car.setC_del(c_del);
 		int result = cs.deleteCar(car);
+		
 		model.addAttribute("result",result);
+		model.addAttribute("referer",referer);
 	}
 	
 	@RequestMapping("admin/adminReviewList")
@@ -218,6 +228,28 @@ public class AdminController {
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("title", title);
 		model.addAttribute("c_name",car.getC_name());
+	}
+	
+	@RequestMapping("admin/adminReviewDelete")
+	public void adminReviewDelete(Model model, Review review, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+		String re_del = "";
+		if(review.getRe_del().equals("y")) {
+			re_del="n";
+		}
+		if(review.getRe_del().equals("n")) {
+			re_del="y";
+		}
+		review.setRe_del(re_del);
+		int result = res.deleteReview(review);
+		model.addAttribute("result",result);
+		model.addAttribute("referer",referer);
+	}
+	
+	@RequestMapping("admin/adminReviewContent")
+	public void adminReviewContent(Model model, int re_no) {
+		Review review = res.selectReview(re_no);
+		model.addAttribute("review",review);
 	}
 	
 
@@ -325,4 +357,13 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 	}
+	// 게시판 관리
+	@GetMapping("adminBoard/adminBoard_memu")
+	public void adminBoard_memu() {
+	}
+	@GetMapping("adminBoard/adminNotice")
+	public void adminNotice() {
+
+	}
+	
 }
