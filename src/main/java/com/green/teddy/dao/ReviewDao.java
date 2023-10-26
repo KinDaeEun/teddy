@@ -20,4 +20,8 @@ public interface ReviewDao {
 
 	List<Review> adminReviewList(Review review);
 
+	int deleteReview(Review review);
+
+	Review selectReview(int re_no);
+
 }

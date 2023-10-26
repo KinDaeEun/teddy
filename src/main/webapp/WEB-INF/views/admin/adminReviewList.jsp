@@ -70,7 +70,7 @@ function del(re_no,re_del) {
 						<td>${review.re_date }</td>
 						<td>${review.re_del }</td>
 						<th><a onclick="del(${review.re_no},'${review.re_del}')">변경</a></th>
-						<th><a href="${path }/admin/adminReviewUpdateForm.do?re_no=${review.re_no}">수정</a></th>
+						<th><a href="${path }/admin/adminReviewContent.do?re_no=${review.re_no}">보기</a></th>
 
 	
 					</tr>

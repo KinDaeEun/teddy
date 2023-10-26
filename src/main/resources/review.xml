@@ -40,12 +40,10 @@
 	</update>
 	
 	<select id="adminGetTotal" parameterType="review" resultType="integer">
-		select count(*) from review
-		<where>
+		select count(*) from review where cno = #{cno}
 			<if test="keyword!=null and keyword!=''">
-				${search} like '%'||#{keyword}||'%'
+				and ${search} like '%'||#{keyword}||'%'
 			</if>
-		</where>
 	</select>
 	
 	<select id="adminReviewList" parameterType="review" resultType="review">
@@ -56,6 +54,14 @@
 			</if>
 		)a) where
 		rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="deleteReview" parameterType="review">
+		update review set re_del=#{re_del} where re_no=#{re_no}
+	</update>
+	
+	<select id="selectReview" parameterType="integer" resultType="review">
+		select * from review where re_no=#{re_no}
 	</select>
 	
 </mapper>
