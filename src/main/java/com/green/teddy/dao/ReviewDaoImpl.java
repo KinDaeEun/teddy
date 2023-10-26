@@ -42,4 +42,14 @@ public class ReviewDaoImpl implements ReviewDao {
 	public List<Review> adminReviewList(Review review) {
 		return sst.selectList("reviewns.adminReviewList",review);
 	}
+
+	@Override
+	public int deleteReview(Review review) {
+		return sst.update("reviewns.deleteReview",review);
+	}
+
+	@Override
+	public Review selectReview(int re_no) {
+		return sst.selectOne("reviewns.selectReview",re_no);
+	}
 }

@@ -32,21 +32,21 @@
 		from(select rowNum rn, a.* from (
 		select
 		c.cno,c.c_name,c.c_cover_img,c_content, AVG(r.rating) avg_rating
-		FROM car c, review r where c.cno = r.cno(+)
+		FROM car c, review r where c.cno = r.cno(+) and c_del='n'
 		<if
 			test="brand!=null and brand!='' and c_kind!=null and c_kind!='' ">
-			and brand=#{brand} and c_kind=#{c_kind} and c_del='n'
+			and brand=#{brand} and c_kind=#{c_kind}
 		</if>
 
 		<if
 			test="(brand==null or brand=='') or (c_kind==null or c_kind =='')">
 
 			<if test="c_kind!=null and c_kind!=''">
-				and c_kind=#{c_kind} and c_del='n'
+				and c_kind=#{c_kind} 
 			</if>
 
 			<if test="brand!=null and brand!=''">
-				and brand=#{brand} and c_del='n'
+				and brand=#{brand}
 			</if>
 		</if>
 		GROUP BY c.cno, c.c_name,c_content,c.c_cover_img

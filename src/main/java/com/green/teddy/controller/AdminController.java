@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -174,7 +175,8 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin/adminCarDelete")
-	public void adminCarDelete(Model model, Car car) {
+	public void adminCarDelete(Model model, Car car, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
 		String c_del = "";
 		if(car.getC_del().equals("y")) {
 			c_del="n";
@@ -184,7 +186,9 @@ public class AdminController {
 		}
 		car.setC_del(c_del);
 		int result = cs.deleteCar(car);
+		
 		model.addAttribute("result",result);
+		model.addAttribute("referer",referer);
 	}
 	
 	@RequestMapping("admin/adminReviewList")
@@ -224,6 +228,28 @@ public class AdminController {
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("title", title);
 		model.addAttribute("c_name",car.getC_name());
+	}
+	
+	@RequestMapping("admin/adminReviewDelete")
+	public void adminReviewDelete(Model model, Review review, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+		String re_del = "";
+		if(review.getRe_del().equals("y")) {
+			re_del="n";
+		}
+		if(review.getRe_del().equals("n")) {
+			re_del="y";
+		}
+		review.setRe_del(re_del);
+		int result = res.deleteReview(review);
+		model.addAttribute("result",result);
+		model.addAttribute("referer",referer);
+	}
+	
+	@RequestMapping("admin/adminReviewContent")
+	public void adminReviewContent(Model model, int re_no) {
+		Review review = res.selectReview(re_no);
+		model.addAttribute("review",review);
 	}
 	
 
