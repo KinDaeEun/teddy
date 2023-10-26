@@ -8,7 +8,6 @@ public class Notice {
 	 private int nno; 
 	 private String id;
 	 private String n_title;
-	 private String n_writer;
 	 private String n_content;
 	 private Date n_date;
 	 private int n_cnt;

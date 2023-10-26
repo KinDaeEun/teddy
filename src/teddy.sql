@@ -119,7 +119,6 @@ create table notice (
     nno number primary key,         -- 공지사항 번호
     id varchar2(20),                -- 아이디
    	n_title varchar2(20),           -- 공지사항 번호
-    n_writer varchar2(20),          -- 공지사항 작성자
     n_content varchar2(1000),       -- 공지사항 내용
     n_date date,                    -- 공지사항 작성 날짜
     n_cnt number,                   -- 공지사항 조회수
