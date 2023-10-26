@@ -20,12 +20,14 @@
 .btn-top {
 	margin-top: 5px;
 }
+
+
 </style>
 <body>
 	<div class="container " align="center">
 		<div class="inner join-inner mb">
 			<h2 class="text-dark top">차량추가</h2>
-			<form action="${path }/admin/insertCar.do" method="post"
+			<form action="${path }/admin/adminCarInsertResult.do" method="post"
 				enctype="multipart/form-data">
 				<table class="table table-bordered">
 					<tr>
@@ -40,14 +42,15 @@
 					</tr>
 					<tr>
 						<th>차종</th>
-						<td><input type="radio" name="c_kind" id="경형/소형"
-							value="경차/소형차" checked="checked"> <label for="경형/소형">경형/소형</label>
+						<td><input type="radio" name="c_kind" id="경차/소형차"
+							value="경차/소형차" checked="checked"> <label for="경차/소형차">경차/소형차</label>
 
-							<input type="radio" name="c_kind" id="준중형" value="준중형"> <label
-							for="준중형차">준중형</label> <input type="radio" name="c_kind" id="중형"
-							value="중형차"> <label for="중형">중형</label> <input
-							type="radio" name="c_kind" id="대형" value="대형차"> <label
-							for="대형">대형</label> <input type="radio" name="c_kind" id="SUV"
+							<input type="radio" name="c_kind" id="준중형차" value="준중형차"> <label
+							for="준중형차">준중형차</label> 
+							<input type="radio" name="c_kind" id="중형차"
+							value="중형차"> <label for="중형차">중형차</label> <input
+							type="radio" name="c_kind" id="대형차" value="대형차"> <label
+							for="대형차">대형차</label> <input type="radio" name="c_kind" id="SUV"
 							value="SUV"> <label for="SUV">SUV</label></td>
 					</tr>
 					<tr>
@@ -161,12 +164,12 @@
 							required="required" multiple="multiple"></td>
 					</tr>
 					<tr>
-						<td colspan="2"><textarea name="c_content" class="form-control"></textarea></td>
+						<td colspan="2"><textarea rows="5" name="c_content" class="form-control" required="required"></textarea></td>
 					</tr>
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="추가" class="btn btn-dark">
-							<a href="${path }/admin/adminCar.do" class="btn btn-outline-dark">취소</a>
+							<a href="${path }/admin/adminCarInsertResult.do" class="btn btn-outline-dark">취소</a>
 							</td>
 					</tr>
 

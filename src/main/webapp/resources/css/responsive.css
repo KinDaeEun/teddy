@@ -208,12 +208,14 @@
 		margin: 0;
 		margin-bottom: 10px;
 	}
+	/* loginForm */
+	.login-form {
+    height: 90vh;
+}
 	/* news */
-	
 	.v_hb {
 		height: 180vh;
 	}
-	
 	.news_img{
 		overflow: hidden;
 		width: 100%;

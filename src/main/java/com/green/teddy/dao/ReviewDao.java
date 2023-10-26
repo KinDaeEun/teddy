@@ -16,4 +16,8 @@ public interface ReviewDao {
 
 	int reviewDelete(int re_no);
 
+	int adminGetTotal(Review review);
+
+	List<Review> adminReviewList(Review review);
+
 }

@@ -50,5 +50,9 @@ public class Car {
 	
 	//순서 조회용
 	private String order;
+	
+	//검색용
+	private String search;
+	private String keyword;
 
 }

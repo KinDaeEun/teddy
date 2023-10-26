@@ -33,4 +33,14 @@ public class ReviewServiceImpl implements ReviewService {
 	public int reviewDelete(int re_no) {
 		return red.reviewDelete(re_no);
 	}
+
+	@Override
+	public int adminGetTotal(Review review) {
+		return red.adminGetTotal(review);
+	}
+
+	@Override
+	public List<Review> adminReviewList(Review review) {
+		return red.adminReviewList(review);
+	}
 }

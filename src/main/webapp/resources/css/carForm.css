@@ -273,7 +273,6 @@ span .txt_point {
 	float: right;
 	width: 216px;
 	line-height: 17px;
-	color: #666;
 	text-overflow: ellipsis;
 	white-space: nowrap;
 	letter-spacing: -.5px;
@@ -343,4 +342,17 @@ span .txt_point {
 .star_img{
 	width:15px;
 	height:15px;
+}
+
+.paging {
+	margin-top: 20px;
+}
+
+.tit_font {
+	color: #f73c32;
+    font-weight: bold;
+}
+
+.no_tit {
+	color: #666;
 }

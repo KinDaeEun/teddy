@@ -16,4 +16,8 @@ public interface ReviewService {
 
 	int reviewDelete(int re_no);
 
+	int adminGetTotal(Review review);
+
+	List<Review> adminReviewList(Review review);
+
 }

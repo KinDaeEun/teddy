@@ -38,4 +38,24 @@ public class CarDaoImpl implements CarDao{
 	public int getMaxCno() {
 		return sst.selectOne("carns.getMaxCno");
 	}
+
+	@Override
+	public List<Car> adminCarList(Car car) {
+		return sst.selectList("carns.adminCarList",car);
+	}
+
+	@Override
+	public int updateCar(Car car) {
+		return sst.update("carns.updateCar",car);
+	}
+
+	@Override
+	public int deleteCar(Car car) {
+		return sst.update("carns.deleteCar",car);
+	}
+
+	@Override
+	public int adminGetTotal(Car car) {
+		return sst.selectOne("carns.adminGetTotal",car);
+	}
 }

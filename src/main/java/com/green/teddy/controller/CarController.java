@@ -118,7 +118,6 @@ public class CarController {
 
 		List<Design_img> imgList = ds.imgList(cno);
 
-		List<Review> reviewList = res.reviewList(cno);
 
 		model.addAttribute("car", car);
 		model.addAttribute("imgList", imgList);

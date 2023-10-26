@@ -78,12 +78,11 @@
 								<div class="find">
 									<strong class="tit_finder">정렬 순서</strong>
 									<div class="list_finder">
+										
 										<label class="test_obj"> <input type="radio"
-											name="order"> <span>전체 차종</span>
-										</label> <label class="test_obj"> <input type="radio"
 											name="order" value="cno"> <span>업데이트순</span>
 										</label> <label class="test_obj"> <input type="radio"
-											name="order" value="apple"> <span>종합 평가 순</span>
+											name="order" value="avg_rating"> <span>종합 평가 순</span>
 										</label>
 									</div>
 								</div>
@@ -108,10 +107,10 @@
 								href="${path }/car/carView.do?cno=${car.cno}"> <strong
 									class="tit_car">${car.c_name }</strong> <span
 									class="detail_point"> <em class="tit_point">별점</em> <span
-										class="txt_point">
+										class="txt_point tit_font">
 										
 										<c:if test="${car.avg_rating>0 }">
-										${car.avg_rating }
+										<fmt:formatNumber value="${car.avg_rating }" pattern="0.0"></fmt:formatNumber> 
 											<c:forEach var="i" begin="1" end="${car.avg_rating-(car.avg_rating%1)}">
        						   					  <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
      								  		 </c:forEach>
@@ -120,7 +119,7 @@
           									</c:if>
           								</c:if>
           								<c:if test="${car.avg_rating<=0 }">
-          									평점 없습니다
+          									<div class="no_tit">평점이 없습니다</div>
           								</c:if>
           								
 
@@ -136,7 +135,7 @@
 					</ul>
 				</div>
 			</div>
-			<div>
+			<div class="paging" style="margin-top: 15px">
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<li class="page-item"><a class="page-link"

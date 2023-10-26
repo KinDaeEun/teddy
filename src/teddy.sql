@@ -93,6 +93,7 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
+
 drop table compliment;
 select * from compliment;
 create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
@@ -254,7 +255,7 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 
 
 
-
+select * from review;
 -- 뉴스 데이터
 
 
