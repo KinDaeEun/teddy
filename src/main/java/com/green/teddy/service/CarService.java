@@ -17,4 +17,12 @@ public interface CarService {
 
 	int getMaxCno();
 
+	List<Car> adminCarList(Car car);
+
+	int updateCar(Car car);
+
+	int deleteCar(Car car);
+
+	int adminGetTotal(Car car);
+
 }
