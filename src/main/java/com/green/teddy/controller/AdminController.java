@@ -251,6 +251,5 @@ public class AdminController {
 		int result = ms.deleteAdmin(member.getId());
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
-
 	}
 }
