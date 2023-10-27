@@ -12,7 +12,5 @@ public class Design_img {
 	
 	private MultipartFile img_file;
 	
-	public String toString() {
-		return dno+" "+img_name+" "+cno;
-	}
+
 }

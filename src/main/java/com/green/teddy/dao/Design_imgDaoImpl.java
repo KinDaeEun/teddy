@@ -21,4 +21,10 @@ public class Design_imgDaoImpl implements Design_imgDao {
 	public List<Design_img> imgList(int cno) {
 		return sst.selectList("design_imgns.imgList",cno);
 	}
+
+	@Override
+	public int deleteImg(int dno) {
+		return sst.delete("design_imgns.deleteImg",dno);
+	}
+
 }

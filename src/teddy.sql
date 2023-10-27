@@ -325,3 +325,7 @@ insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현�
 사실 쏘나타는 멋스러운 디자인이나 성능으로 타는 차가 아니죠. 무난함, 그리고 값 대비 풍요로운 공간으로써 제품력을 주도합니다. 이번 DN8 쏘나타 역시 그 가치를 잘 채우고 있습니다. 가령 편의장비가 그랜저를 추월할 정도로 풍성합니다. 능동 안전 기술이 전 등급에 기본이고 옵션으로 고속도로 주행 보조(HDA)까지 넣을 수 있어요. 전 등급에 에어백 9개가 기본인 것도 놀랍습니다. 특히 LPI 깡통(스마트) 버전은 운전대 열선과 운전석 전동 시트, 하이패스 같은 것들이 전부 기본이기도 합니다.','중형차',
 TO_DATE('2019-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전륜','160 / 6,500','맥퍼슨 스트럿 ,멀티 링크',
 '20 / 4,800','4개 / 벤틸레이티드 디스크 2개','9','241','n',1860,1445,2840,4900,'Hyundai Sonata (DN8)front.jpg','Hyundai Sonata (DN8)side.jpg');
+
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);

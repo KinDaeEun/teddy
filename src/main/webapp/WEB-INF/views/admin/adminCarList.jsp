@@ -77,7 +77,7 @@ function del(cno,c_del) {
 						<th><a onclick="del(${car.cno},'${car.c_del}')">변경</a></th>
 						<th><a href="${path }/admin/adminCarUpdateForm.do?cno=${car.cno}">수정</a></th>
 						<th><a href="${path }/admin/adminReviewList.do?cno=${car.cno}">리뷰</a></th>
-						<th><a href="#">수정</a></th>
+						<th><a href="${path }/admin/adminCarImgList.do?cno=${car.cno}">수정</a></th>
 					</tr>
 				</c:forEach>
 			</c:if>
