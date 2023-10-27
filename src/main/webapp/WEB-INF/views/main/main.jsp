@@ -199,7 +199,7 @@
 			<div class="blog-content">
 				<div class="blog-header">
 					<h6>feature article</h6>
-					<h2>새로운 차들의 정보가 궁금하시나요?</h2>
+					<h2>새로운 시승차 정보가 궁금하시나요?</h2>
 					<p>이 곳에서 새로운 NEWS를 확인하세요</p>
 					<a class="btn-explore" href="${path}/news/newsList.do">Read More <img
 						src="${path}/resources/images/main/icon-arrow.png"></a>
