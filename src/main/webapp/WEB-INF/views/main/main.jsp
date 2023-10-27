@@ -199,11 +199,9 @@
 			<div class="blog-content">
 				<div class="blog-header">
 					<h6>feature article</h6>
-					<h2>Can Americans Visit Mexico Right Now?</h2>
-					<p>Technically, there’s a ban on nonessential travel across the
-						border through September 21. Then how are people on vacation in
-						Cabo and Cancun right now?</p>
-					<a class="btn-explore" href="#none">Read More <img
+					<h2>새로운 차들의 정보가 궁금하시나요?</h2>
+					<p>이 곳에서 새로운 NEWS를 확인하세요</p>
+					<a class="btn-explore" href="${path}/news/newsList.do">Read More <img
 						src="${path}/resources/images/main/icon-arrow.png"></a>
 				</div>
 				<hr class="divider">
