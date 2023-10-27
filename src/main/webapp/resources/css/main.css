@@ -62,36 +62,50 @@ ul {
 .v_h {
 	height: 100vh;
 }
+
 .v_hb {
 	height: 130vh;
 }
+
 .six-wd {
 	width: 480px;
 }
+
 .fx {
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 }
+
 .fxsb {
 	display: flex;
 	justify-content: space-between;
 }
+
 .bd {
 	border: 1px solid #222;
 }
+
 .mg-tb {
 	margin: 100px 0;
 }
+
 .mg_tb {
 	margin: 50px 0;
 }
+
 .mg-b {
 	margin-bottom: 100px;
 }
+
 .pg-b {
 	padding-bottom: 100px;
 }
+
+.mg-r {
+	margin-right: 20px;
+}
+
 .pg-tb {
 	padding: 100px 0;
 }
@@ -321,11 +335,13 @@ header.active #w-nav li a:hover {
 	box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.08);
 	overflow: hidden;
 }
+
 .item {
-    width: 100%;
-    border-radius: 7px;
-    margin-bottom: 25px;
+	width: 100%;
+	border-radius: 7px;
+	margin-bottom: 25px;
 }
+
 .up-image {
 	width: 390px;
 	height: 285px;
@@ -433,7 +449,7 @@ header.active #w-nav li a:hover {
 /* CallAction Section */
 .callaction {
 	height: 450px;
-	background: url(../images/callaction-01.jpg) no-repeat center center;
+	background: url(../images/pic_testdriving.png) no-repeat center center;
 	background-size: cover;
 	position: relative;
 	display: flex;
@@ -443,8 +459,9 @@ header.active #w-nav li a:hover {
 
 .callaction:before {
 	content: '';
-	background: linear-gradient(to right, rgba(160, 8, 160, 0.5),
-		rgba(6, 87, 24, 0.8));
+	background: linear-gradient(to right, rgba(224,255, 255, 0.5),
+		rgba(0, 191, 255,0.8));
+/* 	background: linear-gradient(to right, rgba(224, 255, 255,0.5), ,rgba(0, 191, 255,0.8)); */
 	/*background: #000;*/
 	width: 100%;
 	height: 100%;
@@ -460,7 +477,7 @@ header.active #w-nav li a:hover {
 	color: #fff;
 	font-size: 48px;
 	line-height: 1.3em;
-	font-weight: 300;
+	font-weight: 400;
 	letter-spacing: -1px;
 	margin-bottom: 50px;
 }

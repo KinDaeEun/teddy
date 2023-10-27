@@ -28,5 +28,10 @@ public class ComplimentServiceImpl implements ComplimentService{
 		
 		return cd.coinsert(compliment);
 	}
+	@Override
+	public int delete(int cpno) {
+		
+		return cd.delete(cpno);
+	}
 
 }

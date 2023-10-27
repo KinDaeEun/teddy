@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
@@ -23,7 +24,9 @@ import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
+import com.green.teddy.dto.Notice;
 import com.green.teddy.dto.Review;
+import com.green.teddy.service.BoardService;
 import com.green.teddy.service.CarService;
 import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
@@ -374,9 +377,12 @@ public class AdminController {
 		model.addAttribute("pageNum", pageNum);
 	}
 	// 게시판 관리
-	@RequestMapping("adminBoard/adminNotice")
-	public void adminNotice() {}
 	@GetMapping("adminBoard/adminBoard_memu")
 	public void adminBoard_memu() {
 	}
+	@GetMapping("adminBoard/adminNotice")
+	public void adminNotice() {
+
+	}
+	
 }

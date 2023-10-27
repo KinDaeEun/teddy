@@ -12,4 +12,6 @@ public interface ComplimentDao {
 
 	int coinsert(Compliment compliment);
 
+	int delete(int cpno);
+
 }

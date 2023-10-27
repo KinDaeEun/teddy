@@ -5,84 +5,76 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>공지사항 관리</title>
 </head>
 <body>
-	<div>
-		<div class="v_h">
-			<h3 class="mg-b">공지사항 목록</h3>
-			
-			<table class="table">
-				<tr class="text-center">
-					<th>번호</th>
-					<th colspan="2">제목</th>
-					<th>가입일</th>
-					<th>수정</th>
-					<th>삭제</th>
+	<div class="container">
+		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
+		<table class="table table-striped">
+			<tr>
+				<th>번호</th>
+				<th>제목</th>
+				<th>작성자</th>
+				<th>조회수</th>
+				<th>작성일</th>
+				<th>수정</th>
+				<th>삭제</th>
+			</tr>
+			<c:if test="${empty list }">
+				<tr>
+					<td colspan="7">게시글이 없습니다</td>
 				</tr>
-				<c:if test="${empty ntList }">
+			</c:if>
+			<c:if test="${not empty list}">
+				<c:forEach var="board" items="${list }">
 					<tr>
-						<th class="text-center" colspan="6">게시글이 없습니다</th>
+						<td>${num}<c:set var="num" value="${num-1}"></c:set></td>
+						<c:if test="${notice.n_del =='y' }">
+							<td colspan="4" class="table-danger">삭제된 글입니다</td>
+						</c:if>
+						<c:if test="${notice.n_del != 'y' }">
+							<td>${notice.nno }</td>
+							<td>${notice.n_title }</td>
+							<td>${notice.id }</td>
+							<td>${notice.n_cnt }</td>
+							<td>${notice.n_date }</td>
+							<td><a class="btn btn-sm btn-dark">수정</a></td>
+							<td><a class="btn btn-sm btn-dark">삭제</a></td>
+						</c:if>
 					</tr>
-				</c:if>
-				<c:if test="${not empty ntList }">
-					<c:forEach var="board" items="${ntList }">
-						<tr>
-							<td>${board.bno }</td>
-							<td colspan="2"><a
-								href="${path }/adminBoard/adminNoticeView.do?id=${board.id}&pageNum=${pb.currentPage}">${board.b_title }</a></td>
-							<th>${board.b_date }</th>
-							<td><a
-								href="${path }/adminBoard/adminNotice_update.do?bno=${board.bno}"
-								class="btn btn-warning">수정</a></td>
-							<td><a
-								href="${path }/adminBoard/adminNotice_delete.do?bno=${board.bno}"
-								class="btn btn-warning">삭제</a></td>
-						</tr>
-					</c:forEach>
-				</c:if>
-			</table>
-			<div class="mg_tb" align="right">
-				<a href="${path }/adminBoard/adminBoard_write.do" class="btn btn-dark btn-sm">글쓰기</a>
-			</div>
-			<!-- paging -->
-			<div>
-				<ul class="pagination pagination-sm justify-content-center">
-					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
-							href="adminMemberList.do?pageNum=1&search=${member.search}&keyword=${member.keyword}">
-								<i>맨 앞으로</i>
-						</a></li>
-						<li class="page-item"><a class="page-link"
-							href="adminMemberList.do?pageNum=${pb.startPage-1}&search=${member.search}&keyword=${member.keyword}">
-								<i>앞으로</i>
-						</a></li>
-					</c:if>
-				
-					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
-						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
-								href="adminMemberList.do?pageNum=${i}&search=${member.search}&keyword=${member.keyword}">${i }</a></li>
-						</c:if>
-						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
-								href="adminMemberList.do?pageNum=${i}&search=${member.search}&keyword=${member.keyword}">${i }</a></li>
-						</c:if>
-					</c:forEach>
-					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
-							href="adminMemberList.do?pageNum=${pb.endPage+1}&search=${member.search}&keyword=${member.keyword}">
-								<i>뒤로</i>
-						</a></li>
-						<li class="page-item"><a class="page-link"
-							href="adminMemberList.do?pageNum=${pb.totalPage}&search=${member.search}&keyword=${member.keyword}">
-								<i>맨뒤로</i>
-						</a></li>
-					</c:if>
-				</ul>
-			</div>
+				</c:forEach>
+			</c:if>
+		</table>
+		<div align="right">
+			<a href="${path }/noticeWrite.do"
+				class="btn btn-dark btn-sm">글쓰기</a>
 		</div>
-			
+	</div>
+	<div class="paging mg_tb">
+		<ul class="pagination justify-content-center">
+			<c:if test="${startPage > PAGE_PER_BLOCK}">
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${startPage-1}">
+						<i class="bi bi-arrow-left-circle icofont-2x"></i>
+				</a></li>
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:if test="${currentPage == i }">
+					<li class="page-item active"><a class="page-link"
+						href="adminNotice.do?pageNum=${i }">${i }</a></li>
+				</c:if>
+				<c:if test="${currentPage != i }">
+					<li class="page-item"><a class="page-link"
+						href="adminNotice.do?pageNum=${i}"></a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${endPage < totalPage}">
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${endPage+1 }">
+						<i class="bi bi-arrow-right-square icofont-2x"></i>
+				</a></li>
+			</c:if>
+		</ul>
 	</div>
 </body>
 </html>
