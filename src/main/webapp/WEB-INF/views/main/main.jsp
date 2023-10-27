@@ -44,7 +44,10 @@
 	<section class="ranking" id="ranking">
 		<div class="inner">
 			<div class="ranking-content">
-				<h2>Best Car</h2>
+				<div class="fxsb">
+					<h2>Best Car</h2>
+					<a class="btn-explore mg-r" href="${path}/car/carForm.do">Read More <img src="/teddy/resources/images/main/icon-arrow.png"></a>
+				</div>
 				<div class="items_car">
 						<div class="item_car">
 							<div class="up-image">
@@ -185,10 +188,9 @@
 	<section class="callaction" id="callaction">
 		<div class="callaction-heading">
 			<h2>
-				The Most Simple & <b>Powerful Way</b> <br> to book <b>your
-					test drive</b>
+				시승 예약 바로가기
 			</h2>
-			<a href="#none">GET EARLY ACCESS</a>
+			<a href="${path}/car/reservationForm.do">Read More</a>
 		</div>
 	</section>
 
