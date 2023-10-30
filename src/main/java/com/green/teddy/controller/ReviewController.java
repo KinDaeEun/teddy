@@ -20,7 +20,7 @@ public class ReviewController {
 	
 	@PostMapping("car/reviewInsert")
 	public void revierInsert(Model model, Review review, HttpSession session) {
-		// System.out.println(review);
+
 		String id = (String) session.getAttribute("id");
 		review.setId(id);
 		int result = res.reviewInsert(review);

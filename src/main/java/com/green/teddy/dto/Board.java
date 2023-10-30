@@ -13,4 +13,11 @@ public class Board {
 	private Date b_date;
 	private int b_cnt;
 	private String b_del;
+	
+	//	paging
+	private int startRow;
+	private int endRow;
+	//	search 
+	private String search;
+	private String keyword;
 }
