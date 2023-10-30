@@ -93,10 +93,11 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
-
+drop sequence compliment_seq;
 drop table compliment;
 select * from compliment;
 create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
+
 -- 게시판
 create table board (
     bno number primary key,         -- 게시판 번호
@@ -109,7 +110,7 @@ create table board (
     b_del char(1),                   -- 게시글 삭제여부
     foreign key(id) references member(id)
 );
-
+create sequence board_seq start with 1 increment by 1 maxvalue 999999;
 select * from board;
 drop table board;
 
