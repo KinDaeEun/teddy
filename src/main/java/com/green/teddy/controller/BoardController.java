@@ -59,6 +59,7 @@ public class BoardController {
 		model.addAttribute("pb", pb);
 		model.addAttribute("compliment", compliment);
 		model.addAttribute("member", member);
+		model.addAttribute("pageNum", pageNum);
 	}
 
 	@RequestMapping("board/rInsert")

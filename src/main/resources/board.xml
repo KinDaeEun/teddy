@@ -21,7 +21,7 @@
 		(select rowNum rn, a.* from(
 		select * from
 		compliment
-		order by cpno desc )a)
+		where cp_del='n' order by cpno desc )a)
 		where rn
 		between #{startRow} and
 		#{endRow}
