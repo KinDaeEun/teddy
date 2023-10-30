@@ -20,8 +20,6 @@
 						<input type="text" name="b_title" class="form-control" required>
 					</td>
 				</tr>
-
-				<!-- 회원 게시판에서는 사용 안함 시작 -->
 				<tr>
 					<th>작성자</th>
 					<td>

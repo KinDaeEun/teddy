@@ -105,8 +105,39 @@ public class BoardController {
 	
 	// 커뮤니티
 	@GetMapping("board/boardList")
-	public void boardList() {
-
+	public void boardList(Model model, Board board, String pageNum) {
+		// 페이징
+		int rowPerPage = 10; // 한 페이지에 10개씩 확인
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+//		int total = bs.getTotal();
+		int total = bs.getTotal(board);
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		
+		board.setStartRow(startRow);
+		board.setEndRow(endRow);
+		
+		// 페이지별 첫 번째 게시글 번호
+		int num = total - startRow + 1;
+		
+		// 시작부터 끝까지 읽어라
+//		List<Board> list = bs.list(startRow, endRow, search, keyword);
+		List<Board> list = bs.blist(board);
+		
+		// pd 속에 currentPage rowPage total totalPage 다 들어있음
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		
+		//	검색
+		String[] title = {"작성자", "제목", "내용", "제목+내용"};
+		
+		model.addAttribute("num", num);
+		model.addAttribute("title", title);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("list", list);
+		model.addAttribute("pb", pb);
+		model.addAttribute("board", board);
 
 	}
 	
@@ -121,9 +152,22 @@ public class BoardController {
 	
 	// 커뮤니티 게시글 작성
 	@PostMapping("board/boardInsert.do")
-	public void boardInsert(Model model, Board board) {
-		int result = bs.insert(board);
+	public void boardInsert(Model model, Board board, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		board.setId(id);
+
+		int result = bs.binsert(board);
 		
 		model.addAttribute("result", result);
+	}
+	
+	// 커뮤니티 게시글 조회
+	@GetMapping("board/boardView.do")
+	public void boardView(Model model, int bno, String pageNum) {
+		bs.updateBcnt(bno);
+		Board board = bs.bselect(bno);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("pageNum", pageNum);
 	}
 }
