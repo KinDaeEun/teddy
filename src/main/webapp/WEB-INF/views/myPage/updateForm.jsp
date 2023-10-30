@@ -45,12 +45,12 @@ function chk() {
 					<tr>
 						<th>암호</th>
 						<td><input type="password" name="password"
-							 class="form-control"></td>
+							 class="form-control" required="required"></td>
 					</tr>
 					<tr>
 						<th>암호확인</th>
 						<td><input type="password" name="password2"
-							 class="form-control"></td>
+							 class="form-control" required="required"></td>
 					</tr>
 					<tr>
 						<th>이름</th>

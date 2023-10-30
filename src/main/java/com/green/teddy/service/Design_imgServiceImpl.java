@@ -23,4 +23,11 @@ public class Design_imgServiceImpl implements Design_imgService {
 	public List<Design_img> imgList(int cno) {
 		return dd.imgList(cno);
 	}
+
+	@Override
+	public int deleteImg(int dno) {
+		return dd.deleteImg(dno);
+	}
+
+
 }

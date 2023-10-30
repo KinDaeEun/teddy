@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/carView.css">
+<link rel="stylesheet" href="${path}/resources/css/carViews.css">
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -224,22 +224,29 @@
 						<!-- 댓글목록 END -->
 						<!-- paging -->
 						<div class="paging">
-							<ul class="pagination justify-content-center"
-								style="padding-top: 3vh">
-								<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
-
-									<c:if test="${pb.currentPage == i }">
-										<li><a class="page-link"
-											href="carView.do?pageNum=${i}&cno=${car.cno }"
-											style="text-decoration: none"> ${i } </a></li>
+							<ul class="pagination justify-content-center">
+								<c:if test="${startPage > PAGE_PER_BLOCK}">
+									<li class="page-item"><a class="page-link"
+										href="adminCarList.do?pageNum=${startPage-1}&search=${car.search}&keyword=${car.keyword}">
+											<i class="bi bi-arrow-left-circle icofont-2x"></i>
+									</a></li>
+								</c:if>
+								<c:forEach var="i" begin="${startPage}" end="${endPage}">
+									<c:if test="${currentPage == i }">
+										<li class="page-item active"><a class="page-link"
+											href="adminCarList.do?pageNum=${i }&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 									</c:if>
-									<c:if test="${pb.currentPage != i }">
-										<li><a class="page-link"
-											href="carView.do?pageNum=${i}&cno=${car.cno }"
-											style="text-decoration: none"> ${i } </a></li>
+									<c:if test="${currentPage != i }">
+										<li class="page-item"><a class="page-link"
+											href="adminCarList.do?pageNum=${i}&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 									</c:if>
-
 								</c:forEach>
+								<c:if test="${endPage < totalPage}">
+									<li class="page-item"><a class="page-link"
+										href="adminCarList.do?pageNum=${endPage+1 }&search=${car.search}&keyword=${car.keyword}">
+											<i class="bi bi-arrow-right-square icofont-2x"></i>
+									</a></li>
+								</c:if>
 							</ul>
 						</div>
 						<!-- paging end -->

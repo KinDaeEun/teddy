@@ -16,6 +16,10 @@
 		resultType="design_img">
 		select * from design_img where cno = #{cno}
 	</select> 
+	
+	<delete id="deleteImg" parameterType="integer">
+		delete from design_img where dno=#{dno}
+	</delete>
 </mapper>
 
 		

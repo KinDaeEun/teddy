@@ -10,4 +10,7 @@ public interface Design_imgDao {
 
 	List<Design_img> imgList(int cno);
 
+	int deleteImg(int dno);
+
+
 }

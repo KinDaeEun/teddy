@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ include file="../headerBase.jsp"%>
+    pageEncoding="UTF-8"%>
+<%@ include file="../headerBase.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,17 +10,15 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("수정 성공하였습니다")
-			location.href = "${referer}";
+			alert("게시물을 등록하였습니다")
+			location.href="${path}/board/boardList.do"
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">
 		<script type="text/javascript">
-			alert("수정 실패 하였습니다")
-			history.go(-1);
+			alert("게시물 등록에 실패하였습니다")
+			history.back();
 		</script>
 	</c:if>
-
-
 </body>
 </html>

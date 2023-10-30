@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.green.teddy.dto.Board;
 import com.green.teddy.dto.Compliment;
 import com.green.teddy.dto.Member;
 import com.green.teddy.service.BoardService;
@@ -101,5 +102,28 @@ public class BoardController {
 	// model.addAttribute("compliment", compliment);
 	// model.addAttribute("member", member);
 	// }
+	
+	// 커뮤니티
+	@GetMapping("board/boardList")
+	public void boardList() {
 
+
+	}
+	
+	// 커뮤니티 게시글 작성폼
+	@GetMapping("board/boardInsertForm.do")
+	public void boardInsertForm(Model model, Board board, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		board.setId(id);
+		
+		model.addAttribute("id", id);
+	}
+	
+	// 커뮤니티 게시글 작성
+	@PostMapping("board/boardInsert.do")
+	public void boardInsert(Model model, Board board) {
+		int result = bs.insert(board);
+		
+		model.addAttribute("result", result);
+	}
 }

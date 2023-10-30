@@ -25,7 +25,7 @@ tr .bc:hover {
 	<table class="table">
 		<tr class="text-center">
 			<td class="bc"><a class="text-dark"
-				href="${path }/board/notice.do">공지사항</a></td>
+				href="${path }/adminBoard/adminNotice.do">공지사항</a></td>
 		</tr>
 		<tr class="text-center">
 			<td class="bc"><a class="text-dark"

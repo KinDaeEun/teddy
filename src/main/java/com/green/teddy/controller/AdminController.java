@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -51,7 +52,6 @@ public class AdminController {
 	private ReviewService res;
 
 
-	
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
 	}
@@ -168,15 +168,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping("admin/adminCarUpdateResult")
-	public void adminCarUpdateResult(Model model, Car car) {
+	public void adminCarUpdateResult(Model model, Car car, HttpServletRequest request) {
 		int result = cs.updateCar(car);
-		model.addAttribute("cno",car.getCno());
+		String referer = request.getHeader("Referer");
+		model.addAttribute("referer",referer);
 		model.addAttribute("result",result);
 	}
 	
 	@RequestMapping("admin/adminCarDelete")
 	public void adminCarDelete(Model model, Car car, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
+		System.out.println(referer);
 		String c_del = "";
 		if(car.getC_del().equals("y")) {
 			c_del="n";
@@ -250,6 +252,23 @@ public class AdminController {
 	public void adminReviewContent(Model model, int re_no) {
 		Review review = res.selectReview(re_no);
 		model.addAttribute("review",review);
+	}
+	
+	@RequestMapping("admin/adminCarImgList")
+	public void adminImgList(Model model, int cno) {
+		List<Design_img> imgList = ds.imgList(cno);
+		model.addAttribute("imgList",imgList);
+	}
+	
+	@RequestMapping("admin/adminCarImgDelete" )
+	public void adminCarImgDelete(Model model, Integer[] Dno, HttpServletRequest request) {
+		String referer = request.getHeader("Referer");
+		int result = 0;
+		for(int dno:Dno) {
+			result = ds.deleteImg(dno);
+		}
+		model.addAttribute("result",result);
+		model.addAttribute("referer",referer);
 	}
 	
 

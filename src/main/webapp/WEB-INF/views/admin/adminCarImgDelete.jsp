@@ -10,13 +10,13 @@
 <body>
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
-			alert("수정 성공하였습니다")
+			alert("전시상태 수정 성공하였습니다")
 			location.href = "${referer}";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">
 		<script type="text/javascript">
-			alert("수정 실패 하였습니다")
+			alert("전시상태 수정 실패하였습니다")
 			history.go(-1);
 		</script>
 	</c:if>

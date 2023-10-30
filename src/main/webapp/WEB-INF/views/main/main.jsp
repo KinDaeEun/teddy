@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Teddy</title>
 <script type="text/javascript">
 	/* 맨 위로 */
 	$(function() {
@@ -44,7 +44,10 @@
 	<section class="ranking" id="ranking">
 		<div class="inner">
 			<div class="ranking-content">
-				<h2>Best Car</h2>
+				<div class="fxsb">
+					<h2>Best Car</h2>
+					<a class="btn-explore mg-r" href="${path}/car/carForm.do">Read More <img src="/teddy/resources/images/main/icon-arrow.png"></a>
+				</div>
 				<div class="items_car">
 						<div class="item_car">
 							<div class="up-image">
@@ -185,10 +188,9 @@
 	<section class="callaction" id="callaction">
 		<div class="callaction-heading">
 			<h2>
-				The Most Simple & <b>Powerful Way</b> <br> to book <b>your
-					test drive</b>
+				시승 예약 바로가기
 			</h2>
-			<a href="#none">GET EARLY ACCESS</a>
+			<a href="${path}/car/reservationForm.do">Read More</a>
 		</div>
 	</section>
 
@@ -197,11 +199,9 @@
 			<div class="blog-content">
 				<div class="blog-header">
 					<h6>feature article</h6>
-					<h2>Can Americans Visit Mexico Right Now?</h2>
-					<p>Technically, there’s a ban on nonessential travel across the
-						border through September 21. Then how are people on vacation in
-						Cabo and Cancun right now?</p>
-					<a class="btn-explore" href="#none">Read More <img
+					<h2>새로운 시승차 정보가 궁금하시나요?</h2>
+					<p>이 곳에서 새로운 NEWS를 확인하세요</p>
+					<a class="btn-explore" href="${path}/news/newsList.do">Read More <img
 						src="${path}/resources/images/main/icon-arrow.png"></a>
 				</div>
 				<hr class="divider">

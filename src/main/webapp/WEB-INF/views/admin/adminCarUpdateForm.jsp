@@ -232,7 +232,7 @@ $(function() {
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							value="수정" class="btn btn-dark">
-							<a href="${path }/admin/adminCar.do" class="btn btn-outline-dark">취소</a>
+							<a href="${path }/admin/adminCarList.do" class="btn btn-outline-dark">취소</a>
 							</td>
 					</tr>
 

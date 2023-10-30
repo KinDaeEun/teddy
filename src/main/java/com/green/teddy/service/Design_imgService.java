@@ -10,4 +10,8 @@ public interface Design_imgService {
 
 	List<Design_img> imgList(int cno);
 
+	int deleteImg(int dno);
+
+	
+
 }
