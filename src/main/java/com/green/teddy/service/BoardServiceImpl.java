@@ -47,4 +47,12 @@ public class BoardServiceImpl implements BoardService{
 		return bd.bcntlist();
 	}
 
+	public int adminGetTotal(Board board) {
+		return bd.adminGetTotal(board);
+	}
+
+	public List<Board> adminBoardList(Board board) {
+		return bd.adminBoardList(board);
+	}
+
 }

@@ -22,4 +22,8 @@ public interface BoardService {
 
 	List<Board> bcntlist();
 
+	int adminGetTotal(Board board);
+
+	List<Board> adminBoardList(Board board);
+
 }

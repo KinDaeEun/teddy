@@ -29,7 +29,7 @@ tr .bc:hover {
 		</tr>
 		<tr class="text-center">
 			<td class="bc"><a class="text-dark"
-				href="${path }/board/updateForm.do">커뮤니티</a></td>
+				href="${path }/admin/adminBoardList.do">커뮤니티</a></td>
 		</tr>
 		<tr class="text-center">
 			<td class="bc"><a class="text-dark"

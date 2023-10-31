@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.green.teddy.dto.Board;
 import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
@@ -50,7 +51,9 @@ public class AdminController {
 	
 	@Autowired
 	private ReviewService res;
-
+	
+	@Autowired
+	private BoardService bs;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
@@ -380,5 +383,57 @@ public class AdminController {
 		@GetMapping("adminBoard/adminBoard_memu")
 		public void adminBoard_memu() {
 		}
+		
 	
+		// 게시글 목록 리스트
+		@RequestMapping("admin/adminBoardList")
+		public void adminBoardList(Model model, String pageNum, Board board) {
+			if (pageNum == null || pageNum.equals(""))
+				pageNum = "1";
+			int currentPage = Integer.parseInt(pageNum);
+			int rowPerPage = 10;
+			int total = bs.adminGetTotal(board);// 전체 회원 수
+			int startRow = (currentPage - 1) * rowPerPage + 1;
+			int endRow = startRow + rowPerPage - 1;
+			board.setStartRow(startRow);
+			board.setEndRow(endRow);
+			
+			List<Board> boardList = bs.adminBoardList(board);// 회원목록
+
+			PageBean pb = new PageBean(currentPage, rowPerPage, total);
+			String[] title = {"작성자", "제목", "내용", "제목+내용"};
+			
+			model.addAttribute("total", total);
+			model.addAttribute("title", title);
+			model.addAttribute("boardList", boardList);
+			model.addAttribute("pb", pb);
+			model.addAttribute("pageNum", pageNum);
+			model.addAttribute("board", board);
+		}
+		
+		// 게시글 전시상태 변경
+		@RequestMapping("admin/adminBoardDelete")
+		public void adminBoardDelete(Model model, Board board, HttpServletRequest request, int bno) {
+			String referer = request.getHeader("Referer");
+			String b_del = "";
+			if(board.getB_del().equals("y")) {
+				b_del="n";
+			}
+			if(board.getB_del().equals("n")) {
+				b_del="y";
+			}
+			board.setB_del(b_del);
+			int result = bs.bdelete(bno);
+			
+			model.addAttribute("result",result);
+			model.addAttribute("referer",referer);
+		}
+		
+		// 게시글 상세보기
+		@RequestMapping("admin/adminBoardContent")
+		public void adminBoardContent(Model model, int bno) {
+			Board board = bs.bselect(bno);
+			
+			model.addAttribute("board",board);
+		}
 }

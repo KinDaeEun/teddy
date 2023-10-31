@@ -47,4 +47,12 @@ public class BoardDaoImpl implements BoardDao{
 		return sst.selectList("boardns.bcntlist");
 	}
 
+	public int adminGetTotal(Board board) {
+		return sst.selectOne("boardns.adminGetTotal", board);
+	}
+
+	public List<Board> adminBoardList(Board board) {
+		return sst.selectList("boardns.adminBoardList", board);
+	}
+
 }

@@ -113,4 +113,43 @@
 	<select id="bcntlist" resultType="board">
 		select * from board order by b_cnt desc
 	</select>
+	
+	<!-- 관리자 게시물 총 갯수 + 검색 -->
+	<select id="adminGetTotal" resultType="integer">
+		select count(*) from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<!-- 제목 + 내용 -->
+				<if test="search=='subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+	</select>
+	
+	<!-- 관리자 게시물 목록 + 검색 -->
+	<select id="adminBoardList" parameterType="board" resultType="board">
+		select * from ( select a.*, rowNum rn from (
+		select * from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="search == 'subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search != 'subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+		order by bno desc ) a )
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
 </mapper>
