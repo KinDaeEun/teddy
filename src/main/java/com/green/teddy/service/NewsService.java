@@ -10,4 +10,6 @@ public interface NewsService {
 
 	News select(int nno);
 
+	News recentNews();
+
 }

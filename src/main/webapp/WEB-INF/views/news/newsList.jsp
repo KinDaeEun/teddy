@@ -84,29 +84,29 @@ window.uiTabT2 = function(e) {
 
 			<div class="tab_review">
 				<div id="exo" class="tab_wrp">
-					<div id="exo1" class="tab1 active">
-						<p>
-							<a href="#exo1" onclick="uiTabT1(this.href);return false;">Recent</a>
-						</p>
-						<div class="sec">
-							<ul>
-								<li><a href="#"> <img class="sec_img"
-										src="${path }/resources/images/intro.jpg">
-								</a>
-									<dl>
-										<dt>
-											<a href="#">[시승기]지프 랭글러 오버랜드 파워탑</a>
-										</dt>
-										<dd>
-											<span class="date">2020.10.14</span>
-										</dd>
-									</dl></li>
-							</ul>
+						<div id="exo1" class="tab1 active">
+							<p>
+								<a href="#exo1" onclick="uiTabT1(this.href);return false;">최신뉴스</a>
+							</p>
+							<div class="sec">
+								<ul>
+									<li><a href="${path }/news/newsContent.do?nno=${recent.nno}"> <img class="sec_img"
+											src="${path }/resources/images/news/${recent.n_cover_img}">
+									</a>
+										<dl>
+											<dt>
+												<a href="#">${recent.n_title }</a>
+											</dt>
+											<dd>
+												<span class="date">${recent.n_date }</span>
+											</dd>
+										</dl></li>
+								</ul>
+							</div>
 						</div>
-					</div>
 					<div id="exo2" class="tab2">
 						<p>
-							<a href="#exo2" onclick="uiTabT2(this.href);return false;">Hot</a>
+							<a href="#exo2" onclick="uiTabT2(this.href);return false;">인기뉴스</a>
 						</p>
 						<div class="sec">
 							<ul>

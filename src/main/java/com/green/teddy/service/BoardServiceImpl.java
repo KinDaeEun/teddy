@@ -35,4 +35,12 @@ public class BoardServiceImpl implements BoardService{
 		
 	}
 
+	public int bupdate(Board board) {
+		return bd.bupdate(board);
+	}
+
+	public int bdelete(int bno) {
+		return bd.bdelete(bno);
+	}
+
 }

@@ -111,7 +111,6 @@ public class BoardController {
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";
 		int currentPage = Integer.parseInt(pageNum);
-//		int total = bs.getTotal();
 		int total = bs.getTotal(board);
 		int startRow = (currentPage - 1) * rowPerPage + 1;
 		int endRow = startRow + rowPerPage - 1;
@@ -123,10 +122,7 @@ public class BoardController {
 		int num = total - startRow + 1;
 		
 		// 시작부터 끝까지 읽어라
-//		List<Board> list = bs.list(startRow, endRow, search, keyword);
 		List<Board> list = bs.blist(board);
-		
-		// pd 속에 currentPage rowPage total totalPage 다 들어있음
 		PageBean pb = new PageBean(currentPage, rowPerPage, total);
 		
 		//	검색
@@ -138,7 +134,6 @@ public class BoardController {
 		model.addAttribute("list", list);
 		model.addAttribute("pb", pb);
 		model.addAttribute("board", board);
-
 	}
 	
 	// 커뮤니티 게시글 작성폼
@@ -169,5 +164,30 @@ public class BoardController {
 		
 		model.addAttribute("board", board);
 		model.addAttribute("pageNum", pageNum);
+	}
+	
+	// 커뮤니티 게시글 수정폼
+	@GetMapping("board/boardUpdateForm.do")
+	public void boardUpdateForm(Model model, int bno, String pageNum) {
+		Board board = bs.bselect(bno);
+		
+		model.addAttribute("board", board);
+		model.addAttribute("pageNum", pageNum);
+	}
+	
+	// 커뮤니티 게시글 수정
+	@PostMapping("board/boardUpdate.do")
+	public void boardUpdate(Model model, Board board) {
+		int result = bs.bupdate(board);
+		
+		model.addAttribute("result", result);
+	}
+	
+	// 커뮤니티 게시글 삭제
+	@GetMapping("board/boardDelete.do")
+	public void boardDelete(Model model, int bno) {
+		int result = bs.bdelete(bno);
+	
+		model.addAttribute("result", result);
 	}
 }

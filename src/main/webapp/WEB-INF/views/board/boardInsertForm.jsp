@@ -34,7 +34,7 @@
 				</tr>
 				<tr>
 					<td colspan="2" align="center">
-						<input type="submit" value="확인" class="btn btn-outline-secondary">
+						<input type="submit" value="작성" class="btn btn-outline-secondary">
 					</td>
 				</tr>
 			</table>

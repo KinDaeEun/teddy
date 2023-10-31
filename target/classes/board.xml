@@ -97,5 +97,16 @@
 	<update id="updateBcnt" parameterType="integer">
 		update board set b_cnt = b_cnt + 1 where bno = #{bno}
 	</update>
+	
+	<!-- 게시물 수정 -->
+	<update id="bupdate" parameterType="board">
+		update board set b_title = #{b_title}, b_content = #{b_content}
+		where bno = #{bno}
+	</update>
+	
+	<!-- 게시물 삭제 ( 삭제 표시 ) -->
+	<update id="bdelete" parameterType="board">
+		update board set b_del = 'y' where bno = #{bno}
+	</update>
 
 </mapper>

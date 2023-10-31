@@ -16,4 +16,8 @@ public interface BoardService {
 
 	void updateBcnt(int bno);
 
+	int bupdate(Board board);
+
+	int bdelete(int bno);
+
 }

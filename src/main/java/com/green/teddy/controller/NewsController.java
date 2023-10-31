@@ -18,9 +18,11 @@ public class NewsController {
 	private NewsService ns;
 	
 	@GetMapping("news/newsList")
-	public void newsList(Model model, HttpSession session, News news) {
-		List<News> newslist = ns.list();
-
+	public void newsList(Model model, HttpSession session) {
+		List<News> newslist = ns.list(); 
+		News recent  = ns.recentNews();
+		
+		model.addAttribute("recent", recent);
 		model.addAttribute("newslist", newslist);
 	}
 	

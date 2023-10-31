@@ -20,4 +20,8 @@ public class NewsDaoImpl implements NewsDao {
 	public News select(int nno) {
 		return sst.selectOne("newsns.select", nno);
 	}
+
+	public News recentNews() {
+		return sst.selectOne("newsns.recentNews");
+	}
 }

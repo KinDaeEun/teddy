@@ -35,4 +35,12 @@ public class BoardDaoImpl implements BoardDao{
 		
 	}
 
+	public int bupdate(Board board) {
+		return sst.update("boardns.bupdate", board);
+	}
+
+	public int bdelete(int bno) {
+		return sst.update("boardns.bdelete", bno);
+	}
+
 }
