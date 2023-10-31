@@ -36,7 +36,8 @@ window.uiTabT2 = function(e) {
 ;
 </script>
 </head>
-<body class="n">
+<body class="n" oncontextmenu="return false"
+	onselectstart="return false" ondragstart="return false">
 	<div class="container pg_top v_hb" style="width: 1000px;">
 		<div class="body" id="bodydiv">
 			<!-- carousel start -->
@@ -86,19 +87,21 @@ window.uiTabT2 = function(e) {
 				<div id="exo" class="tab_wrp">
 					<div id="exo1" class="tab1 active">
 						<p>
-							<a href="#exo1" onclick="uiTabT1(this.href);return false;">Recent</a>
+							<a href="#exo1" onclick="uiTabT1(this.href);return false;">최신뉴스</a>
 						</p>
 						<div class="sec">
 							<ul>
-								<li><a href="#"> <img class="sec_img"
-										src="${path }/resources/images/intro.jpg">
+								<li><a
+									href="${path }/news/newsContent.do?nno=${recent.nno}"> <img
+										class="sec_img"
+										src="${path }/resources/images/news/${recent.n_cover_img}">
 								</a>
 									<dl>
 										<dt>
-											<a href="#">[시승기]지프 랭글러 오버랜드 파워탑</a>
+											<a href="#">${recent.n_title }</a>
 										</dt>
 										<dd>
-											<span class="date">2020.10.14</span>
+											<span class="date">${recent.n_date }</span>
 										</dd>
 									</dl></li>
 							</ul>
@@ -106,7 +109,7 @@ window.uiTabT2 = function(e) {
 					</div>
 					<div id="exo2" class="tab2">
 						<p>
-							<a href="#exo2" onclick="uiTabT2(this.href);return false;">Hot</a>
+							<a href="#exo2" onclick="uiTabT2(this.href);return false;">인기뉴스</a>
 						</p>
 						<div class="sec">
 							<ul>

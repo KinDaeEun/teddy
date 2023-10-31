@@ -7,31 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.pn_title {
-	background-color: #f8f8f8;
-	border-bottom: solid 1px #dadbdc;
-	border-top: solid 1px #dadbdc;
-}
-
-.info {
-	color: #697278;
-	padding-left: 10px;
-	line-height: 1.75;
-	list-style: inside;
-	margin-top: 20px;
-}
-
-.pn_info {
-	width: 80%;
-	margin-bottom: 8px;
-	text-align: left;
-}
-
-.pn_button {
-	cursor: pointer;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/complimentMain.css">
 <!-- <script type="text/javascript"> -->
 <!-- 	$(function() { -->
 <!-- 		$('#rInsert').click(function() { -->
@@ -64,12 +40,12 @@
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td>${member.id }</td>
+						<td>&nbsp;[ ${member.id } ]</td>
 					</tr>
 				</table>
-				<div>
-					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요.">
-					<input type="submit" id="rInsert" value="칭찬등록">
+				<div align="center">
+					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요." class="form-control" required>
+					<input type="submit" id="rInsert" value="칭찬등록" class="btn btn-outline-secondary" style="margin-top:15px;">
 				</div>
 			</form>
 		</div>
@@ -111,31 +87,31 @@
 					<%-- 								<li>${pb}</li>  --%>
 					<%-- 				<li>${pageNum }</li> --%>
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/board/complimentMain.do?pageNum=1"> <i>맨
 									앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/board/complimentMain.do?pageNum=${pb.startPage-1}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/board/complimentMain.do?pageNum=${pb.endPage+1}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/board/complimentMain.do?pageNum=${pb.totalPage}">
 								<i>맨뒤로</i>
 						</a></li>

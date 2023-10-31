@@ -537,4 +537,10 @@ em {
 	border: none;
 	background: none;
 	cursor: pointer;
+	color: #333;
+}
+
+.link {
+	background: #bdbdbd !important;
+    border: none !important;	
 }

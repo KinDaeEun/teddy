@@ -14,6 +14,5 @@
 			<option>${car.c_name }</option>
 		</c:forEach>
 	</select>
-
 </body>
 </html>

@@ -5,21 +5,21 @@
 <mapper namespace="carns">
 	<select id="getTotal" parameterType="car" resultType="integer">
 		select
-		count(*) from car
+		count(*) from car where c_del='n'
 		<if
 			test="brand!=null and brand!='' and c_kind!=null and c_kind!=''">
-			where brand=#{brand} and c_kind=#{c_kind} and c_del='n'
+			and brand=#{brand} and c_kind=#{c_kind} 
 		</if>
 
 		<if
 			test="(brand==null or brand=='') or (c_kind==null or c_kind=='')">
 
 			<if test="brand!=null and brand!='' ">
-				where brand=#{brand} and c_del='n'
+				and brand=#{brand} 
 			</if>
 
 			<if test="c_kind!=null and c_kind!='' ">
-				where c_kind=#{c_kind} and c_del='n'
+				and c_kind=#{c_kind} 
 			</if>
 		</if>
 

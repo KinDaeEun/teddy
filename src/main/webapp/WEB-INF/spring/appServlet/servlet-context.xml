@@ -41,12 +41,22 @@
 			</beans:list>
 		</beans:property>
 	</beans:bean>
-	<beans:bean id="sc"
-		class="com.green.teddy.service.SessionChk"></beans:bean>
+	<beans:bean id="sc" class="com.green.teddy.service.SessionChk"></beans:bean>
 	<interceptors>
 		<interceptor>
-			<mapping path="main/main.do" />
-			<mapping path="car/carView.do" />
+			<mapping path="/car/reservationForm.do" />
+			<mapping path="/admin/adminCarImgList.do" />
+			<mapping path="/admin/adminCarList.do" />
+			<mapping path="/admin/adminHelpList.do" />
+			<mapping path="/admin/adminMemberList.do" />
+			<mapping path="/admin/adminReviewList.do" />
+			<mapping path="/help/helpList.do" />
+			<mapping path="/help/helpInsertForm.do" />
+			<mapping path="/mypage/mypage.do" />
+			<mapping path="/mypage/reservationList.do" />
+			<mapping path="/mypage/updateForm.do" />
+			<mapping path="/board/complimentList.do" />
+			<mapping path="/board/boardList.do" />
 			<beans:ref bean="sc" />
 		</interceptor>
 	</interceptors>
