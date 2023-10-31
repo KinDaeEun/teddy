@@ -10,7 +10,7 @@
 <c:set var="path" value="${pageContext.request.contextPath }"></c:set>
 <script src="${path}/resources/js/jquery.js"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
-<link href="${path }/resources/images/teddy.ico" rel="shortcut icon" type="image/x-icon">
+<link href="/teddy/resources/images/teddy.ico" rel="shortcut icon" type="image/x-icon" sizes="16x16">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
 <!-- Slick.js -->
 

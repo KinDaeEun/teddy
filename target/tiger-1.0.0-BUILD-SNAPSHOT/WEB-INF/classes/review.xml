@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reviewns">
+
+	<!-- 리뷰 입력 -->
+	<insert id="reviewInsert" parameterType="review">
+		insert into review
+		values( review_seq.nextval, #{id}, #{cno}, #{rating},
+		#{re_content},
+		sysdate, 'n' )
+	</insert>
+	
+	<!-- 리뷰 총 갯수 -->
+	<select id="getTotal" parameterType="review"
+		resultType="integer">
+		select count(*) from review where cno = #{cno} and re_del = 'n'
+	</select>
+	
+	<!-- 리뷰 목록(paging) -->
+	<select id="reviewList" parameterType="review"
+		resultType="review">
+		select * from ( select a.*, rowNum rn from (
+		select * from
+		review where cno = #{cno} and re_del = 'n' ) a )
+		where rn between #{startRow} and
+		#{endRow}
+	</select>
+	
+	<!-- 리뷰 평균 -->
+	<select id="rateAvg" parameterType="integer" resultType="float">
+		select nvl(avg(rating),0) from review where cno = #{cno} and
+		re_del= 'n'
+	</select>
+	
+	<!-- 리뷰 삭제 -->
+	<update id="reviewDelete" parameterType="review">
+		update review set re_del = 'y' where re_no = #{re_no}
+	</update>
+	
+	<select id="adminGetTotal" parameterType="review" resultType="integer">
+		select count(*) from review where cno = #{cno}
+			<if test="keyword!=null and keyword!=''">
+				and ${search} like '%'||#{keyword}||'%'
+			</if>
+	</select>
+	
+	<select id="adminReviewList" parameterType="review" resultType="review">
+		select * from (select rowNum rn, a.* from (
+		select * from review where cno=#{cno}
+			<if test="keyword!=null and keyword!=''">
+				and ${search} like '%'||#{keyword}||'%'
+			</if>
+		)a) where
+		rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="deleteReview" parameterType="review">
+		update review set re_del=#{re_del} where re_no=#{re_no}
+	</update>
+	
+	<select id="selectReview" parameterType="integer" resultType="review">
+		select * from review where re_no=#{re_no}
+	</select>
+	
+</mapper>

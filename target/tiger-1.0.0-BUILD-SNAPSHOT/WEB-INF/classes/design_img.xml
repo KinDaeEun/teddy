@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="design_imgns">
+	<insert id="insertImg" parameterType="list">
+		insert all
+		<foreach collection="list" item="item">
+			into design_img
+			values(get_seq, #{item.img_name},#{item.cno})
+		</foreach>
+		select * from dual
+	</insert>
+
+	 <select id="imgList" parameterType="integer"
+		resultType="design_img">
+		select * from design_img where cno = #{cno}
+	</select> 
+	
+	<delete id="deleteImg" parameterType="integer">
+		delete from design_img where dno=#{dno}
+	</delete>
+</mapper>
+
+		

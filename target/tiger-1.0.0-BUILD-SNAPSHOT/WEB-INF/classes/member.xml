@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="memberns">
+	<select id="select" parameterType="string" resultType="member">
+		select *
+		from member where id=#{id}
+	</select>
+	<insert id="insert" parameterType="member">
+		insert into member
+		values(#{id},
+		#{password},#{name},#{email},#{gender},sysdate,#{fileName},'n',#{member_auth})
+	</insert>
+	<update id="update" parameterType="member">
+		update member set
+		password=#{password},name=#{name},email=#{email},gender=#{gender}
+		<if test="fileName != null and fileName != ''">
+			,fileName=#{fileName}
+		</if>
+		where id=#{id}
+	</update>
+	<update id="delete" parameterType="string">
+		update member set m_del='y'
+		where id =#{id}
+	</update>
+	<select id="findId" parameterType="string" resultType="member">
+		select *
+		from member where email = #{email}
+	</select>
+
+	<select id="findIdCheck" resultType="integer">
+		select count(*) from member
+		where email = #{email}
+	</select>
+
+	<select id="adminMbTotal" resultType="integer"
+		parameterType="member">
+		select count(*) from member
+	</select>
+
+	<select id="mbList" resultType="member" parameterType="member">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from member
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%' || #{keyword} || '%'
+			</if>
+		</where>
+		order by regdate desc )a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+	<update id="deleteAdmin" parameterType="member">
+		update member set m_del='y'
+		where id =#{id}
+	</update>
+
+	<update id="findPw" parameterType="string">
+		update member set
+		password = #{password} where email =
+		#{email} and id = #{id}
+	</update>
+
+	<select id="findPwCheck" resultType="integer">
+		select count(*) from member
+		where email = #{email} and
+		id = #{id}
+	</select>
+
+	<insert id="createAuthKey">
+		insert into MEMBER_AUTH values(#{MEMBEREMAIL}, #{authKey})
+	</insert>
+
+	<update id="memberAuth">
+	<![CDATA[update member set MEMBER_AUTH = 1 where (select count(*) from MEMBER_AUTH where email = #{email}) > 0]]>
+	</update>
+
+
+
+</mapper>

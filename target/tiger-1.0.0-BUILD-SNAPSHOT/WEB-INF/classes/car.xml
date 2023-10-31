@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="carns">
+	<select id="getTotal" parameterType="car" resultType="integer">
+		select
+		count(*) from car
+		<if
+			test="brand!=null and brand!='' and c_kind!=null and c_kind!=''">
+			where brand=#{brand} and c_kind=#{c_kind} and c_del='n'
+		</if>
+
+		<if
+			test="(brand==null or brand=='') or (c_kind==null or c_kind=='')">
+
+			<if test="brand!=null and brand!='' ">
+				where brand=#{brand} and c_del='n'
+			</if>
+
+			<if test="c_kind!=null and c_kind!='' ">
+				where c_kind=#{c_kind} and c_del='n'
+			</if>
+		</if>
+
+		<if test="order!=null">
+			order by #{order} desc
+		</if>
+	</select>
+	<select id="carList" parameterType="car" resultType="car">
+		select *
+		from(select rowNum rn, a.* from (
+		select
+		c.cno,c.c_name,c.c_cover_img,c_content, AVG(r.rating) avg_rating
+		FROM car c, review r where c.cno = r.cno(+) and c_del='n'
+		<if
+			test="brand!=null and brand!='' and c_kind!=null and c_kind!='' ">
+			and brand=#{brand} and c_kind=#{c_kind}
+		</if>
+
+		<if
+			test="(brand==null or brand=='') or (c_kind==null or c_kind =='')">
+
+			<if test="c_kind!=null and c_kind!=''">
+				and c_kind=#{c_kind} 
+			</if>
+
+			<if test="brand!=null and brand!=''">
+				and brand=#{brand}
+			</if>
+		</if>
+		GROUP BY c.cno, c.c_name,c_content,c.c_cover_img
+		<if test="order!=null">
+			order by #{order} desc
+		</if>
+		)a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+
+	<insert id="insertCar" parameterType="car">
+		insert into car
+		values(car_seq.nextval,#{c_name},#{min_price},#{max_price},#{brand},#{c_cover_img},#{c_img},
+		#{c_content},#{c_kind},#{c_date},#{engine},#{gear},#{displacement},#{drive_type},
+		#{max_output},#{suspention},#{torque},#{brake},#{accel},#{max_speed},'n',#{width},#{height},#{wheelbase},#{length},#{formt_img},#{side_img})
+	</insert>
+
+
+	<!-- 예약폼 브랜드 select -->
+	<select id="brandlist" resultType="car">
+		select DISTINCT brand from car
+	</select>
+
+	<!-- 모델 select -->
+	<select id="getCarName" parameterType="car" resultType="car">
+		select *
+		from car where brand = #{brand}
+	</select>
+
+	<select id="selectCar" parameterType="integer" resultType="car">
+		select * from car where cno=#{cno}
+	</select>
+
+	<select id="getMaxCno" resultType="integer">
+		select max(cno) from car
+	</select>
+	
+	<select id="adminCarList" parameterType="car" resultType="car">
+		select * from (select rowNum rn, a.* from (
+		select * from car
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%'
+			</if>
+		</where>
+		)a) where
+		rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="updateCar" parameterType="car">
+		update car set c_name = #{c_name}, min_price = #{min_price},max_price = #{max_price},brand = #{brand},
+		<if test="c_cover_img!=null and c_cover_img !=''">
+			c_cover_img = #{c_cover_img},
+		</if>
+		<if test="c_img != null and c_img !=''">
+			c_img = #{c_img},
+		</if>
+		<if test="formt_img!=null and formt_img!=''">
+			formt_img = #{formt_img},
+		</if>
+		<if test="side_img!=null and side_img!=''">
+			side_img = #{side_img},
+		</if>
+		c_content = #{c_content},c_kind = #{c_kind},c_date = #{c_date},engine = #{engine},gear = #{gear},displacement = #{displacement},
+		drive_type = #{drive_type},max_output = #{max_output},suspention = #{suspention},torque = #{torque},brake = #{brake},accel = #{accel},max_speed = #{max_speed},
+		width = #{width},height = #{height},wheelbase = #{wheelbase},length = #{length} where cno = #{cno}
+	</update>
+	
+	<update id="deleteCar" parameterType="car">
+		update car set c_del=#{c_del} where cno = #{cno}
+	</update>
+	
+	<select id="adminGetTotal" parameterType="car" resultType="integer">
+		select count(*) from car
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like '%'||#{keyword}||'%'
+			</if>
+		</where>
+	</select>
+
+
+</mapper>

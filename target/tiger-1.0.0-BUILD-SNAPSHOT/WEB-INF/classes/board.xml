@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="boardns">
+	<insert id="coinsert" parameterType="compliment">
+		insert into compliment
+		values(compliment_seq.nextval, #{cp_content},
+		sysdate, 'n', #{id})
+	</insert>
+
+
+	<select id="comGetTotal" resultType="integer"
+		parameterType="compliment">
+		select count(*) from compliment
+	</select>
+
+	<select id="cpList" parameterType="compliment"
+		resultType="compliment">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from
+		compliment
+		order by cpno desc )a)
+		where rn
+		between #{startRow} and
+		#{endRow}
+	</select>
+	<update id="delete" parameterType="compliment">
+		update compliment set cp_del='y'
+		where cpno=#{cpno}
+	</update>
+</mapper>
