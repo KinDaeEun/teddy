@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Teddy</title>
+<link href="${path }/resources/images/teddy.ico" rel="shortcut icon" type="image/x-icon" sizes="16x16">
 <script type="text/javascript">
 	/* 맨 위로 */
 	$(function() {

@@ -7,10 +7,13 @@ body, h3, h4, th, td {
     color: #333;
 }
 
+<<<<<<< HEAD
 #containerDIV {
 	width: 1150px;
 }
 
+=======
+>>>>>>> origin/master
 .pd_top {
 	padding-top: 150px;
 }

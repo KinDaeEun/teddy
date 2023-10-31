@@ -7,7 +7,11 @@
 
 .pd_top {
 	padding-top: 150px;
+<<<<<<< HEAD
 	height: 150vh;
+=======
+	height:150vh;
+>>>>>>> origin/master
 }
 
 .test_obj input[type="radio"]+span {
@@ -124,12 +128,21 @@ div {
 }
 
 .find_c {
+<<<<<<< HEAD
 	margin-left: 500px;
 	background: #fefefe;
 	color: #666;
 	border-radius: 5px;
 	font-size: 14px;
 	border: 1px solid #dfdfdf;
+=======
+    margin-left: 500px;
+    background: #fefefe;
+    color: #666;
+    border-radius: 5px;
+    font-size: 14px;
+    border: 1px solid #dfdfdf;
+>>>>>>> origin/master
 }
 
 .Input.d-radio label.check_radio {
@@ -171,9 +184,16 @@ div {
 	display: flex !important;
 }
 
+<<<<<<< HEAD
 /* body { */
 /* 	background: #f1f1f1; */
 /* } */
+=======
+body {
+	background: #f1f1f1;
+}
+
+>>>>>>> origin/master
 .blind {
 	display: block;
 	overflow: hidden;
@@ -193,7 +213,11 @@ div {
 }
 
 .cont .list {
+<<<<<<< HEAD
 /* 	overflow: hidden; */
+=======
+	overflow: hidden;
+>>>>>>> origin/master
 	width: 990px;
 }
 
@@ -215,6 +239,7 @@ ul, li {
 
 .list .link_car {
 	display: block;
+<<<<<<< HEAD
 	width: 320px;
 	height: 320px;
 	box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
@@ -224,6 +249,13 @@ ul, li {
 .list .link_car:hover {
 	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
 }
+=======
+	overflow: hidden;
+	width: 320px;
+	height: 320px;
+}
+
+>>>>>>> origin/master
 a {
 	color: #333;
 	text-decoration: none;
@@ -232,7 +264,11 @@ a {
 
 .list .tit_car {
 	display: block;
+<<<<<<< HEAD
 	padding: 30px 34px 12px;
+=======
+	margin: 30px 34px 12px;
+>>>>>>> origin/master
 	font-size: 19px;
 }
 
@@ -342,9 +378,15 @@ span .txt_point {
 	visibility: visible;
 }
 
+<<<<<<< HEAD
 .star_img {
 	width: 15px;
 	height: 15px;
+=======
+.star_img{
+	width:15px;
+	height:15px;
+>>>>>>> origin/master
 }
 
 .paging {
@@ -353,7 +395,11 @@ span .txt_point {
 
 .tit_font {
 	color: #f73c32;
+<<<<<<< HEAD
 	font-weight: bold;
+=======
+    font-weight: bold;
+>>>>>>> origin/master
 }
 
 .no_tit {

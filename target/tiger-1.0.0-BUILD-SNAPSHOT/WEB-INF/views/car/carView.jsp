@@ -7,7 +7,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<<<<<<< HEAD
 <link rel="stylesheet" href="${path}/resources/css/carViews.css">
+=======
+<link rel="stylesheet" href="${path}/resources/css/carView.css">
+>>>>>>> origin/master
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -22,8 +26,12 @@
 	});
 </script>
 </head>
+<<<<<<< HEAD
 <body class="contents_l02" oncontextmenu="return false"
 	onselectstart="return false" ondragstart="return false">
+=======
+<body class="contents_l02">
+>>>>>>> origin/master
 
 
 	<section id="sc_car pd_top" class="pd_top">
@@ -218,6 +226,10 @@
 										class="delete"
 										href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
 										<span class="txt_date">${review.re_date }</span></li>
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 								</c:forEach>
 							</ul>
 						</div>

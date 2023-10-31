@@ -47,7 +47,11 @@
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
+<<<<<<< HEAD
 						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a></li>
+=======
+						<li><a href="">칭찬 알림방</a></li>
+>>>>>>> origin/master
 					</ul></li>
 
 				<li><a href="${path}/help/faqList.do">고객센터</a>
@@ -79,7 +83,11 @@
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
+<<<<<<< HEAD
 						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a></li>
+=======
+						<li><a href="">칭찬 알림방</a></li>
+>>>>>>> origin/master
 					</ul></li>
 
 				<li class="gnb-li"><a href="${path}/help/faqList.do">고객센터</a>

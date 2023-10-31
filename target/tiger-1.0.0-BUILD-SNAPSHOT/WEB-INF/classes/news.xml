@@ -12,8 +12,11 @@
 		select * from news where nno = #{nno}
 	</select>
 		
+<<<<<<< HEAD
 	<select id="recentNews" resultType="news">
 		select * from news where nno = (select max(nno) from news)
 	</select>
 		
+=======
+>>>>>>> origin/master
 </mapper>

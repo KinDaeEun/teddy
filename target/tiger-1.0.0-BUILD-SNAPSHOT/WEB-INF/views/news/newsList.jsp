@@ -87,6 +87,7 @@ window.uiTabT2 = function(e) {
 				<div id="exo" class="tab_wrp">
 					<div id="exo1" class="tab1 active">
 						<p>
+<<<<<<< HEAD
 							<a href="#exo1" onclick="uiTabT1(this.href);return false;">최신뉴스</a>
 						</p>
 						<div class="sec">
@@ -102,11 +103,27 @@ window.uiTabT2 = function(e) {
 										</dt>
 										<dd>
 											<span class="date">${recent.n_date }</span>
+=======
+							<a href="#exo1" onclick="uiTabT2(this.href);return false;">Recent</a>
+						</p>
+						<div class="sec">
+							<ul>
+								<li><a href="#"> <img class="sec_img"
+										src="${path }/resources/images/intro.jpg">
+								</a>
+									<dl>
+										<dt>
+											<a href="#">[시승기]지프 랭글러 오버랜드 파워탑</a>
+										</dt>
+										<dd>
+											<span class="date">2020.10.14</span>
+>>>>>>> origin/master
 										</dd>
 									</dl></li>
 							</ul>
 						</div>
 					</div>
+<<<<<<< HEAD
 					<div id="exo2" class="tab2">
 						<p>
 							<a href="#exo2" onclick="uiTabT2(this.href);return false;">인기뉴스</a>
@@ -114,6 +131,14 @@ window.uiTabT2 = function(e) {
 						<div class="sec">
 							<ul>
 								<li style="text-align: center;">준비중 입니다</li>
+=======
+					<div id="exo2" class="tab2" >
+						<p>
+							<a href="#exo2" onclick="uiTabT2(this.href);return false;">Hot</a>
+						</p>
+						<div class="sec">
+							<ul><li style="text-align: center;">준비중 입니다</li>
+>>>>>>> origin/master
 							</ul>
 						</div>
 					</div>

@@ -14,9 +14,9 @@
 		<h3 align="center">예약 내역</h3>
 		<table class="table table-bordered">
 			<c:forEach var="reservation" items="${reservationlist }">
-	<!-- 				<tr> -->
-	<!-- 					<th></th> -->
-	<!-- 				</tr> -->
+				<tr>
+					<th></th>
+				</tr>
 				<tr>
 					<th>차량 브랜드</th>
 					<td>${reservation.brand }</td>

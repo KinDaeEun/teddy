@@ -83,12 +83,22 @@
 				</tr>
 				<c:if test="${empty list}">
 					<tr>
+<<<<<<< HEAD
 						<td colspan="4" class="text-center">칭찬내역이 존재하지 않습니다</td>
+=======
+						<td colspan="3" class="text-center">칭찬내역이 존재하지 않습니다</td>
+>>>>>>> origin/master
 					</tr>
 				</c:if>
 				<c:if test="${not empty list }">
 					<c:forEach var="compliment" items="${list }">
 						<tr>
+<<<<<<< HEAD
+=======
+							<c:if test="${compliment.cp_del == 'y' }">
+								<th colspan="4" class="text-center">삭제된 칭찬내용입니다</th>
+							</c:if>
+>>>>>>> origin/master
 							<c:if test="${compliment.cp_del != 'y' }">
 								<td class="text-center">${compliment.id }</td>
 								<td class="text-center">${compliment.cp_content }</td>

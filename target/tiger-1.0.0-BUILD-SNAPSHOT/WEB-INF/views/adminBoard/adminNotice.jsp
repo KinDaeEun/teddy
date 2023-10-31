@@ -28,6 +28,10 @@
 			<c:if test="${not empty list}">
 				<c:forEach var="board" items="${list }">
 					<tr>
+<<<<<<< HEAD
+=======
+						<td>${num}<c:set var="num" value="${num-1}"></c:set></td>
+>>>>>>> origin/master
 						<c:if test="${notice.n_del =='y' }">
 							<td colspan="4" class="table-danger">삭제된 글입니다</td>
 						</c:if>
@@ -45,6 +49,7 @@
 			</c:if>
 		</table>
 		<div align="right">
+<<<<<<< HEAD
 			<a href="${path }/adminBoard/noticeWriteForm.do"
 				class="btn btn-dark btn-sm">글쓰기</a>
 		</div>
@@ -75,5 +80,37 @@
 <%-- 			</c:if> --%>
 <!-- 		</ul> -->
 <!-- 	</div> -->
+=======
+			<a href="${path }/noticeWrite.do"
+				class="btn btn-dark btn-sm">글쓰기</a>
+		</div>
+	</div>
+	<div class="paging mg_tb">
+		<ul class="pagination justify-content-center">
+			<c:if test="${startPage > PAGE_PER_BLOCK}">
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${startPage-1}">
+						<i class="bi bi-arrow-left-circle icofont-2x"></i>
+				</a></li>
+			</c:if>
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<c:if test="${currentPage == i }">
+					<li class="page-item active"><a class="page-link"
+						href="adminNotice.do?pageNum=${i }">${i }</a></li>
+				</c:if>
+				<c:if test="${currentPage != i }">
+					<li class="page-item"><a class="page-link"
+						href="adminNotice.do?pageNum=${i}"></a></li>
+				</c:if>
+			</c:forEach>
+			<c:if test="${endPage < totalPage}">
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${endPage+1 }">
+						<i class="bi bi-arrow-right-square icofont-2x"></i>
+				</a></li>
+			</c:if>
+		</ul>
+	</div>
+>>>>>>> origin/master
 </body>
 </html>

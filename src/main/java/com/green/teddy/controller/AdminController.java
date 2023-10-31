@@ -24,7 +24,7 @@ import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
-import com.green.teddy.dto.Notice;
+
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.BoardService;
 import com.green.teddy.service.CarService;
