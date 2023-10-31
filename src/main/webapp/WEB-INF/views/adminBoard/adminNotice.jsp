@@ -10,11 +10,27 @@
 <body>
 	<div class="container">
 		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
+		<!-- 검색 -->
+		<form action="${path }/adminBoard/adminNotice.do">
+			<select name="search">
+				<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
+					varStatus="i">
+					<c:if test="${sh == notice.search }">
+						<option value="${sh }" selected>${title[i.index] }</option>
+					</c:if>
+					<c:if test="${sh != notice.search }">
+						<option value="${sh }">${title[i.index] }</option>
+					</c:if>
+				</c:forTokens>
+			</select> <input type="text" name="keyword" value="${notice.keyword }"
+				class="form-text"> <input type="submit" name="검색"
+				class="btn btn-outline-secondary btn-sm" value="검색">
+		</form>
+
+
 		<table class="table table-striped">
 			<tr>
-				<th>번호</th>
 				<th>제목</th>
-				<th>작성자</th>
 				<th>조회수</th>
 				<th>작성일</th>
 				<th>수정</th>
@@ -22,56 +38,62 @@
 			</tr>
 			<c:if test="${empty list }">
 				<tr>
-					<td colspan="7">게시글이 없습니다</td>
+					<td colspan="5" align="center">게시글이 없습니다</td>
 				</tr>
 			</c:if>
 			<c:if test="${not empty list}">
-				<c:forEach var="board" items="${list }">
+				<c:forEach var="notice" items="${list }">
 					<tr>
-						<td>${num}<c:set var="num" value="${num-1}"></c:set></td>
 						<c:if test="${notice.n_del =='y' }">
-							<td colspan="4" class="table-danger">삭제된 글입니다</td>
+							<td colspan="5" class="table-danger">삭제된 글입니다</td>
 						</c:if>
 						<c:if test="${notice.n_del != 'y' }">
-							<td>${notice.nno }</td>
-							<td>${notice.n_title }</td>
-							<td>${notice.id }</td>
+							<td><a href="${path }/adminBoard/adminNoticeView.do?nno=${notice.nno}&pageNum=${pb.currentPage}">${notice.n_title }</a></td>
 							<td>${notice.n_cnt }</td>
 							<td>${notice.n_date }</td>
-							<td><a class="btn btn-sm btn-dark">수정</a></td>
-							<td><a class="btn btn-sm btn-dark">삭제</a></td>
+							<td><a class="btn btn-sm btn-dark" href="${path }/adminBoard/adminNoticeUpdateForm.do?nno=${notice.nno}&pageNum=${pb.currentPage}">수정</a></td>
+							<td><a class="btn btn-sm btn-dark" href="${path }/adminBoard/adminNoticeDelete.do?nno=${notice.nno}&pageNum=${pb.currentPage}">삭제</a></td>
 						</c:if>
 					</tr>
 				</c:forEach>
 			</c:if>
 		</table>
 		<div align="right">
-			<a href="${path }/noticeWrite.do"
-				class="btn btn-dark btn-sm">글쓰기</a>
+			<a href="${path }/adminBoard/adminNoticeWrite.do"
+				class="btn btn-dark btn-sm">공지사항 등록</a>
 		</div>
 	</div>
-	<div class="paging mg_tb">
-		<ul class="pagination justify-content-center">
-			<c:if test="${startPage > PAGE_PER_BLOCK}">
+	<!-- paging -->
+	<div>
+		<ul class="pagination pagination-sm justify-content-center">
+			<c:if test="${pb.startPage > pb.pagePerBlock}">
 				<li class="page-item"><a class="page-link"
-					href="adminNotice.do?pageNum=${startPage-1}">
-						<i class="bi bi-arrow-left-circle icofont-2x"></i>
+					href="adminNotice.do?pageNum=1&search=${notice.search}&keyword=${notice.keyword}">
+						<i>맨 앞으로</i>
+				</a></li>
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${pb.startPage-1}&search=${notice.search}&keyword=${notice.keyword}">
+						<i>앞으로</i>
 				</a></li>
 			</c:if>
-			<c:forEach var="i" begin="${startPage}" end="${endPage}">
-				<c:if test="${currentPage == i }">
+			<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
+				<c:if test="${pb.currentPage == i }">
 					<li class="page-item active"><a class="page-link"
-						href="adminNotice.do?pageNum=${i }">${i }</a></li>
+						href="adminNotice.do?pageNum=${i}&search=${notice.search}&keyword=${notice.keyword}">${i }</a></li>
 				</c:if>
-				<c:if test="${currentPage != i }">
+				<c:if test="${pb.currentPage != i }">
 					<li class="page-item"><a class="page-link"
-						href="adminNotice.do?pageNum=${i}"></a></li>
+						href="adminNotice.do?pageNum=${i}&search=${notice.search}&keyword=${notice.keyword}">${i }</a></li>
 				</c:if>
 			</c:forEach>
-			<c:if test="${endPage < totalPage}">
+			<c:if test="${pb.endPage < pb.totalPage}">
 				<li class="page-item"><a class="page-link"
-					href="adminNotice.do?pageNum=${endPage+1 }">
-						<i class="bi bi-arrow-right-square icofont-2x"></i>
+					href="adminNotice.do?pageNum=${pb.endPage+1}&search=${notice.search}&keyword=${notice.keyword}">
+						<i>뒤로</i>
+				</a></li>
+				<li class="page-item"><a class="page-link"
+					href="adminNotice.do?pageNum=${pb.totalPage}&search=${notice.search}&keyword=${notice.keyword}">
+						<i>맨뒤로</i>
 				</a></li>
 			</c:if>
 		</ul>

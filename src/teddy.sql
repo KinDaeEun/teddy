@@ -119,16 +119,17 @@ drop table board;
 create table notice (
     nno number primary key,         -- 공지사항 번호
     id varchar2(20),                -- 아이디
-   	n_title varchar2(20),           -- 공지사항 번호
+   	n_title varchar2(100),           -- 공지사항 제목
     n_content varchar2(1000),       -- 공지사항 내용
     n_date date,                    -- 공지사항 작성 날짜
-    n_cnt number,                   -- 공지사항 조회수
+    n_cnt number(20),                   -- 공지사항 조회수
     n_del char(1),                   -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 select * from notice;
 drop table notice;
+drop sequence notice_seq;
 -- 시승예약
 create table reservation (
     rno number primary key,         -- 예약번호
@@ -329,3 +330,6 @@ TO_DATE('2019-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전�
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
+
+select notice_seq.nextval from dual;
+desc notice;

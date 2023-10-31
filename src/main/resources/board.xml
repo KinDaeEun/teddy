@@ -3,7 +3,7 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="boardns">
-
+	<!-- 칭찬 알림방 -->
 	<insert id="coinsert" parameterType="compliment">
 		insert into compliment
 		values(compliment_seq.nextval, #{cp_content},
@@ -24,21 +24,146 @@
 		compliment
 		where cp_del='n' order by cpno desc )a)
 		where rn
-		between #{startRow} and
+		between
+		#{startRow} and
 		#{endRow}
 	</select>
-	
+
 	<update id="delete" parameterType="compliment">
-		update compliment set cp_del='y'
+		update compliment set
+		cp_del='y'
 		where cpno=#{cpno}
 	</update>
-	
+
 	<!-- 커뮤니티 -->
-	
+
 	<insert id="insert" parameterType="board">
-		insert into board values ( board_seq.nextval, #{id}, #{b_title}, #{b_writer},
-		#{b_content}, sysdate, #{b_cnt}, 'n')
+		insert into board values (
+		board_seq.nextval, #{id}, #{b_title}, #{b_writer},
+		#{b_content},
+		sysdate, #{b_cnt}, 'n')
 	</insert>
-	
-	
+
+	<!-- 공지사항 -->
+	<select id="ntGetTotal" parameterType="notice"
+		resultType="integer">
+		select count(*) from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					(n_title like '%' || #{keyword} || '%' or
+					n_content
+					like
+					'%'
+					||
+					#{keyword} || '%')
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<select id="ntList" parameterType="notice" resultType="notice">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					n_title like '%' || #{keyword} || '%' or
+					n_content like
+					'%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+		order by nno desc )a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+
+	<insert id="ntInsert" parameterType="notice">
+		insert into notice
+		values(notice_seq.nextval, #{id, jdbcType=CHAR}, #{n_title},
+		#{n_content}, sysdate, 0, 'n')
+	</insert>
+
+	<select id="noSelect" parameterType="integer"
+		resultType="notice">
+		select * from notice where nno=#{nno}
+	</select>
+
+	<update id="noUpdate" parameterType="notice">
+		update notice set
+		n_title=#{n_title}, n_content=#{n_content} where
+		nno=#{nno}
+	</update>
+
+	<update id="noDelete" parameterType="notice">
+		update notice set n_del='y'
+		where nno=#{nno}
+	</update>
+
+	<!-- 회원 공지사항 총 갯수 -->
+	<!-- 공지사항 -->
+	<select id="getTotal" parameterType="notice"
+		resultType="integer">
+		select count(*) from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					(n_title like '%' || #{keyword} || '%' or
+					n_content
+					like
+					'%'
+					||
+					#{keyword} || '%')
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+			and n_del='n'
+		</where>
+	</select>
+
+	<select id="list" parameterType="notice" resultType="notice">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					n_title like '%' || #{keyword} || '%' or
+					n_content like
+					'%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+			and n_del='n'
+		</where>
+		order by nno desc )a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+
+	<select id="select" parameterType="integer" resultType="notice">
+		select *
+		from notice where nno=#{nno}
+	</select>
+
+	<update id="updateReadCount" parameterType="integer">
+		update notice set
+		n_cnt = n_cnt + 1 where nno = #{nno}
+	</update>
 </mapper>
