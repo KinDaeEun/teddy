@@ -14,10 +14,25 @@ public class BoardServiceImpl implements BoardService{
 	@Autowired
 	private BoardDao bd;
 
-	@Override
-	public int insert(Board board) {
-		return bd.insert(board);
+	public int binsert(Board board) {
+		return bd.binsert(board);
 	}
 
+	public int getTotal(Board board) {
+		return bd.getTotal(board);
+	}
+
+	public List<Board> blist(Board board) {
+		return bd.blist(board);
+	}
+
+	public Board bselect(int bno) {
+		return bd.bselect(bno);
+	}
+
+	public void updateBcnt(int bno) {
+		bd.updateBcnt(bno);
+		
+	}
 
 }

@@ -15,6 +15,7 @@
 		<typeAlias alias="help" type="com.green.teddy.dto.Help" />
 		<typeAlias alias="member" type="com.green.teddy.dto.Member" />
 		<typeAlias alias="news" type="com.green.teddy.dto.News" />
+		<typeAlias alias="notice" type="com.green.teddy.dto.Notice" />
 		<typeAlias alias="reservation"
 			type="com.green.teddy.dto.Reservation" />
 		<typeAlias alias="review" type="com.green.teddy.dto.Review" />
@@ -28,6 +29,7 @@
 		<mapper resource="car.xml" />
 		<mapper resource="help.xml" />
 		<mapper resource="news.xml" />
+		<mapper resource="notice.xml" />
 		<mapper resource="reservation.xml" />
 		<mapper resource="review.xml" />
 		<mapper resource="center.xml" />

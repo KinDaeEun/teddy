@@ -93,7 +93,7 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
-
+drop sequence compliment_seq;
 drop table compliment;
 select * from compliment;
 create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
@@ -123,7 +123,8 @@ create table notice (
     n_content varchar2(1000),       -- 공지사항 내용
     n_date date,                    -- 공지사항 작성 날짜
     n_cnt number,                   -- 공지사항 조회수
-    n_del char(1),                   -- 공지사항 삭제여부
+    n_fileName varchar2(100),       -- 공지사항 사진
+    n_del char(1),                  -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;

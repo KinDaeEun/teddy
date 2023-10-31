@@ -4,12 +4,17 @@
 
 <mapper namespace="boardns">
 
+	<!-- 공지사항 -->
+	<insert id="insert" parameterType="notice">
+		insert into notice
+		values(notice_seq.nextval,#{id},#{n_title},#{n_content},sysdate,'n')
+	</insert>
+
 	<insert id="coinsert" parameterType="compliment">
 		insert into compliment
 		values(compliment_seq.nextval, #{cp_content},
 		sysdate, 'n', #{id})
 	</insert>
-
 
 	<select id="comGetTotal" resultType="integer"
 		parameterType="compliment">
@@ -22,23 +27,75 @@
 		(select rowNum rn, a.* from(
 		select * from
 		compliment
-		order by cpno desc )a)
+		where cp_del='n' order by cpno desc )a)
 		where rn
-		between #{startRow} and
+		between
+		#{startRow} and
 		#{endRow}
 	</select>
-	
+
 	<update id="delete" parameterType="compliment">
-		update compliment set cp_del='y'
+		update compliment set
+		cp_del='y'
 		where cpno=#{cpno}
 	</update>
-	
+
 	<!-- 커뮤니티 -->
-	
-	<insert id="insert" parameterType="board">
-		insert into board values ( board_seq.nextval, #{id}, #{b_title}, #{b_writer},
-		#{b_content}, sysdate, #{b_cnt}, 'n')
+
+	<!-- 게시물 입력 -->
+	<insert id="binsert" parameterType="board">
+		insert into board values (
+		board_seq.nextval, #{id}, #{b_title}, #{b_writer},
+		#{b_content},
+		sysdate, 0, 'n')
 	</insert>
+
+	<!-- 게시물 총 갯수 + 검색 -->
+	<select id="getTotal" resultType="integer">
+		select count(*) from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<!-- 제목 + 내용 -->
+				<if test="search=='subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+	</select>
 	
+	<!-- 게시물 목록 + 검색 -->
+	<select id="blist" parameterType="board" resultType="board">
+		select * from ( select a.*, rowNum rn from (
+		select * from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="search == 'subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search != 'subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+		order by bno desc ) a )
+		where rn between #{startRow} and #{endRow}
+	</select>
 	
+	<!-- 게시물 조회 -->
+	<select id="bselect" parameterType="integer" resultType="board">
+		select * from board where bno = #{bno}
+	</select>
+	
+	<!-- 게시물 조회수 업데이트 -->
+	<update id="updateBcnt" parameterType="integer">
+		update board set b_cnt = b_cnt + 1 where bno = #{bno}
+	</update>
+
 </mapper>
