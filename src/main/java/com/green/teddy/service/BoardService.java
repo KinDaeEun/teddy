@@ -20,4 +20,6 @@ public interface BoardService {
 
 	int bdelete(int bno);
 
+	List<Board> bcntlist();
+
 }

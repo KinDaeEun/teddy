@@ -20,4 +20,6 @@ public interface BoardDao {
 
 	int bdelete(int bno);
 
+	List<Board> bcntlist();
+
 }

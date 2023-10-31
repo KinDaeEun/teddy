@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="reservationns">
+
+	<insert id="insert" parameterType="reservation">
+		insert into reservation
+		values( reservation_seq.nextval, #{id}, #{r_name}, #{email},
+		#{r_tel}, TO_DATE(#{r_date} ,'YYYY-MM-DD HH24:MI'), 'n', #{brand}, #{c_name}, #{find_city}, #{find_gu}, #{find_center} )
+	</insert>
+	
+	<select id="list" parameterType="reservation" resultType="reservation">
+		select * from reservation where id = #{id}
+	</select>
+
+</mapper>

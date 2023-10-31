@@ -108,5 +108,9 @@
 	<update id="bdelete" parameterType="board">
 		update board set b_del = 'y' where bno = #{bno}
 	</update>
-
+	
+	<!-- 메인화면 게시물 표시 -->
+	<select id="bcntlist" resultType="board">
+		select * from board order by b_cnt desc
+	</select>
 </mapper>
