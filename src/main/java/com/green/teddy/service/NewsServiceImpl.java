@@ -21,4 +21,8 @@ public class NewsServiceImpl implements NewsService {
 	public News select(int nno) {
 		return nd.select(nno);
 	}
+
+	public News recentNews() {
+		return nd.recentNews();
+	}
 }

@@ -9,5 +9,7 @@ public interface NewsDao {
 	List<News> list();
 
 	News select(int nno);
+	
+	News recentNews();
 
 }

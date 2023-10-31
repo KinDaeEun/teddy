@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+.searchkey {
+	width: 170px;
+	height: 28px;
+	margin-right: 10px;
+}
+
+.link {
+    color: black !important;
+    background: none !important;
+    border: none !important;
+}
+
+h2 {
+	margin-bottom: 30px;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}

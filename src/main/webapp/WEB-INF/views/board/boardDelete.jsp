@@ -9,14 +9,14 @@
 </head>
 <body>
 	<c:if test="${result > 0 }">
-		<script type="text/javascript">
-			alert("게시물을 등록하였습니다")
+		<script>
+			alert("게시물을 삭제하였습니다")
 			location.href = "${path}/board/boardList.do"
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">
-		<script type="text/javascript">
-			alert("게시물 등록에 실패하였습니다")
+		<script>
+			alert("게시물 삭제에 실패하였습니다")
 			history.back();
 		</script>
 	</c:if>

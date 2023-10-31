@@ -6,6 +6,18 @@ import com.green.teddy.dto.Board;
 
 public interface BoardDao {
 
-	int insert(Board board);
+	int binsert(Board board);
+
+	int getTotal(Board board);
+
+	List<Board> blist(Board board);
+
+	Board bselect(int bno);
+
+	void updateBcnt(int bno);
+
+	int bupdate(Board board);
+
+	int bdelete(int bno);
 
 }
