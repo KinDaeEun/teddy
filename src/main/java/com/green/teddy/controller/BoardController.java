@@ -41,7 +41,6 @@ public class BoardController {
 	public void complimentMain(Model model, Member member, Compliment compliment, String pageNum, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		member = ms.select(id);
-		System.out.println(member);
 		if (pageNum == null || pageNum.equals(""))
 			pageNum = "1";
 		int currentPage = Integer.parseInt(pageNum);

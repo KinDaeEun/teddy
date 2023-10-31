@@ -44,6 +44,7 @@ h2 {
 		<h2 align="left" class="text-secondary">차량 선택</h2>
 		<form action="${path}/car/reservationResult.do" method="post"
 			name="frm">
+			<input type="hidden" name="id" value="${id }">
 			<table class="table">
 				<tr>
 					<th>차량 브랜드&nbsp;*</th>
@@ -110,11 +111,16 @@ h2 {
 					<td><select id="find_gu" class="form-select"
 						onchange="centerBox()" name="find_gu">
 							<option value="a">구를 선택해주세요
-							<option value="강북">강북
+								<option value="강북">강북
+							
 							<option value="강서">강서
+							
 							<option value="강남">강남
+							
 							<option value="강동">강동
+					
 					</select>
+				
 				</tr>
 				<tr>
 					<th>전시장 선택</th>
@@ -142,13 +148,14 @@ h2 {
 				</script>
 			</details>
 			<!-- picker 끝 -->
-			<div style="align-content: center">
+								<div style="align-content: center">
 				<div align="center">
 					<input type="submit" value="예약하기" class="btn btn-outline-dark"
-						style="margin-top: 30px;">
+											style="margin-top: 30px;">
 				</div>
 			</div>
-		</form>
+		
+							</form>
 	</div>
 </body>
 </html>

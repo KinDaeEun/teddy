@@ -359,3 +359,8 @@ span .txt_point {
 .no_tit {
 	color: #666;
 }
+
+.link {
+	background: #bdbdbd !important;
+    border: none !important;	
+}
