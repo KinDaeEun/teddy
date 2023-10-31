@@ -34,6 +34,7 @@ tr .bc:hover {
 		<tr class="text-center">
 			<td class="bc"><a class="text-dark"
 				href="${path }/adminBoard/adminComplimentMain.do?id=${id}">칭찬 알림방</a></td>
+
 		</tr>
 	</table>
 </body>

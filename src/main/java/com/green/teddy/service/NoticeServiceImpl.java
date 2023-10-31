@@ -1,5 +1,6 @@
 package com.green.teddy.service;
 
+
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,4 +73,5 @@ public class NoticeServiceImpl implements NoticeService {
 		nid.updateReadCount(nno);
 		
 	}
+
 }

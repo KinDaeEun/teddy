@@ -1,5 +1,6 @@
 package com.green.teddy.dao;
 
+
 import java.util.List;
 
 import com.green.teddy.dto.Notice;
@@ -25,5 +26,6 @@ public interface NoticeDao {
 	Notice select(int nno);
 
 	void updateReadCount(int nno);
+
 
 }

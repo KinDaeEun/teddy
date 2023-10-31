@@ -1,10 +1,14 @@
 package com.green.teddy.dto;
 
 import java.sql.Date;
+
+import org.springframework.web.multipart.MultipartFile;
+
 import lombok.Data;
 
 @Data
 public class Notice {
+
 	private int nno;
 	private String id;
 	private String n_title;
@@ -20,5 +24,8 @@ public class Notice {
 	// 검색용
 	private String search;
 	private String keyword;
+
+	// upload용
+	private MultipartFile file;
 }
       

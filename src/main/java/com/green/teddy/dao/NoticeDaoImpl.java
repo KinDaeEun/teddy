@@ -38,37 +38,37 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public int noUpdate(Notice notice) {
-	
+
 		return sst.update("boardns.noUpdate", notice);
 	}
 
 	@Override
 	public int noDelete(int nno) {
-		
+
 		return sst.delete("boardns.noDelete", nno);
 	}
 
 	@Override
 	public int getTotal(Notice notice) {
-		
+
 		return sst.selectOne("boardns.getTotal", notice);
 	}
 
 	@Override
 	public List<Notice> list(Notice notice) {
-		
+
 		return sst.selectList("boardns.list", notice);
 	}
 
 	@Override
 	public Notice select(int nno) {
-		
+
 		return sst.selectOne("boardns.select", nno);
 	}
 
 	@Override
 	public void updateReadCount(int nno) {
 		sst.update("boardns.updateReadCount", nno);
-		
+
 	}
 }
