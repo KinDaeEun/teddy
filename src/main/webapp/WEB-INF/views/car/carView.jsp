@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/carView.css">
+<link rel="stylesheet" href="${path}/resources/css/carViews.css">
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {

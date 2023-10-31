@@ -37,7 +37,7 @@ window.uiTabT2 = function(e) {
 </script>
 </head>
 <body class="n">
-	<div class="container pg_top v_hb" style="width:1000px;">
+	<div class="container pg_top v_hb" style="width: 1000px;">
 		<div class="body" id="bodydiv">
 			<!-- carousel start -->
 			<div id="carouselExampleInterval"
@@ -86,7 +86,7 @@ window.uiTabT2 = function(e) {
 				<div id="exo" class="tab_wrp">
 					<div id="exo1" class="tab1 active">
 						<p>
-							<a href="#exo1" onclick="uiTabT2(this.href);return false;">Recent</a>
+							<a href="#exo1" onclick="uiTabT1(this.href);return false;">Recent</a>
 						</p>
 						<div class="sec">
 							<ul>
@@ -104,12 +104,13 @@ window.uiTabT2 = function(e) {
 							</ul>
 						</div>
 					</div>
-					<div id="exo2" class="tab2" >
+					<div id="exo2" class="tab2">
 						<p>
 							<a href="#exo2" onclick="uiTabT2(this.href);return false;">Hot</a>
 						</p>
 						<div class="sec">
-							<ul><li style="text-align: center;">준비중 입니다</li>
+							<ul>
+								<li style="text-align: center;">준비중 입니다</li>
 							</ul>
 						</div>
 					</div>

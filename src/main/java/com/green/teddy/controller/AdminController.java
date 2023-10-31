@@ -377,12 +377,8 @@ public class AdminController {
 		model.addAttribute("pageNum", pageNum);
 	}
 	// 게시판 관리
-	@GetMapping("adminBoard/adminBoard_memu")
-	public void adminBoard_memu() {
-	}
-	@GetMapping("adminBoard/adminNotice")
-	public void adminNotice() {
-
-	}
+		@GetMapping("adminBoard/adminBoard_memu")
+		public void adminBoard_memu() {
+		}
 	
 }

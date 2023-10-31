@@ -7,6 +7,10 @@ body, h3, h4, th, td {
     color: #333;
 }
 
+#containerDIV {
+	width: 1150px;
+}
+
 .pd_top {
 	padding-top: 150px;
 }

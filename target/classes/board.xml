@@ -3,12 +3,23 @@
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="boardns">
+<<<<<<< HEAD
+	<!-- 공지사항 -->
+	<insert id="insert" parameterType="notice">
+		insert into notice
+		values(notice_seq.nextval,#{id},#{n_title},#{n_content},sysdate,'n')
+	</insert>
+
+
+
+=======
+>>>>>>> origin/master
+
 	<insert id="coinsert" parameterType="compliment">
 		insert into compliment
 		values(compliment_seq.nextval, #{cp_content},
 		sysdate, 'n', #{id})
 	</insert>
-
 
 	<select id="comGetTotal" resultType="integer"
 		parameterType="compliment">
@@ -21,13 +32,24 @@
 		(select rowNum rn, a.* from(
 		select * from
 		compliment
-		order by cpno desc )a)
+		where cp_del='n' order by cpno desc )a)
 		where rn
 		between #{startRow} and
 		#{endRow}
 	</select>
+	
 	<update id="delete" parameterType="compliment">
-		update compliment set cp_del='y'
+		update compliment set
+		cp_del='y'
 		where cpno=#{cpno}
 	</update>
+	
+	<!-- 커뮤니티 -->
+	
+	<insert id="insert" parameterType="board">
+		insert into board values ( board_seq.nextval, #{id}, #{b_title}, #{b_writer},
+		#{b_content}, sysdate, #{b_cnt}, 'n')
+	</insert>
+	
+	
 </mapper>
