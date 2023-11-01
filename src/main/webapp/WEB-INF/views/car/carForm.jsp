@@ -38,7 +38,7 @@
 					<legend class="blind">조회</legend>
 					<div class="finder finder_on">
 						<details class="bundle_finder">
-							<summary class="link_finder">차종 검색하기</summary>
+							<summary class="link_finder">차종 찾아보기로</summary>
 							<!-- 차종 -->
 							<div>
 								<div class="find">

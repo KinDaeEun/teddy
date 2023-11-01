@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/carViews.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -21,19 +24,12 @@
 		});
 	});
 	
-	 function popupImage(url){
-		    var img = new Image();
-		    var scWidth = screen.availWidth; //현재 사용중인 스크린 크기를 구함
-		    var scHeight = screen.availHeight;
-		    var left = (parseInt(scWidth)-650)/2; //팝업창 위치 조절
-		    var top = (parseInt(scHeight)-900)/2;
-		    img.src = url;
-		    var img_width = img.width-500; //팝업창 크기 조절
-		    var win_width = img.width-500;
-		    var height = img.height-290;
-		    var openImage = window.open('','_blank','width='+img_width+',height='+heigh',top='+top+',left='+left+',menubars=no,scrollbars=auto');
-		    openImage.document.write("<style>body{margin:0px;}</style><a href = # onclick = window.close() onfocus=this.blur()><img src = '"+url+"'width='"+win_width+"'></a>");
-		  }
+	lightbox.option({
+	    resizeDuration: 200,
+	    wrapAround: true,
+	    disableScrolling: false,
+	    fitImagesInViewport:false
+	})
 </script>
 </head>
 <body class="contents_l02">
@@ -41,7 +37,7 @@
 		<div class="container">
 			<div class="cont">
 				<div id="dept_main">
-					<h3 class="tit">${car.c_name }</h3>
+					<h3 class="tit">${car.c_name } </h3>
 				</div>
 				<div class="box_g box_total" data-content="total">
 					<div class="area_thumb">
