@@ -16,54 +16,54 @@ public class NoticeDaoImpl implements NoticeDao {
 	@Override
 	public int ntGetTotal(Notice notice) {
 
-		return sst.selectOne("boardns.ntGetTotal", notice);
+		return sst.selectOne("noticens.ntGetTotal", notice);
 	}
 
 	@Override
 	public List<Notice> ntList(Notice notice) {
-		return sst.selectList("boardns.ntList", notice);
+		return sst.selectList("noticens.ntList", notice);
 	}
 
 	@Override
 	public int ntInsert(Notice notice) {
 		System.out.println("1 = " + notice.getId());
-		return sst.insert("boardns.ntInsert", notice);
+		return sst.insert("noticens.ntInsert", notice);
 	}
 
 	@Override
 	public Notice noSelect(int nno) {
 
-		return sst.selectOne("boardns.noSelect", nno);
+		return sst.selectOne("noticens.noSelect", nno);
 	}
 
 	@Override
 	public int noUpdate(Notice notice) {
 
-		return sst.update("boardns.noUpdate", notice);
+		return sst.update("noticens.noUpdate", notice);
 	}
 
 	@Override
 	public int noDelete(int nno) {
 
-		return sst.delete("boardns.noDelete", nno);
+		return sst.delete("noticens.noDelete", nno);
 	}
 
 	@Override
-	public int getTotal(Notice notice) {
+	public int nGetTotal(Notice notice) {
 
-		return sst.selectOne("boardns.getTotal", notice);
+		return sst.selectOne("noticens.nGetTotal", notice);
 	}
 
 	@Override
 	public List<Notice> list(Notice notice) {
 
-		return sst.selectList("boardns.list", notice);
+		return sst.selectList("noticens.list", notice);
 	}
 
 	@Override
 	public Notice select(int nno) {
 
-		return sst.selectOne("boardns.select", nno);
+		return sst.selectOne("noticens.select", nno);
 	}
 
 	@Override

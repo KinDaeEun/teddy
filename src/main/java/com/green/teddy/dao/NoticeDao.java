@@ -19,7 +19,7 @@ public interface NoticeDao {
 
 	int noDelete(int nno);
 
-	int getTotal(Notice notice);
+	int nGetTotal(Notice notice);
 
 	List<Notice> list(Notice notice);
 

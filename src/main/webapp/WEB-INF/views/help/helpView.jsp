@@ -48,7 +48,7 @@ h3 {
 .h_t {
 	height: auto;
 	overflow: hidden;
-	background-color: #FFFFF0;
+
 	border-radius: 50px 50px 0px 0px;
 }
 
@@ -64,11 +64,12 @@ h3 {
 }
 
 .boxx {
-	background-color: #E0FFFF;
+	
 	height: auto;
 	overflow: hidden;
 	border-radius: 0px 0px 50px 50px;
 }
+
 </style>
 
 </head>

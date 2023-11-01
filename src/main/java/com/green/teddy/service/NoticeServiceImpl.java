@@ -51,9 +51,9 @@ public class NoticeServiceImpl implements NoticeService {
 	}
 
 	@Override
-	public int getTotal(Notice notice) {
+	public int nGetTotal(Notice notice) {
 	
-		return nid.getTotal(notice);
+		return nid.nGetTotal(notice);
 	}
 
 	@Override
