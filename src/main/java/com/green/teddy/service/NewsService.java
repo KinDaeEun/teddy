@@ -15,6 +15,12 @@ public interface NewsService {
 
 	int getTotal(News news);
 
-	List<Board> nlist(News news);
+	List<News> nlist(News news);
+
+	int adminGetTotal(News news);
+
+	List<News> adminNewsList(News news);
+
+	int adminDelete(News news);
 
 }

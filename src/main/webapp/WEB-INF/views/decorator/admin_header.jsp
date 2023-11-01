@@ -34,6 +34,7 @@
 				<li><a href="${path}/admin/adminMemberList.do">회원관리</a></li>
 				<li><a href="${path}/adminBoard/adminNotice.do">게시판관리</a>
 				<li><a href="${path}/admin/adminHelpList.do">1:1문의관리</a></li>
+				<li><a href="${path}/admin/adminNewsList.do">뉴스관리</a></li>
 			</ul>
 		</nav>
 		<nav id="m-nav">

@@ -25,6 +25,7 @@ import com.green.teddy.dto.Compliment;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
+import com.green.teddy.dto.News;
 import com.green.teddy.dto.Notice;
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.BoardService;
@@ -33,6 +34,7 @@ import com.green.teddy.service.ComplimentService;
 import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
 import com.green.teddy.service.MemberService;
+import com.green.teddy.service.NewsService;
 import com.green.teddy.service.NoticeService;
 import com.green.teddy.service.PageBean;
 import com.green.teddy.service.ReviewService;
@@ -62,6 +64,9 @@ public class AdminController {
 
 	@Autowired
 	private BoardService bs;
+	
+	@Autowired
+	private NewsService ns;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
@@ -559,5 +564,62 @@ public class AdminController {
 
 		model.addAttribute("board", board);
 	}
+	
+	// 뉴스 목록
+	@RequestMapping("admin/adminNewsList")
+	public void adminNewsList(Model model, News news, String pageNum) {
+		// 페이징
+		int rowPerPage = 10; // 한 페이지에 10개씩 확인
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int total = ns.adminGetTotal(news);
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		
+		news.setStartRow(startRow);
+		news.setEndRow(endRow);
+		
+		// 페이지별 첫 번째 게시글 번호
+		int num = total - startRow + 1;
+		
+		// 시작부터 끝까지 읽어라
+		List<News> newsList = ns.adminNewsList(news);
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "제목", "작성자" };
+		
+		model.addAttribute("newsList", newsList);
+		model.addAttribute("title", title);
+		model.addAttribute("total", total);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("num", num);
+		model.addAttribute("news", news);
+	}
+	
+	// 뉴스 전시상태 변경
+	@RequestMapping("admin/adminNewsDelete")
+	public void adminNewsDelete(Model model, News news, HttpServletRequest request, int nno) {
+		String referer = request.getHeader("Referer");
+		String n_del = "";
+		if (news.getN_del().equals("y")) {
+			n_del = "n";
+		}
+		if (news.getN_del().equals("n")) {
+			n_del = "y";
+		}
+		news.setN_del(n_del);
+		int result = ns.adminDelete(news);
 
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
+	}
+	
+	//	뉴스 상세내용
+	@RequestMapping("admin/adminNewsContent")
+	public void adminNewsContent(Model model, int nno) {
+		News news = ns.select(nno);
+		
+		model.addAttribute("news", news);
+	}
 }

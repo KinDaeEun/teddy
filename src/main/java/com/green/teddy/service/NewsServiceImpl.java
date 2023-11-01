@@ -31,7 +31,19 @@ public class NewsServiceImpl implements NewsService {
 		return nd.getTotal(news);
 	}
 
-	public List<Board> nlist(News news) {
+	public List<News> nlist(News news) {
 		return nd.nlist(news);
+	}
+
+	public int adminGetTotal(News news) {
+		return nd.adminGetTotal(news);
+	}
+
+	public List<News> adminNewsList(News news) {
+		return nd.adminNewsList(news);
+	}
+
+	public int adminDelete(News news) {
+		return nd.adminDelete(news);
 	}
 }

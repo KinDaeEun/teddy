@@ -30,7 +30,19 @@ public class NewsDaoImpl implements NewsDao {
 		return sst.selectOne("newsns.getTotal", news);
 	}
 
-	public List<Board> nlist(News news) {
+	public List<News> nlist(News news) {
 		return sst.selectList("newsns.nlist", news);
+	}
+
+	public int adminGetTotal(News news) {
+		return sst.selectOne("newsns.adminGetTotal", news);
+	}
+
+	public List<News> adminNewsList(News news) {
+		return sst.selectList("newsns.adminNewsList", news);
+	}
+
+	public int adminDelete(News news) {
+		return sst.update("newsns.adminDelete", news);
 	}
 }

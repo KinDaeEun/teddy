@@ -59,7 +59,7 @@ public class NewsController {
 		int num = total - startRow + 1;
 		
 		// 시작부터 끝까지 읽어라
-		List<Board> list = ns.nlist(news);
+		List<News> list = ns.nlist(news);
 		PageBean pb = new PageBean(currentPage, rowPerPage, total);
 		
 		model.addAttribute("list", list);

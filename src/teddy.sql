@@ -130,6 +130,7 @@ create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 select * from notice;
 drop table notice;
 drop sequence notice_seq;
+
 -- 시승예약
 create table reservation (
     rno number primary key,         -- 예약번호
