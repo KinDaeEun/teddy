@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/newsList.css">
+<link rel="stylesheet" href="${path}/resources/css/newsMain.css">
 <script>
 window.uiTabT1 = function(e) {
     var t = e.slice(e.indexOf("#") + 1)
@@ -67,8 +67,9 @@ window.uiTabT2 = function(e) {
 			<div class="news">
 				<div class="news_area">
 					<h3 class="title">뉴스</h3>
-					<c:forEach var="news" items="${newslist }">
+					<c:forEach var="news" items="${newslist }" varStatus="v">
 						<ul class="news_list">
+						<c:if test="${v.index < 3 }">
 							<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
 									<span class="news_img"> <img
 										src="${path }/resources/images/news/${news.n_cover_img }">
@@ -77,7 +78,7 @@ window.uiTabT2 = function(e) {
 									</span> <span class="n_date">${news.n_writer }</span> <span
 										class="n_date">${news.n_date }</span>
 								</span>
-							</a></li>
+							</a></li></c:if>
 						</ul>
 					</c:forEach>
 				</div>

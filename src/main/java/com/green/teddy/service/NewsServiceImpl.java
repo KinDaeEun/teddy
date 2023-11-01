@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.green.teddy.dao.NewsDao;
+import com.green.teddy.dto.Board;
 import com.green.teddy.dto.News;
 
 @Service
@@ -24,5 +25,13 @@ public class NewsServiceImpl implements NewsService {
 
 	public News recentNews() {
 		return nd.recentNews();
+	}
+
+	public int getTotal(News news) {
+		return nd.getTotal(news);
+	}
+
+	public List<Board> nlist(News news) {
+		return nd.nlist(news);
 	}
 }

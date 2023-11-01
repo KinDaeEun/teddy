@@ -47,7 +47,8 @@
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
-						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a></li>
+						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬
+								알림방</a></li>
 					</ul></li>
 
 				<li><a href="${path}/help/faqList.do">고객센터</a>
@@ -56,7 +57,11 @@
 						<li><a href="${path}/help/helpInsertForm.do">1:1 문의</a></li>
 						<li><a href="${path}/help/helpList.do?id">문의 내역</a></li>
 					</ul></li>
-				<li><a href="${path}/news/newsList.do">NEWS</a></li>
+
+				<li><a href="${path}/news/newsMain.do">NEWS</a>
+					<ul class="sub">
+						<li><a href="${path }/news/newsList.do">뉴스목록</a></li>
+					</ul></li>
 			</ul>
 		</nav>
 
@@ -79,7 +84,8 @@
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
 						<li><a href="">커뮤니티</a></li>
-						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a></li>
+						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬
+								알림방</a></li>
 					</ul></li>
 
 				<li class="gnb-li"><a href="${path}/help/faqList.do">고객센터</a>
@@ -88,27 +94,32 @@
 						<li><a href="${path}/help/helpInsertForm.do">1:1 문의</a></li>
 						<li><a href="${path}/help/helpList.do?id">문의 내역</a></li>
 					</ul></li>
-				<li><a href="${path}/news/newsList.do">NEWS</a></li>
-						<c:if test="${id == null}">
-				<div class="lnb">
-					<a href="${path}/member/loginForm.do">로그인</a> <a
-						href="${path}/member/joinForm.do">회원가입</a>
-				</div>
-			</c:if>
-			<c:if test="${id != null }">
-				<div class="lnb">
-					<a href="${path}/member/logout.do">로그아웃</a>
-					<c:if test="${id != 'admin'}">
-						<a href="${path}/myPage/mypage.do">마이페이지</a>
-					</c:if>
-					<c:if test="${id == 'admin'}">
-						<a href="${path}/myPage/mypage.do">마이페이지</a>
-						<a href="${path}/admin/adminCar.do">관리자페이지</a>
-					</c:if>
-				</div>
-			</c:if>
+
+				<li class="gnb-li"><a href="${path}/news/newsMain.do">NEWS</a>
+					<ul class="sub">
+						<li><a href="${path }/news/newsList.do">뉴스목록</a></li>
+					</ul></li>
+
+				<c:if test="${id == null}">
+					<div class="lnb">
+						<a href="${path}/member/loginForm.do">로그인</a> <a
+							href="${path}/member/joinForm.do">회원가입</a>
+					</div>
+				</c:if>
+				<c:if test="${id != null }">
+					<div class="lnb">
+						<a href="${path}/member/logout.do">로그아웃</a>
+						<c:if test="${id != 'admin'}">
+							<a href="${path}/myPage/mypage.do">마이페이지</a>
+						</c:if>
+						<c:if test="${id == 'admin'}">
+							<a href="${path}/myPage/mypage.do">마이페이지</a>
+							<a href="${path}/admin/adminCar.do">관리자페이지</a>
+						</c:if>
+					</div>
+				</c:if>
 			</ul>
-	
+
 		</nav>
 
 		<div class="trigger">

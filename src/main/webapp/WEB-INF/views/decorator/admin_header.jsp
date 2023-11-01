@@ -55,7 +55,7 @@
 				</c:if>
 				<c:if test="${id != null }">
 					<div class="lnb">
-						<a href="logout.do">로그아웃</a>
+						<a href="${path }/member/logout.do">로그아웃</a>
 						<c:if test="${id == 'admin'}">
 							<a href="${path}/main/main.do">메인</a>
 						</c:if>
