@@ -141,6 +141,7 @@
 
 	<!-- 회원 공지사항 총 갯수 -->
 	<!-- 공지사항 -->
+<!-- 	
 	<select id="getTotal" parameterType="notice"
 		resultType="integer">
 		select count(*) from notice
@@ -161,6 +162,7 @@
 			and n_del='n'
 		</where>
 	</select>
+-->
 
 	<select id="list" parameterType="notice" resultType="notice">
 		select * from
