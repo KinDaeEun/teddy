@@ -6,23 +6,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-.vi {
-	border-bottom: solid 1px gray;
-	border-top: solid 1px black;
-}
-
-.ta {
-	height: 500px;
-	width: 100%;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/adminNoticeView.css">
+<script>
+	function del() {
+		let cf = confirm("공지사항을 삭제하시겠습니까 ?")
+		if (cf)
+			location.href = "${path }/adminBoard/adminNoticeDelete.do?nno=${notice.nno}&pageNum=${pageNum}"
+		else
+			alert("삭제가 취소되었습니다")
+	}
+</script>
 </head>
 <body>
 	<div align="center">
 		<h3>${notice.n_title }</h3>
 		<div>${notice.n_date }</div>
-		<table class="ta" >
+		<table class="ta">
 			<tr class="vi">
 				<td align="center">${notice.n_content }</td>
 			</tr>
@@ -31,8 +30,7 @@
 		<div>
 			<a class="btn btn-sm btn-dark"
 				href="${path }/adminBoard/adminNoticeUpdateForm.do?nno=${notice.nno}&pageNum=${pageNum}">수정</a>
-			<a class="btn btn-sm btn-dark"
-				href="${path }/adminBoard/adminNoticeDelete.do?nno=${notice.nno}&pageNum=${pageNum}">삭제</a>
+			<button class="btn btn-sm btn-dark" onclick="del()">삭제</button>
 		</div>
 	</div>
 </body>

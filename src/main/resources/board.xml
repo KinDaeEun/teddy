@@ -15,7 +15,7 @@
 
 	<select id="comGetTotal" resultType="integer"
 		parameterType="compliment">
-		select count(*) from compliment
+		select count(*) from compliment where cp_del='n'
 	</select>
 
 	<select id="cpList" parameterType="compliment"

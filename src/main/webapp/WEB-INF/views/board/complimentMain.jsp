@@ -8,16 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/complimentMain.css">
-<!-- <script type="text/javascript"> -->
-<!-- 	$(function() { -->
-<!-- 		$('#rInsert').click(function() { -->
-<!-- 			let sendData = $('#frm1').serialize(); -->
-<%-- 			$.post('${path}/board/rInsert.do', sendData, function(data) { --%>
-<!-- 				$('#rbdListDisp').html(data); -->
-<!-- 			}); -->
-<!-- 		}); -->
-<!-- 	}); -->
-<!-- </script> -->
 
 </head>
 <body>
