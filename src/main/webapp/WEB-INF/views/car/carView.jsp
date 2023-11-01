@@ -20,6 +20,20 @@
 			}
 		});
 	});
+	
+	 function popupImage(url){
+		    var img = new Image();
+		    var scWidth = screen.availWidth; //현재 사용중인 스크린 크기를 구함
+		    var scHeight = screen.availHeight;
+		    var left = (parseInt(scWidth)-650)/2; //팝업창 위치 조절
+		    var top = (parseInt(scHeight)-900)/2;
+		    img.src = url;
+		    var img_width = img.width-500; //팝업창 크기 조절
+		    var win_width = img.width-500;
+		    var height = img.height-290;
+		    var openImage = window.open('','_blank','width='+img_width+',height='+heigh',top='+top+',left='+left+',menubars=no,scrollbars=auto');
+		    openImage.document.write("<style>body{margin:0px;}</style><a href = # onclick = window.close() onfocus=this.blur()><img src = '"+url+"'width='"+win_width+"'></a>");
+		  }
 </script>
 </head>
 <body class="contents_l02">
@@ -120,7 +134,7 @@
 					<ul class="list_detail">
 						<c:forEach var="img" items="${ imgList}">
 							<li data-thumb="1"><a href="#none"
-								onclick="window.open(this.src)" class="link_thumb"> <img
+								onclick="popupImage(this.src)" class="link_thumb"> <img
 									alt="" src="${path}/resources/upload/${img.img_name}"
 									class="thumb_g"> <span class="frame_g"></span>
 							</a></li>
@@ -138,12 +152,12 @@
 					</div>
 					<ul class="list_detail">
 						<li data-thumb="0"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
+							onclick="popupImage(this.src)" class="link_thumb"> <img
 								alt="" src="${path }/resources/upload/${car.formt_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>
 						<li data-thumb="1"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
+							onclick="popupImage(this.src)" class="link_thumb"> <img
 								alt="" src="${path }/resources/upload/${car.side_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>

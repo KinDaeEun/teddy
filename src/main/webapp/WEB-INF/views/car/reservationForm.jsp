@@ -97,7 +97,8 @@ h2 {
 					<th>휴대폰 번호&nbsp;*</th>
 					<td>
 						<!-- 번호형식 추가예정 --> <input type="text" name="r_tel"
-						placeholder="전화번호는 숫자로만 입력해주세요" class="form-control" required>
+						pattern="010-\d{3,4}-\d{4}" placeholder="010-1234-5689형식으로 입력하시오"
+						class="form-control" required>
 					</td>
 				</tr>
 				<tr>
@@ -111,16 +112,11 @@ h2 {
 					<td><select id="find_gu" class="form-select"
 						onchange="centerBox()" name="find_gu">
 							<option value="a">구를 선택해주세요
-								<option value="강북">강북
-							
+							<option value="강북">강북
 							<option value="강서">강서
-							
 							<option value="강남">강남
-							
 							<option value="강동">강동
-					
 					</select>
-				
 				</tr>
 				<tr>
 					<th>전시장 선택</th>
@@ -148,14 +144,14 @@ h2 {
 				</script>
 			</details>
 			<!-- picker 끝 -->
-								<div style="align-content: center">
+			<div style="align-content: center">
 				<div align="center">
 					<input type="submit" value="예약하기" class="btn btn-outline-dark"
-											style="margin-top: 30px;">
+						style="margin-top: 30px;">
 				</div>
 			</div>
-		
-							</form>
+
+		</form>
 	</div>
 </body>
 </html>
