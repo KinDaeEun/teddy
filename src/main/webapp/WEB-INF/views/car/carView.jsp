@@ -8,6 +8,9 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/carViews.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -20,6 +23,13 @@
 			}
 		});
 	});
+	
+	lightbox.option({
+	    resizeDuration: 200,
+	    wrapAround: true,
+	    disableScrolling: false,
+	    fitImagesInViewport:false
+	})
 </script>
 </head>
 <body class="contents_l02">
@@ -27,7 +37,7 @@
 		<div class="container">
 			<div class="cont">
 				<div id="dept_main">
-					<h3 class="tit">${car.c_name }</h3>
+					<h3 class="tit">${car.c_name } </h3>
 				</div>
 				<div class="box_g box_total" data-content="total">
 					<div class="area_thumb">
@@ -120,7 +130,7 @@
 					<ul class="list_detail">
 						<c:forEach var="img" items="${ imgList}">
 							<li data-thumb="1"><a href="#none"
-								onclick="window.open(this.src)" class="link_thumb"> <img
+								onclick="popupImage(this.src)" class="link_thumb"> <img
 									alt="" src="${path}/resources/upload/${img.img_name}"
 									class="thumb_g"> <span class="frame_g"></span>
 							</a></li>
@@ -138,12 +148,12 @@
 					</div>
 					<ul class="list_detail">
 						<li data-thumb="0"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
+							onclick="popupImage(this.src)" class="link_thumb"> <img
 								alt="" src="${path }/resources/upload/${car.formt_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>
 						<li data-thumb="1"><a href="#none"
-							onclick="window.open(this.src)" class="link_thumb"> <img
+							onclick="popupImage(this.src)" class="link_thumb"> <img
 								alt="" src="${path }/resources/upload/${car.side_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>

@@ -27,7 +27,7 @@ function del(bno,b_del) {
 </script>
 </head>
 <body>
-	<div class="container pg_top v_h">
+	<div class="container">
 		<h4 style="margin-bottom: 10px">커뮤니티 게시글 목록</h4>
 		<h6 style="margin-bottom: 10px">게시글 총 ${total } 개</h6>
 		<form action="${path }/admin/adminBoardList.do">

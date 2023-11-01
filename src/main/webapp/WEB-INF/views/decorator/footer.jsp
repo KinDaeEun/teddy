@@ -11,7 +11,7 @@
 		<div class="inner">
 			<div class="footer-content">
 				<ul class="help">
-					<li>Copyright © 2023 CARSITE. All rights reserved.</li>
+					<li>Copyright © 2023 TEDDY. All rights reserved.</li>
 				</ul>
 			</div>
 		</div>

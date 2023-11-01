@@ -22,20 +22,22 @@ tr .bc:hover {
 </style>
 </head>
 <body>
-	<table class="table">
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/adminBoard/adminNotice.do">공지사항</a></td>
-		</tr>
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/admin/adminBoardList.do">커뮤니티</a></td>
-		</tr>
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/adminBoard/adminComplimentMain.do?id=${id}">칭찬 알림방</a></td>
-
-		</tr>
-	</table>
+	<div class="container">
+		<table class="table">
+			<tr class="text-center">
+				<td class="bc"><a class="text-dark"
+					href="${path }/adminBoard/adminNotice.do">공지사항</a></td>
+			</tr>
+			<tr class="text-center">
+				<td class="bc"><a class="text-dark"
+					href="${path }/adminBoard/adminBoardList.do">커뮤니티</a></td>
+			</tr>
+			<tr class="text-center">
+				<td class="bc"><a class="text-dark"
+					href="${path }/adminBoard/adminComplimentMain.do?id=${id}">칭찬
+						알림방</a></td>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

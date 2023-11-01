@@ -139,6 +139,8 @@ public class BoardController {
 	// }
 
 	// 커뮤니티
+	
+	// 커뮤니티 게시글 목록
 	@GetMapping("board/boardList")
 	public void boardList(Model model, Board board, String pageNum) {
 		// 페이징
@@ -180,7 +182,6 @@ public class BoardController {
 
 		model.addAttribute("id", id);
 	}
-
 
 	// 커뮤니티 게시글 작성
 	@PostMapping("board/boardInsert")

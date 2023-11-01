@@ -19,22 +19,24 @@ tr .bc:hover {
 .mg {
 	margin-top: 200px;
 }
+
+.side {
+	width: 150px;
+}
 </style>
 </head>
 <body>
-	<table class="table">
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/board/notice.do">공지사항</a></td>
-		</tr>
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/board/boardList.do">커뮤니티</a></td>
-		</tr>
-		<tr class="text-center">
-			<td class="bc"><a class="text-dark"
-				href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a></td>
-		</tr>
-	</table>
+	<div class="side">
+		<div class="bc">
+			<a class="text-dark text-center" href="${path }/board/notice.do">공지사항</a>
+		</div>
+		<div class="bc">
+			<a class="text-dark text-center" href="${path }/board/boardList.do">커뮤니티</a>
+		</div>
+		<div class="bc">
+			<a class="text-dark text-center"
+				href="${path }/board/complimentMain.do?id=${id}">칭찬 알림방</a>
+		</div>
+	</div>
 </body>
 </html>
