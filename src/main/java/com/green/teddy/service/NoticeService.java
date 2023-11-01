@@ -19,7 +19,7 @@ public interface NoticeService {
 
 	int noDelete(int nno);
     //회원 공지사항 총 갯수
-	int getTotal(Notice notice);
+	int nGetTotal(Notice notice);
 	 //회원 공지사항 리스트
 	List<Notice> list(Notice notice);
 

@@ -83,7 +83,38 @@ public class BoardController {
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
 	}
+	//공지사항
+	@GetMapping("board/notice")
+	public void adminNotice(Model model, String pageNum, HttpSession session, Notice notice) {
+		String id = (String) session.getAttribute("id");
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = nis.nGetTotal(notice);// 공지사항 총 갯수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		notice.setStartRow(startRow);
+		notice.setEndRow(endRow);
 
+		List<Notice> list = nis.list(notice);// 회원별 문의 리스트
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "제목", "내용", "제목+내용" };
+		model.addAttribute("id", id);
+		model.addAttribute("title", title);
+		model.addAttribute("list", list);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("notice", notice);
+
+	}
+	@GetMapping("board/noticeView")
+	public void noticeView(Model model, int nno, HttpSession session, String pageNum) {
+		nis.updateReadCount(nno);
+		Notice notice = nis.select(nno);
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+	}
 	// @GetMapping("/board/complimentList")
 	// public void complimentList(String id, Model model, HttpSession session,
 	// String pageNum, Compliment compliment) {
@@ -184,8 +215,9 @@ public class BoardController {
 		model.addAttribute("notice", notice);
 		model.addAttribute("pageNum", pageNum);
 	}
+
 	// 커뮤니티 게시글 작성
-	@PostMapping
+	@PostMapping("board/boardInsert")
 	public void boardInsert(Model model, Board board, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		board.setId(id);

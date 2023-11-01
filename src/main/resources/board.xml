@@ -36,7 +36,8 @@
 		cp_del='y'
 		where cpno=#{cpno}
 	</update>
-
+	
+	
 	<!-- 커뮤니티 -->
 	<insert id="insert" parameterType="board">
 		insert into board values (
@@ -44,28 +45,6 @@
 		#{b_content},
 		sysdate, #{b_cnt}, 'n')
 	</insert>
-
-	<!-- 공지사항 -->
-	<select id="ntGetTotal" parameterType="notice"
-		resultType="integer">
-		select count(*) from notice
-		<where>
-			<if test=" keyword != null and keyword !=''">
-				<if test="search=='subcon'">
-					(n_title like '%' || #{keyword} || '%' or
-					n_content
-					like
-					'%'
-					||
-					#{keyword} || '%')
-				</if>
-				<if test="search!='subcon'">
-					${search} like '%' || #{keyword} || '%'
-				</if>
-			</if>
-		</where>
-
-	</select>
 
 	<!-- 게시물 입력 -->
 	<insert id="binsert" parameterType="board">
@@ -92,7 +71,6 @@
 			</if>
 		</where>
 	</select>
-
 
 	<select id="ntList" parameterType="notice" resultType="notice">
 		select * from
