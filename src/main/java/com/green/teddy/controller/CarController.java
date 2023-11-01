@@ -100,6 +100,7 @@ public class CarController {
 		
 		if (endPage > totalPage)
 			endPage = totalPage;
+		List<Design_img> imgList = ds.imgList(cno);
 		
 		
 		List<Review> reviewList = res.reviewList(review);
@@ -115,13 +116,10 @@ public class CarController {
 		model.addAttribute("car", car);
 		model.addAttribute("total", total);
 		model.addAttribute("rateAvg", rateAvg);
-
-		List<Design_img> imgList = ds.imgList(cno);
-
-
 		model.addAttribute("car", car);
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("reviewList", reviewList);
+		model.addAttribute("cno", cno);
 
 
 	}
