@@ -22,7 +22,8 @@
 	}
 </script>
 </head>
-<body class="mg mg_view">
+<body class="mg mg_view" oncontextmenu="return false"
+	onselectstart="return false" ondragstart="return false">
 	<div class="container" id="containerDIV">
 		<div class="body pd_top" id="bodyDIV">
 			<div class="contents" id="depth_main">
@@ -80,15 +81,15 @@
 											<span class="cnt_smry"></span> <span class="cat">${news.n_date }</span>
 									</span>
 								</a></li>
-							</c:forEach>				
+							</c:forEach>
 						</ul>
-					</div>	
+					</div>
 				</div>
-				<!-- side end -->	
+				<!-- side end -->
 			</div>
 		</div>
 	</div>
-	
+
 	<textarea></textarea>
 </body>
 </html>

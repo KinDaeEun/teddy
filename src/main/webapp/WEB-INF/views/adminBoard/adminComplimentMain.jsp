@@ -7,7 +7,31 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="${path}/resources/css/complimentMain.css">
+<style type="text/css">
+.pn_title {
+	background-color: #f8f8f8;
+	border-bottom: solid 1px #dadbdc;
+	border-top: solid 1px #dadbdc;
+}
+
+.info {
+	color: #697278;
+	padding-left: 10px;
+	line-height: 1.75;
+	list-style: inside;
+	margin-top: 20px;
+}
+
+.pn_info {
+	width: 80%;
+	margin-bottom: 8px;
+	text-align: left;
+}
+
+.pn_button {
+	cursor: pointer;
+}
+</style>
 <!-- <script type="text/javascript"> -->
 <!-- 	$(function() { -->
 <!-- 		$('#rInsert').click(function() { -->
@@ -32,23 +56,7 @@
 					있습니다.</li>
 			</ul>
 		</div>
-		<!-- <div id="rbdListDisp"> -->
-		<div>
-			<form action="${path}/board/rInsert.do" name="frm1" id="frm1"
-				method="post">
-				<input type="hidden" name="id" value="${member.id }">
-				<table>
-					<tr>
-						<th>아이디</th>
-						<td>&nbsp;[ ${member.id } ]</td>
-					</tr>
-				</table>
-				<div align="center">
-					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요." class="form-control" required>
-					<input type="submit" id="rInsert" value="칭찬등록" class="btn btn-outline-secondary" style="margin-top:15px;">
-				</div>
-			</form>
-		</div>
+
 		<div>
 			<table class="table">
 				<tr>
@@ -69,13 +77,8 @@
 								<td class="text-center">${compliment.id }</td>
 								<td class="text-center">${compliment.cp_content }</td>
 								<td class="text-center">${compliment.cp_date }</td>
-								<c:if test="${compliment.id == id }">
-									<td><a class="btn btn-sm btn-dark"
-										href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a></td>
-								</c:if>
-								<c:if test="${compliment.id != id }">
-									<td></td>
-								</c:if>
+								<td><a class="btn btn-sm btn-dark"
+									href="${path }/adminBoard/adminComplimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a></td>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -87,32 +90,32 @@
 					<%-- 								<li>${pb}</li>  --%>
 					<%-- 				<li>${pageNum }</li> --%>
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link link"
-							href="${path }/board/complimentMain.do?pageNum=1"> <i>맨
-									앞으로</i>
+						<li class="page-item"><a class="page-link"
+							href="${path }/adminBoard/adminComplimentMain.do?pageNum=1">
+								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link link"
-							href="${path }/board/complimentMain.do?pageNum=${pb.startPage-1}">
+						<li class="page-item"><a class="page-link"
+							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.startPage-1}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link link"
-								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
+							<li class="page-item active"><a class="page-link"
+								href="${path }/adminBoard/adminComplimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link link"
-								href="${path }/board/complimentMain.do?pageNum=${i}">${i }</a></li>
+							<li class="page-item"><a class="page-link"
+								href="${path }/adminBoard/adminComplimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link link"
-							href="${path }/board/complimentMain.do?pageNum=${pb.endPage+1}">
+						<li class="page-item"><a class="page-link"
+							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.endPage+1}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link link"
-							href="${path }/board/complimentMain.do?pageNum=${pb.totalPage}">
+						<li class="page-item"><a class="page-link"
+							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.totalPage}">
 								<i>맨뒤로</i>
 						</a></li>
 					</c:if>

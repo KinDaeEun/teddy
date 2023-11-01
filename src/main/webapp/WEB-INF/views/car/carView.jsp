@@ -23,8 +23,6 @@
 </script>
 </head>
 <body class="contents_l02">
-
-
 	<section id="sc_car pd_top" class="pd_top">
 		<div class="container">
 			<div class="cont">
@@ -223,28 +221,37 @@
 						</div>
 						<!-- 댓글목록 END -->
 						<!-- paging -->
-						<div class="paging">
-							<ul class="pagination justify-content-center">
-								<c:if test="${startPage > PAGE_PER_BLOCK}">
-									<li class="page-item"><a class="page-link"
-										href="carView.do?pageNum=${pb.startPage-1}&cno=${cno}">
-											<i class="bi bi-arrow-left-circle icofont-2x"></i>
+						<div>
+
+							<ul class="pagination justify-content-center m-3">
+								<c:if test="${pb.startPage > pb.pagePerBlock}">
+									<li class="page-item"><a class="page-link link"
+										href="carView.do?cno=${car.cno }&pageNum=1">
+											<i class="bi bi-arrow-left-square-fill">&laquo;</i>
+									</a></li>
+									<li class="page-item"><a class="page-link link"
+										href="carView.do?cno=${car.cno }&pageNum=${pb.startPage-1}">
+											<i class="bi bi-arrow-left-circle"></i>
 									</a></li>
 								</c:if>
-								<c:forEach var="i" begin="${startPage}" end="${endPage}">
+								<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage }">
 									<c:if test="${pb.currentPage == i }">
-										<li class="page-item active"><a class="page-link"
-											href="carView.do?pageNum=${i}&cno=${cno}">${i }</a></li>
+										<li class="page-item active"><a class="page-link link"
+											href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
 									</c:if>
 									<c:if test="${pb.currentPage != i }">
-										<li class="page-item"><a class="page-link"
-											href="carView.do?pageNum=${i}&cno=${cno}">${i }</a></li>
+										<li class="page-item"><a class="page-link link"
+											href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
 									</c:if>
 								</c:forEach>
-								<c:if test="${endPage < totalPage}">
-									<li class="page-item"><a class="page-link"
-										href="carView.do?pageNum=${pb.endPage+1 }&cno=${cno}">
-											<i class="bi bi-arrow-right-square icofont-2x"></i>
+								<c:if test="${pb.endPage < pb.totalPage }">
+									<li class="page-item"><a class="page-link link"
+										href="carView.do?cno=${car.cno }&pageNum=${pb.endPage + 1 }">
+											<i class="bi bi-arrow-right-square-fill"></i>
+									</a></li>
+									<li class="page-item"><a class="page-link link"
+										href="carView.do?cno=${car.cno }&pageNum=${pb.totalPage }">
+											<i class="bi bi-arrow-right-circle">&raquo;</i>
 									</a></li>
 								</c:if>
 							</ul>

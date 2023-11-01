@@ -1,7 +1,31 @@
 package com.green.teddy.dao;
 
+
+import java.util.List;
+
 import com.green.teddy.dto.Notice;
 
 public interface NoticeDao {
-	int insert(Notice notice);
+
+	int ntGetTotal(Notice notice);
+
+	List<Notice> ntList(Notice notice);
+
+	int ntInsert(Notice notice);
+
+	Notice noSelect(int nno);
+
+	int noUpdate(Notice notice);
+
+	int noDelete(int nno);
+
+	int nGetTotal(Notice notice);
+
+	List<Notice> list(Notice notice);
+
+	Notice select(int nno);
+
+	void updateReadCount(int nno);
+
+
 }

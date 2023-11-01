@@ -549,12 +549,6 @@ hr.divider {
 .post-item {
 	display: flex;
 	flex-direction: row;
-	margin-bottom: 30px;
-}
-
-.ntitle {
-	color: #333;
-	text-decoration: none;
 }
 
 .shared-post-items .post-item {
@@ -574,13 +568,6 @@ hr.divider {
 .post-desc {
 	flex: 3;
 	padding: 0 20px;
-}
-
-.cont {
-	display: -webkit-box;
-    -webkit-line-clamp: 3;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
 }
 
 .shared-post-items .post-desc {

@@ -55,7 +55,7 @@
 				<c:if test="${pb.startPage > pb.pagePerBlock}">
 					<li class="page-item"><a class="page-link link"
 						href="boardList.do?pageNum=1&search=${board.search }&keyword=${board.keyword}">
-							<i class="bi bi-arrow-left-square-fill"></i>
+							<i class="bi bi-arrow-left-square-fill">&laquo;</i>
 					</a></li>
 					<li class="page-item"><a class="page-link link"
 						href="boardList.do?pageNum=${pb.startPage-1}&search=${board.search }&keyword=${board.keyword}">
@@ -82,7 +82,7 @@
 					</a></li>
 					<li class="page-item"><a class="page-link link"
 						href="boardList.do?pageNum=${pb.totalPage }&search=${board.search }&keyword=${board.keyword}">
-							<i class="bi bi-arrow-right-circle"></i>
+							<i class="bi bi-arrow-right-circle">&raquo;</i>
 					</a></li>
 				</c:if>
 			</ul>

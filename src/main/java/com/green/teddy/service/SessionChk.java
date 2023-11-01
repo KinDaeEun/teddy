@@ -11,7 +11,7 @@ public class SessionChk extends HandlerInterceptorAdapter{
 		HttpSession session = request.getSession();
 		if (session == null || 
 				session.getAttribute("id") == null) {
-			response.sendRedirect("loginForm.do");
+			response.sendRedirect("/teddy/member/loginForm.do");
 			return false;
 		}
 		return true;

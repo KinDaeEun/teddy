@@ -4,11 +4,8 @@
 
 <mapper namespace="boardns">
 
-	<!-- 공지사항 -->
-	<insert id="insert" parameterType="notice">
-		insert into notice
-		values(notice_seq.nextval,#{id},#{n_title},#{n_content},sysdate,'n')
-	</insert>
+
+	<!-- 칭찬 알림방 -->
 
 	<insert id="coinsert" parameterType="compliment">
 		insert into compliment
@@ -39,8 +36,15 @@
 		cp_del='y'
 		where cpno=#{cpno}
 	</update>
-
+	
+	
 	<!-- 커뮤니티 -->
+	<insert id="insert" parameterType="board">
+		insert into board values (
+		board_seq.nextval, #{id}, #{b_title}, #{b_writer},
+		#{b_content},
+		sysdate, #{b_cnt}, 'n')
+	</insert>
 
 	<!-- 게시물 입력 -->
 	<insert id="binsert" parameterType="board">
@@ -67,7 +71,112 @@
 			</if>
 		</where>
 	</select>
-	
+
+	<select id="ntList" parameterType="notice" resultType="notice">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					n_title like '%' || #{keyword} || '%' or
+					n_content like
+					'%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+		</where>
+		order by nno desc )a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+
+	<insert id="ntInsert" parameterType="notice">
+		insert into notice
+		values(notice_seq.nextval, #{id, jdbcType=CHAR}, #{n_title},
+		#{n_content}, sysdate, 0, 'n')
+	</insert>
+
+	<select id="noSelect" parameterType="integer"
+		resultType="notice">
+		select * from notice where nno=#{nno}
+	</select>
+
+	<update id="noUpdate" parameterType="notice">
+		update notice set
+		n_title=#{n_title}, n_content=#{n_content} where
+		nno=#{nno}
+	</update>
+
+	<update id="noDelete" parameterType="notice">
+		update notice set n_del='y'
+		where nno=#{nno}
+	</update>
+
+	<!-- 회원 공지사항 총 갯수 -->
+	<!-- 공지사항 -->
+<!-- 	
+	<select id="getTotal" parameterType="notice"
+		resultType="integer">
+		select count(*) from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					(n_title like '%' || #{keyword} || '%' or
+					n_content
+					like
+					'%'
+					||
+					#{keyword} || '%')
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+			and n_del='n'
+		</where>
+	</select>
+-->
+
+	<select id="list" parameterType="notice" resultType="notice">
+		select * from
+		(select rowNum rn, a.* from(
+		select * from notice
+		<where>
+			<if test=" keyword != null and keyword !=''">
+				<if test="search=='subcon'">
+					n_title like '%' || #{keyword} || '%' or
+					n_content like
+					'%'
+					|| #{keyword} || '%'
+				</if>
+
+				<if test="search!='subcon'">
+					${search} like '%' || #{keyword} || '%'
+				</if>
+			</if>
+			and n_del='n'
+		</where>
+		order by nno desc )a)
+		where rn
+		between #{startRow} and #{endRow}
+	</select>
+
+	<select id="select" parameterType="integer" resultType="notice">
+		select *
+		from notice where nno=#{nno}
+	</select>
+
+	<update id="updateReadCount" parameterType="integer">
+		update notice set
+		n_cnt = n_cnt + 1 where nno = #{nno}
+	</update>
+
+
 	<!-- 게시물 목록 + 검색 -->
 	<select id="blist" parameterType="board" resultType="board">
 		select * from ( select a.*, rowNum rn from (
@@ -87,26 +196,76 @@
 		order by bno desc ) a )
 		where rn between #{startRow} and #{endRow}
 	</select>
-	
+
 	<!-- 게시물 조회 -->
 	<select id="bselect" parameterType="integer" resultType="board">
-		select * from board where bno = #{bno}
+		select *
+		from board where bno = #{bno}
 	</select>
-	
+
 	<!-- 게시물 조회수 업데이트 -->
 	<update id="updateBcnt" parameterType="integer">
-		update board set b_cnt = b_cnt + 1 where bno = #{bno}
+		update board set b_cnt =
+		b_cnt + 1 where bno = #{bno}
 	</update>
-	
+
 	<!-- 게시물 수정 -->
 	<update id="bupdate" parameterType="board">
-		update board set b_title = #{b_title}, b_content = #{b_content}
+		update board set b_title =
+		#{b_title}, b_content = #{b_content}
 		where bno = #{bno}
 	</update>
-	
+
 	<!-- 게시물 삭제 ( 삭제 표시 ) -->
 	<update id="bdelete" parameterType="board">
-		update board set b_del = 'y' where bno = #{bno}
+		update board set b_del = 'y'
+		where bno = #{bno}
 	</update>
+
+	<!-- 메인화면 게시물 표시 -->
+	<select id="bcntlist" resultType="board">
+		select * from board order by
+		b_cnt desc
+	</select>
+
+	<!-- 관리자 게시물 총 갯수 + 검색 -->
+	<select id="adminGetTotal" resultType="integer">
+		select count(*) from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<!-- 제목 + 내용 -->
+				<if test="search=='subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search!='subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+	</select>
+
+	<!-- 관리자 게시물 목록 + 검색 -->
+	<select id="adminBoardList" parameterType="board"
+		resultType="board">
+		select * from ( select a.*, rowNum rn from (
+		select * from board
+		<where>
+			<if test="keyword != null and keyword != ''">
+				<if test="search == 'subcon'">
+					b_title like '%'|| #{keyword} ||'%' or
+					b_content like
+					'%'|| #{keyword} ||'%'
+				</if>
+				<if test="search != 'subcon'">
+					${search} like '%'|| #{keyword} ||'%'
+				</if>
+			</if>
+		</where>
+		order by bno desc ) a )
+		where rn between #{startRow} and #{endRow}
+	</select>
+
 
 </mapper>

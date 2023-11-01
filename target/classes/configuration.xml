@@ -15,13 +15,14 @@
 		<typeAlias alias="help" type="com.green.teddy.dto.Help" />
 		<typeAlias alias="member" type="com.green.teddy.dto.Member" />
 		<typeAlias alias="news" type="com.green.teddy.dto.News" />
-		<typeAlias alias="notice" type="com.green.teddy.dto.Notice" />
-		<typeAlias alias="reservation"
-			type="com.green.teddy.dto.Reservation" />
+
+		<typeAlias alias="reservation" type="com.green.teddy.dto.Reservation" />
+		
 		<typeAlias alias="review" type="com.green.teddy.dto.Review" />
 		<typeAlias alias="center" type="com.green.teddy.dto.Center" />
 		<typeAlias alias="design_img" type="com.green.teddy.dto.Design_img"/>
 		<typeAlias alias="compliment" type="com.green.teddy.dto.Compliment"/>
+		<typeAlias alias="notice" type="com.green.teddy.dto.Notice"/>
 	</typeAliases>
 
 	<mappers>

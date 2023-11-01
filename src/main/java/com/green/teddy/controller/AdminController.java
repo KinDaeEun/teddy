@@ -14,23 +14,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.green.teddy.dto.Board;
 import com.green.teddy.dto.Car;
+import com.green.teddy.dto.Compliment;
 import com.green.teddy.dto.Design_img;
 import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
-
+import com.green.teddy.dto.Notice;
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.BoardService;
 import com.green.teddy.service.CarService;
+import com.green.teddy.service.ComplimentService;
 import com.green.teddy.service.Design_imgService;
 import com.green.teddy.service.HelpService;
 import com.green.teddy.service.MemberService;
+import com.green.teddy.service.NoticeService;
 import com.green.teddy.service.PageBean;
 import com.green.teddy.service.ReviewService;
 
@@ -44,13 +47,21 @@ public class AdminController {
 
 	@Autowired
 	private Design_imgService ds;
-	
+
 	@Autowired
 	private MemberService ms;
-	
+
 	@Autowired
 	private ReviewService res;
 
+	@Autowired
+	private ComplimentService cms;
+
+	@Autowired
+	private NoticeService nis;
+
+	@Autowired
+	private BoardService bs;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
@@ -82,7 +93,7 @@ public class AdminController {
 			endPage = totalPage;
 
 		List<Car> carList = cs.adminCarList(car);
-		String[] title = {"차량번호","이름","브랜드","차종"};
+		String[] title = { "차량번호", "이름", "브랜드", "차종" };
 
 		model.addAttribute("carList", carList);
 		model.addAttribute("car", car);
@@ -95,7 +106,8 @@ public class AdminController {
 	}
 
 	@RequestMapping("admin/adminCarInsertForm")
-	public void insertCarForm() {}
+	public void insertCarForm() {
+	}
 
 	// 차량 정보및 디자인 이미지 입력
 	@RequestMapping("admin/adminCarInsertResult")
@@ -160,39 +172,39 @@ public class AdminController {
 		UUID uuid = UUID.randomUUID();
 		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
-	
+
 	@RequestMapping("admin/adminCarUpdateForm")
 	public void adminCarUpdateForm(Model model, int cno) {
 		Car car = cs.selectCar(cno);
-		model.addAttribute("car",car);
+		model.addAttribute("car", car);
 	}
-	
+
 	@RequestMapping("admin/adminCarUpdateResult")
 	public void adminCarUpdateResult(Model model, Car car, HttpServletRequest request) {
 		int result = cs.updateCar(car);
 		String referer = request.getHeader("Referer");
-		model.addAttribute("referer",referer);
-		model.addAttribute("result",result);
+		model.addAttribute("referer", referer);
+		model.addAttribute("result", result);
 	}
-	
+
 	@RequestMapping("admin/adminCarDelete")
 	public void adminCarDelete(Model model, Car car, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		System.out.println(referer);
 		String c_del = "";
-		if(car.getC_del().equals("y")) {
-			c_del="n";
+		if (car.getC_del().equals("y")) {
+			c_del = "n";
 		}
-		if(car.getC_del().equals("n")) {
-			c_del="y";
+		if (car.getC_del().equals("n")) {
+			c_del = "y";
 		}
 		car.setC_del(c_del);
 		int result = cs.deleteCar(car);
-		
-		model.addAttribute("result",result);
-		model.addAttribute("referer",referer);
+
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
 	}
-	
+
 	@RequestMapping("admin/adminReviewList")
 	public void adminReviewList(Model model, Review review, String pageNum) {
 		final int ROW_PER_PAGE = 10;// 한페이지의 차량 갯수
@@ -216,11 +228,11 @@ public class AdminController {
 		// endPage는 총페이지 보다 크면 안된다
 		if (endPage > totalPage)
 			endPage = totalPage;
-		
+
 		List<Review> reviewList = res.adminReviewList(review);
-		String[] title = {"리뷰번호","작성자"};
+		String[] title = { "리뷰번호", "작성자" };
 		Car car = cs.selectCar(review.getCno());
-		
+
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("review", review);
 		model.addAttribute("totalPage", totalPage);
@@ -229,48 +241,47 @@ public class AdminController {
 		model.addAttribute("PAGE_PER_BLOCK", PAGE_PER_BLOCK);
 		model.addAttribute("currentPage", currentPage);
 		model.addAttribute("title", title);
-		model.addAttribute("c_name",car.getC_name());
+		model.addAttribute("c_name", car.getC_name());
 	}
-	
+
 	@RequestMapping("admin/adminReviewDelete")
 	public void adminReviewDelete(Model model, Review review, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		String re_del = "";
-		if(review.getRe_del().equals("y")) {
-			re_del="n";
+		if (review.getRe_del().equals("y")) {
+			re_del = "n";
 		}
-		if(review.getRe_del().equals("n")) {
-			re_del="y";
+		if (review.getRe_del().equals("n")) {
+			re_del = "y";
 		}
 		review.setRe_del(re_del);
 		int result = res.deleteReview(review);
-		model.addAttribute("result",result);
-		model.addAttribute("referer",referer);
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
 	}
-	
+
 	@RequestMapping("admin/adminReviewContent")
 	public void adminReviewContent(Model model, int re_no) {
 		Review review = res.selectReview(re_no);
-		model.addAttribute("review",review);
+		model.addAttribute("review", review);
 	}
-	
+
 	@RequestMapping("admin/adminCarImgList")
 	public void adminImgList(Model model, int cno) {
 		List<Design_img> imgList = ds.imgList(cno);
-		model.addAttribute("imgList",imgList);
+		model.addAttribute("imgList", imgList);
 	}
-	
-	@RequestMapping("admin/adminCarImgDelete" )
+
+	@RequestMapping("admin/adminCarImgDelete")
 	public void adminCarImgDelete(Model model, Integer[] Dno, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
 		int result = 0;
-		for(int dno:Dno) {
+		for (int dno : Dno) {
 			result = ds.deleteImg(dno);
 		}
-		model.addAttribute("result",result);
-		model.addAttribute("referer",referer);
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
 	}
-	
 
 	// 1:1문의 리스트
 	@RequestMapping("admin/adminHelpList")
@@ -376,9 +387,177 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("pageNum", pageNum);
 	}
+
 	// 게시판 관리
-		@GetMapping("adminBoard/adminBoard_memu")
-		public void adminBoard_memu() {
+
+	@GetMapping("adminBoard/adminBoard_memu")
+	public void adminBoard_memu() {
+	}
+
+	// 관리자 칭찬 알림방 리스트
+	@GetMapping("adminBoard/adminComplimentMain")
+	public void adminComplimentMain(Model model, Compliment compliment, String pageNum, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = cms.comGetTotal(compliment);// 칭찬 총 등록갯수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		compliment.setStartRow(startRow);
+		compliment.setEndRow(endRow);
+
+		List<Compliment> list = cms.cpList(compliment);// 칭찬목록 리스트
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+
+		model.addAttribute("id", id);
+		model.addAttribute("list", list);
+		model.addAttribute("pb", pb);
+		model.addAttribute("compliment", compliment);
+		model.addAttribute("pageNum", pageNum);
+	}
+
+	// 관리자 칭찬 알림방 삭제
+	@GetMapping("adminBoard/adminComplimentDelete")
+	public void adminComplimentDelete(Model model, HttpSession session, int cpno) {
+		String id = (String) session.getAttribute("id");
+		int result = cms.delete(cpno);
+		model.addAttribute("id", id);
+		model.addAttribute("result", result);
+	}
+
+	// 공지사항
+	@GetMapping("adminBoard/adminNotice")
+	public void adminNotice(Model model, String pageNum, HttpSession session, Notice notice) {
+		String id = (String) session.getAttribute("id");
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = nis.ntGetTotal(notice);// 공지사항 총 갯수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		notice.setStartRow(startRow);
+		notice.setEndRow(endRow);
+
+		List<Notice> list = nis.ntList(notice);// 공지사항 리스트
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "제목", "내용", "제목+내용" };
+		model.addAttribute("id", id);
+		model.addAttribute("title", title);
+		model.addAttribute("list", list);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("notice", notice);
+
+	}
+
+	// 공지사항 입력
+	@GetMapping("adminBoard/adminNoticeWrite")
+	public void adminNoticeWrite(Model model, HttpSession session) {
+		String id = (String) session.getAttribute("id");
+		model.addAttribute("id", id);
+	}
+
+	@PostMapping("adminBoard/adminNoticeResult")
+	public void adminNoticeResult(Model model, Notice notice, HttpSession session) {
+		int result = 0;
+		String id = (String) session.getAttribute("id");
+		result = nis.ntInsert(notice);
+
+		model.addAttribute("id", id);
+		model.addAttribute("result", result);
+		model.addAttribute("notice", notice);
+	}
+
+	@GetMapping("adminBoard/adminNoticeUpdateForm")
+	public void adminNoticeUpdateForm(Model model, int nno, String pageNum) {
+		Notice notice = nis.noSelect(nno);
+		System.out.println(nno);
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+	}
+
+	@PostMapping("adminBoard/adminNoticeUpdateResult")
+	public void adminNoticeUpdateResult(Model model, int nno, Notice notice, HttpSession session, String pageNum) {
+		int result = 0;
+		String id = (String) session.getAttribute("id");
+		notice.setNno(nno);
+		System.out.println(pageNum);
+		System.out.println(nno);
+		result = nis.noUpdate(notice);
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("id", id);
+	}
+
+	@GetMapping("adminBoard/adminNoticeDelete")
+	public void adminNoticeDelete(Model model, HttpSession session, int nno, String pageNum) {
+		String id = (String) session.getAttribute("id");
+		int result = nis.noDelete(nno);
+		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("id", id);
+	}
+
+	@GetMapping("adminBoard/adminNoticeView")
+	public void adminNoticeView(Model model, int nno, HttpSession session, String pageNum) {
+		Notice notice = nis.noSelect(nno);
+		model.addAttribute("notice", notice);
+		model.addAttribute("pageNum", pageNum);
+	}
+
+	// 게시글 목록 리스트
+	@RequestMapping("adminBoard/adminBoardList")
+	public void adminBoardList(Model model, String pageNum, Board board) {
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = bs.adminGetTotal(board);// 전체 회원 수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		board.setStartRow(startRow);
+		board.setEndRow(endRow);
+
+		List<Board> boardList = bs.adminBoardList(board);// 회원목록
+
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "작성자", "제목", "내용", "제목+내용" };
+
+		model.addAttribute("total", total);
+		model.addAttribute("title", title);
+		model.addAttribute("boardList", boardList);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("board", board);
+	}
+
+	// 게시글 전시상태 변경
+	@RequestMapping("adminBoard/adminBoardDelete")
+	public void adminBoardDelete(Model model, Board board, HttpServletRequest request, int bno) {
+		String referer = request.getHeader("Referer");
+		String b_del = "";
+		if (board.getB_del().equals("y")) {
+			b_del = "n";
 		}
-	
+		if (board.getB_del().equals("n")) {
+			b_del = "y";
+		}
+		board.setB_del(b_del);
+		int result = bs.bdelete(bno);
+
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
+	}
+
+	// 게시글 상세보기
+	@RequestMapping("adminBoard/adminBoardContent")
+	public void adminBoardContent(Model model, int bno) {
+		Board board = bs.bselect(bno);
+
+		model.addAttribute("board", board);
+	}
+
 }

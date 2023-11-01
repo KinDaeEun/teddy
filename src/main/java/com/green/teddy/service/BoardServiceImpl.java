@@ -43,4 +43,16 @@ public class BoardServiceImpl implements BoardService{
 		return bd.bdelete(bno);
 	}
 
+	public List<Board> bcntlist() {
+		return bd.bcntlist();
+	}
+
+	public int adminGetTotal(Board board) {
+		return bd.adminGetTotal(board);
+	}
+
+	public List<Board> adminBoardList(Board board) {
+		return bd.adminBoardList(board);
+	}
+
 }
