@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 관리</title>
+<link rel="stylesheet" href="${path}/resources/css/notice.css">
 </head>
 <body>
 	<div class="container">
@@ -54,31 +55,31 @@
 	<div>
 		<ul class="pagination pagination-sm justify-content-center">
 			<c:if test="${pb.startPage > pb.pagePerBlock}">
-				<li class="page-item"><a class="page-link"
+				<li class="page-item"><a class="page-link link"
 					href="notice.do?pageNum=1&search=${notice.search}&keyword=${notice.keyword}">
 						<i>맨 앞으로</i>
 				</a></li>
-				<li class="page-item"><a class="page-link"
+				<li class="page-item"><a class="page-link link"
 					href="notice.do?pageNum=${pb.startPage-1}&search=${notice.search}&keyword=${notice.keyword}">
 						<i>앞으로</i>
 				</a></li>
 			</c:if>
 			<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 				<c:if test="${pb.currentPage == i }">
-					<li class="page-item active"><a class="page-link"
+					<li class="page-item active"><a class="page-link link"
 						href="notice.do?pageNum=${i}&search=${notice.search}&keyword=${notice.keyword}">${i }</a></li>
 				</c:if>
 				<c:if test="${pb.currentPage != i }">
-					<li class="page-item"><a class="page-link"
+					<li class="page-item"><a class="page-link link"
 						href="notice.do?pageNum=${i}&search=${notice.search}&keyword=${notice.keyword}">${i }</a></li>
 				</c:if>
 			</c:forEach>
 			<c:if test="${pb.endPage < pb.totalPage}">
-				<li class="page-item"><a class="page-link"
+				<li class="page-item"><a class="page-link link"
 					href="notice.do?pageNum=${pb.endPage+1}&search=${notice.search}&keyword=${notice.keyword}">
 						<i>뒤로</i>
 				</a></li>
-				<li class="page-item"><a class="page-link"
+				<li class="page-item"><a class="page-link link"
 					href="notice.do?pageNum=${pb.totalPage}&search=${notice.search}&keyword=${notice.keyword}">
 						<i>맨뒤로</i>
 				</a></li>

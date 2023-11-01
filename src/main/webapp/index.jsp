@@ -7,8 +7,8 @@
 <title>Teddy</title>
 </head>
 <body>
-<script type="text/javascript">
-	location.href="main/main.do";
-</script>
+	<script type="text/javascript">
+		location.href="main/main.do";
+	</script>
 </body>
 </html>

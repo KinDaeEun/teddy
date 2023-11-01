@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/adminMemberList.css">
 </head>
 <body>
 	<div class="pg_top">
@@ -14,21 +15,23 @@
 			<h3>회원목록</h3>
 			<div>총 회원수${total }명</div>
 			<!-- 검색 -->
+			<div class="searchDIV">
 			<form action="${path }/admin/adminMemberList.do">
-				<select name="search">
+				<select name="search" class="inputUnderLine">
 					<c:forTokens var="sh" items="id,name,gender,m_del" delims=","
 						varStatus="i">
 						<c:if test="${sh == member.search }">
-							<option value="${sh }" selected>${title[i.index] }</option>
+							<option value="${sh }" selected="selected">${title[i.index] }</option>
 						</c:if>
 						<c:if test="${sh != member.search }">
 							<option value="${sh }">${title[i.index] }</option>
 						</c:if>
 					</c:forTokens>
 				</select> <input type="text" name="keyword" value="${member.keyword }"
-					class="form-text"> <input type="submit" name="검색"
-					class="btn btn-outline-secondary btn-sm" value="검색">
+					class="form-text inputUnderLine"> <input type="submit" name="검색"
+					class="btn_search" value="검색">
 			</form>
+			</div>
 			<table class="table">
 				<tr>
 

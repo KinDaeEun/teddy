@@ -1,0 +1,10 @@
+@charset "UTF-8";
+.vi {
+	border-bottom: solid 1px gray;
+	border-top: solid 1px black;
+}
+
+.ta {
+	height: 500px;
+	width: 100%;
+}

@@ -68,7 +68,7 @@ public class NoticeDaoImpl implements NoticeDao {
 
 	@Override
 	public void updateReadCount(int nno) {
-		sst.update("boardns.updateReadCount", nno);
+		sst.update("noticens.updateReadCount", nno);
 
 	}
 }
