@@ -113,7 +113,7 @@ create table board (
 create sequence board_seq start with 1 increment by 1 maxvalue 999999;
 select * from board;
 drop table board;
-
+drop sequence board_seq;
 
 -- 공지사항
 create table notice (
@@ -152,7 +152,7 @@ create table reservation (
 create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
 select * from reservation;
 drop table reservation;
-
+drop sequence reservation_seq;
 
 
 -- 1:1 문의
@@ -171,7 +171,7 @@ create table help (
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
-
+drop sequence help_seq;
 
 -- 평점
 create table review (
@@ -189,7 +189,7 @@ create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 
 select * from review;
 drop table review;
-
+drop sequence review_seq;
 
 -- 뉴스
 create table news (
@@ -205,7 +205,7 @@ create table news (
 create sequence news_seq start with 1 increment by 1 maxvalue 999999;
 select * from news;
 drop table news;
-
+drop sequence news_seq;
 
 
 -- 예약 전시장
@@ -376,6 +376,9 @@ insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)desi
 
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
+
+-- 커뮤니티 추가
+-- insert into board values(board_seq.nextval,1,)
 
 
 select notice_seq.nextval from dual;
