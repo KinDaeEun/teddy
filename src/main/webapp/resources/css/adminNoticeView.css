@@ -1,4 +1,6 @@
 @charset "UTF-8";
+
+/* adminNoticeView */
 .vi {
 	border-bottom: solid 1px gray;
 	border-top: solid 1px black;
@@ -8,3 +10,4 @@
 	height: 500px;
 	width: 100%;
 }
+
