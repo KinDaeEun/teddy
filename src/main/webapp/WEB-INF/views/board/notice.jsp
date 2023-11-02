@@ -13,7 +13,7 @@
 		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
 		<!-- 검색 -->
 		<form action="${path }/board/notice.do">
-			<select name="search">
+			<select name="search" class="inputUnderLine">
 				<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
 					varStatus="i">
 					<c:if test="${sh == notice.search }">
@@ -24,8 +24,8 @@
 					</c:if>
 				</c:forTokens>
 			</select> <input type="text" name="keyword" value="${notice.keyword }"
-				class="form-text"> <input type="submit" name="검색"
-				class="btn btn-outline-secondary btn-sm" value="검색">
+				class="form-text inputUnderLine"> <input type="submit" name="검색"
+				class="btn btn-outline-secondary btn-sm btn_search" value="검색">
 		</form>
 
 
