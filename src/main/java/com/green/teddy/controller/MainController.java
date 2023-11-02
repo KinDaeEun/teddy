@@ -27,7 +27,7 @@ public class MainController {
 		List<News> news = ns.list();
 		// 게시판
 		List<Board> board = bs.bcntlist();
-		
+ 
 		model.addAttribute("news", news);
 		model.addAttribute("board", board);
 	}

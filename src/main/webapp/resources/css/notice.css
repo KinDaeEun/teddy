@@ -6,21 +6,31 @@
 	border: none !important;
 }
 
-.inputUnderLine {
-    height: 23px;
-    border: none;
+.searchDIV {
+	text-align: left;
+	margin-bottom : 20px !important;
+	
+}
+.inputUnderLine{
+	height: 23px;
+	border: none;
     border-bottom: 1px solid black;
     outline: 0;
 }
-.btn_search {
-    background-image: url(/teddy/resources/images/search64.png);
-    background-size: 20px;
-    background-color: white;
-    background-position: 0px 0px;
+.btn_search{
+	background-image: url('/teddy/resources/images/search64.png');
+	background-size: 20px;
+	background-color: white;
+    background-position:  0px 0px;
     background-repeat: no-repeat;
     height: 25px;
     border: 0px;
-    cursor: pointer;
-    outline: 0;
-    color: transparent; 
+ 	cursor:pointer;
+ 	outline: 0;
+ 	color: transparent;
 }
+a {
+	text-decoration: none;
+	color: #333;
+}
+

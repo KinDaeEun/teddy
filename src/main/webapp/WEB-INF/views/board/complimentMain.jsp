@@ -64,8 +64,7 @@
 								<td class="text-center">${compliment.cp_content }</td>
 								<td class="text-center">${compliment.cp_date }</td>
 								<c:if test="${compliment.id == id }">
-									<td><center>
-											<a class="btn btn-outline-secondary"
+									<td><center><a class="btn btn-outline-secondary"
 												href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a>
 										</center></td>
 								</c:if>

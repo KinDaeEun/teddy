@@ -103,6 +103,27 @@
 				</c:if>
 			</ul>
 		</div>
+
+		<!-- search -->
+		<div class="searchDIV">
+		<form action="${path }/board/boardList.do">
+			<select name="search" class="inputUnderLine">
+				<c:forTokens var="sh" items="b_writer,b_title,b_content,subcon"
+					delims="," varStatus="i">
+					<c:if test="${sh == board.search }">
+						<option value="${sh }" selected="selected">${title[i.index] }</option>
+					</c:if>
+					<c:if test="${sh != board.search }">
+						<option value="${sh }">${title[i.index] }</option>
+					</c:if>
+				</c:forTokens>
+			</select> <input type="text" name="keyword" value="${board.keyword }"
+				class="form-text inputUnderLine"><input type="submit" name="검색"
+				class="btn_search" value="검색">
+		</form>
+		</div>
+		
+
 	</div>
 
 </body>

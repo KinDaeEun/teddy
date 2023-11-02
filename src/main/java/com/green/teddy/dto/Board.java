@@ -20,4 +20,8 @@ public class Board {
 	//	search 
 	private String search;
 	private String keyword;
+	
+	//게시물 멤버 사진 + 이름
+	private String fileName;
+	private String name;
 }

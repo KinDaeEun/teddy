@@ -15,25 +15,26 @@ a {
 	color: #333;
 }
 
-.inputUnderLine {
-    height: 23px;
-    border: none;
-    border-bottom: 1px solid black;
-    outline: 0;
+.searchDIV {
+	text-align: center;
+	margin-bottom : 20px !important;
+	
 }
-.btn_search {
-    background-image: url(/teddy/resources/images/search64.png);
-    background-size: 20px;
-    background-color: white;
-    background-position: 0px 0px;
+.btn_search{
+	background-image: url('/teddy/resources/images/search64.png');
+	background-size: 20px;
+	background-color: white;
+    background-position:  0px 0px;
     background-repeat: no-repeat;
     height: 25px;
     border: 0px;
-    cursor: pointer;
-    outline: 0;
-    color: transparent; 
+ 	cursor:pointer;
+ 	outline: 0;
+ 	color: transparent;
 }
-
-.search {
-	float: right;
+.inputUnderLine{
+	height: 23px;
+	border: none;
+    border-bottom: 1px solid black;
+    outline: 0;
 }
