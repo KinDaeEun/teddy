@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 입력</title>
+<link rel="stylesheet" href="${path}/resources/css/adminNotice.css">
 </head>
 <body>
 	<div>
