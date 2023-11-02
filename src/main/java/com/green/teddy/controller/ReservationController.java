@@ -59,7 +59,6 @@ public class ReservationController {
 		
 		String id = (String) session.getAttribute("id");
 		reservation.setId(id);
-		System.out.println(reservation);
 		int result = rs.insert(reservation);
 
 		model.addAttribute("result", result);
@@ -67,15 +66,15 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("myPage/reservationList")
-	public void reservationList(Model model, HttpSession session) {
+	public void reservationList(Model model, HttpSession session, int rno) {
 		
 		String id = (String) session.getAttribute("id");
 		Reservation reservation = new Reservation();
 		reservation.setId(id);
 		
 		List<Reservation> reservationlist = rs.list(id);
-		
 		model.addAttribute("reservationlist", reservationlist);
+		model.addAttribute("rno", rno);
 	}
 
 }

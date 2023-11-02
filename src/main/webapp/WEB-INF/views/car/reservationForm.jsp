@@ -52,18 +52,17 @@ h2 {
 						<td><select class="form-select" onchange="carBox()" required
 							name="brand">
 								<optgroup label="회사를 선택해주세요">
-									<option>회사를 먼저 선택해주세요</option>
+									<option>회사를 선택해주세요</option>
 									<c:forEach var="car" items="${brandlist }">
 										<option>${car.brand }</option>
 									</c:forEach>
 								</optgroup>
-
 						</select></td>
 					</c:if>
 					<!-- 차량 목록에서 넘어온 input -->
 					<c:if test="${empty brandlist}">
 						<td><input type="text" name="brand" value="${car.brand }"
-							class="form-control" readonly="readonly"></td>
+							class="form-control" readonly="readonly">브랜드가 없습니다</td>
 					</c:if>
 				</tr>
 				<tr>

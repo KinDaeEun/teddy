@@ -8,10 +8,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<select class="form-select" name="find_center">
-		<c:forEach var="center" items="${centerlist }">
-			<option>${center.find_center }</option>
-		</c:forEach>
-	</select>
+		<select class="form-select" name="find_center">
+			<c:forEach var="center" items="${centerlist }">
+				<option>${center.find_center }</option>
+			</c:forEach>
+		</select>
 </body>
 </html>

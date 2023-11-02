@@ -19,15 +19,12 @@ h3 {
 <body>
 	<div class="container">
 		<h3 align="center">예약 내역</h3>
-		<table class="table table-striped">
-			<c:if test="${empty reservationList }">
+		<c:if test="${empty reservationlist }">
 			시승예약 내역이 없습니다
 		</c:if>
-			<c:if test="${not empty reservationList }">
-				<c:forEach var="reservation" items="${reservationlist }">
-					<!-- 				<tr> -->
-					<!-- 					<th></th> -->
-					<!-- 				</tr> -->
+		<c:if test="${not empty reservationlist }">
+			<c:forEach var="reservation" items="${reservationlist }">
+				<table class="table table-striped">
 					<tr class="text-center">
 						<th>차량 브랜드</th>
 						<td>${reservation.brand }</td>
@@ -49,13 +46,16 @@ h3 {
 					</tr>
 					<tr class="text-center">
 						<th>예약 날짜</th>
-						<td>${reservation.r_date }</td>
+						<td colspan="3">${reservation.r_date }</td>
 					</tr>
-					<button onclick="delete()" class="btn btn-secondary btn-sm">예약취소</button>
-				</c:forEach>
-			</c:if>
-		</table>
-
+					<tr>
+						<td colspan="4" class="text-center">
+							<a href="${path }/car/reservationDelete.do?rno=${rno}">예약취소</a>
+						</td>
+					</tr>
+				</table>
+			</c:forEach>
+		</c:if>
 		<div style="align-content: center">
 			<div align="center">
 				<a href="${path }/main/main.do"
