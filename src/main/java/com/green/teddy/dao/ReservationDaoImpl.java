@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.green.teddy.dto.Board;
 import com.green.teddy.dto.Car;
 import com.green.teddy.dto.Center;
 import com.green.teddy.dto.Reservation;
@@ -35,6 +36,22 @@ public class ReservationDaoImpl implements ReservationDao {
 
 	public List<Reservation> list(String id) {
 		return sst.selectList("reservationns.list", id);
+	}
+
+	public int delete(int rno) {
+		return sst.update("reservationns.delete", rno);
+	}
+
+	public int adminGetTotal(Reservation reservation) {
+		return sst.selectOne("reservationns.adminGetTotal", reservation);
+	}
+
+	public List<Board> adminReservationList(Reservation reservation) {
+		return sst.selectList("reservationns.adminReservationList", reservation);
+	}
+
+	public int adminDelete(Reservation reservation) {
+		return sst.update("reservationns.adminDelete", reservation);
 	}
 
 

@@ -11,7 +11,35 @@
 	</insert>
 	
 	<select id="list" parameterType="reservation" resultType="reservation">
-		select * from reservation where id = #{id}
+		select * from reservation where id = #{id} and r_del = 'n'
 	</select>
+	
+	<update id="delete" parameterType="reservation">
+		update reservation set r_del = 'y' where rno = #{rno}
+	</update>
+	
+	<select id="adminGetTotal" resultType="integer">
+		select count(*) from reservation
+	</select>
+	
+	<select id="adminReservationList" parameterType="reservation" resultType="reservation">
+		select * from
+		( select rowNum rn, a.* from ( select * from reservation
+		
+		<where>
+			<if test="keyword!=null and keyword!=''" >
+				${search} like '%'||#{keyword}||'%'
+			</if>
+		</where>
+		order by rno
+		desc ) a)
+		where rn between #{startRow} and #{endRow}
+	</select>
+	
+	<update id="adminDelete" parameterType="reservation">
+		update reservation set r_del =
+		#{r_del}
+		where rno = #{rno}
+	</update>
 
 </mapper>

@@ -62,7 +62,7 @@ h2 {
 					<!-- 차량 목록에서 넘어온 input -->
 					<c:if test="${empty brandlist}">
 						<td><input type="text" name="brand" value="${car.brand }"
-							class="form-control" readonly="readonly">브랜드가 없습니다</td>
+							class="form-control" readonly="readonly"></td>
 					</c:if>
 				</tr>
 				<tr>
@@ -96,7 +96,7 @@ h2 {
 					<th>휴대폰 번호&nbsp;*</th>
 					<td>
 						<!-- 번호형식 추가예정 --> <input type="text" name="r_tel"
-						pattern="010-\d{3,4}-\d{4}" placeholder="010-1234-5689형식으로 입력하시오"
+						pattern="010-\d{3,4}-\d{4}" placeholder="010-1234-5689형식으로 입력해주세요"
 						class="form-control" required>
 					</td>
 				</tr>

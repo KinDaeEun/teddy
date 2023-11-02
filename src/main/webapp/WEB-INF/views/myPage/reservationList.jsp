@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function del(rno) {
+		let cf = confirm("정말 시승예약을 취소하시겠습니까 ?")
+		if(cf) { 
+			location.href="${path}/car/reservationDelete.do?rno="+rno;
+		}	else location.href="${path}/myPage/reservationList.do"
+	}
+</script>
 <style>
 th {
 	margin-top: 10px;
@@ -50,7 +58,7 @@ h3 {
 					</tr>
 					<tr>
 						<td colspan="4" class="text-center">
-							<a href="${path }/car/reservationDelete.do?rno=${rno}">예약취소</a>
+							<button class="btn btn-sm btn-secondary" onclick="del(${reservation.rno})">예약취소</button>
 						</td>
 					</tr>
 				</table>

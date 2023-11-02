@@ -66,7 +66,7 @@ public class ReservationController {
 	}
 	
 	@RequestMapping("myPage/reservationList")
-	public void reservationList(Model model, HttpSession session, int rno) {
+	public void reservationList(Model model, HttpSession session) {
 		
 		String id = (String) session.getAttribute("id");
 		Reservation reservation = new Reservation();
@@ -74,7 +74,16 @@ public class ReservationController {
 		
 		List<Reservation> reservationlist = rs.list(id);
 		model.addAttribute("reservationlist", reservationlist);
-		model.addAttribute("rno", rno);
+	}
+	
+	@RequestMapping("car/reservationDelete")
+	public void reservationDelete(Model model, HttpSession session, int rno, Reservation reservation) {
+		String id = (String) session.getAttribute("id");
+		reservation.setId(id);
+		
+		int result = rs.delete(rno);
+		
+		model.addAttribute("result", result);
 	}
 
 }
