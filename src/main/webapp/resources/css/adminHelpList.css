@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+.title {
+	text-align: center;
+}
+
+.list_fx {
+	display: flex;
+	justify-content: space-between;
+}
+
+.listAc {
+	color: #333;
+}
+
+.pt {
+	padding-top: 200px;
+}
+.v_h {
+	height: 100vh;
+}
+
+.inputUnderLine {
+    height: 23px;
+    border: none;
+    border-bottom: 1px solid black;
+    outline: 0;
+}
+.btn_search {
+    background-image: url(/teddy/resources/images/search64.png);
+    background-size: 20px;
+    background-color: white;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    height: 25px;
+    border: 0px;
+    cursor: pointer;
+    outline: 0;
+    color: transparent;
+}
