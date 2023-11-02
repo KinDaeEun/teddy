@@ -8,7 +8,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-
 	<select  class="form-select" name="c_name">
 		<c:forEach var="car" items="${getCarName }">
 			<option>${car.c_name }</option>

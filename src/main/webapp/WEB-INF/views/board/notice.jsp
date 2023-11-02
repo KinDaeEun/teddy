@@ -12,6 +12,7 @@
 	<div class="container">
 		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
 		<!-- 검색 -->
+
 		<div class="searchDIV" align="center">
 			<form action="${path }/board/notice.do">
 				<select name="search" class="inputUnderLine">
@@ -29,6 +30,7 @@
 					name="검색" class="btn_search" value="검색">
 			</form>
 		</div>
+
 
 
 		<table class="table table-hover">

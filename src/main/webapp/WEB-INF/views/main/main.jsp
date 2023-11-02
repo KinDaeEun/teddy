@@ -212,8 +212,9 @@
 				<div class="post-content">
 					<div class="recent-post-items">
 						<h6>most recent</h6>
-						<c:forEach var="news" items="${news }">
+						<c:forEach var="news" items="${news }" varStatus="v">
 							<div class="post-item" style="margin-bottom: 30px;">
+							<c:if test="${v.index < 3 }">
 								<a class="post-image"
 									href="${path }/news/newsContent.do?nno=${news.nno}"> <img
 									src="${path}/resources/images/news/${news.n_cover_img}">
@@ -229,6 +230,7 @@
 										${news.n_content }<span>${news.n_date }</span>
 									</p>
 								</div>
+							</c:if>
 							</div>
 						</c:forEach>
 					</div>

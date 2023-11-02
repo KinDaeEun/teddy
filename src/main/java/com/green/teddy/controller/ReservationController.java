@@ -59,7 +59,6 @@ public class ReservationController {
 		
 		String id = (String) session.getAttribute("id");
 		reservation.setId(id);
-		System.out.println(reservation);
 		int result = rs.insert(reservation);
 
 		model.addAttribute("result", result);
@@ -74,8 +73,17 @@ public class ReservationController {
 		reservation.setId(id);
 		
 		List<Reservation> reservationlist = rs.list(id);
-		
 		model.addAttribute("reservationlist", reservationlist);
+	}
+	
+	@RequestMapping("car/reservationDelete")
+	public void reservationDelete(Model model, HttpSession session, int rno, Reservation reservation) {
+		String id = (String) session.getAttribute("id");
+		reservation.setId(id);
+		
+		int result = rs.delete(rno);
+		
+		model.addAttribute("result", result);
 	}
 
 }

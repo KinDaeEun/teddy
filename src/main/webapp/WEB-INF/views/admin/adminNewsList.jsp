@@ -6,17 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-a {
-	text-decoration: none;
-	cursor: pointer;
-	color: black;
-}
-
-tr, th {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/adminNewsList.css">
 <script type="text/javascript">
 function del(nno,n_del) {
 	var con = confirm("해당 게시글의 전시상태를 변경하시겠습니까?");
@@ -31,7 +21,7 @@ function del(nno,n_del) {
 		<h4 style="margin-bottom: 10px">뉴스 목록</h4>
 		<h6 style="margin-bottom: 10px">뉴스 총 ${total } 개</h6>
 		<form action="${path }/admin/adminNewsList.do">
-			<select name="search">
+			<select name="search" class="inputUnderLine">
 				<c:forTokens var="sh" items="n_title, n_writer"
 					delims="," varStatus="i">
 					<c:if test="${sh == news.search }">
@@ -42,8 +32,8 @@ function del(nno,n_del) {
 					</c:if>
 				</c:forTokens>
 			</select> <input type="text" name="keyword" value="${news.keyword }"
-				class="form-text"> <input type="submit" name="검색"
-				class="btn btn-outline-secondary btn-sm" value="검색">
+				class="form-text inputUnderLine"> <input type="submit" name="검색"
+				class="btn btn-outline-secondary btn-sm btn_search" value="검색">
 		</form>
 		<table class="table table-bordered">
 			<tr class="table-secondary">

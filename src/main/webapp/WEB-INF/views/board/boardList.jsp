@@ -6,11 +6,34 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+
+
+.search {
+	float: right;
+}
+</style>
 <link rel="stylesheet" href="${path}/resources/css/boardList.css">
 </head>
 <body>
 	<div class="container" align="center">
 		<h2 class="text-center">커뮤니티</h2>
+		<!-- search -->
+		<form action="${path }/board/boardList.do" class="search">
+			<select name="search" class="inputUnderLine">
+				<c:forTokens var="sh" items="b_writer,b_title,b_content,subcon"
+					delims="," varStatus="i">
+					<c:if test="${sh == board.search }">
+						<option value="${sh }" selected>${title[i.index] }</option>
+					</c:if>
+					<c:if test="${sh != board.search }">
+						<option value="${sh }">${title[i.index] }</option>
+					</c:if>
+				</c:forTokens>
+			</select> <input type="text" name="keyword" value="${board.keyword }"
+				class="form-text inputUnderLine"><input type="submit" name="검색"
+				value="검색" class="btn btn-outline-secondary btn-sm btn_search">
+		</form>
 		<table class="table table-hover">
 			<thead>
 				<tr>
@@ -87,6 +110,7 @@
 				</c:if>
 			</ul>
 		</div>
+
 		<!-- search -->
 		<div class="searchDIV">
 		<form action="${path }/board/boardList.do">
@@ -106,6 +130,7 @@
 		</form>
 		</div>
 		
+
 	</div>
 
 </body>

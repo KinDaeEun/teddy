@@ -27,6 +27,7 @@ import com.green.teddy.dto.Help;
 import com.green.teddy.dto.Member;
 import com.green.teddy.dto.News;
 import com.green.teddy.dto.Notice;
+import com.green.teddy.dto.Reservation;
 import com.green.teddy.dto.Review;
 import com.green.teddy.service.BoardService;
 import com.green.teddy.service.CarService;
@@ -37,6 +38,7 @@ import com.green.teddy.service.MemberService;
 import com.green.teddy.service.NewsService;
 import com.green.teddy.service.NoticeService;
 import com.green.teddy.service.PageBean;
+import com.green.teddy.service.ReservationService;
 import com.green.teddy.service.ReviewService;
 
 @Controller
@@ -64,15 +66,19 @@ public class AdminController {
 
 	@Autowired
 	private BoardService bs;
-	
+
 	@Autowired
 	private NewsService ns;
+
+	@Autowired
+	private ReservationService rs;
 
 	@RequestMapping("admin/adminMain")
 	public void adminMain() {
 	}
 
-	// 차량 관리
+// Car
+	// 차량 목록 관리
 	@RequestMapping("admin/adminCarList")
 	public void adminCar(Car car, String pageNum, Model model) {
 		final int ROW_PER_PAGE = 5;// 한페이지의 차량 갯수
@@ -110,6 +116,7 @@ public class AdminController {
 		model.addAttribute("title", title);
 	}
 
+	// 차량 입력 양식
 	@RequestMapping("admin/adminCarInsertForm")
 	public void insertCarForm() {
 	}
@@ -178,12 +185,14 @@ public class AdminController {
 		return uuid + originalFileName.substring(originalFileName.lastIndexOf("."));
 	}
 
+	// 차량 정보 업데이트
 	@RequestMapping("admin/adminCarUpdateForm")
 	public void adminCarUpdateForm(Model model, int cno) {
 		Car car = cs.selectCar(cno);
 		model.addAttribute("car", car);
 	}
 
+	// 차량 정보 업데이트 결과
 	@RequestMapping("admin/adminCarUpdateResult")
 	public void adminCarUpdateResult(Model model, Car car, HttpServletRequest request) {
 		int result = cs.updateCar(car);
@@ -192,6 +201,7 @@ public class AdminController {
 		model.addAttribute("result", result);
 	}
 
+	// 차량 정보 삭제
 	@RequestMapping("admin/adminCarDelete")
 	public void adminCarDelete(Model model, Car car, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
@@ -210,6 +220,7 @@ public class AdminController {
 		model.addAttribute("referer", referer);
 	}
 
+	// 차량 리뷰 목록
 	@RequestMapping("admin/adminReviewList")
 	public void adminReviewList(Model model, Review review, String pageNum) {
 		final int ROW_PER_PAGE = 10;// 한페이지의 차량 갯수
@@ -249,6 +260,7 @@ public class AdminController {
 		model.addAttribute("c_name", car.getC_name());
 	}
 
+	// 차량 리뷰 삭제 관리
 	@RequestMapping("admin/adminReviewDelete")
 	public void adminReviewDelete(Model model, Review review, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
@@ -265,18 +277,21 @@ public class AdminController {
 		model.addAttribute("referer", referer);
 	}
 
+	// 차량 리뷰 내용
 	@RequestMapping("admin/adminReviewContent")
 	public void adminReviewContent(Model model, int re_no) {
 		Review review = res.selectReview(re_no);
 		model.addAttribute("review", review);
 	}
 
+	// 차량 이미지 리스트
 	@RequestMapping("admin/adminCarImgList")
 	public void adminImgList(Model model, int cno) {
 		List<Design_img> imgList = ds.imgList(cno);
 		model.addAttribute("imgList", imgList);
 	}
 
+	// 차량 이미지 삭제 관리
 	@RequestMapping("admin/adminCarImgDelete")
 	public void adminCarImgDelete(Model model, Integer[] Dno, HttpServletRequest request) {
 		String referer = request.getHeader("Referer");
@@ -288,6 +303,7 @@ public class AdminController {
 		model.addAttribute("referer", referer);
 	}
 
+// Help
 	// 1:1문의 리스트
 	@RequestMapping("admin/adminHelpList")
 	public void adminHelpList(Model model, HttpSession session, String pageNum, Help help) {
@@ -393,6 +409,7 @@ public class AdminController {
 		model.addAttribute("pageNum", pageNum);
 	}
 
+// board
 	// 게시판 관리
 
 	@GetMapping("adminBoard/adminBoard_memu")
@@ -432,7 +449,8 @@ public class AdminController {
 		model.addAttribute("result", result);
 	}
 
-	// 공지사항
+// Notice	
+	//	공지사항
 	@GetMapping("adminBoard/adminNotice")
 	public void adminNotice(Model model, String pageNum, HttpSession session, Notice notice) {
 		String id = (String) session.getAttribute("id");
@@ -458,13 +476,14 @@ public class AdminController {
 
 	}
 
-	// 공지사항 입력
+	//	공지사항 입력
 	@GetMapping("adminBoard/adminNoticeWrite")
 	public void adminNoticeWrite(Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		model.addAttribute("id", id);
 	}
-
+	
+	//	공지사항 입력 결과
 	@PostMapping("adminBoard/adminNoticeResult")
 	public void adminNoticeResult(Model model, Notice notice, HttpSession session) {
 		int result = 0;
@@ -475,7 +494,8 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("notice", notice);
 	}
-
+	
+	//	공지사항 업데이트 양식
 	@GetMapping("adminBoard/adminNoticeUpdateForm")
 	public void adminNoticeUpdateForm(Model model, int nno, String pageNum) {
 		Notice notice = nis.noSelect(nno);
@@ -484,6 +504,7 @@ public class AdminController {
 		model.addAttribute("pageNum", pageNum);
 	}
 
+	//	공지사항 업데이트 결과
 	@PostMapping("adminBoard/adminNoticeUpdateResult")
 	public void adminNoticeUpdateResult(Model model, int nno, Notice notice, HttpSession session, String pageNum) {
 		int result = 0;
@@ -497,6 +518,7 @@ public class AdminController {
 		model.addAttribute("id", id);
 	}
 
+	//	공지사항 삭제 관리
 	@GetMapping("adminBoard/adminNoticeDelete")
 	public void adminNoticeDelete(Model model, HttpSession session, int nno, String pageNum) {
 		String id = (String) session.getAttribute("id");
@@ -506,6 +528,7 @@ public class AdminController {
 		model.addAttribute("id", id);
 	}
 
+	//	공지사항 상세 내용
 	@GetMapping("adminBoard/adminNoticeView")
 	public void adminNoticeView(Model model, int nno, HttpSession session, String pageNum) {
 		Notice notice = nis.noSelect(nno);
@@ -565,6 +588,7 @@ public class AdminController {
 		model.addAttribute("board", board);
 	}
 	
+// News
 	// 뉴스 목록
 	@RequestMapping("admin/adminNewsList")
 	public void adminNewsList(Model model, News news, String pageNum) {
@@ -576,18 +600,18 @@ public class AdminController {
 		int total = ns.adminGetTotal(news);
 		int startRow = (currentPage - 1) * rowPerPage + 1;
 		int endRow = startRow + rowPerPage - 1;
-		
+
 		news.setStartRow(startRow);
 		news.setEndRow(endRow);
-		
+
 		// 페이지별 첫 번째 게시글 번호
 		int num = total - startRow + 1;
-		
+
 		// 시작부터 끝까지 읽어라
 		List<News> newsList = ns.adminNewsList(news);
 		PageBean pb = new PageBean(currentPage, rowPerPage, total);
 		String[] title = { "제목", "작성자" };
-		
+
 		model.addAttribute("newsList", newsList);
 		model.addAttribute("title", title);
 		model.addAttribute("total", total);
@@ -596,7 +620,7 @@ public class AdminController {
 		model.addAttribute("num", num);
 		model.addAttribute("news", news);
 	}
-	
+
 	// 뉴스 전시상태 변경
 	@RequestMapping("admin/adminNewsDelete")
 	public void adminNewsDelete(Model model, News news, HttpServletRequest request, int nno) {
@@ -614,12 +638,57 @@ public class AdminController {
 		model.addAttribute("result", result);
 		model.addAttribute("referer", referer);
 	}
-	
-	//	뉴스 상세내용
+
+	// 뉴스 상세내용
 	@RequestMapping("admin/adminNewsContent")
 	public void adminNewsContent(Model model, int nno) {
 		News news = ns.select(nno);
-		
+
 		model.addAttribute("news", news);
+	}
+	
+// Reservation
+	//	시승 예약 목록
+	@RequestMapping("admin/adminReservationList")
+	public void adminReservationList(Model model, String pageNum, Reservation reservation) {
+		if (pageNum == null || pageNum.equals(""))
+			pageNum = "1";
+		int currentPage = Integer.parseInt(pageNum);
+		int rowPerPage = 10;
+		int total = rs.adminGetTotal(reservation);// 전체 회원 수
+		int startRow = (currentPage - 1) * rowPerPage + 1;
+		int endRow = startRow + rowPerPage - 1;
+		reservation.setStartRow(startRow);
+		reservation.setEndRow(endRow);
+
+		List<Board> reservationList = rs.adminReservationList(reservation);// 회원목록
+
+		PageBean pb = new PageBean(currentPage, rowPerPage, total);
+		String[] title = { "성명", "브랜드", "모델", };
+
+		model.addAttribute("total", total);
+		model.addAttribute("title", title);
+		model.addAttribute("reservationList", reservationList);
+		model.addAttribute("pb", pb);
+		model.addAttribute("pageNum", pageNum);
+		model.addAttribute("reservation", reservation);
+	}
+	
+	// 예약 전시상태 변경
+	@RequestMapping("admin/adminReservationDelete")
+	public void adminReservationDelete(Model model, Reservation reservation, HttpServletRequest request, int rno) {
+		String referer = request.getHeader("Referer");
+		String r_del = "";
+		if (reservation.getR_del().equals("y")) {
+			r_del = "n";
+		}
+		if (reservation.getR_del().equals("n")) {
+			r_del = "y";
+		}
+		reservation.setR_del(r_del);;
+		int result = rs.adminDelete(reservation);
+
+		model.addAttribute("result", result);
+		model.addAttribute("referer", referer);
 	}
 }

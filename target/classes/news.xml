@@ -42,17 +42,25 @@
 	</select>
 
 	<!-- 관리자 : 뉴스 목록 페이징 -->
-	<select id="adminNewsList" parameterType="news" resultType="news">
+	<select id="adminNewsList" parameterType="news"
+		resultType="news">
 		select * from
 		(select rowNum rn, a.* from (select * from news
+		<where>
+			<if test="keyword!=null and keyword!=''">
+				${search} like
+				'%'||#{keyword}||'%'
+			</if>
+		</where>
 		order by nno
 		desc)a)
 		where rn between #{startRow} and #{endRow}
 	</select>
-	
-		<!-- 관리자 : 게시물 삭제 ( 삭제 표시 ) -->
+
+	<!-- 관리자 : 게시물 삭제 ( 삭제 표시 ) -->
 	<update id="adminDelete" parameterType="news">
-		update news set n_del = #{n_del}
+		update news set n_del =
+		#{n_del}
 		where nno = #{nno}
 	</update>
 
