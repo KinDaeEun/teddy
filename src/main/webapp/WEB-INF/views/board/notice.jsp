@@ -12,29 +12,33 @@
 	<div class="container">
 		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
 		<!-- 검색 -->
-		<form action="${path }/board/notice.do">
-			<select name="search">
-				<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
-					varStatus="i">
-					<c:if test="${sh == notice.search }">
-						<option value="${sh }" selected>${title[i.index] }</option>
-					</c:if>
-					<c:if test="${sh != notice.search }">
-						<option value="${sh }">${title[i.index] }</option>
-					</c:if>
-				</c:forTokens>
-			</select> <input type="text" name="keyword" value="${notice.keyword }"
-				class="form-text"> <input type="submit" name="검색"
-				class="btn btn-outline-secondary btn-sm" value="검색">
-		</form>
+		<div class="searchDIV" align="center">
+			<form action="${path }/board/notice.do">
+				<select name="search" class="inputUnderLine">
+					<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
+						varStatus="i">
+						<c:if test="${sh == notice.search }">
+							<option value="${sh }" selected="selected">${title[i.index] }</option>
+						</c:if>
+						<c:if test="${sh != notice.search }">
+							<option value="${sh }">${title[i.index] }</option>
+						</c:if>
+					</c:forTokens>
+				</select> <input type="text" name="keyword" value="${notice.keyword }"
+					class="form-text inputUnderLine"> <input type="submit"
+					name="검색" class="btn_search" value="검색">
+			</form>
+		</div>
 
 
-		<table class="table table-striped">
-			<tr>
-				<th>제목</th>
-				<th>조회수</th>
-				<th>작성일</th>
-			</tr>
+		<table class="table table-hover">
+			<thead>
+				<tr>
+					<th class="text-center">제목</th>
+					<th class="text-center">조회수</th>
+					<th class="text-center">작성일</th>
+				</tr>
+			</thead>
 			<c:if test="${empty list }">
 				<tr>
 					<td colspan="3" align="center">게시글이 없습니다</td>
@@ -43,9 +47,10 @@
 			<c:if test="${not empty list}">
 				<c:forEach var="notice" items="${list }">
 					<tr>
-							<td><a href="${path }/board/noticeView.do?nno=${notice.nno}&pageNum=${pb.currentPage}">${notice.n_title }</a></td>
-							<td>${notice.n_cnt }</td>
-							<td>${notice.n_date }</td>
+						<td class="text-center"><a
+							href="${path }/board/noticeView.do?nno=${notice.nno}&pageNum=${pb.currentPage}">${notice.n_title }</a></td>
+						<td class="text-center">${notice.n_cnt }</td>
+						<td class="text-center">${notice.n_date }</td>
 					</tr>
 				</c:forEach>
 			</c:if>

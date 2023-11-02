@@ -75,7 +75,7 @@
 								<td class="text-center">${compliment.id }</td>
 								<td class="text-center">${compliment.cp_content }</td>
 								<td class="text-center">${compliment.cp_date }</td>
-								<td><a class="btn btn-sm btn-dark" onclick="del(${compliment.cpno})">삭제</a></td>
+								<td><center><a class="btn btn-sm btn-dark" onclick="del(${compliment.cpno})">삭제</a></center></td>
 
 						</tr>
 					</c:forEach>
