@@ -21,7 +21,6 @@
 }
 
 body.n .news .news_area .news_list li .smry .n_title {
-    overflow: hidden;
     display: block;
     width: 350px;
     font-size: 14px;

@@ -6,13 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-
-.search {
-	float: right;
-}
-</style>
 <link rel="stylesheet" href="${path}/resources/css/boardList.css">
 </head>
 <body>

@@ -37,7 +37,9 @@ public class BoardController {
 	@GetMapping("board/board_memu")
 	public void board_memu() {
 	}
-
+	
+// 칭찬 알림방
+	
 	// 칭찬 알림방 리스트
 	@GetMapping("board/complimentMain")
 	public void complimentMain(Model model, Member member, Compliment compliment, String pageNum, HttpSession session) {
@@ -115,30 +117,8 @@ public class BoardController {
 		model.addAttribute("notice", notice);
 		model.addAttribute("pageNum", pageNum);
 	}
-	// @GetMapping("/board/complimentList")
-	// public void complimentList(String id, Model model, HttpSession session,
-	// String pageNum, Compliment compliment) {
-	// Member member = ms.select(id);
-	// if (pageNum == null || pageNum.equals(""))
-	// pageNum = "1";
-	// int currentPage = Integer.parseInt(pageNum);
-	// int rowPerPage = 10;
-	// int total = cs.comGetTotal(compliment);// 칭찬 총 등록갯수
-	// int startRow = (currentPage - 1) * rowPerPage + 1;
-	// int endRow = startRow + rowPerPage - 1;
-	// compliment.setStartRow(startRow);
-	// compliment.setEndRow(endRow);
-	//
-	// List<Compliment> list = cs.cpList(compliment);// 칭찬목록 리스트
-	// PageBean pb = new PageBean(currentPage, rowPerPage, total);
-	// model.addAttribute("id", id);
-	// model.addAttribute("list", list);
-	// model.addAttribute("pb", pb);
-	// model.addAttribute("compliment", compliment);
-	// model.addAttribute("member", member);
-	// }
 
-	// 커뮤니티
+// 커뮤니티
 	
 	// 커뮤니티 게시글 목록
 	@GetMapping("board/boardList")
