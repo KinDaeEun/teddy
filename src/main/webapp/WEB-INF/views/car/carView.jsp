@@ -8,9 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/carViews.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/css/lightbox.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.1/js/lightbox.min.js"></script>
+
 <script>
 	// 글자 수 세기 , 제한
 	$(document).ready(function() {
@@ -24,12 +22,27 @@
 		});
 	});
 	
-	lightbox.option({
-	    resizeDuration: 200,
-	    wrapAround: true,
-	    disableScrolling: false,
-	    fitImagesInViewport:false
-	})
+	 function fnImgPop(url){
+		  var img=new Image();
+		  img.src=url;
+		  var img_width=img.width;
+		  var win_width=img.width+25;
+		  var img_height=img.height;
+		  var win=img.height+30;
+		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.formt_img}"+"' width='"+500+"'>");
+		 }
+	 
+	 function siImgPop(url){
+		  var img=new Image();
+		  img.src=url;
+		  var img_width=img.width;
+		  var win_width=img.width+25;
+		  var img_height=img.height;
+		  var win=img.height+30;
+		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.side_img}"+"' width='"+500+"'>");
+		 }
 </script>
 </head>
 <body class="contents_l02">
@@ -130,7 +143,7 @@
 					<ul class="list_detail">
 						<c:forEach var="img" items="${ imgList}">
 							<li data-thumb="1"><a href="#none"
-								onclick="popupImage(this.src)" class="link_thumb"> <img
+								 class="link_thumb" data-lightbox="car-img"> <img
 									alt="" src="${path}/resources/upload/${img.img_name}"
 									class="thumb_g"> <span class="frame_g"></span>
 							</a></li>
@@ -148,12 +161,12 @@
 					</div>
 					<ul class="list_detail">
 						<li data-thumb="0"><a href="#none"
-							onclick="popupImage(this.src)" class="link_thumb"> <img
+							class="link_thumb" onclick="fnImgPop(this.src)"> <img
 								alt="" src="${path }/resources/upload/${car.formt_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>
 						<li data-thumb="1"><a href="#none"
-							onclick="popupImage(this.src)" class="link_thumb"> <img
+							class="link_thumb" onclick="siImgPop(this.src)"> <img
 								alt="" src="${path }/resources/upload/${car.side_img}"
 								class="thumb_g"> <span class="frame_g"></span>
 						</a></li>

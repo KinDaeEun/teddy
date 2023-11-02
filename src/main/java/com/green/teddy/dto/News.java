@@ -14,4 +14,12 @@ public class News {
 	private String n_writer;
 	private Date n_date;
 	private String n_del;
+	
+	//	paging
+	private int startRow;
+	private int endRow;
+	
+	//검색용
+	private String search;
+	private String keyword;
 }
