@@ -259,13 +259,62 @@ insert into center values (center_seq.nextval, '현대', '강북', '현대자동
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북대리점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북중앙지점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 북서울숲대리점');
-insert into center values (center_seq.nextval,'현대', '강북', '현대자동차 우이대리점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 우이대리점');
 
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 올림픽지점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 성내지점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 길동대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
+
+-- 쉐보레
+insert into center values (center_seq.nextval, '쉐보레', '강남', '쉐보레 강남전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 마곡전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 목동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 영등포전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 강서구청전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 신촌전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 북부전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 노원전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 도봉중앙전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동대리점');
+
+-- BMW
+
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 삼성전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 강남전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 대치전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 서초전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 양재전시장 도이치모터스');
+
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 마포전시장 바바리안모터스');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 남서울전시장');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 바바리안모터스 유어라운');
+
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 강북전시장 (한독모터스)');
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 의정부전시장 코오롱모터');
+
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 잠실전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 송파전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 성수전시장 도이치모터스');
+
+-- 벤츠
+
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 청담전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 삼성전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남자곡전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남대로전시장 (한성자동차)');
+
+insert into center values (center_seq.nextval, '벤츠', '강서', '벤츠 강서목동전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강북', '벤츠 강북전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강동', '벤츠 송파전시장 더클래스효성');
 
 -- 데이터
 
