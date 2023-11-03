@@ -28,3 +28,8 @@ tr, th {
     outline: 0;
     color: transparent;
 }
+
+.link {
+    background: #bdbdbd !important;
+    border: none !important;
+}

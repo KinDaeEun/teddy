@@ -23,7 +23,6 @@
 <body>
 	<div class="container " align="center">
 		<div class="inner join-inner mb">
-			<h2 class="text-dark top">상세내용</h2>
 			<table class="table table-bordered">
 				<tr>
 					<th>번호</th>

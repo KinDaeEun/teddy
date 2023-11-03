@@ -102,9 +102,9 @@ create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 create table board (
     bno number primary key,         -- 게시판 번호
     id varchar2(20),                -- 아이디
-    b_title varchar2(20),           -- 게시글 번호
+    b_title varchar2(100),           -- 게시글 번호
     b_writer varchar2(20),          -- 게시글 작성자
-    b_content varchar2(1000),       -- 게시글 내용
+    b_content varchar2(5000),       -- 게시글 내용
     b_date date,                    -- 게시글 작성 날짜
     b_cnt number,                   -- 게시글 조회수
     b_del char(1),                   -- 게시글 삭제여부

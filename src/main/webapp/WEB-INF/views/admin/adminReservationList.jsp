@@ -78,31 +78,31 @@ function del(rno,r_del) {
 			<div>
 				<ul class="pagination pagination-sm justify-content-center">
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminReservationList.do?pageNum=1&search=${reservation.search}&keyword=${reservation.keyword}">
 								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminReservationList.do?pageNum=${pb.startPage-1}&search=${reservation.search}&keyword=${reservation.keyword}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="adminReservationList.do?pageNum=${i}&search=${reservation.search}&keyword=${reservation.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminReservationList.do?pageNum=${i}&search=${reservation.search}&keyword=${reservation.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminReservationList.do?pageNum=${pb.endPage+1}&search=${reservation.search}&keyword=${reservation.keyword}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminReservationList.do?pageNum=${pb.totalPage}&search=${reservation.search}&keyword=${reservation.keyword}">
 								<i>맨뒤로</i>
 						</a></li>

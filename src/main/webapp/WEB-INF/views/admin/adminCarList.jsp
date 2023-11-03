@@ -80,23 +80,23 @@ function del(cno,c_del) {
 		<div>
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminCarList.do?pageNum=${startPage-1}&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-left-circle icofont-2x"></i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<c:if test="${currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="adminCarList.do?pageNum=${i }&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminCarList.do?pageNum=${i}&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${endPage < totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link" 
 							href="adminCarList.do?pageNum=${endPage+1 }&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-right-square icofont-2x"></i>
 						</a></li>

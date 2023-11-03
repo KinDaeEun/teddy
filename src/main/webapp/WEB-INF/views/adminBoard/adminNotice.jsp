@@ -39,7 +39,7 @@
 			</form>
 		</div>
 		<table class="table table-striped table-bordered">
-			<tr>
+			<tr class="table-secondary text-center">
 				<th>제목</th>
 				<th>조회수</th>
 				<th>작성일</th>
