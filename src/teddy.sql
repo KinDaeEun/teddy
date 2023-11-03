@@ -4,7 +4,6 @@ grand dba to teddy;
 
 
 
-
 -- 회원
 create table member (
     id varchar2(20) primary key,    -- 아이디
@@ -21,9 +20,6 @@ select * from member;
 drop table member;
 
 create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-select * from car;
-
-
 
 -- 차량
 	create table car (
@@ -60,9 +56,7 @@ select * from car;
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
-
 DROP TABLE car CASCADE CONSTRAINTS;
-
 
 -- 차량 이미지
 create table design_img( 
@@ -75,7 +69,6 @@ create table design_img(
 create sequence design_img_seq start with 1 increment by 1 maxvalue 999999;
 select * from DESIGN_IMG;
 drop table design_img;
-
 
 create FUNCTION get_seq
 RETURN NUMBER 
@@ -93,23 +86,25 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
+
+create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence compliment_seq;
 drop table compliment;
 select * from compliment;
-create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 
 -- 게시판
 create table board (
     bno number primary key,         -- 게시판 번호
     id varchar2(20),                -- 아이디
-    b_title varchar2(20),           -- 게시글 번호
+    b_title varchar2(100),           -- 게시글 번호
     b_writer varchar2(20),          -- 게시글 작성자
-    b_content varchar2(1000),       -- 게시글 내용
+    b_content varchar2(5000),       -- 게시글 내용
     b_date date,                    -- 게시글 작성 날짜
     b_cnt number,                   -- 게시글 조회수
     b_del char(1),                   -- 게시글 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence board_seq start with 1 increment by 1 maxvalue 999999;
 select * from board;
 drop table board;
@@ -126,6 +121,7 @@ create table notice (
     n_del char(1),                   -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 select * from notice;
 drop table notice;
@@ -168,6 +164,7 @@ create table help (
     r_content varchar2(1000),       -- 답변 내용
     foreign key(id) references member(id)
 );
+
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
@@ -185,8 +182,8 @@ create table review (
     foreign key(id) references member(id),
     foreign key(cno) references car(cno)
 );
-create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 
+create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 select * from review;
 drop table review;
 drop sequence review_seq;
@@ -207,7 +204,6 @@ select * from news;
 drop table news;
 drop sequence news_seq;
 
-
 -- 예약 전시장
 create table center (
 	num number(10) primary key,
@@ -218,6 +214,8 @@ create table center (
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence center_seq;
 drop table center;
+
+
 
 
 -- 기아
@@ -263,7 +261,7 @@ insert into center values (center_seq.nextval, '현대', '강북', '현대자동
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북대리점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북중앙지점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 북서울숲대리점');
-insert into center values (center_seq.nextval,'현대', '강북', '현대자동차 우이대리점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 우이대리점');
 
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 올림픽지점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 성내지점');
@@ -271,10 +269,56 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
 
+-- 쉐보레
+insert into center values (center_seq.nextval, '쉐보레', '강남', '쉐보레 강남전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 마곡전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 목동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 영등포전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 강서구청전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 신촌전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 북부전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 노원전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 도봉중앙전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동대리점');
+
+-- BMW
+
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 삼성전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 강남전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 대치전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 서초전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 양재전시장 도이치모터스');
+
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 마포전시장 바바리안모터스');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 남서울전시장');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 바바리안모터스 유어라운');
+
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 강북전시장 (한독모터스)');
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 의정부전시장 코오롱모터');
+
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 잠실전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 송파전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 성수전시장 도이치모터스');
+
+-- 벤츠
+
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 청담전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 삼성전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남자곡전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남대로전시장 (한성자동차)');
+
+insert into center values (center_seq.nextval, '벤츠', '강서', '벤츠 강서목동전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강북', '벤츠 강북전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강동', '벤츠 송파전시장 더클래스효성');
 
 
-select * from review;
--- 뉴스 데이터
 
 
 insert into news values( 
@@ -301,6 +345,7 @@ insert into news values(
 	sysdate,
 	'n'
 	);
+	
 insert into news values( 
 	news_seq.nextval,
 	'n3.jpg',
@@ -368,18 +413,80 @@ TO_DATE('2014-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전�
 insert into car values(car_seq.nextval,'현대 더 뉴 싼타페',3414,4128,'현대','현대 더 뉴 싼타페cover.jpg','현대 더 뉴 싼타페.jpg','4세대 부분변경을 거친 더 뉴 싼타페의 하이브리드 버전입니다. 파워트레인은 투싼, 쏘렌토, 스포티지 하이브리드 모델과 동일하며, 시스템 합산 최고 출력 230마력, 최대 토크 35.7kgf.m의 성능을 발휘합니다.
 대표적인 국산 중형 패밀리 SUV답게 넓은 실내 공간뿐만 아니라 누구나 쉽게 다룰 수 있을 만큼 편안한 주행 감각이 돋보입니다. 더욱이 하이브리드 시스템이 더해지면서 연비 또한 향상되었습니다. 친환경차 세제혜택과 취득세 감면도 받을 수 있습니다. 1600cc로 낮아진 배기량으로 자동차세까지 저렴해졌습니다.
 무엇보다 쏘렌토의 활약덕분인지 하이브리드 모델의 상품 구성은 훌륭한 편입니다. 하이브리드의 낮은 등급인 익스클루시브부터 듀얼 풀 오토 에어컨, 하이패스 시스템, 운전자 인식형 스마트 주행모드, 10.25인치 내비게이션이 모두 기본 적용입니다. 가솔린과 디젤 모델에서는 130만 원의 멀티미디어 내비 플러스 선택 품목을 추가해야 누릴 수 있는 옵션들이죠. 스마트 파워 테일 게이트와 운전석 자동 쾌적 제어도 하이브리드 익스클루시브에 기본으로 적용됩니다. 원하면 사륜구동 시스템까지 추가할 수 있습니다.
-이러한 장점에도 불구하고 디자인에 대한 호불호는 아직까지 명확하게 나뉩니다. 다소 심심하지만 잘 정돈된 실내 디자인과 달리 외관은 쏘렌토에 비해 혹평이 많습니다. 마치 마스크를 착용한 듯한 전면 디자인은 더 뉴 싼타페의 가장 큰 약점으로 꼽히기도 합니다. 위로는 팰리세이드, 아래로는 투싼 사이에서 조금은 애매해진 싼타페의 가치는 여전할까요?','중형차',
+이러한 장점에도 불구하고 디자인에 대한 호불호는 아직까지 명확하게 나뉩니다. 다소 심심하지만 잘 정돈된 실내 디자인과 달리 외관은 쏘렌토에 비해 혹평이 많습니다. 마치 마스크를 착용한 듯한 전면 디자인은 더 뉴 싼타페의 가장 큰 약점으로 꼽히기도 합니다. 위로는 팰리세이드, 아래로는 투싼 사이에서 조금은 애매해진 싼타페의 가치는 여전할까요?','SUV',
 TO_DATE('2023-08-16', 'YYYY-MM-DD'),'Smartstream G2.0','자동 8단',2497,'전륜','281 / 5800','맥퍼슨 스트럿 ,멀티 링크',
 '42.9 / 1700','4개 / 벤틸레이티드 디스크 2개','9','241','n',1910,1710,2765,4800,'현대 더 뉴 싼타페front.jpg','현대 더 뉴 싼타페side.jpg');
 
-insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
+<<<<<<< HEAD
+insert into car values(car_seq.nextval,'현대 그랜저 IG',1411,2568,'현대','현대 그랜저 IGcover.jpg','현대 그랜저 IG.jpg','대한민국 중산층의 상징처럼 여겨지는 모델입니다. 한마디로 ‘고급형 쏘나타’랄까. 준수한 외모와 정비 용이성, 저렴한 자동차 보험료, 광활한 실내까지 한국인이 차 고를 때 중점 두는 가치들을 잘 충족시켜줍니다. 마치 84㎡짜리 아파트 같아요. 세금 혜택도 적당히 볼 수 있고, 좁다는 소리도 안 듣고, 팔 때도 회전율 높은 그런 집. 특출하게 고급스럽다거나 화려하지 않지만 그렇다고 어디 가서 무시 당할 일도 없지요. 이게 요즘 그랜저의 가치 아닐까요.
+신형은 HG보다 젊고 작아 보여 더 이상 고급차로 일컫기 어려운 느낌입니다. 그렇지만 개선된 섀시와 쾌적한 실내, 좋은 장비들 때문에 상품성은 역대 최고 수준을 달립니다. 이 값에 이만한 차는 정말 흔치 않죠. 그랜저 사실 때 대개 2.4와 3.0 중 고민할 텐데 필자는 후자를 추천하는 바입니다. 엔진 스크래치 이슈로부터 좀 더 자유롭고 무엇보다 주행성 면에서 급 차이가 확연하기 때문이죠. 그 내용을 확인하려면 ‘성능’ 탭을 꼼꼼히 살펴보시기 바랍니다.','대형차',
+TO_DATE('2016-01-05', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',2359,'전륜','190 / 6000','맥퍼슨 스트럿 ,멀티 링크',
+'24.6 / 4000','4개 / 벤틸레이티드 디스크 2개','9','241','n',1865,1470,2845,4930,'현대 그랜저 IGfront.jpg','현대 그랜저 IGside.jpg');
 
+insert into car values(car_seq.nextval,'현대 더 뉴 아반떼 AD',3055,3870,'현대','현대 더 뉴 아반떼 ADcover.jpg','현대 더 뉴 아반떼 AD.jpg','현대자동차의 신차 출시 주기는 보통 5~6년입니다. 그래서 신차가 나온 후 제품수명주기의 중간인 3년쯤 되는 시점에 부분 변경 모델을 내놓죠. 이를 두고 페이스리프트 모델이라고도 합니다. 내외관을 손봐 상품성을 끌어올리는 겁니다. 기업 입장으로서는 매력적인 조건입니다. 개발비 적게 들이면서도 신차 효과를 누릴 수 있으니까요.
+이번에 <모카>에서 다룰 차는 더 뉴 아반떼(AD)입니다. 페이스리프트 모델로서는 드물게 안팎을 파격적으로 바꿨습니다. 예를 들어 얼굴뿐만 아니라 엔진과 변속기도 바꿨습니다. 핵심은 파워트레인입니다. 올 뉴 K3에 먼저 선보였던 신형 엔진(스마트스트림)과 무단변속기(IVT)를 얹었습니다. 연비 중시한 엔진 덕에 공인 연비는 15.2km/L까지 좋아졌죠. 실제로도 연비 잘 나옵니다. 웬만한 시내 구간에서도 두 자릿수 아래로 떨어지지 않고 고속도로 항속 주행하면 L당 20km쯤은 가뿐히 달립니다. 상품성 또한 역대 아반떼 중 으뜸으로 꼽을 만합니다. 깡통 등급 살지라도 첨단 안전 장비를 넣을 수 있고 앞좌석은 물론 뒷좌석 편의장비도 만재할 수 있지요. 패밀리카로도 좋은 선택지입니다.
+신형 아반떼는 출시 전부터 ‘삼각반떼’ 등 여러 별명을 만들어냈습니다. 바뀐 외관에 대한 불만을 표출한 거죠. 출시 두 달차에 접어든 현재(2018년 11월), 디자인에 대한 논란은 살짝 수그러든 듯 합니다. 판매량이 이를 증명합니다. 여전히 우리나라에서 가장 많이 팔리는 준중형 세단이기 때문입니다. 디자인도 점차 익숙해질 겁니다. 길에서 가장 쉽게 마주칠 수 있는 자동차가 될 테니까요.','준중형차',
+TO_DATE('2018-09-06', 'YYYY-MM-DD'),'Smartstream G2.0','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빔',
+'15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','9','241','n',1800,1440,2700,4620,'현대 더 뉴 아반떼 ADfront.jpg','현대 더 뉴 아반떼 ADside.jpg');
+
+insert into car values(car_seq.nextval,'현대 엑센트(신형)',1348,1700,'현대','현대 엑센트(신형)cover.jpg','현대 엑센트(신형).jpg','무난한 디자인과 좋은 장비를 담은 현대의 간판 소형차입니다. 형제차인 프라이드가 유럽 감각이라면 엑센트는 미국 소비자 취향을 고려한 쪽이지요. 소형차치고는 제법 부드러운 승차감과 꾸준히 미는 성향의 가속력도 이를 방증합니다. 그래서 이 차는 ‘스포츠’보다 ‘콤포트’ 성향을 선호하는 이에게 어울리지요. 그 반대라면 기아 프라이드가 낫고요.
+콤팩트한 차체로 주차나 좁은 길 주파가 편해 초보 운전자에게 추천할 만하고 그럼에도 실내 공간과 짐 공간이 넉넉해 매력이 높습니다. 연비가 좋고 수리비나 정비비가 저렴하다는 것도 장점이죠. 신차가는 아반떼와 큰 차이가 없었지만 아반떼보다 감가율이 높아 중고차로 구매할 때는 한결 저렴하다는 것도 중요한 포인트입니다.','경차/소형차',
+TO_DATE('2022-09-06', 'YYYY-MM-DD'),'1.6 GDi','자동 6단',1591,'전륜','140 / 6300','맥퍼슨 스트럿 ,토션 빔',
+'16.9 / 4850','4개 / 벤틸레이티드 디스크 2개','9','160','n',1705,1455,2570,4370,'현대 엑센트(신형)front.jpg','현대 엑센트(신형)side.jpg');
+
+insert into car values(car_seq.nextval,'현대 올 뉴 투싼',2351,3161,'현대','현대 올 뉴 투싼cover.jpg','현대 올 뉴 투싼.jpg','3세대 투싼의 후기형입니다. 2018년 8월, 페이스리프트를 통해 디자인과 파워트레인(1.7D→1.6D)을 다듬었습니다. 신형 투싼 볼 때에는 부분 변경 거치며 달라진 포인트들을 짚어보세요. 특히 인테리어가 제법 바뀌었습니다. 안전장비나 편의장비 선택지도 늘어났죠. 보태어 엔진과 변속기를 손봐 경제성을 끌어올린 게 핵심입니다.
+패밀리카로 투싼을 고려하는 분들은 흔히 싼타페도 함께 봅니다. 조금 돈 보태면 비슷한 값인데도 여유로운 공간을 누릴 수 있기 때문. 실제 2.0L 디젤을 기준으로 편의장비를 비슷하게 맞춘다면 서로 간의 값 차이는 200만 원에 불과합니다. 신형 플랫폼을 쓴 점이나 새로운 디자인 큐를 받아들인 것도 싼타페의 장점입니다. 결국 값 대비 가치를 따지면 오히려 싼타페가 나을 수 있다는 이야기죠. 따라서 가족용차로 투싼을 살 때에는 싼타페와 값 차이 적은 2.0보다 차라리 1.6 디젤을 보는 게 합리적이라는 생각입니다. 대신 혼자 탈 용도로 여유로운 출력을 누리고자 한다면 2.0 디젤을 사되 등급 내지 편의장비에서 타협하는 걸 권합니다.','SUV',
+TO_DATE('2015-03-17', 'YYYY-MM-DD'),'Smartstream G2.0','자동 7단',1598,'전륜','136 / 4000','맥퍼슨 스트럿 ,멀티 링크',
+'32.6 / 2000','4개 / 벤틸레이티드 디스크 2개','9','160','n',1850,1650,2670,4480,'현대 올 뉴 투싼front.jpg','현대 올 뉴 투싼side.jpg');
+
+insert into car values(car_seq.nextval,'현대 아반떼 (CN7)',1531,2467,'현대','현대 아반떼 (CN7)cover.jpg','현대 아반떼 (CN7).jpg','7세대로 거듭난 올 뉴 아반떼는 모든 게 바뀌었습니다. 구형의 생명력이 끝나서 밀려 나온 게 아닙니다. 뼈대를 이루는 플랫폼부터 갈아 엎었지요. 신형은 좋은 디자인과 미래적인 장비를 만재해 상품성을 대폭 끌어올렸습니다.
+핵심은 차세대 플랫폼입니다. 이로써 무게중심 내리고 하체 세팅을 손봐 운동성을 끌어올렸습니다. 사이즈도 키웠습니다. EF 쏘나타에 버금가는 풍채로써 패밀리카로도 충분합니다. ‘스마트스트림 G1.6’ 엔진은 좋은 효율이 장점입니다. 실제 연비는 웬만한 하이브리드를 웃돌더라고요. 최신 안전장비를 아낌없이 채워 넣은 것도 메리트. 스펙 면에서 깎아 내릴만한 게 없습니다.
+약점도 있습니다. 예를 들어 인테리어의 감성품질은 전보다 나빠졌습니다. 헤드라이너나 실내 전반에 쓰인 플라스틱 소재가 구형보다 저렴한 질감입니다. 원가절감의 흔적을 곳곳에서 쉽게 찾을 수 있지요. 승차감도 살짝 아쉽습니다. 경험 상 구형(AD)이 더 부드럽고 쾌적했던 기억입니다.
+그래도 신형 아반떼는 분명 추천할 만한 차입니다. 디자인, 운동성, 경제성 면에서 이만큼 합리적인 선택지는 없습니다. 이 정도 패키징 갖춘 차를 이 가격에 살 수 있다는 건 대단한 일이죠. 중고로 살 땐 살짝 비싼 감이 있지만 반대로 말하면 팔 때 제값 받을 수 있는 차라는 얘기가 되기도 합니다. ‘현대차가 제일 잘 만드는 모델이 아반떼’라는 이야기. 터무니 없는 헛소문은 아닌가 봅니다.','준중형차',
+TO_DATE('2023-04-07', 'YYYY-MM-DD'),'G4FM','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빈',
+'15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','10','160','n',1825,1420,2720,4650,'현대 아반떼 (CN7)front.jpg','현대 아반떼 (CN7)side.jpg');
+
+insert into car values(car_seq.nextval,'현대 아이오닉 하이브리드',2438,2898,'현대','현대 아이오닉 하이브리드cover.jpg','현대 아이오닉 하이브리드.jpg','토요타 프리우스 겨냥해 만들어진 모델. 하이브리드, 플러그인 하이브리드, 전기차 버전으로만 나오는 본격적인 친환경차예요. 이번에 다룰 버전은 가장 많이 팔리는 아이오닉 하이브리드. 1.6L 직분사 가솔린 엔진에 43마력 정도를 내는 전기 모터를 더하고, 여기에 6단 듀얼 클러치 변속기 물린 ‘변태 조합’을 품고 있습니다. 
+하체도 제법 스포티하게 짜여 있고, 버추얼 클러스터로 일컬어지는 LCD 계기판이나 푸른 장식 등 젊은 층이 좋아할 만 한 점이 많아요. 그렇지만 초기 결함과 하이브리드카에 대한 생경함으로 인해 잘 팔리지는 않습니다. 결국 그 가치에 비해 저평가되어 있다는 생각이죠. 역설하자면 이런 겁니다. 차 자체의 상품성이 훌륭하고 무엇보다 연비가 좋으므로 준중형차 고르는 분들은 꼭 한 번 고려해 보라는 것. 특히 주행거리 많아 기름값 부담되지만 딸딸거리는 디젤이 싫다면 ‘강추’할 만합니다.','준중형차',
+TO_DATE('2017-02-17', 'YYYY-MM-DD'),'G4FM','수동6단',1580,'전륜','141 / 5700','맥퍼슨 스트럿 ,멀티 링크',
+'15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','9.5','170','n',1820,1450,2700,4470,'현대 아이오닉 하이브리드front.jpg','현대 아이오닉 하이브리드side.jpg');
+
+insert into car values(car_seq.nextval,'현대 쏘나타 뉴 라이즈',2255,2933,'현대','현대 쏘나타 뉴 라이즈cover.jpg','현대 쏘나타 뉴 라이즈.jpg','LF 쏘나타의 부분 변경 모델. 조금 비꼬아 말하면 그저 기존 쏘나타의 껍질만 바꾼 격입니다. 엔진이나 섀시 등의 나머지 것들은 그대로라는 뜻이지요. 이런 걸 보통 "페이스리프트"로 일컫는데요. 이런 소소한 변화를 주었음에도 "뉴 라이즈"라는 수식어로써 더욱 새로운 모델처럼 다가옵니다.
+실제로도 바깥쪽은 적잖이 변했습니다. 그래서 잘 모르는 사람들은 완전한 신형(풀 모델 체인지)으로 보기도 합니다. 문제는 변하긴 변했는데 못생기게 변했다는 겁니다. 딱 봐도 구리지 않나요? 이를 두고 사람들은 ‘쏘나타 역사 상 가장 못난 디자인’이라든가 ‘그랜저를 팔기 위한 현대의 계산’이라고 말하더군요. 개인적으로는 그런 해석조차 아깝습니다. 이걸 디자인이라고.
+얼굴을 빻았지만 다행스럽게도 나머지 부분은 장점들로 들어찼습니다. 2,000만원 대 예산 들고 가족이 함께 탈 만한 차를 추천해야 한다? 그렇다면 주저 없이 1순위에 올릴 수 있는 모델이에요. 말도 안 되게 널찍한 실내와 편한 관리, 적은 잔고장, 무난한 성능 등 좋은 점이 가득합니다. 더불어 뉴 라이즈로 넘어오며 지나칠 만큼 따분했던 실내가 제법 고급스러워진 것도 반갑습니다. 차에 크게 신경 기울이지 않고 편하게 탈 만한 녀석이 필요하신가요? 그럴 땐 역시 쏘나타가 "진리"입니다.','중형차',
+TO_DATE('2017-05-18', 'YYYY-MM-DD'),'G4FM','수동6단',1999,'전륜','163 / 6500','맥퍼슨 스트럿 ,멀티 링크',
+'20 / 4800','4개 / 벤틸레이티드 디스크 2개','10','185','n',1865,1475,2805,4855,'현대 쏘나타 뉴 라이즈front.jpg','현대 쏘나타 뉴 라이즈side.jpg');
+
+insert into car values(car_seq.nextval,'현대 LF 쏘나타 하이브리드',2786,3230,'현대','현대 LF 쏘나타 하이브리드cover.jpg','현대 LF 쏘나타 하이브리드.jpg','카 마니아가 아닌 일반인의 기준으로서 ‘좋은 자동차’를 따진다면, 이 차는 으뜸이 될 만한 자질로 꽉 찼습니다. 하이브리드카로서 이례적인 스포티 스타일, 풀 사이즈 세단 수준의 실내 공간,
+ 좋은 성능과 연비까지 장점으로 가득하지요. 값 대비 가치까지 따지면 정말이지 우주 최강입니다. 하이브리드 자동차에 주어지는 취득세와 소비세 면제 혜택, 보조금을 받는다면 가솔린 모델 살 예산으로도 접근할 수 있죠. 이런 연유로써 LF 쏘나타 하이브리드는 모카가 ‘강추’하는 모델입니다.','중형차',
+TO_DATE('2017-05-18', 'YYYY-MM-DD'),'ν 2.0 GDi','수동6단',1999,'전륜','191 / 5500','맥퍼슨 스트럿 ,멀티 링크',
+'27 / 5000','4개 / 벤틸레이티드 디스크 2개','10','185','n',1865,1475,2805,4855,'현대 LF 쏘나타 하이브리드front.jpg','현대 LF 쏘나타 하이브리드side.jpg');
+
+
+insert into car values(car_seq.nextval,'기아 올 뉴 K3',1590,2585,'기아','기아 올 뉴 K3cover.jpg','기아 올 뉴 K3.jpg','현대 아반떼와 더불어 국산 준중형차를 대표하는 모델. 하지만 아반떼의 그늘에 가려 늘 2인자로 살았던 차입니다. 그런데 이번에는 기아가 작정하고 만들었나 봅니다. 일단 디자인부터 확 좋아졌습니다. 앞뒤 모습이 잘 생겨졌고 보디 길이도 아반떼보다 70mm 키웠습니다. 실내도 최신 트렌드를 따라 플로팅 타입 모니터를 얹었습니다. 감성품질과 디자인, 사용성과 실용성 모두 아반떼를 앞지르는 듯합니다.
+결정적으로 새 엔진과 변속기가 K3의 무기입니다. 사실 수치(123마력)와 스펙(CVT) 때문에 불신이 있었을 텐데요. 막상 타보니 가속이 훌륭하고 실내도 조용했습니다. 연비는 뭐, 웬만한 하이브리드를 웃돌더라고요. 이 수준이면 아반떼 AD를 누를 수 있겠다 싶었습니다. 실제로 2018년 4월 판매량에서 아반떼를 이겼다지요.','준중형차',
+TO_DATE('2018-02-27', 'YYYY-MM-DD'),'Gamma 1.6 CVVT','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빈',
+'15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','10','185','n',1800,1440,2700,4640,'기아 올 뉴 K3front.jpg','기아 올 뉴 K3side.jpg');
+
+
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design4.jpg',1);
+
+select * from car;
+
+
+
+
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
 
 -- 커뮤니티 추가
 insert into board values(board_seq.nextval,1,'볼보차',1,'현대,기아 한국 자동차만 시승하다가 이제 슬슬 질리는데 혹시 외제차 볼보나 bmw는 시승못하는 건가요?',
 sysdate,100,'n');
+
 
 insert into board values(board_seq.nextval,2,'와 이건 개쩐다',2,'여러분들 현대 EV9 너무 좋네요 저희가 5인가족인데 자리도 넓고 차가 안정감이 뛰어난 것 같아요 혹시 
 구매 고민중이시면 꼭 시승 해보세요',sysdate,99,'n');
@@ -398,4 +505,6 @@ select notice_seq.nextval from dual;
 desc notice;
 
 select * from car;
+
+
 

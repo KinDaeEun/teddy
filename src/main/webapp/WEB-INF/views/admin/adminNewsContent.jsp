@@ -35,7 +35,7 @@
 				</tr>
 				<tr>
 					<th>작성자</th>
-					<td>${board.n_writer }</td>
+					<td>${news.n_writer }</td>
 				</tr>
 				<tr>
 					<th>작성일</th>

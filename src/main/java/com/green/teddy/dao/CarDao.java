@@ -25,4 +25,6 @@ public interface CarDao {
 
 	int adminGetTotal(Car car);
 
+	List<Car> mainCar();
+
 }

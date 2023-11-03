@@ -28,3 +28,9 @@ tr, th {
     outline: 0;
     color: transparent;
 }
+
+.link {
+	background: none;
+    border: none;
+    color: #333;
+}

@@ -11,7 +11,7 @@
 function del(bno,b_del) {
 	var con = confirm("해당 게시글의 전시상태를 변경하시겠습니까?");
 	if(con) {
-		location.href="${path}/admin/adminBoardDelete.do?bno="+bno+"&b_del="+b_del;
+		location.href="${path}/adminBoard/adminBoardDelete.do?bno="+bno+"&b_del="+b_del;
 	}
 }
 </script>
@@ -62,7 +62,7 @@ function del(bno,b_del) {
 						<td>${board.b_del }</td>
 						<th><a onclick="del(${board.bno},'${board.b_del}')">변경</a></th>
 						<th><a
-							href="${path }/admin/adminBoardContent.do?bno=${board.bno}">보기</a></th>
+							href="${path }/adminBoard/adminBoardContent.do?bno=${board.bno}">보기</a></th>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -71,31 +71,31 @@ function del(bno,b_del) {
 			<div>
 				<ul class="pagination pagination-sm justify-content-center">
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=1&search=${board.search}&keyword=${board.keyword}">
 								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.startPage-1}&search=${board.search}&keyword=${board.keyword}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active link"><a class="page-link link"
 								href="adminBoardList.do?pageNum=${i}&search=${board.search}&keyword=${board.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminBoardList.do?pageNum=${i}&search=${board.search}&keyword=${board.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.endPage+1}&search=${board.search}&keyword=${board.keyword}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.totalPage}&search=${board.search}&keyword=${board.keyword}">
 								<i>맨뒤로</i>
 						</a></li>

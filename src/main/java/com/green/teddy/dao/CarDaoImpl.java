@@ -58,4 +58,9 @@ public class CarDaoImpl implements CarDao{
 	public int adminGetTotal(Car car) {
 		return sst.selectOne("carns.adminGetTotal",car);
 	}
+
+	@Override
+	public List<Car> mainCar() {
+		return sst.selectList("carns.mainCar");
+	}
 }
