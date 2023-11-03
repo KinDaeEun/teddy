@@ -115,26 +115,27 @@
 				</h2>
 				<hr>
 				<div class="myslider">
-					<c:if test="${empty board }">
-						<span>커뮤니티 내역이 존재하지 않습니다</span>
+					<div>
+						<c:if test="${empty board }">
+							<span>커뮤니티 내역이 존재하지 않습니다</span>
+						</c:if>
+					</div>
+					<c:if test="${not empty board }">
+						<c:forEach items="${board }" var="brd" varStatus="v">
+							<c:if test="${v.index < 6 }">
+								<div>
+									<p class="client">
+										<img alt="" src="${path}/resources/upload/${brd.fileName}"><span><b>${brd.name }</b>${brd.b_title }</span>
+									</p>
+									<p>
+										<a class="comment"
+											href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
+									</p>
+								</div>
+							</c:if>
+						</c:forEach>
 					</c:if>
 				</div>
-				<c:forEach items="${board }" var="brd" varStatus="v">
-					<c:if test="${v.index < 6 }">
-						<div>
-							<p class="client">
-								<img alt="" src="${path}/resources/upload/${brd.fileName}"><span><b>${brd.name }</b>${brd.b_title }</span>
-							</p>
-							<p>
-								<a class="comment"
-									href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
-							</p>
-						</div>
-					</c:if>
-
-				</c:forEach>
-
-
 			</div>
 		</div>
 
