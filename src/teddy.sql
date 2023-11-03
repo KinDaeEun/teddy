@@ -483,5 +483,27 @@ insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)desi
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
 
 -- 커뮤니티 추가
--- insert into board values(board_seq.nextval,1,)
+insert into board values(board_seq.nextval,1,'볼보차',1,'현대,기아 한국 자동차만 시승하다가 이제 슬슬 질리는데 혹시 외제차 볼보나 bmw는 시승못하는 건가요?',
+sysdate,100,'n');
+
+
+insert into board values(board_seq.nextval,2,'와 이건 개쩐다',2,'여러분들 현대 EV9 너무 좋네요 저희가 5인가족인데 자리도 넓고 차가 안정감이 뛰어난 것 같아요 혹시 
+구매 고민중이시면 꼭 시승 해보세요',sysdate,99,'n');
+
+insert into board values(board_seq.nextval,3,'너무 이뻐요',3,'Ray EV 구매 고민중에 이번에 시승해 봤는데 역시 사야겠어요 차도 이쁘고 무엇보다 한번 충전으로 
+엄청 오래 달려서 너무 좋은것 같아요 바로 구매하러 달려갑니다.',sysdate,98,'n');
+
+insert into board values(board_seq.nextval,4,'시승 잘했네요',4,'이번에 애가 생기면서 무슨 차를 사야하나 고민중이였는데 테디는 여러차를 시승할수 있다고 들어서 시승예약하고 여러개 시승해봤어요
+역시 시승하길 잘했다고 생각이들고 시승 도와 주시는 분도 친절하셔서 기분좋게 시승하고 왔어요',sysdate,97,'n');
+
+insert into board values(board_seq.nextval,5,'추천해요',5,'시승예약부터 시승까지 직원 분들이 꼼꼼하게 신경 써 주시고 편안하고 친절하게 대해 주셔서 주변 분들에 시승 할 생각있으신 분 있으면 무저건 추천 할려고요 ',sysdate,96,'n');
+
+insert into board values(board_seq.nextval,6,'회사차구매',6,'회사 전용 차가 필요해서 알아보다가 시승 서비스를 제공하는 테디를 알게되었네요 덕분에 시승하고 맘에 드는 차로 구매완료!!!!',sysdate,95,'n');
+
+select notice_seq.nextval from dual;
+desc notice;
+
+select * from car;
+
+
 
