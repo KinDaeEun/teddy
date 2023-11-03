@@ -216,6 +216,9 @@ create sequence center_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence center_seq;
 drop table center;
 
+
+-- 데이터
+
 -- 기아
 insert into center values (center_seq.nextval, '기아', '강남', '기아 압구정 지점');
 insert into center values (center_seq.nextval, '기아', '강남', '기아 우리들대리점');
@@ -316,7 +319,6 @@ insert into center values (center_seq.nextval, '벤츠', '강북', '벤츠 강�
 
 insert into center values (center_seq.nextval, '벤츠', '강동', '벤츠 송파전시장 더클래스효성');
 
--- 데이터
 
 -- 뉴스 데이터
 
