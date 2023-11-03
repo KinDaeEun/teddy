@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table"  style="margin-top: 70px">
+		<table class="table table-bordered"  style="margin-top: 70px">
 			<tr>
 				<th>제목</th>
 				<td>${board.b_title }</td>
@@ -35,7 +35,7 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><pre>${board.b_content }</pre></td>
+				<td>${board.b_content }</td>
 			</tr>
 			<tr>
 				<td colspan="5" align="center">
