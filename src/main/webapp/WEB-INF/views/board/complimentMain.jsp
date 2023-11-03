@@ -8,7 +8,15 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/complimentMain.css">
-
+<script>
+	function del(cpno) {
+		let cf = confirm("칭찬을 삭제하시겠습니까 ?")
+		if (cf)
+			location.href = "${path }/board/complimentDelete.do?cpno="+cpno+"&pageNum=${pb.currentPage}";
+		else
+			alert("삭제가 취소되었습니다")
+	}
+</script>
 </head>
 <body>
 	<div>
@@ -22,6 +30,11 @@
 					있습니다.</li>
 			</ul>
 		</div>
+		<c:if test="${empty id }">
+		<p align="center">칭찬 등록은 로그인후에 이용바랍니다.<a href="${path}/member/loginForm.do">(로그인 하기)</a></p>
+		</c:if>
+		
+		<c:if test="${not empty id }">
 		<!-- <div id="rbdListDisp"> -->
 		<div  class="co_in">
 			<form action="${path}/board/rInsert.do" name="frm1" id="frm1"
@@ -43,6 +56,7 @@
 				</div>
 			</form>
 		</div>
+		</c:if>
 		<div>
 			<table class="table">
 				<tr>
@@ -65,7 +79,7 @@
 								<td class="text-center">${compliment.cp_date }</td>
 								<c:if test="${compliment.id == id }">
 									<td><center><a class="btn btn-outline-secondary"
-												href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a>
+												onclick="del(${compliment.cpno})">삭제</a>
 										</center></td>
 								</c:if>
 								<c:if test="${compliment.id != id }">
