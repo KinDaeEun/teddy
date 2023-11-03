@@ -21,9 +21,6 @@ select * from member;
 drop table member;
 
 create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-select * from car;
-
-
 
 -- 차량
 	create table car (
@@ -60,9 +57,7 @@ select * from car;
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
-
 DROP TABLE car CASCADE CONSTRAINTS;
-
 
 -- 차량 이미지
 create table design_img( 
@@ -75,7 +70,6 @@ create table design_img(
 create sequence design_img_seq start with 1 increment by 1 maxvalue 999999;
 select * from DESIGN_IMG;
 drop table design_img;
-
 
 create FUNCTION get_seq
 RETURN NUMBER 
@@ -93,10 +87,11 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
+
+create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence compliment_seq;
 drop table compliment;
 select * from compliment;
-create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 
 -- 게시판
 create table board (
@@ -110,6 +105,7 @@ create table board (
     b_del char(1),                   -- 게시글 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence board_seq start with 1 increment by 1 maxvalue 999999;
 select * from board;
 drop table board;
@@ -126,6 +122,7 @@ create table notice (
     n_del char(1),                   -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 select * from notice;
 drop table notice;
@@ -168,6 +165,7 @@ create table help (
     r_content varchar2(1000),       -- 답변 내용
     foreign key(id) references member(id)
 );
+
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
@@ -185,8 +183,8 @@ create table review (
     foreign key(id) references member(id),
     foreign key(cno) references car(cno)
 );
-create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 
+create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 select * from review;
 drop table review;
 drop sequence review_seq;
@@ -207,7 +205,6 @@ select * from news;
 drop table news;
 drop sequence news_seq;
 
-
 -- 예약 전시장
 create table center (
 	num number(10) primary key,
@@ -218,7 +215,6 @@ create table center (
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence center_seq;
 drop table center;
-
 
 -- 기아
 insert into center values (center_seq.nextval, '기아', '강남', '기아 압구정 지점');
@@ -271,9 +267,8 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
 
+-- 데이터
 
-
-select * from review;
 -- 뉴스 데이터
 
 
@@ -373,16 +368,8 @@ TO_DATE('2023-08-16', 'YYYY-MM-DD'),'Smartstream G2.0','자동 8단',2497,'전�
 '42.9 / 1700','4개 / 벤틸레이티드 디스크 2개','9','241','n',1910,1710,2765,4800,'현대 더 뉴 싼타페front.jpg','현대 더 뉴 싼타페side.jpg');
 
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
-
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
 
 -- 커뮤니티 추가
 -- insert into board values(board_seq.nextval,1,)
-
-
-select notice_seq.nextval from dual;
-desc notice;
-
-select * from car;
-
