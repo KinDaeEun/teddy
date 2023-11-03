@@ -6,30 +6,40 @@
 <head>
 <meta charset="UTF-8">
 <title>공지사항 관리</title>
+<link rel="stylesheet" href="${path}/resources/css/adminNotice.css">
+<script>
+	function del(nno) {
+		let cf = confirm("게시글을 삭제하시겠습니까 ?")
+		if (cf)
+			location.href = "${path }/adminBoard/adminNoticeDelete.do?nno="+nno+"&pageNum=${pb.currentPage}";
+		else
+			alert("삭제가 취소되었습니다")
+	}
+</script>
 </head>
 <body>
 	<div class="container">
 		<h4 class="text-dark" style="margin-bottom: 10px">공지사항 목록</h4>
 		<!-- 검색 -->
-		<form action="${path }/adminBoard/adminNotice.do">
-			<select name="search">
-				<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
-					varStatus="i">
-					<c:if test="${sh == notice.search }">
-						<option value="${sh }" selected>${title[i.index] }</option>
-					</c:if>
-					<c:if test="${sh != notice.search }">
-						<option value="${sh }">${title[i.index] }</option>
-					</c:if>
-				</c:forTokens>
-			</select> <input type="text" name="keyword" value="${notice.keyword }"
-				class="form-text"> <input type="submit" name="검색"
-				class="btn btn-outline-secondary btn-sm" value="검색">
-		</form>
-
-
-		<table class="table table-striped">
-			<tr>
+		<div class="searchDIV">
+			<form action="${path }/adminBoard/adminNotice.do">
+				<select name="search" class="inputUnderLine">
+					<c:forTokens var="sh" items="n_title,n_content,subcon" delims=","
+						varStatus="i">
+						<c:if test="${sh == notice.search }">
+							<option value="${sh }" selected="selected">${title[i.index] }</option>
+						</c:if>
+						<c:if test="${sh != notice.search }">
+							<option value="${sh }">${title[i.index] }</option>
+						</c:if>
+					</c:forTokens>
+				</select> <input type="text" name="keyword" value="${notice.keyword }"
+					class="form-text inputUnderLine"> <input type="submit"
+					name="검색" class="btn_search" value="검색">
+			</form>
+		</div>
+		<table class="table table-striped table-bordered">
+			<tr class="table-secondary text-center">
 				<th>제목</th>
 				<th>조회수</th>
 				<th>작성일</th>
@@ -45,14 +55,16 @@
 				<c:forEach var="notice" items="${list }">
 					<tr>
 						<c:if test="${notice.n_del =='y' }">
-							<td colspan="5" class="table-danger">삭제된 글입니다</td>
+							<td colspan="5" class="table">삭제된 글입니다</td>
 						</c:if>
 						<c:if test="${notice.n_del != 'y' }">
 							<td><a href="${path }/adminBoard/adminNoticeView.do?nno=${notice.nno}&pageNum=${pb.currentPage}">${notice.n_title }</a></td>
 							<td>${notice.n_cnt }</td>
 							<td>${notice.n_date }</td>
-							<td><a class="btn btn-sm btn-dark" href="${path }/adminBoard/adminNoticeUpdateForm.do?nno=${notice.nno}&pageNum=${pb.currentPage}">수정</a></td>
-							<td><a class="btn btn-sm btn-dark" href="${path }/adminBoard/adminNoticeDelete.do?nno=${notice.nno}&pageNum=${pb.currentPage}">삭제</a></td>
+							<td><a class="btn btn-sm btn-dark"
+								href="${path }/adminBoard/adminNoticeUpdateForm.do?nno=${notice.nno}&pageNum=${pb.currentPage}">수정</a></td>
+							<td><button class="btn btn-sm btn-dark"
+									onclick="del(${notice.nno})">삭제</button></td>
 						</c:if>
 					</tr>
 				</c:forEach>

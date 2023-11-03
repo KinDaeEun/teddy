@@ -31,9 +31,11 @@
 			</div>
 			<ul id="gnb">
 				<li><a href="${path}/admin/adminCarList.do">차량관리</a></li>
+				<li><a href="${path}/admin/adminReservationList.do">예약관리</a></li>
 				<li><a href="${path}/admin/adminMemberList.do">회원관리</a></li>
 				<li><a href="${path}/adminBoard/adminNotice.do">게시판관리</a>
 				<li><a href="${path}/admin/adminHelpList.do">1:1문의관리</a></li>
+				<li><a href="${path}/admin/adminNewsList.do">뉴스관리</a></li>
 			</ul>
 		</nav>
 		<nav id="m-nav">
@@ -55,7 +57,7 @@
 				</c:if>
 				<c:if test="${id != null }">
 					<div class="lnb">
-						<a href="logout.do">로그아웃</a>
+						<a href="${path }/member/logout.do">로그아웃</a>
 						<c:if test="${id == 'admin'}">
 							<a href="${path}/main/main.do">메인</a>
 						</c:if>

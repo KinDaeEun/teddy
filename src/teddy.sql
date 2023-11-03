@@ -20,9 +20,6 @@ select * from member;
 drop table member;
 
 create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-select * from car;
-
-
 
 -- 차량
 	create table car (
@@ -59,9 +56,7 @@ select * from car;
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
-
 DROP TABLE car CASCADE CONSTRAINTS;
-
 
 -- 차량 이미지
 create table design_img( 
@@ -74,7 +69,6 @@ create table design_img(
 create sequence design_img_seq start with 1 increment by 1 maxvalue 999999;
 select * from DESIGN_IMG;
 drop table design_img;
-
 
 create FUNCTION get_seq
 RETURN NUMBER 
@@ -92,27 +86,29 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
+
+create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence compliment_seq;
 drop table compliment;
 select * from compliment;
-create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 
 -- 게시판
 create table board (
     bno number primary key,         -- 게시판 번호
     id varchar2(20),                -- 아이디
-    b_title varchar2(20),           -- 게시글 번호
+    b_title varchar2(100),           -- 게시글 번호
     b_writer varchar2(20),          -- 게시글 작성자
-    b_content varchar2(1000),       -- 게시글 내용
+    b_content varchar2(5000),       -- 게시글 내용
     b_date date,                    -- 게시글 작성 날짜
     b_cnt number,                   -- 게시글 조회수
     b_del char(1),                   -- 게시글 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence board_seq start with 1 increment by 1 maxvalue 999999;
 select * from board;
 drop table board;
-
+drop sequence board_seq;
 
 -- 공지사항
 create table notice (
@@ -125,10 +121,12 @@ create table notice (
     n_del char(1),                   -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
+
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 select * from notice;
 drop table notice;
 drop sequence notice_seq;
+
 -- 시승예약
 create table reservation (
     rno number primary key,         -- 예약번호
@@ -150,7 +148,7 @@ create table reservation (
 create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
 select * from reservation;
 drop table reservation;
-
+drop sequence reservation_seq;
 
 
 -- 1:1 문의
@@ -166,10 +164,11 @@ create table help (
     r_content varchar2(1000),       -- 답변 내용
     foreign key(id) references member(id)
 );
+
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 select * from help;
 drop table help;
-
+drop sequence help_seq;
 
 -- 평점
 create table review (
@@ -183,11 +182,11 @@ create table review (
     foreign key(id) references member(id),
     foreign key(cno) references car(cno)
 );
-create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 
+create sequence review_seq start with 1 increment by 1 maxvalue 999999;
 select * from review;
 drop table review;
-
+drop sequence review_seq;
 
 -- 뉴스
 create table news (
@@ -203,8 +202,7 @@ create table news (
 create sequence news_seq start with 1 increment by 1 maxvalue 999999;
 select * from news;
 drop table news;
-
-
+drop sequence news_seq;
 
 -- 예약 전시장
 create table center (
@@ -216,7 +214,6 @@ create table center (
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
 drop sequence center_seq;
 drop table center;
-
 
 
 
@@ -264,7 +261,7 @@ insert into center values (center_seq.nextval, '현대', '강북', '현대자동
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북대리점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 강북중앙지점');
 insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 북서울숲대리점');
-insert into center values (center_seq.nextval,'현대', '강북', '현대자동차 우이대리점');
+insert into center values (center_seq.nextval, '현대', '강북', '현대자동차 우이대리점');
 
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 올림픽지점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 성내지점');
@@ -272,9 +269,56 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 천호대리점');
 insert into center values (center_seq.nextval, '현대', '강동', '현대자동차 고덕대리점');
 
+-- 쉐보레
+insert into center values (center_seq.nextval, '쉐보레', '강남', '쉐보레 강남전시장');
 
-select * from review;
--- 뉴스 데이터
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 마곡전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 목동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 영등포전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 강서구청전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강서', '쉐보레 신촌전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 북부전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 노원전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강북', '쉐보레 도봉중앙전시장');
+
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동전시장');
+insert into center values (center_seq.nextval, '쉐보레', '강동', '쉐보레 강동대리점');
+
+-- BMW
+
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 삼성전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 강남전시장 코오롱모터');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 대치전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 서초전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강남', 'BMW 양재전시장 도이치모터스');
+
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 마포전시장 바바리안모터스');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 남서울전시장');
+insert into center values (center_seq.nextval, 'BMW', '강서', 'BMW 바바리안모터스 유어라운');
+
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 강북전시장 (한독모터스)');
+insert into center values (center_seq.nextval, 'BMW', '강북', 'BMW 의정부전시장 코오롱모터');
+
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 잠실전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 송파전시장 도이치모터스');
+insert into center values (center_seq.nextval, 'BMW', '강동', 'BMW 성수전시장 도이치모터스');
+
+-- 벤츠
+
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 청담전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 삼성전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남자곡전시장 (한성자동차)');
+insert into center values (center_seq.nextval, '벤츠', '강남', '벤츠 강남대로전시장 (한성자동차)');
+
+insert into center values (center_seq.nextval, '벤츠', '강서', '벤츠 강서목동전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강북', '벤츠 강북전시장 KCC오토');
+
+insert into center values (center_seq.nextval, '벤츠', '강동', '벤츠 송파전시장 더클래스효성');
+
+
 
 
 insert into news values( 
@@ -321,6 +365,37 @@ insert into news values(
 	sysdate,
 	'n'
 	);
+insert into news values( 
+	news_seq.nextval,
+	'n4.jpg',
+	'n4-1.jpg',
+	'링컨코리아, 올-뉴 링컨 노틸러스 (All-New Lincoln Nautilus) 사전 계약 시작',
+	'2023년 11월 1일 ? 링컨세일즈서비스코리아(대표 데이비드 제프리, 이하 링컨코리아)는 링컨의 대표 중형 SUV 올-뉴 링컨 노틸러스(All-New Lincoln Nautilus)의 국내 출시를 앞두고 오늘부터 사전 계약을 시작한다.
+	링컨코리아는 올-뉴 링컨 노틸러스를 통해 안식처라는 공간의 개념을 재정립하고, 그동안 경험하지 못한 새로운 디지털 고객 경험(New Digital Customer Experience)을 제공해 브랜드의 핵심 가치인 ‘궁극의 편안함(Power of Sanctuary)’을 실현한다.
+	이번 노틸러스는 새로워진 외관 및 내관 디자인을 통해 확 달라진 모습으로 출시된다. 브랜드 시그니처인 수평적 디자인 요소를 적용하여 탑승자가 선박의 선장이 된 것처럼 느낄 수 있도록 설계되었다. 또한 새롭게 탑재된 링컨 리쥬브네이트(Lincoln Rejuvenate)로 탑승자의 다양한 감각을 충족시키고, 이는 몰입형 경험으로 이어져 자신만의 안식처를 누릴 수 있도록 했다.
+	한편, 링컨 노틸러스는 2016년 국내 출시 후 안목 높은 프리미엄 자동차 고객들로부터 사랑받아 온 2세대 링컨 MKX의 페이스리프트 모델이다. 1세대 노틸러스는 2017년 국내에 처음 공개되어 이후 2019년에 정식 출시되었으며, 헤리티지와 첨단 사양이 조화를 이루는 모델로 평가받았다. 노틸러스는 ‘탐험’을 뜻하는 라틴어에서 유래하였으며, 이는 링컨이 지향하는 브랜드 전략과 방향성을 담아내고 있다.
+	올-뉴 링컨 노틸러스의 가격은 7,740만 원(부가세 포함, 개별소비세 5.0% 적용)이다. 자세한 내용은 링컨코리아 공식 딜러사 전시장, 링컨코리아 홈페이지 및 고객센터 문의를 통해 확인할 수 있다.',
+	'테디',
+	sysdate,
+	'n'
+	);
+insert into news values( 
+	news_seq.nextval,
+	'n5.jpg',
+	'n5-1.jpg',
+	'MINI 코리아, ‘MINI 컨트리맨 하이랜드 에디션’ 온라인 한정 판매',
+	'프리미엄 소형차 브랜드 MINI 코리아가 11월 1일 오후 3시, MINI 샵 온라인(https://shop.mini.co.kr)을 통해 ‘MINI 컨트리맨 하이랜드 에디션’을 한정 판매한다.
+	뉴 MINI 컨트리맨을 기반으로 제작된 MINI 컨트리맨 하이랜드 에디션(MINI Countryman Highlands Edition)은 전설과 신화로 잘 알려진 스코틀랜드의 하이랜드(Highlands)에서 영감을 얻은 한정 에디션이다. MINI 컨트리맨 특유의 선구적 모험 정신을 강조한 디자인이 특징이다.
+	MINI 컨트리맨 하이랜드 에디션은 쿠퍼 및 쿠퍼 S 총 2가지 사양으로 출시된다. 먼저 쿠퍼 모델에는 MINI 컨트리맨 최초로 에니그매틱 블랙(Enigmatic Black) 외장 색상을 적용해 희소가치를 더했다. 엔진룸에는 최고출력 136마력, 최대토크 22.4kg·m를 발휘하는 MINI 트윈파워 터보 3기통 가솔린 엔진이 탑재되며 18인치 페어 스포크 경량 알로이 휠이 장착된다.
+	쿠퍼 S 모델의 외장에는 인기 색상인 나누크 화이트(Nanuq White)가 적용됐다. 엔진룸에는 최고출력 192마력, 최대토크 28.6kg·m를 발휘하는 MINI 트윈파워 터보 4기통 가솔린 엔진이 탑재되며 18인치 핀 스포크 블랙 경량 알로이 휠이 장착된다.
+	더불어 사이드 스커틀, 도어 실 등에는 스코틀랜드 하이랜드의 지형 실루엣을 나타내는 전용 패턴과 하이랜드 레터링을 적용했다. 트렁크 데칼에도 하이랜드 레터링을 새겨 넣었으며, 에디션 전용 휠 캡 등을 적용해 한정판만의 특별한 매력을 발산한다.
+	실내에는 쿠퍼 모델의 경우 몰트 브라운 색상의 가죽 스포츠 시트를, 쿠퍼 S 모델에는 카본 블랙 색상의 MINI 유어스 레더 라운지 스포츠 시트를 적용해 고급스러운 감각을 강조했다. 또한 여행 시 트렁크에 벤치처럼 걸터앉을 수 있는 탈착식 피크닉 벤치도 함께 제공해 특유의 로드 트립 감성을 극대화했다.
+	이와 함께 전면 충돌 경고 기능, 보행자 경고 및 차선 이탈 경고 기능을 포함한 드라이빙 어시스턴트와 자동 조향 기능을 포함한 파킹 어시스턴트 등 첨단 운전자 보조 사양을 활용할 수 있어 안락하고 안전한 주행을 지원한다. 이외에도, 파노라마 글라스 루프, 컴포트 액세스, 8.8인치 센터 디스플레이 및 애플 카플레이 등 다양한 편의 사양을 기본 제공한다.
+	MINI 컨트리맨 하이랜드 에디션은 쿠퍼 및 쿠퍼 S 모델 각각 단 50대씩 한정 판매되며, 가격은 각각 4950만원, 5730만원이다. (부가세 포함, 개별소비세 5.0% 적용 가격)',
+	'테디',
+	sysdate,
+	'n'
+	);
 
 --차량추가
 insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현대','Hyundai Sonata (DN8)cover.jpg','Hyundai Sonata (DN8).jpg','7세대로 거듭난 올 뉴 아반떼는 모든 게 바뀌었습니다. 구형의 생명력이 끝나서 밀려 나온 게 아닙니다. 뼈대를 이루는 플랫폼부터 갈아 엎었지요. 신형은 좋은 디자인과 미래적인 장비를 만재해 상품성을 대폭 끌어올렸습니다.
@@ -342,6 +417,7 @@ insert into car values(car_seq.nextval,'현대 더 뉴 싼타페',3414,4128,'현
 TO_DATE('2023-08-16', 'YYYY-MM-DD'),'Smartstream G2.0','자동 8단',2497,'전륜','281 / 5800','맥퍼슨 스트럿 ,멀티 링크',
 '42.9 / 1700','4개 / 벤틸레이티드 디스크 2개','9','241','n',1910,1710,2765,4800,'현대 더 뉴 싼타페front.jpg','현대 더 뉴 싼타페side.jpg');
 
+<<<<<<< HEAD
 insert into car values(car_seq.nextval,'현대 그랜저 IG',1411,2568,'현대','현대 그랜저 IGcover.jpg','현대 그랜저 IG.jpg','대한민국 중산층의 상징처럼 여겨지는 모델입니다. 한마디로 ‘고급형 쏘나타’랄까. 준수한 외모와 정비 용이성, 저렴한 자동차 보험료, 광활한 실내까지 한국인이 차 고를 때 중점 두는 가치들을 잘 충족시켜줍니다. 마치 84㎡짜리 아파트 같아요. 세금 혜택도 적당히 볼 수 있고, 좁다는 소리도 안 듣고, 팔 때도 회전율 높은 그런 집. 특출하게 고급스럽다거나 화려하지 않지만 그렇다고 어디 가서 무시 당할 일도 없지요. 이게 요즘 그랜저의 가치 아닐까요.
 신형은 HG보다 젊고 작아 보여 더 이상 고급차로 일컫기 어려운 느낌입니다. 그렇지만 개선된 섀시와 쾌적한 실내, 좋은 장비들 때문에 상품성은 역대 최고 수준을 달립니다. 이 값에 이만한 차는 정말 흔치 않죠. 그랜저 사실 때 대개 2.4와 3.0 중 고민할 텐데 필자는 후자를 추천하는 바입니다. 엔진 스크래치 이슈로부터 좀 더 자유롭고 무엇보다 주행성 면에서 급 차이가 확연하기 때문이죠. 그 내용을 확인하려면 ‘성능’ 탭을 꼼꼼히 살펴보시기 바랍니다.','대형차',
 TO_DATE('2016-01-05', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',2359,'전륜','190 / 6000','맥퍼슨 스트럿 ,멀티 링크',
@@ -401,4 +477,12 @@ insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)desi
 select * from car;
 
 
+
+
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
+insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
+
+-- 커뮤니티 추가
+-- insert into board values(board_seq.nextval,1,)
 

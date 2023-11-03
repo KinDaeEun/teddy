@@ -8,16 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" href="${path}/resources/css/complimentMain.css">
-<!-- <script type="text/javascript"> -->
-<!-- 	$(function() { -->
-<!-- 		$('#rInsert').click(function() { -->
-<!-- 			let sendData = $('#frm1').serialize(); -->
-<%-- 			$.post('${path}/board/rInsert.do', sendData, function(data) { --%>
-<!-- 				$('#rbdListDisp').html(data); -->
-<!-- 			}); -->
-<!-- 		}); -->
-<!-- 	}); -->
-<!-- </script> -->
 
 </head>
 <body>
@@ -33,19 +23,23 @@
 			</ul>
 		</div>
 		<!-- <div id="rbdListDisp"> -->
-		<div>
+		<div  class="co_in">
 			<form action="${path}/board/rInsert.do" name="frm1" id="frm1"
 				method="post">
 				<input type="hidden" name="id" value="${member.id }">
 				<table>
 					<tr>
 						<th>아이디</th>
-						<td>&nbsp;[ ${member.id } ]</td>
+					</tr>
+					<tr>
+					<td>&nbsp;${member.id }</td>
 					</tr>
 				</table>
 				<div align="center">
-					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요." class="form-control" required>
-					<input type="submit" id="rInsert" value="칭찬등록" class="btn btn-outline-secondary" style="margin-top:15px;">
+					<input type="text" name="cp_content" placeholder="내용을 입력해 주세요."
+						class="form-control" required> <input type="submit"
+						id="rInsert" value="칭찬등록" class="btn btn-outline-secondary"
+						style="margin-top: 15px;">
 				</div>
 			</form>
 		</div>
@@ -70,8 +64,9 @@
 								<td class="text-center">${compliment.cp_content }</td>
 								<td class="text-center">${compliment.cp_date }</td>
 								<c:if test="${compliment.id == id }">
-									<td><a class="btn btn-sm btn-dark"
-										href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a></td>
+									<td><center><a class="btn btn-outline-secondary"
+												href="${path }/board/complimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a>
+										</center></td>
 								</c:if>
 								<c:if test="${compliment.id != id }">
 									<td></td>

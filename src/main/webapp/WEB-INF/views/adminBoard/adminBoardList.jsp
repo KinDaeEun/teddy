@@ -6,22 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-a {
-	text-decoration: none;
-	cursor: pointer;
-	color: black;
-}
-
-tr, th {
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/adminBoardList.css">
 <script type="text/javascript">
 function del(bno,b_del) {
 	var con = confirm("해당 게시글의 전시상태를 변경하시겠습니까?");
 	if(con) {
-		location.href="${path}/admin/adminBoardDelete.do?bno="+bno+"&b_del="+b_del;
+		location.href="${path}/adminBoard/adminBoardDelete.do?bno="+bno+"&b_del="+b_del;
 	}
 }
 </script>
@@ -31,7 +21,7 @@ function del(bno,b_del) {
 		<h4 style="margin-bottom: 10px">커뮤니티 게시글 목록</h4>
 		<h6 style="margin-bottom: 10px">게시글 총 ${total } 개</h6>
 		<form action="${path }/admin/adminBoardList.do">
-			<select name="search">
+			<select name="search" class="inputUnderLine">
 				<c:forTokens var="sh" items="b_title, b_writer, b_content"
 					delims="," varStatus="i">
 					<c:if test="${sh == board.search }">
@@ -42,8 +32,8 @@ function del(bno,b_del) {
 					</c:if>
 				</c:forTokens>
 			</select> <input type="text" name="keyword" value="${board.keyword }"
-				class="form-text"> <input type="submit" name="검색"
-				class="btn btn-outline-secondary btn-sm" value="검색">
+				class="form-text inputUnderLine"> <input type="submit" name="검색"
+				class="btn btn-outline-secondary btn-sm btn_search" value="검색">
 		</form>
 		<table class="table table-bordered">
 			<tr class="table-secondary">
@@ -72,7 +62,7 @@ function del(bno,b_del) {
 						<td>${board.b_del }</td>
 						<th><a onclick="del(${board.bno},'${board.b_del}')">변경</a></th>
 						<th><a
-							href="${path }/admin/adminBoardContent.do?bno=${board.bno}">보기</a></th>
+							href="${path }/adminBoard/adminBoardContent.do?bno=${board.bno}">보기</a></th>
 					</tr>
 				</c:forEach>
 			</c:if>
@@ -81,31 +71,31 @@ function del(bno,b_del) {
 			<div>
 				<ul class="pagination pagination-sm justify-content-center">
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=1&search=${board.search}&keyword=${board.keyword}">
 								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.startPage-1}&search=${board.search}&keyword=${board.keyword}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active link"><a class="page-link link"
 								href="adminBoardList.do?pageNum=${i}&search=${board.search}&keyword=${board.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminBoardList.do?pageNum=${i}&search=${board.search}&keyword=${board.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.endPage+1}&search=${board.search}&keyword=${board.keyword}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminBoardList.do?pageNum=${pb.totalPage}&search=${board.search}&keyword=${board.keyword}">
 								<i>맨뒤로</i>
 						</a></li>

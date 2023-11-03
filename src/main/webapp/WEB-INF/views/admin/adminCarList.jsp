@@ -6,16 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-a {
-	text-decoration: none;
-	cursor: pointer;
-	color: black;
-}
-tr, th{
-	text-align: center;
-}
-</style>
+<link rel="stylesheet" href="${path}/resources/css/adminCarList.css">
 <script type="text/javascript">
 function del(cno,c_del) {
 	var con = confirm("해당 차량의 전시상태를 변경하시겠습니까?");
@@ -29,7 +20,7 @@ function del(cno,c_del) {
 	<div class="container pg_top v_h">
 		<h4 style="margin-bottom: 10px">차량목록</h4>
 		<form action="${path }/admin/adminCarList.do">
-				<select name="search">
+				<select name="search" class="inputUnderLine">
 					<c:forTokens var="sh" items="cno,c_name,brand,c_kind" delims=","
 						varStatus="i">
 						<c:if test="${sh == car.search }">
@@ -40,7 +31,7 @@ function del(cno,c_del) {
 						</c:if>
 					</c:forTokens>
 				</select> <input type="text" name="keyword" value="${car.keyword }"
-					class="form-text"> <input type="submit" name="검색"
+					class="form-text inputUnderLine"> <input type="submit" name="검색" class="btn_search"
 					class="btn btn-outline-secondary btn-sm" value="검색">
 			</form>
 		<table class="table table-bordered" >
@@ -89,23 +80,23 @@ function del(cno,c_del) {
 		<div>
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminCarList.do?pageNum=${startPage-1}&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-left-circle icofont-2x"></i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
 						<c:if test="${currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="adminCarList.do?pageNum=${i }&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminCarList.do?pageNum=${i}&search=${car.search}&keyword=${car.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${endPage < totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link" 
 							href="adminCarList.do?pageNum=${endPage+1 }&search=${car.search}&keyword=${car.keyword}">
 								<i class="bi bi-arrow-right-square icofont-2x"></i>
 						</a></li>

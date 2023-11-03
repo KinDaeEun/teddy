@@ -419,7 +419,6 @@ header.active #w-nav li a:hover {
 
 .client {
 	display: flex;
-	align-items: center;
 	justify-content: center
 }
 
@@ -450,7 +449,7 @@ header.active #w-nav li a:hover {
 .callaction {
 	height: 450px;
 	background: url(../images/pic_testdriving.png) no-repeat center center;
-	background-size: cover;
+	background-size: contain;
 	position: relative;
 	display: flex;
 	justify-content: center;
@@ -459,8 +458,9 @@ header.active #w-nav li a:hover {
 
 .callaction:before {
 	content: '';
-	background: linear-gradient(to right, rgba(224,255, 255, 0.5),
-		rgba(0, 191, 255,0.8));
+	background: linear-gradient(to right, rgba(224,255, 255, 0.8),
+		rgba(0, 173, 216, 0.4));
+		/* background: linear-gradient(to right, rgba(224,255, 255, 0.8), rgba(0, 173, 216, 0.4)); */
 /* 	background: linear-gradient(to right, rgba(224, 255, 255,0.5), ,rgba(0, 191, 255,0.8)); */
 	/*background: #000;*/
 	width: 100%;

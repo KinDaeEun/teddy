@@ -30,7 +30,7 @@ td {
 	<div class="container pd">
 		<table class="table">
 			<tr class="mg" height="1000">
-				<td width="25%"><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
+				<td style="width: 100px"><tiles:insertAttribute name="menu"></tiles:insertAttribute></td>
 				<td><tiles:insertAttribute name="body"></tiles:insertAttribute></td>
 			</tr>
 		</table>

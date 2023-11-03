@@ -52,12 +52,11 @@ h2 {
 						<td><select class="form-select" onchange="carBox()" required
 							name="brand">
 								<optgroup label="회사를 선택해주세요">
-									<option>회사를 먼저 선택해주세요</option>
+									<option>회사를 선택해주세요</option>
 									<c:forEach var="car" items="${brandlist }">
 										<option>${car.brand }</option>
 									</c:forEach>
 								</optgroup>
-
 						</select></td>
 					</c:if>
 					<!-- 차량 목록에서 넘어온 input -->
@@ -97,7 +96,7 @@ h2 {
 					<th>휴대폰 번호&nbsp;*</th>
 					<td>
 						<!-- 번호형식 추가예정 --> <input type="text" name="r_tel"
-						pattern="010-\d{3,4}-\d{4}" placeholder="010-1234-5689형식으로 입력하시오"
+						pattern="010-\d{3,4}-\d{4}" placeholder="010-1234-5689형식으로 입력해주세요"
 						class="form-control" required>
 					</td>
 				</tr>

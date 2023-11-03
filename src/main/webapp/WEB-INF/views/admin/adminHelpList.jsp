@@ -7,26 +7,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/adminHelpList.css">
 <style type="text/css">
-.title {
-	text-align: center;
-}
 
-.list_fx {
-	display: flex;
-	justify-content: space-between;
-}
-
-.listAc {
-	color: #333;
-}
-
-.pt {
-	padding-top: 200px;
-}
-.v_h {
-	height: 100vh;
-}
 </style>
 </head>
 <body>
@@ -36,7 +19,7 @@
 			<div class="list_fx">
 				<!-- 검색 -->
 				<form action="${path }/admin/adminHelpList.do">
-					<select name="search">
+					<select name="search" class="inputUnderLine">
 						<c:forTokens var="sh" items="h_title,h_content,subcon" delims=","
 							varStatus="i">
 							<c:if test="${sh == help.search }">
@@ -47,12 +30,12 @@
 							</c:if>
 						</c:forTokens>
 					</select> <input type="text" name="keyword" value="${help.keyword }"
-						class="form-text"> <input type="submit" name="검색"
-						class="btn btn-outline-secondary btn-sm" value="검색">
+						class="form-text inputUnderLine"> <input type="submit" name="검색"
+						class="btn btn-outline-secondary btn-sm btn_search" value="검색">
 				</form>
 			</div>
-			<table class="table">
-				<tr>
+			<table class="table table-bordered">
+				<tr class="table-secondary">
 					<th class="text-center">아이디</th>
 					<th class="text-center">제목</th>
 					<th class="text-center">삭제여부</th>
@@ -82,31 +65,31 @@
 					<%-- 				<li>${pb}</li> --%>
 					<%-- 				<li>${pageNum }</li> --%>
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminHelpList.do?pageNum=1&search=${help.search}&keyword=${help.keyword}">
 								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminHelpList.do?pageNum=${pb.startPage-1}&search=${help.search}&keyword=${help.keyword}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="adminHelpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="adminHelpList.do?pageNum=${i}&search=${help.search}&keyword=${help.keyword}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminHelpList.do?pageNum=${pb.endPage+1}&search=${help.search}&keyword=${help.keyword}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="adminHelpList.do?pageNum=${pb.totalPage}&search=${help.search}&keyword=${help.keyword}">
 								<i>맨뒤로</i>
 						</a></li>

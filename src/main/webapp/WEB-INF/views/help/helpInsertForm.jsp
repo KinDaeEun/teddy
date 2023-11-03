@@ -23,10 +23,6 @@ h3 {
 	text-align: center;
 	margin-bottom: 50px;
 }
-/* .h_wrier{
-   border: 1px solid black;
-   border-radius: 5px;
-} */
 </style>
 
 </head>

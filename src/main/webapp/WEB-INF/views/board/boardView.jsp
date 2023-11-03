@@ -16,7 +16,7 @@
 </head>
 <body>
 	<div class="container">
-		<table class="table"  style="margin-top: 70px">
+		<table class="table tableb"  style="margin-top: 70px">
 			<tr>
 				<th>제목</th>
 				<td>${board.b_title }</td>
@@ -35,7 +35,8 @@
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td><pre>${board.b_content }</pre></td>
+				<td colspan="2"><textarea rows="5"
+							class="form-control" readonly="readonly">${board.b_content }</textarea>
 			</tr>
 			<tr>
 				<td colspan="5" align="center">

@@ -21,8 +21,11 @@ public class Reservation {
 	private String find_gu;
 	private String find_center;
 	
-	public String tostring() {
-		return id+email+r_tel+r_date;
-	}
-
+	// paging
+	private int startRow;
+	private int endRow;
+	
+	//검색용
+	private String search;
+	private String keyword;
 }

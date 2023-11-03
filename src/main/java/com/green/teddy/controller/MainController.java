@@ -32,6 +32,8 @@ public class MainController {
 		//차량
 		List<Car> carList = cs.mainCar();
 		
+
+
 		model.addAttribute("news", news);
 		model.addAttribute("board", board);
 	}

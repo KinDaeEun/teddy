@@ -7,6 +7,15 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script>
+	function del(cpno) {
+		let cf = confirm("칭찬을 삭제하시겠습니까 ?")
+		if (cf)
+			location.href="${path }/adminBoard/adminComplimentDelete.do?cpno="+cpno;
+		else
+			alert("삭제가 취소되었습니다")
+	}
+</script>
 <style type="text/css">
 .pn_title {
 	background-color: #f8f8f8;
@@ -32,17 +41,6 @@
 	cursor: pointer;
 }
 </style>
-<!-- <script type="text/javascript"> -->
-<!-- 	$(function() { -->
-<!-- 		$('#rInsert').click(function() { -->
-<!-- 			let sendData = $('#frm1').serialize(); -->
-<%-- 			$.post('${path}/board/rInsert.do', sendData, function(data) { --%>
-<!-- 				$('#rbdListDisp').html(data); -->
-<!-- 			}); -->
-<!-- 		}); -->
-<!-- 	}); -->
-<!-- </script> -->
-
 </head>
 <body>
 	<div>
@@ -73,13 +71,12 @@
 				<c:if test="${not empty list }">
 					<c:forEach var="compliment" items="${list }">
 						<tr>
-							<c:if test="${compliment.cp_del != 'y' }">
+
 								<td class="text-center">${compliment.id }</td>
 								<td class="text-center">${compliment.cp_content }</td>
 								<td class="text-center">${compliment.cp_date }</td>
-								<td><a class="btn btn-sm btn-dark"
-									href="${path }/adminBoard/adminComplimentDelete.do?id=${id}&cpno=${compliment.cpno}">삭제</a></td>
-							</c:if>
+								<td><center><a class="btn btn-sm btn-dark" onclick="del(${compliment.cpno})">삭제</a></center></td>
+
 						</tr>
 					</c:forEach>
 				</c:if>
