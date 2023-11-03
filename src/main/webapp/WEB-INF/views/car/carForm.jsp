@@ -139,20 +139,16 @@
 				<ul class="pagination justify-content-center">
 					<c:if test="${startPage > PAGE_PER_BLOCK}">
 						<li class="page-item"><a class="page-link link"
-							href="carForm.do?pageNum=1&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
-								<i class="icofont-duotone icofont-arrow-first icofont-2x"></i>
-						</a></li>
-						<li class="page-item"><a class="page-link link"
 							href="carForm.do?pageNum=${startPage-1}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
 								<i class="bi bi-arrow-left-circle icofont-2x"></i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${startPage}" end="${endPage}">
-						<c:if test="${currentPage == i }">
+						<c:if test="${currentPage != i }">
 							<li class="page-item active"><a class="page-link link"
 								href="carForm.do?pageNum=${i}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">${i }</a></li>
 						</c:if>
-						<c:if test="${currentPage != i }">
+						<c:if test="${currentPage == i }">
 							<li class="page-item"><a class="page-link link"
 								href="carForm.do?pageNum=${i}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">${i }</a></li>
 						</c:if>
@@ -161,10 +157,6 @@
 						<li class="page-item"><a class="page-link link"
 							href="carForm.do?pageNum=${endPage+1}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
 								<i class="bi bi-arrow-right-square icofont-2x"></i>
-						</a></li>
-						<li class="page-item"><a class="page-link link"
-							href="carForm.do?pageNum=${totalPage}&brand=${car.brand}&c_kind=${car.c_kind}&order=${car.order}">
-								<i class="bi bi-arrow-right-circle-fill icofont-2x"></i>
 						</a></li>
 					</c:if>
 				</ul>

@@ -109,6 +109,7 @@
 				</h2>
 				<hr>
 				<div class="myslider">
+				<c:forEach begin="1" end="6" varStatus="v">
 					<div>
 						<p class="client">
 							<img src="${path}/resources/images/main/client-01.jpg"> <span><b>Hanni
@@ -122,7 +123,8 @@
 							molestias! Ea odit accusamus debitis neque, eius ratione,
 							consectetur odio nostrum veritatis.</p>
 					</div>
-					<div>
+					</c:forEach>
+					<%-- <div>
 						<p class="client">
 							<img src="${path}/resources/images/main/client-02.jpg"> <span><b>Kate
 									Whitney</b>Los Angeles, US</span>
@@ -184,7 +186,7 @@
 							excepturi non ducimus minus quasi minima. Tenetur, deserunt optio
 							tempore vitae nostrum illum? Ducimus veniam nihil velit voluptate
 							ad.</p>
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</div>

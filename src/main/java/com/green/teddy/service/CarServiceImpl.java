@@ -54,4 +54,9 @@ public class CarServiceImpl implements CarService {
 		return cd.adminGetTotal(car);
 	}
 
+	@Override
+	public List<Car> mainCar() {
+		return cd.mainCar();
+	}
+
 }

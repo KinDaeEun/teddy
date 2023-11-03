@@ -25,4 +25,6 @@ public interface CarService {
 
 	int adminGetTotal(Car car);
 
+	List<Car> mainCar();
+
 }
