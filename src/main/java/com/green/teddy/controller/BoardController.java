@@ -79,11 +79,13 @@ public class BoardController {
 
 	// 칭찬 알림방 삭제
 	@GetMapping("board/complimentDelete")
-	public void complimentDelete(Model model, HttpSession session, int cpno) {
+	public void complimentDelete(Model model, HttpSession session, int cpno, String pageNum) {
 		String id = (String) session.getAttribute("id");
 		int result = cs.delete(cpno);
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
+		model.addAttribute("pageNum", pageNum);
+		
 	}
 	//공지사항
 	@GetMapping("board/notice")
