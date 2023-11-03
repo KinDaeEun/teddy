@@ -115,109 +115,29 @@
 				</h2>
 				<hr>
 				<div class="myslider">
-				<c:forEach begin="1" end="6" varStatus="v">
-					<div>
-
-						<p class="client">
-							<img src="${path}/resources/images/main/client-01.jpg"> <span><b>Hanni
-									Pham</b>Melbourne, Australia</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Officia ipsa consequatur dolore quam illum
-							laudantium, at voluptate eos, natus reprehenderit odio,
-							aspernatur. Quos, nam expedita fugit tempora! Recusandae sint
-							atque perspiciatis iusto iure adipisci quas eius facere beatae
-							molestias! Ea odit accusamus debitis neque, eius ratione,
-							consectetur odio nostrum veritatis.</p>
-					</div>
-					</c:forEach>
-					<%-- <div>
-						<p class="client">
-							<img src="${path}/resources/images/main/client-02.jpg"> <span><b>Kate
-									Whitney</b>Los Angeles, US</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Consectetur porro minus cum fuga rerum maiores?
-							Dolorem, autem. Nemo fuga atque praesentium alias veniam odio
-							error, repellat iusto dolor. Quidem laudantium a, consequatur
-							eligendi et cum voluptas, ut harum, dignissimos enim numquam
-							repellat amet impedit! Nulla dolor harum ea nobis odit.</p>
-					</div>
-					<div>
-						<p class="client">
-							<img src="${path}/resources/images/main/client-03.jpg"> <span><b>Kelly
-									Muvils</b>New York, US</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Eligendi tempore excepturi enim at, fugiat odio
-							aperiam dolorem sint dolorum id nulla deleniti nesciunt, fugit
-							ipsam itaque atque molestiae. Quod tenetur culpa qui magnam ex
-							fugit ducimus quam similique iure voluptatibus distinctio velit
-							animi eaque totam, eius blanditiis. Iusto, perferendis nam.</p>
-					</div>
-					<div>
-						<p class="client">
-							<img src="${path}/resources/images/main/client-04.jpg"> <span><b>Oliver</b>Califonia,
-								US</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Repudiandae quia quod ullam itaque mollitia,
-							eaque illum, porro nobis consequatur, qui aliquid doloribus
-							possimus accusamus provident nostrum recusandae earum quo
-							blanditiis dolorem veritatis ducimus laborum fuga vel. Laboriosam
-							assumenda voluptas voluptatibus quasi est earum doloribus
-							doloremque, incidunt quis. Consequuntur, atque, obcaecati.</p>
-					</div>
-					<div>
-						<p class="client">
-							<img src="${path}/resources/images/main/client-05.jpg"> <span><b>Sophia</b>London,
-								UK</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Nulla adipisci, nesciunt itaque ad ducimus quae
-							repellendus, sint. Nam, vel, neque. Accusamus voluptatum
-							laboriosam qui dolorum, reprehenderit, aliquam inventore
-							veritatis, rem accusantium beatae sunt quia illum voluptatibus?
-							Doloremque assumenda temporibus atque tenetur ipsam perferendis
-							ut minima veniam. Expedita aspernatur quae commodi!</p>
-					</div>
-					<div>
-						<p class="client">
-							<img src="${path}/resources/images/main/client-06.jpg"> <span><b>Charlotte</b>Washington,
-								US</span>
-						</p>
-						<p class="comment">Lorem ipsum dolor sit amet, consectetur
-							adipisicing elit. Similique, eum! Fuga velit, consequatur sequi
-							nemo voluptas, beatae. Dicta sunt et eum nulla sapiente. Delectus
-							mollitia reiciendis quidem facilis tempore, voluptas rerum
-							excepturi non ducimus minus quasi minima. Tenetur, deserunt optio
-							tempore vitae nostrum illum? Ducimus veniam nihil velit voluptate
-							ad.</p>
-					</div> --%>
-
-						<c:if test="${empty board }">
-							<span>커뮤니티 내역이 존재하지 않습니다</span>
-						</c:if>
-					</div>
-					<c:if test="${not empty board }">
-						<c:forEach items="${board }" var="brd" varStatus="v">
-							<c:if test="${v.index < 6 }">
-								<div>						
-									<p class="client">
-										<img alt="" src="${path}/resources/upload/${brd.fileName}"><span><b>${brd.name }</b>${brd.b_title }</span>
-									</p>
-									<p>
-										<a class="comment" href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
-									</p>							
-								</div>
-							</c:if>
-
-						</c:forEach>
+					<c:if test="${empty board }">
+						<span>커뮤니티 내역이 존재하지 않습니다</span>
+					</c:if>
+				</div>
+				<c:forEach items="${board }" var="brd" varStatus="v">
+					<c:if test="${v.index < 6 }">
+						<div>
+							<p class="client">
+								<img alt="" src="${path}/resources/upload/${brd.fileName}"><span><b>${brd.name }</b>${brd.b_title }</span>
+							</p>
+							<p>
+								<a class="comment"
+									href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
+							</p>
+						</div>
 					</c:if>
 
-				</div>
+				</c:forEach>
+
+
 			</div>
 		</div>
+
 	</section>
 
 	<section class="callaction" id="callaction">
