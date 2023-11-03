@@ -474,7 +474,6 @@ insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)desi
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design4.jpg',1);
 
-select * from car;
 
 
 
