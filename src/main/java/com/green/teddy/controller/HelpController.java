@@ -47,11 +47,11 @@ public class HelpController {
 			String h_fileName = uuid + fileName.substring(fileName.lastIndexOf("."));
 			help.setH_fileName(h_fileName);
 			help.setId(id);
-			System.out.println(help.getH_title());
-			System.out.println(help.getFile());
-			System.out.println(help.getH_content());
-			System.out.println(help.getH_fileName());
-			System.out.println(help.getId());
+//			System.out.println(help.getH_title());
+//			System.out.println(help.getFile());
+//			System.out.println(help.getH_content());
+//			System.out.println(help.getH_fileName());
+//			System.out.println(help.getId());
 			String real = session.getServletContext().getRealPath("/resources/upload");
 			FileOutputStream fos = new FileOutputStream(new File(real + "/" + h_fileName));
 			fos.write(help.getFile().getBytes());
@@ -74,11 +74,11 @@ public class HelpController {
 			String h_fileName = uuid + fileName.substring(fileName.lastIndexOf("."));
 			help.setH_fileName(h_fileName);
 			help.setId(id);
-			System.out.println(help.getH_title());
-			System.out.println(help.getFile());
-			System.out.println(help.getH_content());
-			System.out.println(help.getH_fileName());
-			System.out.println(help.getId());
+//			System.out.println(help.getH_title());
+//			System.out.println(help.getFile());
+//			System.out.println(help.getH_content());
+//			System.out.println(help.getH_fileName());
+//			System.out.println(help.getId());
 			String real = session.getServletContext().getRealPath("/resources/upload");
 			FileOutputStream fos = new FileOutputStream(new File(real + "/" + h_fileName));
 			fos.write(help.getFile().getBytes());
@@ -121,7 +121,7 @@ public class HelpController {
 	public void helpView(int hno, String pageNum, Model model, HttpSession session) {
 		String id = (String) session.getAttribute("id");
 		Help help = hs.select(hno);
-		System.out.println("pageNum = " + pageNum);
+//		System.out.println("pageNum = " + pageNum);
 		model.addAttribute("id", id);
 		model.addAttribute("help", help);
 		model.addAttribute("pageNum", pageNum);

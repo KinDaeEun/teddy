@@ -59,6 +59,11 @@ select * from car;
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
 select * from car;
 drop table car;
+
+drop sequence car_seq;
+
+
+DROP TABLE car CASCADE CONSTRAINTS;
 drop sequence car_seq;
 
 
@@ -103,7 +108,11 @@ create table board (
     id varchar2(20),                -- 아이디
     b_title varchar2(20),           -- 게시글 번호
     b_writer varchar2(20),          -- 게시글 작성자
+
     b_content varchar2(1000),       -- 게시글 내용
+
+    b_content varchar2(2000),       -- 게시글 내용
+
     b_date date,                    -- 게시글 작성 날짜
     b_cnt number,                   -- 게시글 조회수
     b_del char(1),                   -- 게시글 삭제여부
@@ -551,3 +560,23 @@ insert into board values(board_seq.nextval,4,'시승 잘했네요',4,'이번에 
 insert into board values(board_seq.nextval,5,'추천해요',5,'시승예약부터 시승까지 직원 분들이 꼼꼼하게 신경 써 주시고 편안하고 친절하게 대해 주셔서 주변 분들에 시승 할 생각있으신 분 있으면 무저건 추천 할려고요 ',sysdate,96,'n');
 
 insert into board values(board_seq.nextval,6,'회사차구매',6,'회사 전용 차가 필요해서 알아보다가 시승 서비스를 제공하는 테디를 알게되었네요 덕분에 시승하고 맘에 드는 차로 구매완료!!!!',sysdate,95,'n');
+
+
+
+--멤버추가
+insert into member values(1,1,'김대은','kde20@naver.com','남자',sysdate,'1.png','n',0);
+insert into member values(2,1,'김승현','ksh26@naver.com','여자',sysdate,'2.png','n',0);
+insert into member values(3,1,'이영세','lys25@naver.com','남자',sysdate,'3.png','n',0);
+insert into member values(4,1,'양형욱','yho29@naver.com','남자',sysdate,'4.png','n',0);
+insert into member values(5,1,'강병준','kbj00@naver.com','남자',sysdate,'k8.gif','n',0);
+insert into member values(6,1,'그린 컴퓨터','green@naver.com','여자',sysdate,'green.png','n',0);
+
+
+select notice_seq.nextval from dual;
+desc notice;
+
+select * from member;
+
+
+
+
