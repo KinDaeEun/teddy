@@ -21,7 +21,7 @@
 			}
 		});
 	});
-	
+	//	디자인 차량 확대
 	 function fnImgPop(url){
 		  var img=new Image();
 		  img.src=url;
@@ -30,7 +30,7 @@
 		  var img_height=img.height;
 		  var win=img.height+30;
 		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
-		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.formt_img}"+"' width='"+500+"'>");
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path}/resources/upload/${car.formt_img}"+"' width='"+500+"'>");
 		 }
 	 
 	 function siImgPop(url){
@@ -41,7 +41,18 @@
 		  var img_height=img.height;
 		  var win=img.height+30;
 		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
-		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.side_img}"+"' width='"+500+"'>");
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path}/resources/upload/${car.side_img}"+"' width='"+500+"'>");
+		 }
+	 
+	 function imgPop(url){
+		  var img=new Image();
+		  img.src=url;
+		  var img_width=img.width;
+		  var win_width=img.width+25;
+		  var img_height=img.height;
+		  var win=img.height+30;
+		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
+		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path}/resources/upload/${img.img_name}"+"' width='"+500+"'>");
 		 }
 </script>
 </head>
@@ -143,7 +154,7 @@
 					<ul class="list_detail">
 						<c:forEach var="img" items="${ imgList}">
 							<li data-thumb="1"><a href="#none"
-								 class="link_thumb" data-lightbox="car-img"> <img
+								 class="link_thumb" onclick="imgPop(this.src)"> <img
 									alt="" src="${path}/resources/upload/${img.img_name}"
 									class="thumb_g"> <span class="frame_g"></span>
 							</a></li>

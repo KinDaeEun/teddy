@@ -449,6 +449,8 @@ insert into car values(car_seq.nextval,'기아 더 뉴 K3',1590,2585,'기아','�
 TO_DATE('2018-02-27', 'YYYY-MM-DD'),'Gamma 1.6 CVVT','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빈',
 '15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','10','185','n',1800,1440,2700,4640,'기아 더 뉴 K3front.jpg','기아 더 뉴 K3side.jpg');
 
+SELECT * FROM CAR;
+
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design3.jpg',1);
