@@ -60,7 +60,22 @@
 					</a>
 				</div>
 				<div class="items_car">
+				<c:forEach var="car" items="${carList }" begin="1" end="3">
 					<div class="item_car">
+						<div class="up-image">
+							<img src="${path}/resources/upload/${car.c_cover_img }">
+						</div>
+						<div class="down-desc">
+							<span class="badge good">Good to go</span>
+							<h3>${car.c_name }</h3>
+							<p style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden;">${car.c_content }</p>
+							<a class="btn-explore" href="${path }/car/carView.do?cno=${car.cno}">Explore <img
+								src="${path}/resources/images/main/icon-arrow.png"></a>
+						</div>
+					</div>
+				</c:forEach>
+					<%-- <div class="item_car">
+						
 						<div class="up-image">
 							<img src="${path}/resources/images/main/best-city-01.jpg">
 						</div>
@@ -101,7 +116,7 @@
 							<a class="btn-explore" href="#none">Explore <img
 								src="${path}/resources/images/main/icon-arrow.png"></a>
 						</div>
-					</div>
+					</div> --%>
 				</div>
 			</div>
 		</div>

@@ -137,7 +137,7 @@
 				<div class="box_design box_g">
 					<h4 class="tit_subject">디자인</h4>
 					<div class="area_summary">
-						<strong class="tit_summary">"준중형 SUV 넘보는 소형 SUV"</strong>
+					
 						<p></p>
 					</div>
 					<ul class="list_detail">
