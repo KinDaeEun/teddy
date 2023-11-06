@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("칭찬내용 삭제 하였습니다")
-			location.href = "${path}/board/complimentMain.do?id=${id}";
+			location.href = "${path}/board/complimentMain.do?pageNum=${pageNum}";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">

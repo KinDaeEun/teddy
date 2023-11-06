@@ -50,7 +50,7 @@
 			</if>
 		</if>
 		GROUP BY c.cno, c.c_name,c_content,c.c_cover_img
-		<if test="order!=null">
+		<if test="order!=null and order!=''">
 			order by #{order} desc
 		</if>
 		)a)
@@ -128,6 +128,13 @@
 			</if>
 		</where>
 	</select>
+	
+	<select id="mainCar" resultType="car">
+		select c_name,img_name,avg(rating) from car c, review r,design_img d 
+		where c.cno = r.cno and c.cno = d.cno and c_del = 'n' group by c_name ,img_name order by avg(rating) desc
+	</select>
+	
+	
 
 
 </mapper>

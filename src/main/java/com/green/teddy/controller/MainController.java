@@ -20,6 +20,8 @@ public class MainController {
 	private NewsService ns;
 	@Autowired
 	private BoardService bs;
+	@Autowired
+	private CarService cs;
 	
 	@GetMapping("main/main")
 	public void main(Model model) {
@@ -27,7 +29,11 @@ public class MainController {
 		List<News> news = ns.list();
 		// 게시판
 		List<Board> board = bs.bcntlist();
- 
+		//차량
+		List<Car> carList = cs.mainCar();
+		
+
+
 		model.addAttribute("news", news);
 		model.addAttribute("board", board);
 	}
