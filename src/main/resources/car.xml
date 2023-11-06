@@ -8,18 +8,18 @@
 		count(*) from car where c_del='n'
 		<if
 			test="brand!=null and brand!='' and c_kind!=null and c_kind!=''">
-			and brand=#{brand} and c_kind=#{c_kind} 
+			and brand=#{brand} and c_kind=#{c_kind}
 		</if>
 
 		<if
 			test="(brand==null or brand=='') or (c_kind==null or c_kind=='')">
 
 			<if test="brand!=null and brand!='' ">
-				and brand=#{brand} 
+				and brand=#{brand}
 			</if>
 
 			<if test="c_kind!=null and c_kind!='' ">
-				and c_kind=#{c_kind} 
+				and c_kind=#{c_kind}
 			</if>
 		</if>
 
@@ -32,7 +32,8 @@
 		from(select rowNum rn, a.* from (
 		select
 		c.cno,c.c_name,c.c_cover_img,c_content, AVG(r.rating) avg_rating
-		FROM car c, review r where c.cno = r.cno(+) and c_del='n'
+		FROM
+		car c, review r where c.cno = r.cno(+) and c_del='n'
 		<if
 			test="brand!=null and brand!='' and c_kind!=null and c_kind!='' ">
 			and brand=#{brand} and c_kind=#{c_kind}
@@ -42,7 +43,7 @@
 			test="(brand==null or brand=='') or (c_kind==null or c_kind =='')">
 
 			<if test="c_kind!=null and c_kind!=''">
-				and c_kind=#{c_kind} 
+				and c_kind=#{c_kind}
 			</if>
 
 			<if test="brand!=null and brand!=''">
@@ -84,7 +85,7 @@
 	<select id="getMaxCno" resultType="integer">
 		select max(cno) from car
 	</select>
-	
+
 	<select id="adminCarList" parameterType="car" resultType="car">
 		select * from (select rowNum rn, a.* from (
 		select * from car
@@ -96,9 +97,10 @@
 		)a) where
 		rn between #{startRow} and #{endRow}
 	</select>
-	
+
 	<update id="updateCar" parameterType="car">
-		update car set c_name = #{c_name}, min_price = #{min_price},max_price = #{max_price},brand = #{brand},
+		update car set c_name = #{c_name}, min_price = #{min_price},max_price
+		= #{max_price},brand = #{brand},
 		<if test="c_cover_img!=null and c_cover_img !=''">
 			c_cover_img = #{c_cover_img},
 		</if>
@@ -111,16 +113,24 @@
 		<if test="side_img!=null and side_img!=''">
 			side_img = #{side_img},
 		</if>
-		c_content = #{c_content},c_kind = #{c_kind},c_date = #{c_date},engine = #{engine},gear = #{gear},displacement = #{displacement},
-		drive_type = #{drive_type},max_output = #{max_output},suspention = #{suspention},torque = #{torque},brake = #{brake},accel = #{accel},max_speed = #{max_speed},
-		width = #{width},height = #{height},wheelbase = #{wheelbase},length = #{length} where cno = #{cno}
+		c_content = #{c_content},c_kind = #{c_kind},c_date = #{c_date},engine
+		= #{engine},gear = #{gear},displacement = #{displacement},
+		drive_type =
+		#{drive_type},max_output = #{max_output},suspention =
+		#{suspention},torque = #{torque},brake = #{brake},accel =
+		#{accel},max_speed = #{max_speed},
+		width = #{width},height =
+		#{height},wheelbase = #{wheelbase},length = #{length} where cno =
+		#{cno}
 	</update>
-	
+
 	<update id="deleteCar" parameterType="car">
-		update car set c_del=#{c_del} where cno = #{cno}
+		update car set
+		c_del=#{c_del} where cno = #{cno}
 	</update>
-	
-	<select id="adminGetTotal" parameterType="car" resultType="integer">
+
+	<select id="adminGetTotal" parameterType="car"
+		resultType="integer">
 		select count(*) from car
 		<where>
 			<if test="keyword!=null and keyword!=''">
@@ -128,13 +138,15 @@
 			</if>
 		</where>
 	</select>
-	
+
 	<select id="mainCar" resultType="car">
-		select c_name,img_name,avg(rating) from car c, review r,design_img d 
-		where c.cno = r.cno and c.cno = d.cno and c_del = 'n' group by c_name ,img_name order by avg(rating) desc
+		select
+		c_name,img_name,avg(rating) from car c, review r,design_img d
+		where c.cno = r.cno and c.cno = d.cno and c_del = 'n' group by c_name
+		,img_name order by avg(rating) desc
 	</select>
-	
-	
+
+
 
 
 </mapper>
