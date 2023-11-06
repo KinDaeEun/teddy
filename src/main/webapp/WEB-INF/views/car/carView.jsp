@@ -156,7 +156,7 @@
 				<div class="box_design box_g">
 					<h4 class="tit_subject">크기·공간</h4>
 					<div class="area_summary">
-						<strong class="tit_summary">"소형 SUV라 부르지 마"</strong>
+
 						<p></p>
 					</div>
 					<ul class="list_detail">
