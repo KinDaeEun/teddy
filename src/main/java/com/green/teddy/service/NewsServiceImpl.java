@@ -46,4 +46,8 @@ public class NewsServiceImpl implements NewsService {
 	public int adminDelete(News news) {
 		return nd.adminDelete(news);
 	}
+
+	public int insert(News news) {
+		return nd.insert(news);
+	}
 }

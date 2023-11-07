@@ -45,4 +45,8 @@ public class NewsDaoImpl implements NewsDao {
 	public int adminDelete(News news) {
 		return sst.update("newsns.adminDelete", news);
 	}
+
+	public int insert(News news) {
+		return sst.insert("newsns.insert", news);
+	}
 }
