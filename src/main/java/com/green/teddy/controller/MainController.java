@@ -33,8 +33,9 @@ public class MainController {
 		List<Car> carList = cs.mainCar();
 		
 
-
+		
 		model.addAttribute("news", news);
 		model.addAttribute("board", board);
+		model.addAttribute("carList", carList);
 	}
 }
