@@ -7,6 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="${path}/resources/css/adminComplimentMain.css">
 <script>
 	function del(cpno) {
 		let cf = confirm("칭찬을 삭제하시겠습니까 ?")
@@ -16,31 +17,6 @@
 			alert("삭제가 취소되었습니다")
 	}
 </script>
-<style type="text/css">
-.pn_title {
-	background-color: #f8f8f8;
-	border-bottom: solid 1px #dadbdc;
-	border-top: solid 1px #dadbdc;
-}
-
-.info {
-	color: #697278;
-	padding-left: 10px;
-	line-height: 1.75;
-	list-style: inside;
-	margin-top: 20px;
-}
-
-.pn_info {
-	width: 80%;
-	margin-bottom: 8px;
-	text-align: left;
-}
-
-.pn_button {
-	cursor: pointer;
-}
-</style>
 </head>
 <body>
 	<div>
@@ -87,31 +63,31 @@
 					<%-- 								<li>${pb}</li>  --%>
 					<%-- 				<li>${pageNum }</li> --%>
 					<c:if test="${pb.startPage > pb.pagePerBlock}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/adminBoard/adminComplimentMain.do?pageNum=1">
 								<i>맨 앞으로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.startPage-1}">
 								<i>앞으로</i>
 						</a></li>
 					</c:if>
 					<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage}">
 						<c:if test="${pb.currentPage == i }">
-							<li class="page-item active"><a class="page-link"
+							<li class="page-item active"><a class="page-link link"
 								href="${path }/adminBoard/adminComplimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 						<c:if test="${pb.currentPage != i }">
-							<li class="page-item"><a class="page-link"
+							<li class="page-item"><a class="page-link link"
 								href="${path }/adminBoard/adminComplimentMain.do?pageNum=${i}">${i }</a></li>
 						</c:if>
 					</c:forEach>
 					<c:if test="${pb.endPage < pb.totalPage}">
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.endPage+1}">
 								<i>뒤로</i>
 						</a></li>
-						<li class="page-item"><a class="page-link"
+						<li class="page-item"><a class="page-link link"
 							href="${path }/adminBoard/adminComplimentMain.do?pageNum=${pb.totalPage}">
 								<i>맨뒤로</i>
 						</a></li>

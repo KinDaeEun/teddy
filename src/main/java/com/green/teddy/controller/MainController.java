@@ -22,20 +22,26 @@ public class MainController {
 	private BoardService bs;
 	@Autowired
 	private CarService cs;
-	
+
 	@GetMapping("main/main")
 	public void main(Model model) {
 		// 뉴스
 		List<News> news = ns.list();
 		// 게시판
 		List<Board> board = bs.bcntlist();
-		//차량
+		// 차량
 		List<Car> carList = cs.mainCar();
-		
 
-		
 		model.addAttribute("news", news);
 		model.addAttribute("board", board);
 		model.addAttribute("carList", carList);
+	}
+
+	@GetMapping("board/boardMainView")
+	public void boardMainView(Model model, int bno) {
+		bs.updateBcnt(bno);
+		Board board = bs.bselect(bno);
+		model.addAttribute("board", board);
+	
 	}
 }

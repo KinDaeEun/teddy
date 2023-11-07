@@ -13,6 +13,7 @@
 	text-decoration: none;
 	color: #333;
 }
+
 </style>
 <link href="${path }/resources/images/teddy.ico" rel="shortcut icon"
 	type="image/x-icon" sizes="16x16">
@@ -144,7 +145,7 @@
 									</p>
 									<p>
 										<a class="comment"
-											href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
+											href="${path }/board/boardMainView.do?bno=${brd.bno}">${brd.b_content }</a>
 									</p>
 								</div>
 							</c:if>

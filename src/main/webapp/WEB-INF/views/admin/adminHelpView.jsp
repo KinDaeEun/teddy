@@ -8,11 +8,8 @@
 <title>Insert title here</title>
 <!-- summernote -->
 
-<link
-	href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css"
-	rel="stylesheet">
-<script
-	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<!-- <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet"> -->
+<!-- <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script> -->
 <link rel="stylesheet" href="${path}/resources/css/adminHelpView.css">
 </head>
 
@@ -68,7 +65,9 @@
 						</div>
 					</c:if>
 				</div>
-				<!-- 문의사항 end -->
+			</div>
+			<!-- 문의사항 end -->
+			<div class="reply_di">
 				<div>
 					<h3 class="reply_head">답변</h3>
 
@@ -84,8 +83,6 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
 </body>
 </html>

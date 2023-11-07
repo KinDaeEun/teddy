@@ -40,12 +40,12 @@
 				<h2 class="accordion-header" id="headingTwo">
 					<button class="accordion-button collapsed" type="button"
 						data-bs-toggle="collapse" data-bs-target="#collapseTwo"
-						aria-expanded="false" aria-controls="collapseTwo">차량을 렌트할
+						aria-expanded="false" aria-controls="collapseTwo">차량을 시승할
 						수 있는 최소연령은 어떻게 되나요?</button>
 				</h2>
 				<div id="collapseTwo" class="accordion-collapse collapse"
 					aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-					<div class="accordion-body">일반적으로 차량을 렌트할 수 연령대는 21세에서 70세
+					<div class="accordion-body">일반적으로 차량을 시승할 수 연령대는 21세에서 70세
 						사이이며, 25세 이하와 70세 이상인 운전자에게는 추가요금이 발생할 수 있습니다.</div>
 				</div>
 			</div>
