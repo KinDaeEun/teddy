@@ -205,7 +205,7 @@ drop sequence review_seq;
 create table news (
     nno number primary key,         -- 뉴스 번호
     n_cover_img varchar2(100),      -- 표지 사진
-    n_img varchar2(20),
+    n_img varchar2(100),
     n_title varchar2(100),           -- 뉴스 제목
     n_content varchar2(3000),       -- 뉴스 내용
     n_writer varchar2(20),          -- 뉴스 작성자 (관리자)

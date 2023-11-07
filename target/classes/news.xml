@@ -64,4 +64,10 @@
 		where nno = #{nno}
 	</update>
 
+	<insert id="insert" parameterType="news">
+		insert into news values(
+		news_seq.nextval, #{n_cover_img}, #{n_img}, #{n_title}, #{n_content},
+		#{n_writer}, sysdate, 'n')
+	</insert>
+
 </mapper>

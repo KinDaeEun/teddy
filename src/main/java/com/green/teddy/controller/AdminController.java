@@ -1,6 +1,7 @@
 package com.green.teddy.controller;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -589,6 +590,48 @@ public class AdminController {
 	}
 	
 // News
+	// 뉴스 입력
+	@RequestMapping("admin/newsInsertForm")
+	public void newsInsertForm() {
+		
+	}
+	
+	// 뉴스 작성
+	@RequestMapping("admin/newsInsertResult")
+	public void newsInsertResult(Model model, HttpSession session, News news, MultipartHttpServletRequest mhr) throws IOException {
+		
+		int result = 0;
+		
+		String real = session.getServletContext().getRealPath("/resources/images/news");
+
+		MultipartFile[] files = new MultipartFile[] { news.getN_cover_img_file(), news.getN_img_file() };
+		for (int i = 0; i < files.length; i++) {
+			MultipartFile file = files[i];
+
+			if (!file.isEmpty()) {
+				String originalFileName = file.getOriginalFilename();
+				String uniqueFileName = generateUniqueFileName(originalFileName);
+				FileOutputStream fos = new FileOutputStream(new File(real + "/" + uniqueFileName));
+				fos.write(file.getBytes());
+				fos.close();
+
+				if (i == 0) {
+					news.setN_cover_img(uniqueFileName);
+				} else if (i == 1) {
+					news.setN_img(uniqueFileName);
+				}
+			}
+		}
+		List<MultipartFile> imgs = mhr.getFiles("img_file");
+		result = ns.insert(news);
+		if (result != 0) {
+			result = 1;
+		}
+		model.addAttribute("result", result);
+		model.addAttribute("imgs", imgs);
+
+	}
+	
 	// 뉴스 목록
 	@RequestMapping("admin/adminNewsList")
 	public void adminNewsList(Model model, News news, String pageNum) {

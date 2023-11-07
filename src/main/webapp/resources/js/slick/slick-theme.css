@@ -98,6 +98,10 @@
 .slick-dotted.slick-slider {
 	margin-bottom: 30px;
 }
+/* 넘치는 slick hide */
+#slick-slide-control02::before {
+    display: none !important;
+}
 
 .slick-dots {
 	position: absolute;
