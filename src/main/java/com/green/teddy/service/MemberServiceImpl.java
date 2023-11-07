@@ -85,7 +85,7 @@ public class MemberServiceImpl implements MemberService {
 							"<br/>비밀번호 찾기를 통한 임시 비밀번호입니다."+
 							"<br/>임시비밀번호 :   <h2>"+memberKey+"</h2>"+
 							"<br/>로그인 후 비밀번호 변경을 해주세요.");
-			sendMail.setFrom("yangka04@naver.com"); //본인 메일 작성
+			sendMail.setFrom("teddy123321@naver.com"); //본인 메일 작성
 			sendMail.setTo(email);
 			sendMail.send();
 	}

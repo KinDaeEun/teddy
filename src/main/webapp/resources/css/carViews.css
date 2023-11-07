@@ -164,7 +164,7 @@ div {
 
 .box_g .area_review {
 	float: right;
-	width: 280px;
+	width: 290px;
 	padding: 57px 0 30px;
 	font-size: 12px;
 }
@@ -492,6 +492,11 @@ em {
     width: 100%;
     margin-left: -10px;
 }
+.list_detail2 {
+    overflow: hidden;
+    width: 100%;
+    margin-left: -10px;
+}
 
 .list_detail li {
     float: left;
@@ -499,12 +504,23 @@ em {
     width: 160px;
     margin: 0 0 10px 10px;
 }
+.list_detail2 li {
+    float: left;
+    position: relative;
+    margin: 0 0 10px 60px;
+}
 
 .list_detail .link_thumb {
     display: block;
-    overflow: hidden;
+     overflow: hidden; 
     height: 100px;
-    border: 1px solid #dbdee0;
+    border: 1px solid #dbdee0; 
+}
+.list_detail2 .link_thumb {
+    display: block;
+     overflow: hidden; 
+    height: 100px;
+    /* border: 1px solid #dbdee0;  */
 }
 
 .link_thumb {
@@ -514,6 +530,19 @@ em {
 }
 
 .list_detail .link_thumb .frame_g {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 108px;
+    background-color: #d02931;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+}
+.list_detail2 .link_thumb .frame_g {
     position: absolute;
     top: 0;
     left: 0;
@@ -543,4 +572,33 @@ em {
 .link {
 	background: #bdbdbd !important;
     border: none !important;	
+}
+
+
+
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+}
+
+.image-info {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.image-info div {
+  margin: 5px 0;
+}
+
+.star_img {
+	width: 15px;
+	height: 15px;
 }

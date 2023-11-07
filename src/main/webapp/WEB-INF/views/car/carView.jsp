@@ -21,28 +21,41 @@
 			}
 		});
 	});
+
+	function fnImgPop(url) {
+		var img = new Image();
+		img.src = url;
+		var img_width = img.width;
+		var win_width = img.width + 25;
+		var img_height = img.height;
+		var win = img.height + 30;
+		var OpenWindow = window.open('', '_blank', 'width=' + img_width
+				+ ', height=' + img_height + ', menubars=no, scrollbars=auto');
+		OpenWindow.document
+				.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.formt_img}"+"' width='"+500+"'>");
+	}
+
+	function siImgPop(url) {
+		var img = new Image();
+		img.src = url;
+		var img_width = img.width;
+		var win_width = img.width + 25;
+		var img_height = img.height;
+		var win = img.height + 30;
+		var OpenWindow = window.open('', '_blank', 'width=' + img_width
+				+ ', height=' + img_height + ', menubars=no, scrollbars=auto');
+		OpenWindow.document
+				.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.side_img}"+"' width='"+500+"'>");
+	}
 	
-	 function fnImgPop(url){
-		  var img=new Image();
-		  img.src=url;
-		  var img_width=img.width;
-		  var win_width=img.width+25;
-		  var img_height=img.height;
-		  var win=img.height+30;
-		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
-		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.formt_img}"+"' width='"+500+"'>");
-		 }
-	 
-	 function siImgPop(url){
-		  var img=new Image();
-		  img.src=url;
-		  var img_width=img.width;
-		  var win_width=img.width+25;
-		  var img_height=img.height;
-		  var win=img.height+30;
-		  var OpenWindow=window.open('','_blank', 'width='+img_width+', height='+img_height+', menubars=no, scrollbars=auto');
-		  OpenWindow.document.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.side_img}"+"' width='"+500+"'>");
-		 }
+	function loginCheck(id) {
+		
+		if (id =='') {
+			alert("로그인 후 이용해 주시기 바랍니다.");
+			location.href="${path}/member/loginForm.do"
+			return false;
+		}
+	}
 </script>
 </head>
 <body class="contents_l02">
@@ -50,7 +63,7 @@
 		<div class="container">
 			<div class="cont">
 				<div id="dept_main">
-					<h3 class="tit">${car.c_name } </h3>
+					<h3 class="tit">${car.c_name }</h3>
 				</div>
 				<div class="box_g box_total" data-content="total">
 					<div class="area_thumb">
@@ -72,12 +85,22 @@
 							</strong>
 							<div class="rating_review">
 								<span class="detail_rating"> <em class="tit_rating">평점</em>
-									<span><c:forEach begin="1" end="${rateAvg }">★
-								</c:forEach></span> <span class="ico_bar"></span> <a href="#none" class="link_cmt"
+									<span><c:if test="${rateAvg>0 }">
+										<%-- <fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber>  --%>
+											<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
+       						   					   <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
+     								  		 </c:forEach>
+     								    	<c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
+              									 <img alt="" src="${path }/resources/images/car/half_star.png" class="star_img">
+          									</c:if>
+          								</c:if>
+          								<c:if test="${rateAvg<=0 }">
+          									<div class="no_tit">평점이 없습니다</div>
+          								</c:if></span> <span class="ico_bar"></span> <a href="#none" class="link_cmt"
 									data-tab="comment">댓글 ${total }&nbsp;개</a>
 								</span> <span> <a
 									href="${path}/car/reservationForm.do?brand=${car.brand}&c_name=${car.c_name}"
-									class="btn btn-outline-secondary" style="margin-top: 10px">시승
+									class="btn btn-outline-secondary" style="margin-top: 20px">시승
 										예약</a>
 								</span>
 							</div>
@@ -137,15 +160,17 @@
 				<div class="box_design box_g">
 					<h4 class="tit_subject">디자인</h4>
 					<div class="area_summary">
-					
+
 						<p></p>
 					</div>
 					<ul class="list_detail">
 						<c:forEach var="img" items="${ imgList}">
-							<li data-thumb="1"><a href="#none"
-								 class="link_thumb" data-lightbox="car-img"> <img
-									alt="" src="${path}/resources/upload/${img.img_name}"
-									class="thumb_g"> <span class="frame_g"></span>
+							<li data-thumb="1"><a
+								href="${path}/resources/upload/${img.img_name}"
+								class="link_thumb" data-lightbox="car-img" target="_blank">
+									<img alt="" src="${path}/resources/upload/${img.img_name}"
+									class="thumb_g" style="height: 108px"> <span
+									class="frame_g"></span>
 							</a></li>
 						</c:forEach>
 
@@ -159,45 +184,61 @@
 
 						<p></p>
 					</div>
-					<ul class="list_detail">
-						<li data-thumb="0"><a href="#none"
-							class="link_thumb" onclick="fnImgPop(this.src)"> <img
-								alt="" src="${path }/resources/upload/${car.formt_img}"
-								class="thumb_g"> <span class="frame_g"></span>
-						</a></li>
-						<li data-thumb="1"><a href="#none"
-							class="link_thumb" onclick="siImgPop(this.src)"> <img
-								alt="" src="${path }/resources/upload/${car.side_img}"
-								class="thumb_g"> <span class="frame_g"></span>
-						</a></li>
+					<ul class="list_detail2">
+						<li data-thumb="0"><a href="#none" class="link_thumb"
+							onclick="fnImgPop(this.src)"> <img alt=""
+								src="${path }/resources/upload/${car.formt_img}" class="thumb_g"
+								style="width: auto; height: 82px; margin: 15px auto 0;"> <span
+								class="frame_g"></span>
+						</a>
+						<div style="text-align: center">너비:${car.width }</div>
+							<div style="text-align: center">높이:${car.height }</div></li>
+
+						<li data-thumb="1"><a href="#none" class="link_thumb"
+							onclick="siImgPop(this.src)"> <img alt=""
+								src="${path }/resources/upload/${car.side_img}" class="thumb_g"
+								style="width: auto; height: 82px; margin: 15px auto 0;"> <span
+								class="frame_g"></span>
+						</a>
+						<div style="text-align: center">휠베이스:${car.wheelbase }</div>
+							<div style="text-align: center">길이:${car.length }</div></li>
 
 					</ul>
 					<p class="desc_detail"></p>
 				</div>
 				<!-- 댓글 START -->
 				<form method="post"
-					action="${path }/car/reviewInsert.do?cno=${car.cno}">
+					action="${path }/car/reviewInsert.do?cno=${car.cno}" onsubmit="return loginCheck('${id}')">
 					<div class="box_comment">
 						<div class="cmt_total">
 							<h4 class="tit_cmt">댓글 ${total }개</h4>
 							<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
 
-								<!-- 평점 이미지 자리 --> <span class="raging_g"> <fmt:formatNumber
-										pattern="#.#">${rateAvg }</fmt:formatNumber> <c:forEach
-										begin="1" end="${rateAvg }">★
-								</c:forEach>
+								<!-- 평점 이미지 자리 --> <span class="raging_g">
+								<c:if test="${rateAvg>0 }">
+										<fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber> 
+											<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
+       						   					   <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
+     								  		 </c:forEach>
+     								    	<c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
+              									 <img alt="" src="${path }/resources/images/car/half_star.png" class="star_img">
+          									</c:if>
+          								</c:if>
+          								<%-- <c:if test="${rateAvg<=0 }">
+          									<div class="no_tit">0</div>
+          								</c:if> --%>
+          								
 							</span>
 
 							</span>
 						</div>
 						<!-- 평점 END -->
-						<c:if test="${empty id }"></c:if>
-						<c:if test="${not empty id }">
+						
 							<div class="cmt_write">
 								<div class="opt_g">
 									<em class="blind">평점 선택</em>
 									<fieldset class="rate">
-										<input type="radio" id="rating5" name="rating" value="5">
+										<input type="radio" id="rating5" name="rating" value="5" r>
 										<label class="rating5" for="rating5" title="5점"></label> <input
 											type="radio" id="rating4" name="rating" value="4"> <label
 											for="rating4" title="4점"></label> <input type="radio"
@@ -221,9 +262,10 @@
 										type="submit" class="btn_cmt" value="등록"
 										style="cursor: pointer">
 								</div>
-						</c:if>
+						
 						<!-- 댓글목록 START -->
 						<div>
+						
 							<ul class="list_comment">
 								<c:forEach var="review" items="${reviewList }">
 									<li><span class="detail_rating type_rating"> <span
@@ -234,10 +276,11 @@
 										</span> <span class="txt_user">${review.id }</span>
 									</span>
 
-										<p class="desc_cmt">${review.re_content }</p> <a
-										class="delete"
-										href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
-										<span class="txt_date">${review.re_date }</span></li>
+										<p class="desc_cmt">${review.re_content }</p> <c:if
+											test="${id == review.id }">
+											<a class="delete"
+												href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
+										</c:if> <span class="txt_date">${review.re_date }</span></li>
 
 								</c:forEach>
 							</ul>
@@ -249,8 +292,8 @@
 							<ul class="pagination justify-content-center m-3">
 								<c:if test="${pb.startPage > pb.pagePerBlock}">
 									<li class="page-item"><a class="page-link link"
-										href="carView.do?cno=${car.cno }&pageNum=1">
-											<i class="bi bi-arrow-left-square-fill">&laquo;</i>
+										href="carView.do?cno=${car.cno }&pageNum=1"> <i
+											class="bi bi-arrow-left-square-fill">&laquo;</i>
 									</a></li>
 									<li class="page-item"><a class="page-link link"
 										href="carView.do?cno=${car.cno }&pageNum=${pb.startPage-1}">
