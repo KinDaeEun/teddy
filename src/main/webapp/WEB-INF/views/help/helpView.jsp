@@ -17,11 +17,11 @@
 </head>
 
 <body>
-	<div class="container top" align="center">
+	<div class="container pg_top v_hbb" align="center">
 		<div class="inner join-inner h_view">
 			<div class="veiw_fx mg h_t">
 				<div></div>
-				<h3 class="h_title">${id }님의문의사항</h3>
+				<h3 class="h_title" style="margin-bottom: 50px">${id }님의문의사항</h3>
 				<%-- 				<a href="${path }/help/helpUpdateForm.do?hno=${help.hno}&pageNum=${pageNum }" class="mr">수정하기</a>  --%>
 				<a
 					href="${path }/help/helpDelete.do?hno=${help.hno}&pageNum=${pageNum }"
@@ -31,22 +31,22 @@
 				<div class="mb-3 row">
 					<label for="staticEmail" class="col-sm-2 col-form-label">제목</label>
 					<div class="col-sm-10">
-						<input type="text" readonly class="form-control-plaintext"
+						<input type="text" readonly class="form-control"
 							value="${help.h_title }">
 					</div>
 				</div>
 				<div class="mb-3 row">
 					<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
 					<div class="col-sm-10">
-						<input type="text" readonly class="form-control-plaintext"
-							value="${help.h_content }">
+						<textarea class="form-control" rows=7>${help.h_content }
+							</textarea>
 					</div>
 				</div>
 
 				<c:if test="${help.h_fileName != null }">
 					<div class="mb-3 row">
 						<label for="inputPassword" class="col-sm-2 col-form-label">사진</label>
-						<div class="col-sm-10">
+						<div class="img" style="width: 0 !important;">
 							<img src="${path}/resources/upload/${help.h_fileName}"
 								class="h_img" alt="...">
 						</div>
@@ -60,8 +60,11 @@
 				</c:if>
 			</div>
 		</div>
+		
+		<hr style="color: #bdbdbd">
+		
 		<div>
-			<h3 class="h_reply text-center">${id }님의문의사항답변</h3>
+			<h3 class="h_reply text-center" style="margin-bottom: 50px">${id }님의문의사항답변</h3>
 
 			<c:if test="${help.r_content == 'n' }">
 				<div class="reply">
@@ -72,24 +75,9 @@
 			<c:if test="${help.r_content != 'n' }">
 				<div class="reply">
 					<div class="mb-3 row">
-						<label for="staticEmail" class="col-sm-2 col-form-label">문의제목</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext"
-								value="${help.h_title }">
-						</div>
-					</div>
-					<div class="mb-3 row">
-						<label for="inputPassword" class="col-sm-2 col-form-label">문의내용</label>
-						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext"
-								value="${help.h_content }">
-						</div>
-					</div>
-					<div class="mb-3 row">
 						<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
 						<div class="col-sm-10">
-							<input type="text" readonly class="form-control-plaintext"
-								value="${help.r_content }">
+							<textarea class="form-control" rows=7>${help.r_content }</textarea>
 						</div>
 					</div>
 				</div>

@@ -33,3 +33,7 @@ tr, th {
     background: #bdbdbd !important;
     border: none !important;
 }
+
+.add_news {
+	float: right;
+}

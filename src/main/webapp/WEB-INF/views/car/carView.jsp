@@ -56,6 +56,8 @@
 			return false;
 		}
 	}
+
+
 </script>
 </head>
 <body class="contents_l02">
@@ -171,6 +173,7 @@
 									<img alt="" src="${path}/resources/upload/${img.img_name}"
 									class="thumb_g" style="height: 108px"> <span
 									class="frame_g"></span>
+
 							</a></li>
 						</c:forEach>
 

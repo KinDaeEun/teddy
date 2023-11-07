@@ -23,4 +23,6 @@ public interface NewsService {
 
 	int adminDelete(News news);
 
+	int insert(News news);
+
 }

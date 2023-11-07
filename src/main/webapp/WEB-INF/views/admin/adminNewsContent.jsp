@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ include file="../headerBase.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,8 +44,16 @@
 				</tr>
 				<tr>
 					<th>내용</th>
-					<td colspan="2"><textarea rows="20" name="n_content"
+					<td colspan="2"><textarea rows="15" name="n_content"
 							class="form-control" readonly="readonly">${news.n_content }</textarea></td>
+				</tr>
+				<tr>
+					<th>표지 사진</th>
+					<td><img alt="" src="${path }/resources/images/news/${news.n_cover_img }"></td>
+				</tr>
+				<tr>
+					<th>첨부 사진</th>
+					<td><img alt="" src="${path }/resources/images/news/${news.n_img }"></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center">

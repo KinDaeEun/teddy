@@ -29,4 +29,10 @@
 	height: 200px;
 }
 
+.link {
+	background: none !important;
+	color: #333 !important;
+	border: none !important;
+}
+
 

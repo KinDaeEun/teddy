@@ -8,12 +8,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Teddy</title>
-<style type="text/css">
-.comment {
-	text-decoration: none;
-	color: #333;
-}
-</style>
 <link href="${path }/resources/images/teddy.ico" rel="shortcut icon"
 	type="image/x-icon" sizes="16x16">
 <script type="text/javascript">
@@ -23,7 +17,7 @@
 			e.preventDefault();
 			$('body').animate({
 				scrollTop : 0
-			}, 600);
+			}, 300);
 		});
 
 		$(window).scroll(function() {
@@ -44,7 +38,7 @@
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
-				<h1>Teddy</h1>
+				<h1 style="position: relative; top: 400px; float: left;">Teddy</h1>
 				<p></p>
 			</div>
 		</div>
@@ -60,7 +54,9 @@
 					</a>
 				</div>
 				<div class="items_car">
+
 					<c:forEach var="car" items="${carList }" begin="0" end="2">
+
 						<div class="item_car">
 							<div class="up-image">
 								<img src="${path}/resources/upload/${car.c_cover_img }">
@@ -84,34 +80,36 @@
 
 	<section class="testimonial" id="testimonial">
 		<div class="inner">
-			<div class="testimonial-content">
+			<div class="testimonial-content" style="width: 1310px;">
 				<h2>
 					<b>Best</b> community
 				</h2>
 				<hr>
+
 				<div class="myslider">
-					<div>
-						<c:if test="${empty board }">
-							<span>커뮤니티 내역이 존재하지 않습니다</span>
-						</c:if>
-					</div>
 					<c:if test="${not empty board }">
-						<c:forEach items="${board }" var="brd" begin="0" end="5">
-							<div>
-								<p class="client">
-									<img alt="" src="${path}/resources/upload/${brd.fileName}"><span><b>${brd.name }</b>${brd.b_title }</span>
-								</p>
-								<p>
-									<a class="comment"
-										href="${path }/board/boardView.do?bno=${brd.bno}">${brd.b_content }</a>
-								</p>
-							</div>
+
+						<c:forEach items="${board }" var="brd" varStatus="v">
+							<c:if test="${v.index < 8 }">
+								<figure class="snip1157">
+									<blockquote style="font-size: 15px;">
+										${brd.b_content }
+										<div class="arrow"></div>
+									</blockquote>
+									<img src="${path}/resources/upload/${brd.fileName}"
+										alt="sq-sample3" />
+									<div class="author">
+										<h5>
+											${brd.b_title } <span> ${brd.name }</span>
+										</h5>
+									</div>
+								</figure>
+							</c:if>
 						</c:forEach>
 					</c:if>
 				</div>
 			</div>
 		</div>
-
 	</section>
 
 	<section class="callaction" id="callaction">

@@ -23,4 +23,6 @@ public interface NewsDao {
 
 	int adminDelete(News news);
 
+	int insert(News news);
+
 }
