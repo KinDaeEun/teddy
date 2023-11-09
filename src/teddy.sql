@@ -597,5 +597,5 @@ insert into review values(review_seq.nextval,3,6,3,'좋은 차입니다',sysdate
 insert into review values(review_seq.nextval,4,6,4,'좋은 차입니다',sysdate,'n');
 
 
-
+select * from member;
 
