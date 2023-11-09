@@ -10,6 +10,10 @@
 <title>Teddy</title>
 <link href="${path }/resources/images/teddy.ico" rel="shortcut icon"
 	type="image/x-icon" sizes="16x16">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script
+	src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script type="text/javascript">
 	/* 맨 위로 */
 	$(function() {
@@ -38,10 +42,12 @@
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
-				<h1 style="position: relative; top: 400px; float: left;">Teddy</h1>
+				<h2 style="float: left; margin-top: 150px;">Teddy</h2>
 				<p></p>
 			</div>
 		</div>
+
+
 	</main>
 
 	<section class="ranking" id="ranking">
@@ -139,7 +145,7 @@
 										alt="sq-sample3" />
 									<div class="author">
 										<h5>
-											${brd.b_title } <span> ${brd.name }</span>
+											${brd.b_writer } <span> </span>
 										</h5>
 									</div>
 								</figure>
