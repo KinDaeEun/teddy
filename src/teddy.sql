@@ -13,15 +13,17 @@ create table member (
     gender varchar2(20),            -- 성별
     regdate date,                   -- 가입날짜
     fileName varchar2(100),           -- 프로필
-    m_del char(1)                   -- 회원탈퇴여부
+    m_del char(1),                   -- 회원탈퇴여부
+    member_auth number default 0
 );
-alter table member add member_auth number default 0;
+
 select * from member;
 drop table member;
 
-create table MEMBER_AUTH(MEMBEREMAIL varchar2(100),AUTHKEY varchar2(50));
-select * from car;
-
+create table MEMBER_AUTH(
+MEMBEREMAIL varchar2(100),
+AUTHKEY varchar2(50)
+);
 
 
 -- 차량
@@ -57,14 +59,7 @@ select * from car;
 	
 
 create sequence car_seq start with 1 increment by 1 maxvalue 999999;
-select * from car;
 drop table car;
-
-drop sequence car_seq;
-
-
-DROP TABLE car CASCADE CONSTRAINTS;
-drop sequence car_seq;
 
 
 -- 차량 이미지
@@ -76,9 +71,9 @@ create table design_img(
 );
 
 create sequence design_img_seq start with 1 increment by 1 maxvalue 999999;
-select * from DESIGN_IMG;
+
 drop table design_img;
-drop sequence design_img_seq;
+
 
 
 create FUNCTION get_seq
@@ -97,9 +92,8 @@ create table compliment(
 	cp_del char(1), --삭제여부
 	id varchar2(20) references member(id) --등록한 id
 );
-drop sequence compliment_seq;
+
 drop table compliment;
-select * from compliment;
 create sequence compliment_seq start with 1 increment by 1 maxvalue 999999;
 
 -- 게시판
@@ -115,7 +109,6 @@ create table board (
     foreign key(id) references member(id)
 );
 create sequence board_seq start with 1 increment by 1 maxvalue 999999;
-select * from board;
 drop table board;
 drop sequence board_seq;
 
@@ -132,9 +125,8 @@ create table notice (
     foreign key(id) references member(id)
 );
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
-select * from notice;
 drop table notice;
-drop sequence notice_seq;
+
 
 -- 시승예약
 create table reservation (
@@ -155,9 +147,7 @@ create table reservation (
 );
 
 create sequence reservation_seq start with 1 increment by 1 maxvalue 999999;
-select * from reservation;
 drop table reservation;
-drop sequence reservation_seq;
 
 
 
@@ -175,7 +165,6 @@ create table help (
     foreign key(id) references member(id)
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
-select * from help;
 drop table help;
 
 
@@ -192,10 +181,8 @@ create table review (
     foreign key(cno) references car(cno)
 );
 create sequence review_seq start with 1 increment by 1 maxvalue 999999;
-
-select * from review;
 drop table review;
-drop sequence review_seq;
+
 
 
 -- 뉴스
@@ -210,8 +197,8 @@ create table news (
     n_del char(1)                   -- 뉴스 삭제 여부
 );
 create sequence news_seq start with 1 increment by 1 maxvalue 999999;
-select * from news;
 drop table news;
+
 
 
 
@@ -223,7 +210,6 @@ create table center (
 	find_center varchar2(50) 
 );
 create sequence center_seq start with 1 increment by 1 maxvalue 999999;
-drop sequence center_seq;
 drop table center;
 
 
@@ -285,62 +271,7 @@ insert into center values (center_seq.nextval, '현대', '강동', '현대자동
 select * from review;
 
 -- 뉴스 데이터
-insert into news values( 
-	news_seq.nextval,
-	'n2.jpg',
-	'n2-1.jpg',
-	'기아 EV9 (6인승)시승기 ? 좋긴 한데, 한번만 더 생각해보자',
-	'EV9 은 분명 매력적인 상품성을 갖고 있다. 그런데, 큰 전기 SUV 를 찾는 사람들에게는 꽤 괜찮은 선택이 되겠지만, 과격한 드라이빙 습관이 좀 있다면, 이 차는 롤이 있는 편이어서 어울리지 않는다. 그리고 크고 무거워지면서 배터리 용량이 커졌어도 아이오닉5와 비교해 주행가능거리는 큰 차이가 나지 않는다.
-		EV9 을 보고 전기차의 목적에 대한 생각을 다시 하게 되었다. 분명 시장에서 요구를 하니깐 대형 전기 SUV 를 만든 것이겠지만, 탄소중립을 위한 전기차가 목적이라면 소형 전기차가 그 목적을 달성하는데 더 큰 도움이 될 수 있다. 큰 배터리로 충전시간도 더 늘어났고, 차가 무거워졌다. 소형 전기차에 적당한 사이즈의 전기차라면 가벼워 충분히 여유로운 주행거리를 보일 수 있는데, 배터리 자원을 더 많이 쓰게 된다는 점에서 친환경차를 위한 전기차라기보다는, 상품성을 위한 전기차라는 생각이 더 많이 들게 된다.
-		분명 EV9 은 모던하고 굵직한 실내외 디자인과 다양한 공간 연출이 가능한 구성 및 각종 편의사양과 하이테크 및 안전사양들은 매력적으로 상품성이 좋다. 하지만, 큰 전기차로 무엇을 할지 한번 잘 생각해보고, 전기차를 선택하는 이유가 무엇인지도 한번 더 생각해보길 바란다. 목적에 맞다면 EV9 은 좋은 차다.',
-	'테디',
-	sysdate,
-	'n'
-	);
-insert into news values( 
-	news_seq.nextval,
-	'n1.jpg',
-	'n1-1.jpg',
-	'제네시스 GV80 쿠페, 마케팅으로써의 디자인',
-	'현대자동차에서 제네시스가 브랜드로 분리된 건 2015년이었다. 대략 8년의 시간이 흘렀다. 제네시스는 짧은 기간만에 자사만의 확고한 브랜드 아이덴티티를 구축한 바 있다. 제네시스의 엠블럼을 형상화한 크레스트 그릴, 그리고 날개를 형상화한 두 줄 캐릭터가 그 예시이다. 그러한 투-라인 룩을 정립한 차종이 초기형 GV80이었다. 그 앞에 G70의 두 줄 DRL이나 EQ900의 페이스리프트로 출시한 G90도 제네시스의 디자인 방향성을 제시하고는 했다. 하지만 시작부터 철저히 제네시스 브랜드만의 디자인 언어로 설계된 차종은 GV80이 최초였다는 의미다.
-		GV80에서 전달하고자 하는 디자인 언어는 역동적인 우아함이라고 했다. 그리고 역동성과 우아함을 묘사할 수 있는 여러 픽션을 묘사했다. 헤드램프의 단정하고 간결한 그래픽, 굵은 몰딩을 지닌 범퍼와 크레스트 그릴, 플래그 타입으로 거치된 사이드미러 등 우아함을 자극할 수 있는 디테일들은 많다. 여기서 역동성을 표현하는 부분은 차체 전반에 거친 윤곽선과 비율 감각이다. 길게 뻗어있는 보닛이나 차체 뒤편으로 갈수록 낮아지는 캐릭터 라인, 앞뒤 휠 아치를 강조하는 차체 굴곡이 좋은 예시다. 제네시스는 각각의 라인에 파라볼릭 라인, 애슬레틱 파워 라인 이라는 설명을 덧붙인다.
-		제네시스가 양산차량에 할 수 있는 최선을 담은 모델이다. 쿠페라는 점에서 실용성이 아닌 멋을 따져보는게 합리적인 시각이 된다. 반대로 말하면 제네시스의 멋을 가감없이 소비자들에게 전달할 수 있는 수단이라는 것이다. 판매량과 수익성도 물론 중요하겠지만, GV80이 쿠페로서 보여줘야 하는 성과가 금전적 가치만이 되어서는 안 된다. 많은 사람들이 GV80 쿠페를 접함으로써 브랜드에 대한 인식이 뒤바뀔 수 있다면 된다. 그 존재만으로 성과가 되는 것이다. 사변적으로 GV80 쿠페의 디자인은 멋있다. 하지만 명맥을 이어나가야 한다. 제네시스의 일회성 퍼포먼스로 마무리되지 않기를 기대해 본다.',
-	'테디',
-	sysdate,
-	'n'
-	);
-	
-insert into news values( 
-	news_seq.nextval,
-	'n3.jpg',
-	'n3-1.jpg',
-	'기아 EV3,EV4,EV5 포토 공개',
-	'기아는 이날 세계 최초로 EV4 콘셉트와 EV3 콘셉트를 공개하며 기아 전기차 라인업에 새롭게 추가될 모델을 예고했다.
-	기아글로벌디자인센터 카림 하비브 부사장은 “기아는 EV9과 EV6를 비롯해 EV5, EV4 콘셉트, EV3 콘셉트의 디자인을 통해 새로운 세대의 고객에게 더욱 의미있고 더 나은 방향의 경험과 가치를 제공할 것을 약속하고 있다”고 밝혔다.
-	EV4 콘셉트는 오퍼짓 유나이티드의 ‘미래를 향한 혁신적 시도(Power to Progress)’를 주제로 세단에 대한 고정관념을 깨고 기아가 추구하는 차세대 전동화 세단의 방향성을 보여준다.
-	전면부는 낮은 후드 형상을 강조하는 넓고 당당한 자세가 담대한 인상을 나타내며 기하학적 조화를 이룬 세부 디자인 요소와 패턴, 스타맵 시그니처 라이팅을 적용해 기술적으로 완성도 높은 느낌을 연출했다.
-	측면부는 롱-테일(Long-tail) 이미지를 구현하는 데크(Deck, 리어 글라스에서 트렁크 끝단까지 이어지는 부분)가 낮게 떨어지는 후드 끝단과 함께 새로운 유형의 실루엣을 연출한다.
-	후면부는 기존 세단에서 볼 수 없었던 독창적인 형상의 루프 스포일러와 수직 방향의 테일램프로 테일게이트의 넓은 폭과 깔끔한 면을 강조한다.
-	EV4 콘셉트의 실내는 깔끔하고 넓은 수평형 구조를 바탕으로 세련된 디자인 요소를 운전자의 시야가 방해되지 않도록 적용해 운전자 지향적인 공간을 갖췄다.
-	이를 위해 미사용 시 센터페시아에 수납할 수 있는 공조 조작 패널을 배치하고, 패턴을 바꿀 수 있는 핀(Pin) 스타일 에어벤트를 적용하는 등 실내 디자인 요소를 다듬었다.
-	또한 지속가능성을 고려, 대지(Earth)의 요소에서 영감을 받아 100% 재활용된 면사에 호두껍질 등을 천연 염료로 사용해 실내에 다양한 색상을 구현했다.
-	EV3 콘셉트는 강인하고 기하학적으로 조화를 이룬 차체에 역동적인 루프라인으로 ‘이유 있는 즐거운 경험(Joy for Reason)’을 잘 표현한 실루엣을 갖췄다.',
-	'테디',
-	sysdate,
-	'n'
-	);
-insert into news values( 
-   news_seq.nextval,
-   'n2.jpg',
-   'n2-1.jpg',
-   '기아 EV9 (6인승)시승기 ? 좋긴 한데, 한번만 더 생각해보자',
-   'EV9 은 분명 매력적인 상품성을 갖고 있다. 그런데, 큰 전기 SUV 를 찾는 사람들에게는 꽤 괜찮은 선택이 되겠지만, 과격한 드라이빙 습관이 좀 있다면, 이 차는 롤이 있는 편이어서 어울리지 않는다. 그리고 크고 무거워지면서 배터리 용량이 커졌어도 아이오닉5와 비교해 주행가능거리는 큰 차이가 나지 않는다.
-      EV9 을 보고 전기차의 목적에 대한 생각을 다시 하게 되었다. 분명 시장에서 요구를 하니깐 대형 전기 SUV 를 만든 것이겠지만, 탄소중립을 위한 전기차가 목적이라면 소형 전기차가 그 목적을 달성하는데 더 큰 도움이 될 수 있다. 큰 배터리로 충전시간도 더 늘어났고, 차가 무거워졌다. 소형 전기차에 적당한 사이즈의 전기차라면 가벼워 충분히 여유로운 주행거리를 보일 수 있는데, 배터리 자원을 더 많이 쓰게 된다는 점에서 친환경차를 위한 전기차라기보다는, 상품성을 위한 전기차라는 생각이 더 많이 들게 된다.
-      분명 EV9 은 모던하고 굵직한 실내외 디자인과 다양한 공간 연출이 가능한 구성 및 각종 편의사양과 하이테크 및 안전사양들은 매력적으로 상품성이 좋다. 하지만, 큰 전기차로 무엇을 할지 한번 잘 생각해보고, 전기차를 선택하는 이유가 무엇인지도 한번 더 생각해보길 바란다. 목적에 맞다면 EV9 은 좋은 차다.',
-   '테디',
-   sysdate,
-   'n'
-   );
+
 insert into news values( 
    news_seq.nextval,
    'n1.jpg',
@@ -353,6 +284,20 @@ insert into news values(
    sysdate,
    'n'
    );
+
+insert into news values( 
+   news_seq.nextval,
+   'n2.jpg',
+   'n2-1.jpg',
+   '기아 EV9 (6인승)시승기 ? 좋긴 한데, 한번만 더 생각해보자',
+   'EV9 은 분명 매력적인 상품성을 갖고 있다. 그런데, 큰 전기 SUV 를 찾는 사람들에게는 꽤 괜찮은 선택이 되겠지만, 과격한 드라이빙 습관이 좀 있다면, 이 차는 롤이 있는 편이어서 어울리지 않는다. 그리고 크고 무거워지면서 배터리 용량이 커졌어도 아이오닉5와 비교해 주행가능거리는 큰 차이가 나지 않는다.
+      EV9 을 보고 전기차의 목적에 대한 생각을 다시 하게 되었다. 분명 시장에서 요구를 하니깐 대형 전기 SUV 를 만든 것이겠지만, 탄소중립을 위한 전기차가 목적이라면 소형 전기차가 그 목적을 달성하는데 더 큰 도움이 될 수 있다. 큰 배터리로 충전시간도 더 늘어났고, 차가 무거워졌다. 소형 전기차에 적당한 사이즈의 전기차라면 가벼워 충분히 여유로운 주행거리를 보일 수 있는데, 배터리 자원을 더 많이 쓰게 된다는 점에서 친환경차를 위한 전기차라기보다는, 상품성을 위한 전기차라는 생각이 더 많이 들게 된다.
+      분명 EV9 은 모던하고 굵직한 실내외 디자인과 다양한 공간 연출이 가능한 구성 및 각종 편의사양과 하이테크 및 안전사양들은 매력적으로 상품성이 좋다. 하지만, 큰 전기차로 무엇을 할지 한번 잘 생각해보고, 전기차를 선택하는 이유가 무엇인지도 한번 더 생각해보길 바란다. 목적에 맞다면 EV9 은 좋은 차다.',
+   '테디',
+   sysdate,
+   'n'
+   );
+   
 insert into news values( 
    news_seq.nextval,
    'n3.jpg',
@@ -402,7 +347,8 @@ insert into news values(
    '테디',
    sysdate,
    'n'
-   );	
+   );
+
 	
 
 --차량추가
@@ -413,7 +359,7 @@ insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현�
 TO_DATE('2019-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전륜','160 / 6,500','맥퍼슨 스트럿 ,멀티 링크',
 '20 / 4,800','4개 / 벤틸레이티드 디스크 2개','9','241','n',1860,1445,2840,4900,'Hyundai Sonata (DN8)front.jpg','Hyundai Sonata (DN8)side.jpg');
 
-insert into car values(car_seq.nextval,'현대 LF 쏘나타',2255,2860,'현대','현대 LF 쏘나타cover.jpg','Hyundai Sonata (DN8).jpg','‘중형차’를 사려는 마음으로 접근하면 일부분에서 아쉬움이 느껴져요. SM6의 고급감도 없고 말리부의 디자인 내지 파워트레인적 혁신도 없으니까요. 실내는 온통 플라스틱 일색이고 2.0L의 자연흡기 엔진은 성능이나 연비 면에서 장점이 없습니다.
+insert into car values(car_seq.nextval,'현대 LF 쏘나타',2255,2860,'현대','현대 LF 쏘나타cover.jpg','현대 LF 쏘나타.jpg','‘중형차’를 사려는 마음으로 접근하면 일부분에서 아쉬움이 느껴져요. SM6의 고급감도 없고 말리부의 디자인 내지 파워트레인적 혁신도 없으니까요. 실내는 온통 플라스틱 일색이고 2.0L의 자연흡기 엔진은 성능이나 연비 면에서 장점이 없습니다.
 하지만 이게 쏘나타의 매력 아닌 매력입니다. 짐짓 보수적인 스타일과 광활한 실내 공간, 너무나 편한 정비성, 무난한 운동성까지 모난 데 없어 이동수단으로서 쓰기 좋거든요. 미국 소비자들이 토요타 캠리에 느낄 수 있는 매력을, 그야말로 "무색 무취 무미"와 같은 자동차로서의 감각을 한국 소비자들은 현대 쏘나타를 통해 만나볼 수 있다는 겁니다. 가족용 자동차 또는 편한 출퇴근용 자동차로 추천합니다.','중형차',
 TO_DATE('2014-03-01', 'YYYY-MM-DD'),'Smartstream G2.0','자동 6단',1999,'전륜','168 / 6,500','맥퍼슨 스트럿 ,멀티 링크',
 '20.5 / 4,800','4개 / 벤틸레이티드 디스크 2개','11.6','190','n',1865,1475,2805,4855,'현대 LF 쏘나타front.jpg','현대 LF 쏘나타side.jpg');
@@ -512,7 +458,7 @@ insert into car values(car_seq.nextval,'기아 올 뉴 K7',3053,3657,'기아','�
 TO_DATE('2016-01-26', 'YYYY-MM-DD'),'Gamma 1.6 CVVT','자동6단',2359,'전륜','190 / 6000','맥퍼슨 스트럿 ,멀티 링크',
 '24.6 / 4000','4개 / 벤틸레이티드 디스크 2개','9.6','190','n',1870,1470,2855,4970,'기아 올 뉴 K7front.jpg','기아 올 뉴 K7side.jpg');
 
-insert into car values(car_seq.nextval,'기아 더 뉴 K3',1590,2585,'기아','기아 더 뉴 K3cover.jpg','기아 더 뉴 K3cover.jpg','더 뉴 K3는 기존 K3를 소소하게 바꾼 차입니다. 앞모습 손질과 휠 디자인 변화를 명분으로 ‘더 뉴’ 수식어 붙인 거죠.
+insert into car values(car_seq.nextval,'기아 더 뉴 K3',1590,2585,'기아','기아 더 뉴 K3cover.jpg','기아 더 뉴 K3.jpg','더 뉴 K3는 기존 K3를 소소하게 바꾼 차입니다. 앞모습 손질과 휠 디자인 변화를 명분으로 ‘더 뉴’ 수식어 붙인 거죠.
  한데 구형 K3와 비교해 바뀐 게 별로 없습니다. 이따금 도로에서 마주치면 어떤 게 그냥 K3이고 어떤 게 더 뉴 K3인지 단번에 알기 힘들 정도. 이 때문에 더 뉴 K3도 구형과 마찬가지로 스타일이 심심합니다. 아마 대부분의 사람들은 쌍용 티볼리보다 성의 없는 디자인이라고 할 거예요. 실내도 구닥다리 감각입니다.
  이제는 한 세대 전으로 느껴지는 디자인 철학이 스몄지요. 멀티미디어 시스템 조작부가 낮게 달려 쓰기 불편하다는 점도 문제입니다. 아울러 대시보드나 문짝에 스민 생선 비늘 무늬는 난해한 디자인 포인트입니다.
 이처럼 디자인은 임팩트 약합니다만 가속 능력이 구형보다 한층 빨라진 게 눈에 띕니다. 엔진 실용영역의 힘을 끌어올리고 변속기 로직을 개선한 덕분이지요. 이로써 웬만해서는 도로에서 흐름을 놓치지 않고 잘 달릴 수 있습니다. 비교적 잘 조율된 하체도 울룩불룩한 시내 노면을 잘 소화합니다.
@@ -520,7 +466,7 @@ insert into car values(car_seq.nextval,'기아 더 뉴 K3',1590,2585,'기아','�
 TO_DATE('2018-02-27', 'YYYY-MM-DD'),'Gamma 1.6 CVVT','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빈',
 '15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','10','185','n',1800,1440,2700,4640,'기아 더 뉴 K3front.jpg','기아 더 뉴 K3side.jpg');
 
-SELECT * FROM CAR;
+
 
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
@@ -610,46 +556,46 @@ insert into design_img values(design_img_seq.nextval,'기아 모하비 더 마�
 insert into design_img values(design_img_seq.nextval,'기아 K5 2세대design1.jpg',18);
 insert into design_img values(design_img_seq.nextval,'기아 K5 2세대design2.jpg',18);
 insert into design_img values(design_img_seq.nextval,'기아 K5 2세대design3.jpg',18);
-insert into design_img values(design_img_seq.nextval,'기아 K5 2세대design4.jpg',18);
 
+insert into design_img values(design_img_seq.nextval,'기아 올 뉴 K7design1.jpg',19);
+insert into design_img values(design_img_seq.nextval,'기아 올 뉴 K7design2.jpg',19);
+insert into design_img values(design_img_seq.nextval,'기아 올 뉴 K7design3.jpg',19);
 
-select * from review;
-update review set re_del ='n' where re_no = 4;
-
-
-
-insert into board values(board_seq.nextval,1,'볼보차',1,'현대,기아 한국 자동차만 시승하다가 이제 슬슬 질리는데 혹시 외제차 볼보나 bmw는 시승못하는 건가요?',
-sysdate,100,'n');
-
-insert into board values(board_seq.nextval,2,'와 이건 개쩐다',2,'여러분들 현대 EV9 너무 좋네요 저희가 5인가족인데 자리도 넓고 차가 안정감이 뛰어난 것 같아요 혹시 
-구매 고민중이시면 꼭 시승 해보세요',sysdate,99,'n');
-
-insert into board values(board_seq.nextval,3,'너무 이뻐요',3,'Ray EV 구매 고민중에 이번에 시승해 봤는데 역시 사야겠어요 차도 이쁘고 무엇보다 한번 충전으로 
-엄청 오래 달려서 너무 좋은것 같아요 바로 구매하러 달려갑니다.',sysdate,98,'n');
-
-insert into board values(board_seq.nextval,4,'시승 잘했네요',4,'이번에 애가 생기면서 무슨 차를 사야하나 고민중이였는데 테디는 여러차를 시승할수 있다고 들어서 시승예약하고 여러개 시승해봤어요
-역시 시승하길 잘했다고 생각이들고 시승 도와 주시는 분도 친절하셔서 기분좋게 시승하고 왔어요',sysdate,97,'n');
-
-insert into board values(board_seq.nextval,5,'추천해요',5,'시승예약부터 시승까지 직원 분들이 꼼꼼하게 신경 써 주시고 편안하고 친절하게 대해 주셔서 주변 분들에 시승 할 생각있으신 분 있으면 무저건 추천 할려고요 ',sysdate,96,'n');
-
-insert into board values(board_seq.nextval,6,'회사차구매',6,'회사 전용 차가 필요해서 알아보다가 시승 서비스를 제공하는 테디를 알게되었네요 덕분에 시승하고 맘에 드는 차로 구매완료!!!!',sysdate,95,'n');
+insert into design_img values(design_img_seq.nextval,'기아 더 뉴 K3design1.jpg',20);
+insert into design_img values(design_img_seq.nextval,'기아 더 뉴 K3design2.jpg',20);
+insert into design_img values(design_img_seq.nextval,'기아 더 뉴 K3design3.jpg',20);
 
 
 
---멤버추가
 insert into member values(1,1,'김대은','kde20@naver.com','남자',sysdate,'1.png','n',0);
 insert into member values(2,1,'김승현','ksh26@naver.com','여자',sysdate,'2.png','n',0);
 insert into member values(3,1,'이영세','lys25@naver.com','남자',sysdate,'3.png','n',0);
 insert into member values(4,1,'양형욱','yho29@naver.com','남자',sysdate,'4.png','n',0);
-insert into member values(5,1,'강병준','kbj00@naver.com','남자',sysdate,'k8.gif','n',0);
-insert into member values(6,1,'그린 컴퓨터','green@naver.com','여자',sysdate,'green.png','n',0);
+insert into member values(5,1,'정성재','ddm00@naver.com','남자',sysdate,'5.png','n',0);
+insert into member values(6,1,'그린 컴퓨터','green@naver.com','여자',sysdate,'6.png','n',0);
 
 
-select notice_seq.nextval from dual;
-desc notice;
+
+insert into board values(board_seq.nextval,1,'볼보차',1,'현대,기아 한국 자동차만 시승하다가 이제 슬슬 질리는데 혹시 외제차 볼보나 bmw는 시승못하는 건가요?',sysdate,100,'n');
+insert into board values(board_seq.nextval,2,'와 이건 개쩐다',2,'여러분들 현대 EV9 너무 좋네요 저희가 5인가족인데 자리도 넓고 차가 안정감이 뛰어난 것 같아요 혹시 구매 고민중이시면 꼭 시승 해보세요',sysdate,99,'n');
+insert into board values(board_seq.nextval,3,'너무 이뻐요',3,'Ray EV 구매 고민중에 이번에 시승해 봤는데 역시 사야겠어요 차도 이쁘고 무엇보다 한번 충전으로 엄청 오래 달려서 너무 좋은것 같아요 바로 구매하러 달려갑니다.',sysdate,98,'n');
+insert into board values(board_seq.nextval,4,'시승 잘했네요',4,'이번에 애가 생기면서 무슨 차를 사야하나 고민중이였는데 테디는 여러차를 시승할수 있다고 들어서 시승예약하고 여러개 시승해봤어요역시 시승하길 잘했다고 생각이들고 시승 도와 주시는 분도 친절하셔서 기분좋게 시승하고 왔어요',sysdate,97,'n');
+insert into board values(board_seq.nextval,5,'추천해요',5,'시승예약부터 시승까지 직원 분들이 꼼꼼하게 신경 써 주시고 편안하고 친절하게 대해 주셔서 주변 분들에 시승 할 생각있으신 분 있으면 무저건 추천 할려고요 ',sysdate,96,'n');
+insert into board values(board_seq.nextval,6,'회사차구매',6,'회사 전용 차가 필요해서 알아보다가 시승 서비스를 제공하는 테디를 알게되었네요 덕분에 시승하고 맘에 드는 차로 구매완료!!!!',sysdate,95,'n');
+
+
+insert into review values(review_seq.nextval,1,1,5,'성능 완전 좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,2,2,5,'성능 완전 좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,3,3,4,'성능 완전 좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,4,3,1,'완전 안 좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,2,18,5,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,5,6,3,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,5,4,4,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,5,5,4,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,6,5,5,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,3,6,3,'좋은 차입니다',sysdate,'n');
+insert into review values(review_seq.nextval,4,6,4,'좋은 차입니다',sysdate,'n');
+
 
 select * from member;
-
-
-
 

@@ -81,9 +81,9 @@
 										
 										<label class="test_obj"> <input type="radio"
 											name="order" value="cno"> <span>업데이트순</span>
-										</label> <label class="test_obj"> <input type="radio"
+										</label>  <label class="test_obj"> <input type="radio"
 											name="order" value="avg_rating"> <span>종합 평가 순</span>
-										</label>
+										</label> 
 									</div>
 								</div>
 								<input type="submit" value="조회" class="find_c">
@@ -93,10 +93,6 @@
 				</fieldset>
 			</form>
 			<!-- 검색 끝 -->
-
-
-			
-
 
 			<div class="cont">
 				<h3 class="blind">차량</h3>
