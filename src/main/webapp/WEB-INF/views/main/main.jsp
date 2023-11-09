@@ -71,7 +71,6 @@
 						</div>
 					</c:forEach>
 					<%-- <div class="item_car">
-						
 						<div class="up-image">
 							<img src="${path}/resources/images/main/best-city-01.jpg">
 						</div>
