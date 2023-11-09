@@ -25,12 +25,12 @@
 	</update>
 	<select id="findId" parameterType="string" resultType="member">
 		select *
-		from member where email = #{email}
+		from member where email = #{email} and m_del='n'
 	</select>
 
 	<select id="findIdCheck" resultType="integer">
 		select count(*) from member
-		where email = #{email}
+		where email = #{email} and m_del='n'
 	</select>
 
 	<select id="adminMbTotal" resultType="integer"

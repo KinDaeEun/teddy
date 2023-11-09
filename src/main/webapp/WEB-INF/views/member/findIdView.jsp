@@ -34,7 +34,7 @@
 		</form>
 		<hr>
 		<div align="center">
-			<a href="${path}/member/login.do" class="btn btn-google btn-user btn-block">
+			<a href="${path}/member/loginForm.do" class="btn btn-google btn-user btn-block">
 				로그인 </a>
 			<div class="text-center">
 				<a class="btn btn-google btn-user btn-block" href="${path}/main/main.do">메인페이지</a>

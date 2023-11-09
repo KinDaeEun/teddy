@@ -98,16 +98,18 @@
 						<c:forEach items="${board }" var="brd" varStatus="v">
 							<c:if test="${v.index < 8 }">
 								<figure class="snip1157">
-									<blockquote style="font-size: 15px;">
+									<blockquote style="font-size: 15px;  height:230px; vertical-align: bottom;" >
 										${brd.b_content }
 										<div class="arrow"></div>
 									</blockquote>
 									<img src="${path}/resources/upload/${brd.fileName}"
 										alt="sq-sample3" />
-									<div class="author">
+									<div class="author" style="color: black;">
 										<h5>
 											${brd.b_writer } <span> </span>
+											${brd.b_title } 
 										</h5>
+										<span> ${brd.name }</span>
 									</div>
 								</figure>
 							</c:if>
