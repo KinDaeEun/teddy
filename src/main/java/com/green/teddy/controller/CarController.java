@@ -109,6 +109,7 @@ public class CarController {
 		
 		float rateAvg = res.rateAvg(cno);
 		
+		
 		model.addAttribute("pb", pb);
 		model.addAttribute("pageNum", pageNum);
 		model.addAttribute("num", num);
@@ -120,6 +121,7 @@ public class CarController {
 		model.addAttribute("imgList", imgList);
 		model.addAttribute("reviewList", reviewList);
 		model.addAttribute("cno", cno);
+		model.addAttribute("id", id);
 
 
 	}

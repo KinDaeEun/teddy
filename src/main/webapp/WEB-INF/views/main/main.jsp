@@ -60,7 +60,9 @@
 					</a>
 				</div>
 				<div class="items_car">
-					<c:forEach var="car" items="${carList }" begin="1" end="3">
+
+					<c:forEach var="car" items="${carList }" begin="0" end="2">
+
 						<div class="item_car">
 							<div class="up-image">
 								<img src="${path}/resources/upload/${car.c_cover_img }">
@@ -76,49 +78,7 @@
 							</div>
 						</div>
 					</c:forEach>
-					<%-- <div class="item_car">
-						
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-01.jpg">
-						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>The Kia, Ray EV</h3>
-							<p>London’s main sights might date back millennia, but the
-								capital’s shops, bars, hotels, and restaurants emerge and evolve
-								on an almost weekly basis.</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
-						</div>
-					</div>
-					<div class="item_car">
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-02.jpg">
-						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>Volkswagen, The Arteon</h3>
-							<p>New York’s performing arts scene—both on Broadway and
-								off—is beloved by visitors and locals alike, so it’s no surprise
-								that the Big Apple took the number one spot.</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
-						</div>
-					</div>
-					<div class="item_car">
-						<div class="up-image">
-							<img src="${path}/resources/images/main/best-city-03.jpg">
-						</div>
-						<div class="down-desc">
-							<span class="badge good">Good to go</span>
-							<h3>London, England</h3>
-							<p>Paris, France The Notre Dame fire was a devastating
-								reminder of how well-loved Paris is by travelers worldwide, and
-								as the capital gears up for the 2024 Olympics</p>
-							<a class="btn-explore" href="#none">Explore <img
-								src="${path}/resources/images/main/icon-arrow.png"></a>
-						</div>
-					</div> --%>
+
 				</div>
 			</div>
 		</div>
@@ -134,6 +94,7 @@
 
 				<div class="myslider">
 					<c:if test="${not empty board }">
+
 						<c:forEach items="${board }" var="brd" varStatus="v">
 							<c:if test="${v.index < 8 }">
 								<figure class="snip1157">
@@ -171,7 +132,7 @@
 					<h6>Hot News</h6>
 					<h2>새로운 시승차 정보가 궁금하신가요?</h2>
 					<p>이 곳에서 새로운 NEWS를 확인하세요</p>
-					<a class="btn-explore" href="${path}/news/newsList.do">Read
+					<a class="btn-explore" href="${path}/news/newsMain.do">Read
 						More <img src="${path}/resources/images/main/icon-arrow.png">
 					</a>
 				</div>

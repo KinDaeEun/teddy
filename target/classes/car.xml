@@ -33,7 +33,7 @@
 		select
 		c.cno,c.c_name,c.c_cover_img,c_content, AVG(r.rating) avg_rating
 		FROM
-		car c, review r where c.cno = r.cno(+) and c_del='n'
+		car c, review r where c.cno = r.cno(+) and c_del='n' and re_del(+)='n'
 		<if
 			test="brand!=null and brand!='' and c_kind!=null and c_kind!='' ">
 			and brand=#{brand} and c_kind=#{c_kind}
@@ -52,7 +52,7 @@
 		</if>
 		GROUP BY c.cno, c.c_name,c_content,c.c_cover_img
 		<if test="order!=null and order!=''">
-			order by #{order} desc
+			order by nvl(${order},0) desc
 		</if>
 		)a)
 		where rn
@@ -141,8 +141,8 @@
 
 	<select id="mainCar" resultType="car">
 
-		select c.cno, c_name,c_cover_img,avg(rating),c_content from car c, review r,design_img d 
-		where c.cno = r.cno and c.cno = d.cno and c_del = 'n' group by c.cno, c_name ,c_cover_img,c_content order by avg(rating) desc
+	select c.cno, c_name,c_cover_img,avg(rating),c_content from car c, review r,design_img d 
+		where c.cno = r.cno and c.cno = d.cno and re_del='n' and c_del = 'n' group by c.cno, c_name ,c_cover_img,c_content order by avg(rating) desc
 
 	</select>
 

@@ -30,7 +30,7 @@ tr, th {
 }
 
 .link {
-	background: none;
-    border: none;
-    color: #333;
+	background: none !important;
+	color: #333 !important;
+	border: none !important;
 }
