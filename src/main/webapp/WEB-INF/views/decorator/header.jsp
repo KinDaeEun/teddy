@@ -46,7 +46,7 @@
 				<li><a href="${path}/board/notice.do">게시판</a>
 					<ul class="sub">
 						<li><a href="">공지사항</a></li>
-						<li><a href="${path }/board/boardList.do">커뮤니티</a></li>
+						<li><a href="${path }/board/boardList.do">시승후기</a></li>
 						<li><a href="${path }/board/complimentMain.do?id=${id}">칭찬
 								알림방</a></li>
 					</ul></li>
