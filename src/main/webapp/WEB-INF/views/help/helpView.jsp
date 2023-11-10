@@ -77,7 +77,7 @@
 					<div class="mb-3 row">
 						<label for="inputPassword" class="col-sm-2 col-form-label">답변</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" rows=7>${help.r_content }</textarea>
+							<textarea class="form-control" rows=7 required="required">${help.r_content }</textarea>
 						</div>
 					</div>
 				</div>
