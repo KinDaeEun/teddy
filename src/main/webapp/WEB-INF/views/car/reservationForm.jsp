@@ -121,7 +121,7 @@
 				<!-- picker 시작 -->
 				<input type="text" name="r_date" id="datetimePicker"
 					placeholder="날짜 및 시간 선택" class="form-control"
-					style="text-align: center">
+					style="text-align: center" >
 				<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 				<script>
 					flatpickr("#datetimePicker", {

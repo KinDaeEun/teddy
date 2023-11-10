@@ -37,7 +37,7 @@
 							<input type="checkbox" value="${img.dno}" id="img${v.index}" name="Dno">
 							<label for="img${v.index}">${img.img_name}</label>
 						</th>
-						<td><img src="${path}/resources/upload/${img.img_name }"> </td>
+						<td><img src="${path}/resources/upload/${img.img_name }" style="width:318px; height:159px"> </td>
 					</tr>				
 					</c:forEach>
 					<tr>

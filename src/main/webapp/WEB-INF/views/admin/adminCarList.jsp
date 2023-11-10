@@ -51,7 +51,7 @@ function del(cno,c_del) {
 			</tr>
 			<c:if test="${empty carList }">
 				<tr>
-					<th colspan="11">차량이 없습니다</th>
+					<th colspan="12">차량이 없습니다</th>
 				</tr>
 			</c:if>
 			<c:if test="${not empty carList }">

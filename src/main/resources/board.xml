@@ -114,7 +114,7 @@
 	<!-- 메인화면 게시물 표시 -->
 	<select id="bcntlist" resultType="board">
 		select name,fileName,bno,b_title, b_content from board b, member m where
-		b.id = m.id order by b_cnt desc
+		b.id = m.id and m_del='n' order by b_cnt desc
 	</select>
 
 	<!-- 관리자 게시물 총 갯수 + 검색 -->

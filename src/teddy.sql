@@ -20,6 +20,7 @@ create table member (
 select * from member;
 drop table member;
 
+
 create table MEMBER_AUTH(
 MEMBEREMAIL varchar2(100),
 AUTHKEY varchar2(50)
