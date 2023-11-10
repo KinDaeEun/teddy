@@ -39,13 +39,9 @@
 	margin-bottom: 40px;
 }
 
-h5, p {
-	margin: 0;
-}
-
 a {
 	text-decoration: none;
-	color: inherit;
+	color: #333;
 }
 
 ul {
