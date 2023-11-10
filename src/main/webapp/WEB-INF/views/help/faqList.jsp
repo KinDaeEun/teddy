@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="${path}/resources/css/faqList.css">
 </head>
 
-<body>
+<body class="faq_body">
 	<div class="pg_top pg-b">
 		<h3 class="c_title faq">FAQ</h3>
 		<section class="accordion" id="accordionExample v_h">

@@ -34,11 +34,6 @@
 	color: black;
 }
 
-/**/
-html {
-	font-size: 62.5%;
-}
-
 .faq {
 	font-size: 40px;
 	margin-bottom: 40px;
@@ -55,11 +50,6 @@ a {
 
 ul {
 	list-style: none;
-}
-
-body {
-	margin: 0;
-	padding: 0;
 }
 
 .target {
@@ -110,16 +100,14 @@ body {
 }
 
 .accordion__num {
-	font-size: 1.8rem;
 	margin-right: 1.3rem;
 }
 
 .accordion__title {
-	font-size: 1.6rem;
+	font-size: 18px;
 }
 
 .accordion__li i {
-	font-size: 1.3rem;
 	position: relative;
 	top: 0.1rem;
 	right: 0.5rem;
@@ -130,14 +118,15 @@ body {
 	max-height: 0;
 	overflow: hidden;
 	transition: all 0.3s ease-in-out;
+	background: white;
 }
 
 :target ~ .accordion__content-container {
 	max-height: 50rem; /* set it longer than expected height of content */
+	margin-top: 15px;
 }
 
 .accordion__content {
-	font-size: 1.6rem;
 	line-height: 1.5;
 	transform: translateY(-100%);
 	transition: all 0.3s ease-in-out;
