@@ -88,7 +88,6 @@
 							<div class="rating_review">
 								<span class="detail_rating"> <em class="tit_rating">평점</em>
 									<span><c:if test="${rateAvg>0 }">
-										<%-- <fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber>  --%>
 											<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
        						   					   <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
      								  		 </c:forEach>
