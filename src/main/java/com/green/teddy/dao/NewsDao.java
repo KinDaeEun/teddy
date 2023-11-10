@@ -25,4 +25,6 @@ public interface NewsDao {
 
 	int insert(News news);
 
+	News hotNews();
+
 }

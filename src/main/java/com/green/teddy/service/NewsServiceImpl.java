@@ -50,4 +50,8 @@ public class NewsServiceImpl implements NewsService {
 	public int insert(News news) {
 		return nd.insert(news);
 	}
+
+	public News hotNews() {
+		return nd.hotNews();
+	}
 }

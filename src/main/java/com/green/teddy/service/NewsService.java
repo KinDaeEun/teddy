@@ -25,4 +25,6 @@ public interface NewsService {
 
 	int insert(News news);
 
+	News hotNews();
+
 }

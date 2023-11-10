@@ -24,9 +24,11 @@ public class NewsController {
 	public void newsList(Model model, HttpSession session) {
 		List<News> newslist = ns.list(); 
 		News recent  = ns.recentNews();
+		News hot = ns.hotNews();
 		
 		model.addAttribute("recent", recent);
 		model.addAttribute("newslist", newslist);
+		model.addAttribute("hot", hot);
 
 	}
 	

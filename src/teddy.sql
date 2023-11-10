@@ -599,4 +599,3 @@ insert into review values(review_seq.nextval,4,6,4,'좋은 차입니다',sysdate
 
 
 select * from member;
-

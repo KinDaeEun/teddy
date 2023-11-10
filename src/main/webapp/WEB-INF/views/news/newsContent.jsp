@@ -73,14 +73,16 @@
 					<div class="line"></div>
 					<div class="thmnil_area">
 						<ul class="thmnil_list">
-							<c:forEach var="news" items="${newslist }">
-								<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
-										<span class="img_article"> <img
-											src="${path }/resources/images/news/${news.n_cover_img }">
-									</span> <span class="smry"> <strong class="tit_smry">${news.n_title }</strong>
-											<span class="cnt_smry"></span> <span class="cat">${news.n_date }</span>
-									</span>
-								</a></li>
+							<c:forEach var="news" items="${newslist }" varStatus="v">
+								<c:if test="${v.index <= 5 }">
+									<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
+											<span class="img_article"> <img
+												src="${path }/resources/images/news/${news.n_cover_img }">
+										</span> <span class="smry"> <strong class="tit_smry">${news.n_title }</strong>
+												<span class="cnt_smry"></span> <span class="cat">${news.n_date }</span>
+										</span>
+									</a></li>
+								</c:if>
 							</c:forEach>
 						</ul>
 					</div>

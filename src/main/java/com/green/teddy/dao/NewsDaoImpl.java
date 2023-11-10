@@ -49,4 +49,8 @@ public class NewsDaoImpl implements NewsDao {
 	public int insert(News news) {
 		return sst.insert("newsns.insert", news);
 	}
+
+	public News hotNews() {
+		return sst.selectOne("newsns.hotNews");
+	}
 }

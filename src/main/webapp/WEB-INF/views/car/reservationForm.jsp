@@ -8,17 +8,6 @@
 <title>시승 예약</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
-<style>
-h2 {
-	margin-bottom: 50px;
-}
-
-/* .pd_top { */
-/* 	padding-top: 200px; */
-/* 	height: 130vh; */
-/* } */
-</style>
-
 <script>
 	// 브랜드 모델 select
 	function carBox() {
