@@ -46,7 +46,7 @@
 				<div class="mb-3 row">
 					<label for="inputPassword" class="col-sm-2 col-form-label">내용</label>
 					<div class="col-sm-10">
-						<textarea class="form-control" rows=7>${help.h_content }
+						<textarea class="form-control" rows=7 readonly="readonly">${help.h_content }
 							</textarea>
 					</div>
 				</div>
