@@ -33,11 +33,9 @@ h3 {
 		enctype="multipart/form-data">
 		<br> <br> <br> <br> <br> <br> <br>
 		<br> <br> <br> <br> <br> <input type="hidden"
-			name="id" value="${id }">
-			<input type="hidden"
-			name="hno" value="${help.hno }">
-			<input type="hidden"
-			name="pageNum" value="${pageNum }">
+			name="id" value="${id }"> <input type="hidden" name="hno"
+			value="${help.hno }"> <input type="hidden" name="pageNum"
+			value="${pageNum }">
 		<h3>${id }님의&nbsp;1:1문의수정</h3>
 		<div class="container">
 			<input class="form-control" list="datalistOptions"
@@ -57,6 +55,26 @@ h3 {
 			$('.summernote')
 					.summernote(
 							{
+								callbacks : {
+									onPaste : function(e) {
+										// 텍스트를 붙여넣을 때 <p></p> 태그를 제거
+										var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData)
+												.getData('Text');
+										e.preventDefault();
+										document.execCommand('insertText',
+												false, bufferText);
+									},
+									onInit : function() {
+										// 에디터 초기화 시 <p></p> 태그 제거
+										var content = $('.summernote')
+												.summernote('code');
+										$('.summernote').summernote(
+												'code',
+												content.replace(
+														/<p><br><\/p>/g, ''));
+									}
+								},
+								// 다른 설정 옵션들...
 								placeholder : '내용을 입력해주세요',
 								tabsize : 2,
 								height : 400,

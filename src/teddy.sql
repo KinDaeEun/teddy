@@ -168,7 +168,7 @@ create table help (
 );
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 drop table help;
-
+select * from help;
 
 -- 평점
 create table review (
