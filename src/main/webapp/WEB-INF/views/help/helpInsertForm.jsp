@@ -44,37 +44,46 @@ h3 {
 				</div>
 			</div>
 
-			<script>
-			$('.summernote').summernote({
-			    callbacks: {
-			        onPaste: function (e) {
-			            // 텍스트를 붙여넣을 때 <p></p> 태그를 제거
-			            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
-			            e.preventDefault();
-			            document.execCommand('insertText', false, bufferText);
-			        },
-			        onInit: function () {
-			            // 에디터 초기화 시 <p></p> 태그 제거
-			            var content = $('.summernote').summernote('code');
-			            $('.summernote').summernote('code', content.replace(/<p><br><\/p>/g, ''));
-			        }
-			    },
-			    // 다른 설정 옵션들...
-			    placeholder: '내용을 입력해주세요',
-			    tabsize: 2,
-			    height: 400,
-			    toolbar: [
-			        ['style', ['style']],
-			        ['font', ['bold', 'underline', 'clear']],
-			        ['color', ['color']],
-			        ['para', ['ul', 'ol', 'paragraph']],
-			        ['table', ['table']],
-			        ['insert', ['link', 'picture', 'video']],
-			        ['view', ['fullscreen', 'codeview', 'help']]
-			    ]
-			});
+		<script>
+$('.summernote').summernote({
+    callbacks: {
+        onPaste: function (e) {
+            // 텍스트를 붙여넣을 때 <p></p> 태그를 제거
+            var bufferText = ((e.originalEvent || e).clipboardData || window.clipboardData).getData('Text');
+            e.preventDefault();
+            document.execCommand('insertText', false, bufferText);
+        },
+        onInit: function () {
+            // 에디터 초기화 시 <p></p> 태그 제거
+            var content = $('.summernote').summernote('code');
+            $('.summernote').summernote('code', content.replace(/<p><br><\/p>/g, ''));
+        }
+    },
+    // 다른 설정 옵션들...
+    placeholder: '내용을 입력해주세요',
+    tabsize: 2,
+    height: 400,
+    toolbar: [
+        ['style', ['style']],
+        ['font', ['bold', 'underline', 'clear']],
+        ['color', ['color']],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['table', ['table']],
+        ['insert', ['link', 'picture', 'video']],
+        ['view', ['fullscreen', 'codeview', 'help']]
+    ]
+});
 
-			</script>
+// 폼 제출 시 HTML 태그 제거
+$('form').on('submit', function (e) {
+    var content = $('.summernote').summernote('code');
+    // HTML 태그 제거
+    var strippedContent = content.replace(/<[^>]+>/g, '');
+    // 제거된 내용을 다시 에디터에 설정
+    $('.summernote').summernote('code', strippedContent);
+});
+</script>
+
 			<div align="center" style="margin-top: 50px">
 				<input type="submit" class="btn btn-outline-secondary" value="보내기">
 			</div>
