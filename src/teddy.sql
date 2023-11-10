@@ -118,12 +118,13 @@ create table notice (
     nno number primary key,         -- 공지사항 번호
     id varchar2(20),                -- 아이디
    	n_title varchar2(100),           -- 공지사항 제목
-    n_content varchar2(1000),       -- 공지사항 내용
+    n_content varchar2(2000),       -- 공지사항 내용
     n_date date,                    -- 공지사항 작성 날짜
     n_cnt number(20),                   -- 공지사항 조회수
     n_del char(1),                   -- 공지사항 삭제여부
     foreign key(id) references member(id)
 );
+select * from notice;
 create sequence notice_seq start with 1 increment by 1 maxvalue 999999;
 drop table notice;
 

@@ -11,7 +11,7 @@
 	<c:if test="${result > 0 }">
 		<script type="text/javascript">
 			alert("공지사항을 등록 하였습니다")
-			location.href = "${path}/adminBoard/adminNotice.do?id=${id}&notice=${notice}";
+			location.href = "${path}/adminBoard/adminNotice.do?id=${id}";
 		</script>
 	</c:if>
 	<c:if test="${result == 0 }">

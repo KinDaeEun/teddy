@@ -487,13 +487,10 @@ public class AdminController {
 	//	공지사항 입력 결과
 	@PostMapping("adminBoard/adminNoticeResult")
 	public void adminNoticeResult(Model model, Notice notice, HttpSession session) {
-		int result = 0;
 		String id = (String) session.getAttribute("id");
-		result = nis.ntInsert(notice);
-
+		int result = nis.ntInsert(notice);
 		model.addAttribute("id", id);
 		model.addAttribute("result", result);
-		model.addAttribute("notice", notice);
 	}
 	
 	//	공지사항 업데이트 양식
