@@ -31,7 +31,7 @@
 			</ul>
 		</div>
 		<c:if test="${empty id }">
-		<p align="center">칭찬 등록은 로그인후에 이용바랍니다.<a href="${path}/member/loginForm.do">(로그인 하기)</a></p>
+		<p align="center">칭찬 등록은 로그인후에 이용바랍니다.<a href="${path}/member/loginForm.do" style="color : red;">(로그인 하기)</a></p>
 		</c:if>
 		
 		<c:if test="${not empty id }">

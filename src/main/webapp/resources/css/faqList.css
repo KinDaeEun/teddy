@@ -1,7 +1,6 @@
 @charset "UTF-8";
 
 /* 타이틀 */
-
 .c_title {
 	text-align: center;
 }
@@ -9,7 +8,7 @@
 .qna_help {
 	width: 500px;
 	height: 100px;
-	border: 1px solid #EAEAEA;
+	border: 1px solid #333;
 	border-radius: 5px;
 	text-align: center;
 	margin: 0 auto;
@@ -19,10 +18,117 @@
 	text-align: center;
 }
 
+.reser_go {
+	height: 30px;
+	font-size: 15px;
+	margin-top: 10px;
+	margin-left: 600px;
+	margin-bottom: 15px
+}
+
 .go_help {
 	margin: 10px;
 }
 
 .rrac {
 	color: black;
+}
+
+.faq {
+	font-size: 40px;
+	margin-bottom: 40px;
+}
+
+a {
+	text-decoration: none;
+	color: #333;
+}
+
+ul {
+	list-style: none;
+}
+
+.target {
+	display: block;
+	top: 0;
+	left: 0;
+	position: fixed;
+}
+
+.open-accordion {
+	display: block;
+}
+
+.close-accordion {
+	display: none;
+}
+
+:target ~ .open-accordion {
+	display: none;
+}
+
+:target ~ .close-accordion {
+	display: block;
+}
+
+.accordion {
+	display: flex;
+	flex-direction: column;
+	gap: 1.5rem;
+}
+
+.accordion__li {
+	background: #cfe2ff;
+	border-radius: 0.4rem;
+	padding: 2rem;
+}
+
+.accordion__li a>div {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+}
+
+.accordion__li a>div div {
+	display: flex;
+	align-items: center;
+}
+
+.accordion__num {
+	margin-right: 1.3rem;
+}
+
+.accordion__title {
+	font-size: 18px;
+}
+
+.accordion__li i {
+	position: relative;
+	top: 0.1rem;
+	right: 0.5rem;
+}
+
+/* When accordion is open */
+.accordion__content-container {
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.3s ease-in-out;
+	background: white;
+}
+
+:target ~ .accordion__content-container {
+	max-height: 50rem; /* set it longer than expected height of content */
+	margin-top: 15px;
+}
+
+.accordion__content {
+	line-height: 1.5;
+	transform: translateY(-100%);
+	transition: all 0.3s ease-in-out;
+}
+
+:target ~ .accordion__content-container .accordion__content {
+	padding-top: 1rem;
+	transform: translateY(0);
 }

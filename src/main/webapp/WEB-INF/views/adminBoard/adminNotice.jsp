@@ -61,9 +61,9 @@
 							<td><a href="${path }/adminBoard/adminNoticeView.do?nno=${notice.nno}&pageNum=${pb.currentPage}">${notice.n_title }</a></td>
 							<td>${notice.n_cnt }</td>
 							<td>${notice.n_date }</td>
-							<td><a class="btn btn-sm btn-dark"
+							<td align="center"><a class="btn btn-sm btn-dark btn-sm"
 								href="${path }/adminBoard/adminNoticeUpdateForm.do?nno=${notice.nno}&pageNum=${pb.currentPage}">수정</a></td>
-							<td><button class="btn btn-sm btn-dark"
+							<td align="center"><button class="btn btn-sm btn-dark btn-sm"
 									onclick="del(${notice.nno})">삭제</button></td>
 						</c:if>
 					</tr>
