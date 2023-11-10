@@ -27,7 +27,7 @@
 
 	<!-- 뉴스 총 개수 -->
 	<select id="getTotal" resultType="integer">
-		select count(*) from news
+		select count(*) from news where n_del='n'
 	</select>
 
 	<!-- 뉴스 목록 -->

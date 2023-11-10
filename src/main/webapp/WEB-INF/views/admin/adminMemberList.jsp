@@ -43,7 +43,7 @@
 				</tr>
 				<c:if test="${empty mbList }">
 					<tr>
-						<th colspan="7">회원 정보가 없습니다</th>
+						<th colspan="5" style="text-align: center;">회원 정보가 없습니다</th>
 					</tr>
 				</c:if>
 				<c:if test="${not empty mbList }">
