@@ -140,8 +140,7 @@
 	</select>
 
 	<select id="mainCar" resultType="car">
-
-	select c.cno, c_name,c_cover_img,avg(rating),c_content from car c, review r,design_img d 
+	select c.cno, c_name,c_cover_img,avg(rating) avg_rating,c_content from car c, review r,design_img d 
 		where c.cno = r.cno and c.cno = d.cno and re_del='n' and c_del = 'n' group by c.cno, c_name ,c_cover_img,c_content order by avg(rating) desc
 
 	</select>

@@ -47,17 +47,15 @@
 		OpenWindow.document
 				.write("<style>body{margin:0px;}</style><img src='"+"${path }/resources/upload/${car.side_img}"+"' width='"+500+"'>");
 	}
-	
+
 	function loginCheck(id) {
-		
-		if (id =='') {
+
+		if (id == '') {
 			alert("로그인 후 이용해 주시기 바랍니다.");
-			location.href="${path}/member/loginForm.do"
+			location.href = "${path}/member/loginForm.do"
 			return false;
 		}
 	}
-
-
 </script>
 </head>
 <body class="contents_l02">
@@ -86,21 +84,29 @@
 										pattern="0.0">${rateAvg }</fmt:formatNumber> </span>
 							</strong>
 							<div class="rating_review">
-								<span class="detail_rating"> <em class="tit_rating">평점</em>
-									<span><c:if test="${rateAvg>0 }">
-										<%-- <fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber>  --%>
-											<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
-       						   					   <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
-     								  		 </c:forEach>
-     								    	<c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
-              									 <img alt="" src="${path }/resources/images/car/half_star.png" class="star_img">
-          									</c:if>
-          								</c:if>
-          								<c:if test="${rateAvg<=0 }">
-          									<div class="no_tit">평점이 없습니다</div>
-          								</c:if></span> <span class="ico_bar"></span> <a href="#none" class="link_cmt"
-									data-tab="comment">댓글 ${total }&nbsp;개</a>
-								</span> <span> <a
+								<c:if test="${rateAvg>0 }">
+									<span class="detail_rating"> <em class="tit_rating">평점</em>
+										<span> <c:forEach var="i" begin="1"
+												end="${rateAvg-(rateAvg%1)}">
+												<img alt="" src="${path }/resources/images/car/star.png"
+													class="star_img">
+											</c:forEach> <c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
+												<img alt=""
+													src="${path }/resources/images/car/half_star.png"
+													class="star_img">
+											</c:if>
+
+									</span> <span class="ico_bar"></span> <a href="#none" class="link_cmt"
+										data-tab="comment">댓글 ${total }&nbsp;개</a>
+									</span>
+								</c:if>
+								<c:if test="${rateAvg<=0 }">
+									<span class="detail_rating"> <em class="tit_rating">평점이 없습니다</em>
+										<span class="ico_bar"></span> <a href="#none" class="link_cmt"
+										data-tab="comment">댓글 ${total }&nbsp;개</a>
+									</span>
+								</c:if>
+								<span> <a
 									href="${path}/car/reservationForm.do?brand=${car.brand}&c_name=${car.c_name}"
 									class="btn btn-outline-secondary" style="margin-top: 20px">시승
 										예약</a>
@@ -194,7 +200,7 @@
 								style="width: auto; height: 82px; margin: 15px auto 0;"> <span
 								class="frame_g"></span>
 						</a>
-						<div style="text-align: center">너비:${car.width }</div>
+							<div style="text-align: center">너비:${car.width }</div>
 							<div style="text-align: center">높이:${car.height }</div></li>
 
 						<li data-thumb="1"><a href="#none" class="link_thumb"
@@ -203,7 +209,7 @@
 								style="width: auto; height: 82px; margin: 15px auto 0;"> <span
 								class="frame_g"></span>
 						</a>
-						<div style="text-align: center">휠베이스:${car.wheelbase }</div>
+							<div style="text-align: center">휠베이스:${car.wheelbase }</div>
 							<div style="text-align: center">길이:${car.length }</div></li>
 
 					</ul>
@@ -211,122 +217,125 @@
 				</div>
 				<!-- 댓글 START -->
 				<form method="post"
-					action="${path }/car/reviewInsert.do?cno=${car.cno}" onsubmit="return loginCheck('${id}')">
+					action="${path }/car/reviewInsert.do?cno=${car.cno}"
+					onsubmit="return loginCheck('${id}')">
 					<div class="box_comment">
 						<div class="cmt_total">
 							<h4 class="tit_cmt">댓글 ${total }개</h4>
 							<span class="detail_rating cmt_rating"> <em class="blind">평점</em>
 
-								<!-- 평점 이미지 자리 --> <span class="raging_g">
-								<c:if test="${rateAvg>0 }">
-										<fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber> 
-											<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
-       						   					   <img alt="" src="${path }/resources/images/car/star.png" class="star_img">
-     								  		 </c:forEach>
-     								    	<c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
-              									 <img alt="" src="${path }/resources/images/car/half_star.png" class="star_img">
-          									</c:if>
-          								</c:if>
-          								<%-- <c:if test="${rateAvg<=0 }">
+								<!-- 평점 이미지 자리 --> <span class="raging_g"> <c:if
+										test="${rateAvg>0 }">
+										<fmt:formatNumber value="${rateAvg }" pattern="0.0"></fmt:formatNumber>
+										<c:forEach var="i" begin="1" end="${rateAvg-(rateAvg%1)}">
+											<img alt="" src="${path }/resources/images/car/star.png"
+												class="star_img">
+										</c:forEach>
+										<c:if test="${rateAvg != rateAvg-(rateAvg%1)}">
+											<img alt="" src="${path }/resources/images/car/half_star.png"
+												class="star_img">
+										</c:if>
+									</c:if> <%-- <c:if test="${rateAvg<=0 }">
           									<div class="no_tit">0</div>
           								</c:if> --%>
-          								
+
 							</span>
 
 							</span>
 						</div>
 						<!-- 평점 END -->
-						
-							<div class="cmt_write">
-								<div class="opt_g">
-									<em class="blind">평점 선택</em>
-									<fieldset class="rate">
-										<input type="radio" id="rating5" name="rating" value="5" r>
-										<label class="rating5" for="rating5" title="5점"></label> <input
-											type="radio" id="rating4" name="rating" value="4"> <label
-											for="rating4" title="4점"></label> <input type="radio"
-											id="rating3" name="rating" value="3"> <label
-											class="rating3" for="rating3" title="3점"></label> <input
-											type="radio" id="rating2" name="rating" value="2"> <label
-											for="rating2" title="2점"></label> <input type="radio"
-											id="rating1" name="rating" value="1"> <label
-											class="rating1" for="rating1" title="1점"></label>
-									</fieldset>
-								</div>
+
+						<div class="cmt_write">
+							<div class="opt_g">
+								<em class="blind">평점 선택</em>
+								<fieldset class="rate">
+									<input type="radio" id="rating5" name="rating" value="5" r>
+									<label class="rating5" for="rating5" title="5점"></label> <input
+										type="radio" id="rating4" name="rating" value="4"> <label
+										for="rating4" title="4점"></label> <input type="radio"
+										id="rating3" name="rating" value="3"> <label
+										class="rating3" for="rating3" title="3점"></label> <input
+										type="radio" id="rating2" name="rating" value="2"> <label
+										for="rating2" title="2점"></label> <input type="radio"
+										id="rating1" name="rating" value="1"> <label
+										class="rating1" for="rating1" title="1점"></label>
+								</fieldset>
+							</div>
 
 
-								<div class="user_cmt_off">
-									<strong class="blind">댓글 입력</strong> <span class="txt_cmt">고객님의
-										평가를 남겨주세요</span>
-									<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
-										name="re_content" id="tf_cmt" placeholder="고객님의 평가를 남겨주세요"
-										required></textarea>
-									<span class="txt_num" id="txt_num">0 / 200 </span> <input
-										type="submit" class="btn_cmt" value="등록"
-										style="cursor: pointer">
-								</div>
-						
-						<!-- 댓글목록 START -->
-						<div>
-						
-							<ul class="list_comment">
-								<c:forEach var="review" items="${reviewList }">
-									<li><span class="detail_rating type_rating"> <span
-											class="img rating_g"> <c:forEach begin="1"
-													end="${review.rating }">
-													<span class="star">★</span>
-												</c:forEach>
-										</span> <span class="txt_user">${review.id }</span>
-									</span>
+							<div class="user_cmt_off">
+								<strong class="blind">댓글 입력</strong> <span class="txt_cmt">고객님의
+									평가를 남겨주세요</span>
+								<textarea rows="8" cols="80" maxlength="300" class="tf_cmt"
+									name="re_content" id="tf_cmt" placeholder="고객님의 평가를 남겨주세요"
+									required></textarea>
+								<span class="txt_num" id="txt_num">0 / 200 </span> <input
+									type="submit" class="btn_cmt" value="등록"
+									style="cursor: pointer">
+							</div>
 
-										<p class="desc_cmt">${review.re_content }</p> <c:if
-											test="${id == review.id }">
-											<a class="delete"
-												href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
-										</c:if> <span class="txt_date">${review.re_date }</span></li>
+							<!-- 댓글목록 START -->
+							<div>
 
-								</c:forEach>
-							</ul>
-						</div>
-						<!-- 댓글목록 END -->
-						<!-- paging -->
-						<div>
+								<ul class="list_comment">
+									<c:forEach var="review" items="${reviewList }">
+										<li><span class="detail_rating type_rating"> <span
+												class="img rating_g"> <c:forEach begin="1"
+														end="${review.rating }">
+														<span class="star">★</span>
+													</c:forEach>
+											</span> <span class="txt_user">${review.id }</span>
+										</span>
 
-							<ul class="pagination justify-content-center m-3">
-								<c:if test="${pb.startPage > pb.pagePerBlock}">
-									<li class="page-item"><a class="page-link link"
-										href="carView.do?cno=${car.cno }&pageNum=1"> <i
-											class="bi bi-arrow-left-square-fill">&laquo;</i>
-									</a></li>
-									<li class="page-item"><a class="page-link link"
-										href="carView.do?cno=${car.cno }&pageNum=${pb.startPage-1}">
-											<i class="bi bi-arrow-left-circle"></i>
-									</a></li>
-								</c:if>
-								<c:forEach var="i" begin="${pb.startPage }" end="${pb.endPage }">
-									<c:if test="${pb.currentPage == i }">
-										<li class="page-item active"><a class="page-link link"
-											href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
-									</c:if>
-									<c:if test="${pb.currentPage != i }">
+											<p class="desc_cmt">${review.re_content }</p> <c:if
+												test="${id == review.id }">
+												<a class="delete"
+													href="${path }/car/reviewDelete.do?cno=${car.cno }&re_no=${review.re_no}">삭제</a>
+											</c:if> <span class="txt_date">${review.re_date }</span></li>
+
+									</c:forEach>
+								</ul>
+							</div>
+							<!-- 댓글목록 END -->
+							<!-- paging -->
+							<div>
+
+								<ul class="pagination justify-content-center m-3">
+									<c:if test="${pb.startPage > pb.pagePerBlock}">
 										<li class="page-item"><a class="page-link link"
-											href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
+											href="carView.do?cno=${car.cno }&pageNum=1"> <i
+												class="bi bi-arrow-left-square-fill">&laquo;</i>
+										</a></li>
+										<li class="page-item"><a class="page-link link"
+											href="carView.do?cno=${car.cno }&pageNum=${pb.startPage-1}">
+												<i class="bi bi-arrow-left-circle"></i>
+										</a></li>
 									</c:if>
-								</c:forEach>
-								<c:if test="${pb.endPage < pb.totalPage }">
-									<li class="page-item"><a class="page-link link"
-										href="carView.do?cno=${car.cno }&pageNum=${pb.endPage + 1 }">
-											<i class="bi bi-arrow-right-square-fill"></i>
-									</a></li>
-									<li class="page-item"><a class="page-link link"
-										href="carView.do?cno=${car.cno }&pageNum=${pb.totalPage }">
-											<i class="bi bi-arrow-right-circle">&raquo;</i>
-									</a></li>
-								</c:if>
-							</ul>
+									<c:forEach var="i" begin="${pb.startPage }"
+										end="${pb.endPage }">
+										<c:if test="${pb.currentPage == i }">
+											<li class="page-item active"><a class="page-link link"
+												href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
+										</c:if>
+										<c:if test="${pb.currentPage != i }">
+											<li class="page-item"><a class="page-link link"
+												href="carView.do?cno=${car.cno }&pageNum=${i }">${i }</a></li>
+										</c:if>
+									</c:forEach>
+									<c:if test="${pb.endPage < pb.totalPage }">
+										<li class="page-item"><a class="page-link link"
+											href="carView.do?cno=${car.cno }&pageNum=${pb.endPage + 1 }">
+												<i class="bi bi-arrow-right-square-fill"></i>
+										</a></li>
+										<li class="page-item"><a class="page-link link"
+											href="carView.do?cno=${car.cno }&pageNum=${pb.totalPage }">
+												<i class="bi bi-arrow-right-circle">&raquo;</i>
+										</a></li>
+									</c:if>
+								</ul>
+							</div>
+							<!-- paging end -->
 						</div>
-						<!-- paging end -->
-					</div>
 				</form>
 			</div>
 

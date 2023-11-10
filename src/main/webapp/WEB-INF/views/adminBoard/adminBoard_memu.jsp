@@ -31,7 +31,7 @@ tr .bc:hover {
 			<a class="text-dark text-center" href="${path }/adminBoard/adminNotice.do">공지사항</a>
 		</div>
 		<div class="bc">
-			<a class="text-dark text-center" href="${path }/adminBoard/adminBoardList.do">커뮤니티</a>
+			<a class="text-dark text-center" href="${path }/adminBoard/adminBoardList.do">시승후기</a>
 		</div>
 		<div class="bc">
 			<a class="text-dark text-center"

@@ -18,14 +18,13 @@
 					<tr>
 						<td>제목</td>
 						<td><input type="text" name="n_title" placeholder="제목을 입력하세요"
-							required="required"></td>
+							required="required" class="form-control" maxlength="30"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><input type="text" name="n_content"
-							placeholder="내용을 입력하세요" required="required"></td>
+						<td><textarea name="n_content" rows="10" class="form-control"></textarea></td>
+							
 					</tr>
-
 					<tr>
 						<td colspan="2" align="center"><input type="submit"
 							class="btn btn-outline-secondary" value="공지사항 등록"></td>

@@ -9,22 +9,23 @@
 </head>
 <body>
 	<div>
-		<form action="${path }/adminBoard/adminNoticeUpdateResult.do" method="post">
-			<input type="hidden" name="id" value="${id }">
-			<input type="hidden" name="pageNum" value="${pageNum }">
-			<input type="hidden" name="nno" value="${notice.nno }">
+		<form action="${path }/adminBoard/adminNoticeUpdateResult.do"
+			method="post">
+			<input type="hidden" name="id" value="${id }"> <input
+				type="hidden" name="pageNum" value="${pageNum }"> <input
+				type="hidden" name="nno" value="${notice.nno }">
 			<h3>공지사항 작성</h3>
 			<div class="container">
 				<table class="table">
 					<tr>
 						<td>제목</td>
-						<td><input type="text" name="n_title" 
-							required="required" value="${notice.n_title}"></td>
+						<td><input type="text" name="n_title" required="required"
+							value="${notice.n_title}" class="form-control"></td>
 					</tr>
 					<tr>
 						<td>내용</td>
-						<td><input type="text" name="n_content"
-						 required="required"  value="${notice.n_content}"></td>
+						<td><textarea rows="10" class="form-control" name="n_content"
+								required>${notice.n_content }</textarea></td>
 					</tr>
 
 					<tr>

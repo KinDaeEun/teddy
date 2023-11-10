@@ -27,7 +27,7 @@
 
 	<!-- 뉴스 총 개수 -->
 	<select id="getTotal" resultType="integer">
-		select count(*) from news
+		select count(*) from news where n_del='n'
 	</select>
 
 	<!-- 뉴스 목록 -->
@@ -69,5 +69,9 @@
 		news_seq.nextval, #{n_cover_img}, #{n_img}, #{n_title}, #{n_content},
 		#{n_writer}, sysdate, 'n')
 	</insert>
-
+	
+	<select id="hotNews" resultType="news">
+		select * from news where nno
+		= (select min(nno) from news)
+	</select>
 </mapper>

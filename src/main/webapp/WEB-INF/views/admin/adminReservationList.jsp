@@ -52,7 +52,7 @@ function del(rno,r_del) {
 			</tr>
 			<c:if test="${empty reservationList }">
 				<tr>
-					<th colspan="7">등록된 게시글이 없습니다</th>
+					<th colspan="12">등록된 게시글이 없습니다</th>
 				</tr>
 			</c:if>
 			<c:if test="${not empty reservationList }">

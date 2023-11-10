@@ -69,16 +69,17 @@ window.uiTabT2 = function(e) {
 					<h3 class="title">뉴스</h3>
 					<c:forEach var="news" items="${newslist }" varStatus="v">
 						<ul class="news_list">
-						<c:if test="${v.index < 3 }">
-							<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
-									<span class="news_img"> <img
-										src="${path }/resources/images/news/${news.n_cover_img }">
-								</span> <span class="smry"> <strong class="n_title">${news.n_title }</strong>
-										<span class="n_cont"> <strong class="contents"></strong>
-									</span> <span class="n_date">${news.n_writer }</span> <span
-										class="n_date">${news.n_date }</span>
-								</span>
-							</a></li></c:if>
+							<c:if test="${v.index < 3 }">
+								<li><a href="${path }/news/newsContent.do?nno=${news.nno}">
+										<span class="news_img"> <img
+											src="${path }/resources/images/news/${news.n_cover_img }">
+									</span> <span class="smry"> <strong class="n_title">${news.n_title }</strong>
+											<span class="n_cont"> <strong class="contents"></strong>
+										</span> <span class="n_date">${news.n_writer }</span> <span
+											class="n_date">${news.n_date }</span>
+									</span>
+								</a></li>
+							</c:if>
 						</ul>
 					</c:forEach>
 				</div>
@@ -114,7 +115,18 @@ window.uiTabT2 = function(e) {
 						</p>
 						<div class="sec">
 							<ul>
-								<li style="text-align: center;">준비중 입니다</li>
+								<li><a href="${path }/news/newsContent.do?nno=${hot.nno}">
+										<img class="sec_img"
+										src="${path }/resources/images/news/${hot.n_cover_img}">
+								</a>
+									<dl>
+										<dt>
+											<a href="#">${hot.n_title }</a>
+										</dt>
+										<dd>
+											<span class="date">${hot.n_date }</span>
+										</dd>
+									</dl></li>
 							</ul>
 						</div>
 					</div>

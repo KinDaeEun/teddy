@@ -42,7 +42,7 @@
 	<main class="intro">
 		<div class="inner">
 			<div class="heading">
-				<h2 style="float: left; margin-top: 150px;">Teddy</h2>
+				<h1 style="position: relative; top: 400px; float: left;">Teddy</h1>
 				<p></p>
 			</div>
 		</div>

@@ -30,7 +30,7 @@
 		</table>
 		<div>
 			<a class="btn btn-sm btn-dark"
-				href="${path }/board/notice.do?nno=${notice.nno}&pageNum=${pageNum}">목록으로</a>
+				href="${path }/board/notice.do?nno=${notice.nno}&pageNum=${pageNum}" style="margin-top: 15px">목록으로</a>
 		</div>
 	</div>
 </body>
