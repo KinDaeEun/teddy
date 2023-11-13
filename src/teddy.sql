@@ -169,7 +169,7 @@ create table help (
 create sequence help_seq start with 1 increment by 1 maxvalue 999999;
 drop table help;
 select * from help;
-
+drop sequence help_seq;
 -- 평점
 create table review (
     re_no number primary key,       -- 평점 번호
@@ -201,6 +201,14 @@ create table news (
 create sequence news_seq start with 1 increment by 1 maxvalue 999999;
 drop table news;
 
+
+
+select * from ( select a.*, rowNum rn from (
+		select * from board
+					${search} like '%'|| #{keyword} ||'%'			
+		order by bno desc ) a )
+		where rn between 1 and 10;
+		
 
 
 
@@ -351,7 +359,7 @@ insert into news values(
    'n'
    );
 
-	
+ 
 
 --차량추가
 insert into car values(car_seq.nextval,'현대 쏘나타 (DN8)',2346,3590,'현대','Hyundai Sonata (DN8)cover.jpg','Hyundai Sonata (DN8).jpg','7세대로 거듭난 올 뉴 아반떼는 모든 게 바뀌었습니다. 구형의 생명력이 끝나서 밀려 나온 게 아닙니다. 뼈대를 이루는 플랫폼부터 갈아 엎었지요. 신형은 좋은 디자인과 미래적인 장비를 만재해 상품성을 대폭 끌어올렸습니다.
@@ -468,7 +476,8 @@ insert into car values(car_seq.nextval,'기아 더 뉴 K3',1590,2585,'기아','�
 TO_DATE('2018-02-27', 'YYYY-MM-DD'),'Gamma 1.6 CVVT','CVT',1598,'전륜','123 / 6300','맥퍼슨 스트럿 ,토션 빈',
 '15.7 / 4500','4개 / 벤틸레이티드 디스크 2개','10','185','n',1800,1440,2700,4640,'기아 더 뉴 K3front.jpg','기아 더 뉴 K3side.jpg');
 
-
+select * from board;
+delete from board where bno=46;
 
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design1.jpg',1);
 insert into design_img values(design_img_seq.nextval,'현대 쏘나타 (DN8)design2.jpg',1);
@@ -585,6 +594,8 @@ insert into board values(board_seq.nextval,4,'시승 잘했네요',4,'이번에 
 insert into board values(board_seq.nextval,5,'추천해요',5,'시승예약부터 시승까지 직원 분들이 꼼꼼하게 신경 써 주시고 편안하고 친절하게 대해 주셔서 주변 분들에 시승 할 생각있으신 분 있으면 무저건 추천 할려고요 ',sysdate,96,'n');
 insert into board values(board_seq.nextval,6,'회사차구매',6,'회사 전용 차가 필요해서 알아보다가 시승 서비스를 제공하는 테디를 알게되었네요 덕분에 시승하고 맘에 드는 차로 구매완료!!!!',sysdate,95,'n');
 
+
+select * from board;
 
 insert into review values(review_seq.nextval,1,1,5,'성능 완전 좋은 차입니다',sysdate,'n');
 insert into review values(review_seq.nextval,2,2,5,'성능 완전 좋은 차입니다',sysdate,'n');
