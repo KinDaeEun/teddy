@@ -20,7 +20,7 @@ function del(bno,b_del) {
 	<div class="container">
 		<h4 style="margin-bottom: 10px">커뮤니티 게시글 목록</h4>
 		<h6 style="margin-bottom: 10px">게시글 총 ${total } 개</h6>
-		<form action="${path }/admin/adminBoardList.do">
+		<form action="${path }/adminBoard/adminBoardList.do">
 			<select name="search" class="inputUnderLine">
 				<c:forTokens var="sh" items="b_title, b_writer, b_content"
 					delims="," varStatus="i">
@@ -48,7 +48,7 @@ function del(bno,b_del) {
 			</tr>
 			<c:if test="${empty boardList }">
 				<tr>
-					<th colspan="7">등록된 게시글이 없습니다</th>
+					<th colspan="8">등록된 게시글이 없습니다</th>
 				</tr>
 			</c:if>
 			<c:if test="${not empty boardList }">
