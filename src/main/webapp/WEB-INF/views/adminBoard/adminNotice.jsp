@@ -43,7 +43,7 @@
 				<th>제목</th>
 				<th>조회수</th>
 				<th>작성일</th>
-				<th>수정</th>
+				<th>상세내용</th>
 				<th>삭제</th>
 			</tr>
 			<c:if test="${empty list }">

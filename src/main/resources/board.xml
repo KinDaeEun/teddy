@@ -142,14 +142,9 @@
 		select * from board
 		<where>
 			<if test="keyword != null and keyword != ''">
-				<if test="search == 'subcon'">
-					b_title like '%'|| #{keyword} ||'%' or
-					b_content like
-					'%'|| #{keyword} ||'%'
-				</if>
-				<if test="search != 'subcon'">
+
 					${search} like '%'|| #{keyword} ||'%'
-				</if>
+				
 			</if>
 		</where>
 		order by bno desc ) a )

@@ -44,7 +44,7 @@
 				</tr>
 				<c:if test="${empty list}">
 					<tr>
-						<td colspan="4" class="text-center">문의내역이 존재하지 않습니다</td>
+						<td colspan="5" class="text-center">문의내역이 존재하지 않습니다</td>
 					</tr>
 				</c:if>
 				<c:if test="${not empty list }">
