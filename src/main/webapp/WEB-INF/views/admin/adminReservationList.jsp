@@ -47,8 +47,8 @@ function del(rno,r_del) {
 				<th>시승 모델</th>
 				<th>시승 지역 / 구</th>
 				<th>전시장</th>
-				<th>삭제여부</th>
-				<th>삭제/전시</th>
+				<th>취소여부</th>
+				<th>예약취소</th>
 			</tr>
 			<c:if test="${empty reservationList }">
 				<tr>
@@ -69,7 +69,7 @@ function del(rno,r_del) {
 						<td>${reservation.find_city }&nbsp;${reservation.find_gu }</td>
 						<td>${reservation.find_center }</td>
 						<td>${reservation.r_del }</td>
-						<th><a onclick="del(${reservation.rno},'${reservation.r_del}')">변경</a></th>
+						<th><a onclick="del(${reservation.rno},'${reservation.r_del}')">취소</a></th>
 					</tr>
 				</c:forEach>
 			</c:if>

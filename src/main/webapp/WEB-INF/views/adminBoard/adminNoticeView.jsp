@@ -23,7 +23,7 @@
 		<div>${notice.n_date }</div>
 		<table class="ta">
 			<tr class="vi">
-				<td><pre>${notice.n_content }</pre></td>
+				<td align="center"><pre>${notice.n_content }</pre></td>
 			</tr>
 
 		</table>

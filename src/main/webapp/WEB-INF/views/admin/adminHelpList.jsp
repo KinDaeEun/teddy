@@ -38,12 +38,13 @@
 				<tr class="table-secondary">
 					<th class="text-center">아이디</th>
 					<th class="text-center">제목</th>
+					<th class="text-center">답변여부</th>
 					<th class="text-center">삭제여부</th>
 					<th class="text-center">작성일</th>
 				</tr>
 				<c:if test="${empty list}">
 					<tr>
-						<td colspan="4" class="text-center">문의내역이 존재하지 않습니다</td>
+						<td colspan="5" class="text-center">문의내역이 존재하지 않습니다</td>
 					</tr>
 				</c:if>
 				<c:if test="${not empty list }">
@@ -53,6 +54,7 @@
 							<td class="text-center btn-sm"><a
 								href="${path }/admin/adminHelpView.do?hno=${help.hno}&pageNum=${pb.currentPage}"
 								class="menuTitle">${help.h_title }</a></td>
+							<td class="text-center">${help.h_ref }</td>
 							<td class="text-center">${help.h_del }</td>
 							<td class="text-center">${help.h_date }</td>
 						</tr>

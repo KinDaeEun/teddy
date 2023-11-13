@@ -37,7 +37,7 @@ margin-bottom: 20px;
     <li class="list-group-item">이메일 : ${member.email }</li>
   </ul>
   <div class="card-body">
-    <a href="${path }/admin/adminMemberDelete.do?id=${member.id}&pageNum=${pageNum }" class="card-link">회원삭제</a>
+    <a href="${path }/admin/adminMemberDelete.do?id=${member.id}&pageNum=${pageNum }" class="card-link">회원탈퇴</a>
   </div>
 </div>
  
