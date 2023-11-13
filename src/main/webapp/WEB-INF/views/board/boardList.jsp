@@ -10,7 +10,7 @@
 </head>
 <body>
 	<div class="container" align="center">
-		<h2 class="text-center">커뮤니티</h2>
+		<h2 class="text-center">시승 후기</h2>
 		<!-- search -->
 		<form action="${path }/board/boardList.do" class="search">
 			<select name="search" class="inputUnderLine">

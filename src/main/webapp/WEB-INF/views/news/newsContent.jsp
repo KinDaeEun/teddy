@@ -91,7 +91,6 @@
 			</div>
 		</div>
 	</div>
-
-	<textarea></textarea>
+	<textarea style="display: none;"></textarea>
 </body>
 </html>
