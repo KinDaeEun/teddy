@@ -15,7 +15,8 @@
 	rel="stylesheet">
 <script
 	src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
-<link rel="stylesheet" href="${path}/resources/css/adminHelpInsertForm.css">
+<link rel="stylesheet"
+	href="${path}/resources/css/adminHelpInsertForm.css">
 
 </head>
 <body>
@@ -39,8 +40,10 @@
 						<div class="mb-3 row">
 							<label for="inputPassword" class="col-sm-2 col-form-label">문의내용</label>
 							<div class="col-sm-10">
-								<input type="text" readonly class="form-control-plaintext"
-									value="${help.h_content }">
+								
+								
+										<textarea class="form-control" rows="5" cols="">${help.h_content }</textarea>
+								
 							</div>
 						</div>
 						<div class="mb-3 row">
